@@ -535,15 +535,15 @@ const SPORTS = [
   {id:'football', name:'Football', accent:'court', heat:88, status:'MATCHWEEK 6 · LIVERPOOL v MAN CITY SUNDAY, UCL MD2 NEXT WEEK', deep:'full',
     sub:'Premier League · Champions League · La Liga · Serie A · Bundesliga · MLS · Saudi Pro League',
     leagues:['All','Champions League','Premier League','La Liga','Serie A','Bundesliga','MLS','Saudi Pro League']},
-  {id:'mlb', name:'MLB', accent:'court', heat:97, status:'ALDS GM4 TONIGHT · NLCS: DODGERS v BREWERS FROM SUN', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
-  {id:'nfl', name:'NFL', accent:'away', heat:85, status:'TNF TONIGHT · BUCS AT COWBOYS, 8:15 PM ET', deep:'none', sub:'National Football League'},
-  {id:'tennis', name:'Tennis', accent:'court', heat:82, status:'SHANGHAI MASTERS · R1 UNDERWAY', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
-  {id:'padel', name:'Padel', accent:'away', heat:63, status:'QUARTERFINALS NEXT · DÜSSELDORF, TOP SEEDS ALL THROUGH', deep:'light', sub:'Premier Padel tour'},
+  {id:'mlb', name:'MLB', accent:'court', heat:98, status:'ALDS GM5 SAT · GUARDIANS FORCE DECIDER, 9-5 GM4 WIN', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
+  {id:'nfl', name:'NFL', accent:'away', heat:80, status:'BUCS STUN COWBOYS 24-16 ON TNF · WEEK 6 SUNDAY', deep:'none', sub:'National Football League'},
+  {id:'tennis', name:'Tennis', accent:'court', heat:82, status:'SHANGHAI MASTERS · DAY 2 DONE, HURKACZ-DJOKOVIC NEXT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
+  {id:'padel', name:'Padel', accent:'away', heat:65, status:'DÜSSELDORF QUARTERFINALS LIVE TODAY · TOP SEEDS IN ACTION', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:70, status:'OPENING NIGHT OCT 20 · CHAMPION KNICKS HOST 76ERS', deep:'light', sub:'NBA'},
-  {id:'f1', name:'F1', accent:'away', heat:75, status:'SINGAPORE GP · SPRINT WEEKEND, ANTONELLI LEADS TITLE RACE', deep:'none', sub:'Formula 1'},
+  {id:'f1', name:'F1', accent:'away', heat:78, status:'SINGAPORE GP · RUSSELL TOPS FP1, SPRINT QUALIFYING TODAY', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:42, status:'FIGHT NIGHT SAT · ALLEN v DUNCAN, LAS VEGAS', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:40, status:'FIGHT NIGHT SAT · SCHOFIELD v BAHDI, CHICAGO', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:58, status:'T20I SERIES · SRI LANKA TOUR PAKISTAN, 1ST T20I FRI', deep:'light', sub:'International & league cricket'},
+  {id:'cricket', name:'Cricket', accent:'away', heat:60, status:'PAKISTAN WIN 1ST T20I BY 5 RUNS · LEAD SERIES 1-0', deep:'light', sub:'International & league cricket'},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -558,7 +558,8 @@ const CAT = {
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
   mlb:{context:'MLB POSTSEASON', games:[
-    {status:'TONIGHT 8:00 PM ET', away:{abbr:'CLE',record:'1-2'}, home:{abbr:'CWS',record:'2-1'}, note:'ALDS Gm4 · CWS leads 2-1'},
+    {status:'FINAL', away:{abbr:'CLE',record:'9'}, home:{abbr:'CWS',record:'5'}, note:'ALDS Gm4 · series tied 2-2'},
+    {status:'SAT · TIME TBD', away:{abbr:'CWS'}, home:{abbr:'CLE'}, note:'ALDS Gm5 · winner-take-all, Cleveland'},
     {status:'SUN · TIME TBD', away:{abbr:'LAD'}, home:{abbr:'MIL'}, note:'NLCS Gm1 · Milwaukee'},
   ]},
   football:{context:'MATCHWEEK 6', games:[
@@ -567,13 +568,16 @@ const GAMES = {
     {status:'TUE OCT 13', away:{abbr:'ATM'}, home:{abbr:'MUN'}, note:'UCL MD2'},
     {status:'WED OCT 14', away:{abbr:'MCI'}, home:{abbr:'PSG'}, note:'UCL MD2'},
   ]},
-  tennis:{context:'SHANGHAI MASTERS · R1', games:[
+  tennis:{context:'SHANGHAI MASTERS · R1 COMPLETE', games:[
+    {status:'FINAL', away:{abbr:'ARNALDI'}, home:{abbr:'TOMIC'}, note:'6-3, 6-1'},
+    {status:'FINAL', away:{abbr:'BU'}, home:{abbr:'VAN ASSCHE'}, note:'7-6(3), 6-3'},
     {status:'SAT', away:{abbr:'ALCARAZ'}, home:{abbr:'CERUNDOLO/Q'}},
-    {status:'FROM SAT', away:{abbr:'DJOKOVIC'}, home:{abbr:'TBD'}, note:'Top half debuts'},
+    {status:'R2', away:{abbr:'HURKACZ'}, home:{abbr:'DJOKOVIC'}, note:'Marquee 2nd rounder'},
   ]},
-  padel:{context:'DÜSSELDORF · QFs NEXT', games:[
-    {status:'WON R16', away:{abbr:'TAPIA/COELLO'}, home:{abbr:'ADVANCED'}, note:'No. 1 seeds'},
-    {status:'WON R16', away:{abbr:'GALAN/CHINGOTTO'}, home:{abbr:'ADVANCED'}, note:'Defending champs'},
+  padel:{context:'DÜSSELDORF · QUARTERFINALS TODAY', games:[
+    {status:'QF TODAY', away:{abbr:'COELLO/TAPIA'}, home:{abbr:'GUERRERO/LEAL'}, note:'No. 1 seeds'},
+    {status:'QF TODAY', away:{abbr:'LEBRON/AUGSBURGER'}, home:{abbr:'GONZALEZ/CAMPAGNOLO'}, note:'No. 3 seeds'},
+    {status:'QF TODAY', away:{abbr:'GALAN/CHINGOTTO'}, home:{abbr:'NIETO/YANGUAS'}, note:'Defending champs'},
   ]},
   basketball:{context:'OPENING NIGHT OCT 20', games:[
     {status:'TUE 3:00 PM ET', away:{abbr:'BOS',record:'0-0'}, home:{abbr:'DET',record:'0-0'}},
@@ -587,11 +591,12 @@ const GAMES = {
     {status:'SAT', away:{abbr:'SCHOFIELD'}, home:{abbr:'BAHDI'}, note:'Vacant WBA lightweight'},
     {status:'SAT', away:{abbr:'COLLAZO'}, home:{abbr:'SANDOVAL'}, note:'WBA/WBC flyweight'},
   ]},
-  nfl:{context:'THURSDAY NIGHT FOOTBALL', games:[
-    {status:'TONIGHT 8:15 PM ET', away:{abbr:'TB',record:'0-4'}, home:{abbr:'DAL',record:'2-2'}, note:'AT&T Stadium'},
+  nfl:{context:'THURSDAY NIGHT FOOTBALL · FINAL', games:[
+    {status:'FINAL', away:{abbr:'TB',record:'24'}, home:{abbr:'DAL',record:'16'}, note:'Bucs win, 1-4 · Cowboys fall to 2-3'},
   ]},
-  cricket:{context:'PAK v SL · T20I', games:[
-    {status:'FRI 9:00 AM ET', away:{abbr:'SL'}, home:{abbr:'PAK'}, note:'1st T20I · Rawalpindi'},
+  cricket:{context:'PAK v SL · T20I SERIES 1-0', games:[
+    {status:'FINAL', away:{abbr:'SL'}, home:{abbr:'PAK'}, note:'Pakistan win by 5 runs · 1st T20I'},
+    {status:'NEXT', away:{abbr:'SL'}, home:{abbr:'PAK'}, note:'2nd T20I · Rawalpindi'},
   ]},
 };
 
@@ -724,17 +729,18 @@ const ARTICLES = [
     ],
     pull:'Same two teams, same round, one year later — this time Milwaukee has home field for Game 1.',
   },
-  {id:'nlcs-preview', sport:'mlb', cat:'preview',
-    headline:'White Sox Can Close Out Guardians Tonight and Reach the ALCS',
-    dek:'Chicago leads the ALDS 2-1 and can eliminate Cleveland at home, with the winner facing Tampa Bay for the pennant.',
-    byline:'Clutch Room MLB Desk', mins:5, time:'Oct 8, 2026',
-    qa:[['What\'s the series status?','The White Sox lead the Guardians 2-1 in the ALDS, with Game 4 tonight in Chicago.'],
-        ['What\'s at stake?','The winner advances to the ALCS to face the Rays.']],
+  {id:'alds-game4-recap', sport:'mlb', cat:'recap',
+    headline:'Guardians Erupt for Six in the Sixth, Force a Deciding Game 5',
+    dek:'Cleveland stunned the White Sox 9-5 in Game 4, overturning an early deficit with a six-run sixth inning to even the ALDS at 2-2 ahead of Saturday\'s winner-take-all finale.',
+    byline:'Clutch Room MLB Desk', mins:5, time:'Oct 9, 2026',
+    qa:[['What was the final score?','Guardians 9, White Sox 5 — Cleveland scored six runs in the sixth inning to erase a Chicago lead.'],
+        ['What happens now?','The series is tied 2-2 and goes to a decisive Game 5 on Saturday, October 10, back at Progressive Field in Cleveland. The winner faces the Rays, who already swept the Yankees, in the ALCS.']],
     body:[
-      'Chicago is one win from its first ALCS appearance since the team won the World Series in 2005, and it gets the chance at home. The White Sox lead the ALDS 2-1 over Cleveland, with Game 4 tonight at 8 p.m. ET.',
-      'The Guardians have been here before and know the alternative: lose tonight and the season is over. Win, and it\'s a winner-take-all Game 5.',
-      'Whoever comes through meets a Rays team that\'s already waiting in the ALCS — the first conference championship matchup of the postseason to be fully set.',
+      'Chicago had a chance to close this series out at home and instead watched it slip away in one inning. The White Sox led into the sixth before Cleveland sent eleven batters to the plate and scored six runs, turning a tight game into a 9-5 Guardians win that sends the ALDS back to Progressive Field for a deciding Game 5.',
+      'José Ramírez was at the center of it, continuing a postseason that has made him the single biggest reason Cleveland is still playing. The six-run frame was built on contact, baserunning and a White Sox bullpen that couldn\'t find the strike zone when it mattered most.',
+      'For Chicago, it\'s the fifth loss in a stretch that has completely flipped the series momentum — from a 2-1 lead and a chance to clinch at home, to a win-or-go-home Game 5 in a building where the crowd will be loud from the first pitch. The Tampa Bay Rays, who swept the Yankees to reach the ALCS, are already waiting for whichever team survives.',
     ],
+    pull:'Chicago had the series in hand and a chance to close it at home — six Cleveland runs in one inning changed everything.',
   },
   {id:'mlb-injury-watch', sport:'mlb', cat:'debate',
     headline:'First Take: Can the Dodgers Really Three-Peat?',
@@ -759,6 +765,18 @@ const ARTICLES = [
       'With Djokovic, Alexander Zverev and Carlos Alcaraz all drawing first-round byes, the real draw doesn\'t open up until the seeds start playing this weekend — but the Hurkacz result means Djokovic\'s first match is already a real test, not a routine opener.',
     ],
     pull:'Hurkacz\'s first-round win means Djokovic\'s Shanghai title defense starts against real resistance, not a gimme.',
+  },
+  {id:'shanghai-day2-recap', sport:'tennis', cat:'recap',
+    headline:'Shanghai Day 2: Tsitsipas, Arnaldi and a Local Favorite Move On',
+    dek:'Matteo Arnaldi routed Bernard Tomic, Yunchaokete Bu beat Luca Van Assche to become the third Chinese man into round two, and Cameron Norrie was knocked out early by qualifier Dalibor Svrcina.',
+    byline:'Clutch Room Tennis Desk', mins:4, time:'Oct 9, 2026',
+    qa:[['What were the headline results?','Matteo Arnaldi beat Bernard Tomic 6-3, 6-1; Yunchaokete Bu beat Luca Van Assche 7-6(3), 6-3 to reach the second round.'],
+        ['Any upsets?','Yes — Cameron Norrie lost early to qualifier Dalibor Svrcina, one of the bigger surprises of the opening rounds.']],
+    body:[
+      'Matteo Arnaldi needed less than an hour and a half to see off Bernard Tomic 6-3, 6-1, one of the more efficient wins of the first round, while home favorite Yunchaokete Bu produced the moment of the day for the Shanghai crowd — a 7-6(3), 6-3 win over Luca Van Assche built on a serving display that made him the third Chinese man to reach round two.',
+      'The upset column belonged to Dalibor Svrcina, a qualifier who knocked out Cameron Norrie in straight sets to end the Briton\'s run before it started.',
+      'All of it still plays second fiddle to what\'s coming: Hubert Hurkacz\'s second-round date with Novak Djokovic, set up by Hurkacz\'s Day 1 win, is shaping up as the most-watched match of the week outside the final itself.',
+    ],
   },
   {id:'tennis-preview', sport:'tennis', cat:'preview',
     headline:'Alcaraz\'s Shanghai Path: Who Stands Between Him and the Final',
@@ -866,6 +884,19 @@ const ARTICLES = [
     ],
   },
 
+  {id:'pak-sl-1st-t20i-recap', sport:'cricket', cat:'recap',
+    headline:'Pakistan Hold Off Sri Lanka by 5 Runs to Open the Series',
+    dek:'A tight finish under the Rawalpindi lights went Pakistan\'s way as Sahibzada Farhan\'s side defended their total to take a 1-0 lead in the three-match T20I series.',
+    byline:'Clutch Room Cricket Desk', mins:4, time:'Oct 9, 2026',
+    qa:[['What was the result?','Pakistan beat Sri Lanka by 5 runs in the 1st T20I at Rawalpindi Cricket Stadium.'],
+        ['What does it mean for the series?','Pakistan lead the three-match T20I series 1-0, with the 2nd T20I still to come at the same venue.']],
+    body:[
+      'Pakistan got the series off on the right foot with a 5-run win over Sri Lanka at Rawalpindi Cricket Stadium, surviving a late push from the chasing side to see out a tight finish under lights.',
+      'Sahibzada Farhan\'s decision to back a top order built around Saim Ayub and Fakhar Zaman paid off with enough runs on the board, while Pakistan\'s mixed seam-and-spin attack did just enough in the back end of the Sri Lankan chase to protect the margin.',
+      'Kusal Mendis\'s spin-heavy attack — Theekshana, Wellalage and Viyaskanth — kept the game competitive deep into the chase, but Sri Lanka came up five runs short. The series now shifts to the 2nd T20I at the same venue, with Pakistan needing one more win to clinch it.',
+    ],
+  },
+
   {id:'ufc-fight-night-allen-duncan', sport:'ufc', cat:'preview',
     headline:'UFC Fight Night: Allen vs. Duncan Headlines a Stacked Las Vegas Card',
     dek:'Brendan Allen takes on Christian Leroy Duncan in Saturday\'s middleweight main event, part of an 11-fight card in Las Vegas.',
@@ -917,18 +948,32 @@ const ARTICLES = [
     pull:'Alonso wants fewer straights, Colapinto wants to cut 22 points, and Bortoleto is already worried about the heat — real stakes before a wheel turns.',
   },
 
-  {id:'nfl-tnf-bucs-cowboys-preview', sport:'nfl', cat:'preview',
-    headline:'Bucs-Cowboys Prediction: Dallas Favored, But Their Defense Hasn\'t Forced a Single Pick',
-    dek:'Tampa Bay arrives winless with a rookie making his second career start; Dallas arrives 2-2 with a top-two offense and a defense that can\'t get a turnover.',
-    byline:'Clutch Room NFL Desk', mins:5, time:'Oct 8, 2026',
-    qa:[['What are the odds?','Dallas opened as a 10-point home favorite and has settled at -8.0 (-105) for tonight\'s kickoff at AT&T Stadium.'],
-        ['Who\'s starting at quarterback for Tampa Bay?','Undrafted rookie Jalon Daniels makes his second career start, with Baker Mayfield out with a dislocated right thumb.']],
+  {id:'f1-singapore-fp1-recap', sport:'f1', cat:'recap',
+    headline:'Russell Tops the Only Practice Session of a Compressed Singapore Weekend',
+    dek:'With this a sprint weekend, Friday\'s single practice was the only on-track data before Sprint Qualifying — and George Russell\'s Mercedes beat Leclerc and Norris to the top of the sheet.',
+    byline:'Clutch Room F1 Desk', mins:4, time:'Oct 9, 2026',
+    qa:[['What were the Practice 1 times?','George Russell led at 1:32.274, with Charles Leclerc 0.198s back in second and Lando Norris third, around three tenths behind.'],
+        ['Why was there only one practice session?','Singapore is a sprint weekend — the format replaces FP2 and FP3 with Sprint Qualifying and the Sprint race, so Friday\'s single session was the only practice before qualifying sets the grid.']],
     body:[
-      'Thursday Night Football pairs a team with nothing to lose against a team that keeps giving opponents everything. Tampa Bay arrives at AT&T Stadium winless, with undrafted rookie Jalon Daniels making just his second career start in place of Baker Mayfield, who\'s out with a dislocated right thumb. Dallas arrives 2-2, scoring at a top-two rate in the league — and allowing almost as much.',
-      'The number that should worry Cowboys fans more than the scoreboard: Dallas has four sacks and zero interceptions through four games, the only team in the NFL yet to record a single pick. Dak Prescott, CeeDee Lamb and Javonte Williams give Dallas an offense capable of winning a track meet, but a defense that can\'t take the ball away is the kind of flaw that keeps games closer than the spread suggests.',
-      'That\'s exactly where Tampa Bay\'s one real strength comes in: a defense ranked fourth in the league, now tasked with containing Prescott and Lamb behind a rookie quarterback who can\'t afford to put his own defense in short-field situations. Dallas opened as a 10-point favorite and has drifted to -8.0 — a number that\'s moved toward Tampa Bay not because anyone expects the Bucs to win, but because a defense with zero turnovers forced is a real liability against a team that doesn\'t need to force mistakes of its own.',
+      'George Russell\'s Mercedes topped the only practice session of the Singapore weekend, running a 1:32.274 around Marina Bay to beat Charles Leclerc\'s Ferrari by 0.198 seconds, with Lando Norris third for McLaren roughly three tenths back.',
+      'Leclerc\'s teammate Lewis Hamilton was fourth, Oscar Piastri fifth, and championship leader Kimi Antonelli seventh for Mercedes — split by Max Verstappen\'s Red Bull in sixth. Isack Hadjar, Pierre Gasly and Liam Lawson rounded out the top ten.',
+      'Because this is a sprint weekend, there\'s no FP2 or FP3 to adjust setups before it counts — Sprint Qualifying sets Saturday\'s sprint grid directly off this one session\'s read, which puts extra weight on a practice that\'s normally just a data-gathering exercise.',
     ],
-    pull:'A defense with zero interceptions all season is favored by a touchdown — the number says more about Tampa Bay\'s quarterback situation than about Dallas\'s defense.',
+    pull:'One practice session, then straight into Sprint Qualifying — Russell\'s Friday pace carries extra weight on a compressed weekend.',
+  },
+
+  {id:'nfl-tnf-bucs-cowboys-recap', sport:'nfl', cat:'recap',
+    headline:'Undrafted Rookie Jalon Daniels Outduels Dak Prescott as Bucs Stun Cowboys 24-16',
+    dek:'A double-digit home favorite with a defense that still hasn\'t forced a single interception, Dallas got exactly the kind of result that stat predicted — a 24-16 loss to a winless Tampa Bay team starting a rookie making his second career start.',
+    byline:'Clutch Room NFL Desk', mins:5, time:'Oct 9, 2026',
+    qa:[['What was the final score?','Buccaneers 24, Cowboys 16, Thursday Night Football at AT&T Stadium.'],
+        ['Who started at quarterback for Tampa Bay?','Undrafted rookie Jalon Daniels made his second career start in place of the injured Baker Mayfield, and outplayed Dak Prescott.']],
+    body:[
+      'The number everyone flagged before kickoff turned out to be the whole story. Dallas came in having forced zero interceptions through four games — the only defense in the league without one — and a winless Tampa Bay team starting an undrafted rookie quarterback took full advantage, winning 24-16 to pick up its first victory of the season.',
+      'Jalon Daniels, making just his second career start for the injured Baker Mayfield, outplayed Dak Prescott on the night that mattered most for his own team. Dallas\'s offense, which came in scoring at a near-top-of-the-league rate, couldn\'t out-score a defense that entered the week ranked fourth overall — exactly the matchup that made Dallas\'s double-digit opening line look shaky to begin with.',
+      'It\'s Dallas\'s second loss in three games and drops them to 2-3, while Tampa Bay climbs off the bottom of the standings to 1-4. For a Cowboys defense that still hasn\'t taken the ball away all season, Thursday was the data point that finally showed up on the scoreboard instead of just the stat sheet.',
+    ],
+    pull:'Dallas still hasn\'t forced a single interception all season — and a winless team with a rookie making his second career start beat them anyway.',
   },
 ];
 

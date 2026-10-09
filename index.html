@@ -538,7 +538,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:80, status:'SINGAPORE GP · HAMILTON TAKES SPRINT POLE · SPRINT SAT', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:42, status:'FIGHT NIGHT SAT · ALLEN v DUNCAN, LAS VEGAS', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:40, status:'FIGHT NIGHT SAT · SCHOFIELD v BAHDI, CHICAGO', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:99, live:true, status:'LIVE · 1ST T20I, SRI LANKA BATTING FIRST IN RAWALPINDI', deep:'light', sub:'International & league cricket'},
+  {id:'cricket', name:'Cricket', accent:'away', heat:99, live:true, status:'LIVE · SL 35/2 (5.2 OV) · MENDIS, MISHARA BOTH GONE', deep:'light', sub:'International & league cricket'},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -590,7 +590,7 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'TB',record:'24'}, home:{abbr:'DAL',record:'16'}, note:'Bucs win, 1-4 · Cowboys fall to 2-3'},
   ]},
   cricket:{context:'PAK v SL · 1ST T20I', games:[
-    {status:'LIVE', away:{abbr:'SL'}, home:{abbr:'PAK'}, away_score:'19/2 (3.4)', note:'Mendis out 1st ball · Rawalpindi'},
+    {status:'LIVE', away:{abbr:'SL'}, home:{abbr:'PAK'}, away_score:'35/2 (5.2)', note:'Udara 13*, Kamindu Mendis 7* · Rawalpindi'},
   ]},
 };
 
@@ -905,18 +905,18 @@ const ARTICLES = [
   },
 
   {id:'pak-sl-1st-t20i-recap', sport:'cricket', cat:'recap',
-    headline:'Gone First Ball! Mendis Falls for a Duck, Sri Lanka Slip to 19/2',
-    dek:'The Sri Lankan captain is out before he faces a delivery, and Kamil Mishara follows inside the powerplay — Pakistan have the perfect start in Rawalpindi.',
+    headline:'Mendis and Mishara Both Gone Cheap, Sri Lanka 35/2 After Five',
+    dek:'The Sri Lankan captain falls in the first over and Kamil Mishara follows soon after — Lahiru Udara and Kamindu Mendis are steadying things, but Pakistan\'s new-ball bowling has the early edge in Rawalpindi.',
     byline:'Clutch Room Cricket Desk', mins:4, time:'Oct 9, 2026',
     qa:[['Who won the toss?','Sri Lanka, who chose to bat first.'],
-        ['What\'s the score?','Sri Lanka 19/2 after 3.4 overs — Kusal Mendis and Kamil Mishara both gone.']],
+        ['What\'s the score?','Sri Lanka 35/2 after 5.2 overs. Kusal Mendis (1, c Mohammad Imran b Naseem Shah) and Kamil Mishara (6, c Fakhar Zaman b Mohammad Imran) are both out; Lahiru Udara (13*) and Kamindu Mendis (7*) are at the crease.']],
     body:[
-      'GONE! First ball of the match and Kusal Mendis is out for a golden duck — the captain doesn\'t even get off the mark, and Rawalpindi is on its feet. Pakistan could not have scripted a better start if they\'d written it themselves.',
-      'Sri Lanka need steadying and don\'t get it. In the fourth over, Kamil Mishara goes too, caught trying to force the pace — 19/2, two big wickets down inside the powerplay, and suddenly it\'s Pakistan\'s new-ball attack dictating every single ball.',
-      'Lahiru Udara is left to rebuild with Kamindu Mendis coming to the crease, against a Pakistan side set by captain Sahibzada Farhan that smelled blood from literally the first delivery. Sri Lanka\'s spin-heavy middle order — Wellalage, Theekshana and the rest — is still to come, but this is about as rough a start as a chasing captaincy plan gets.',
-      'This article will keep updating with commentary on every major moment as the innings unfolds.',
+      'GONE! Kusal Mendis edges one straight to Mohammad Imran off Naseem Shah inside the first over — the Sri Lankan captain goes for just 1, and Pakistan have the start they wanted.',
+      'And there\'s the second! Kamil Mishara holes out too, caught by Fakhar Zaman off Mohammad Imran, who now has 1/10 from his first 2.2 overs. Sri Lanka slip to 35/2, with extras (8, all wides) doing almost as much work as the bat.',
+      'Lahiru Udara and Kamindu Mendis are the ones steadying things now — Udara unbeaten on 13 off 10, Kamindu ticking along at 7 off 7 — but two wickets down inside six overs against a sharp new-ball spell from Imran and Razaullah has Pakistan firmly on top early.',
+      'This article will keep updating with ball-by-ball commentary on every wicket and big moment as the innings unfolds.',
     ],
-    pull:'First ball of the match. Captain gone for a golden duck. Rawalpindi erupts.',
+    pull:'Two wickets down for 35. Mohammad Imran is in both of them — once with the ball, once in the field.',
   },
 
   {id:'ufc-fight-night-allen-duncan', sport:'ufc', cat:'preview',

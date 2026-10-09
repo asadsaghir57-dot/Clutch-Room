@@ -217,6 +217,10 @@ h1,h2,h3,.disp{
 .b-tile .b-status{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--ink-muted);letter-spacing:0.02em;}
 .b-tile .b-peek{font-size:13.5px;color:var(--ink-muted);margin-top:auto;padding-top:10px;border-top:1px solid color-mix(in srgb, var(--accent,var(--court)) 25%, var(--line));}
 .b-tile .b-go{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.04em;color:var(--accent,var(--court));position:absolute;top:22px;right:22px;}
+.b-tile.b-live{border-color:var(--live);}
+.b-live-badge{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.06em;color:var(--live);align-self:flex-start;}
+.b-live-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--live);margin-right:6px;animation:pulse 1.3s ease-in-out infinite;}
+@media (prefers-reduced-motion: reduce){.b-live-badge .dot{animation:none;}}
 .b-tile.b-quote{background:#121212;color:#EDEDE8;border-color:#121212;}
 .b-tile.b-quote .b-q-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#D1A851;}
 .b-tile.b-quote .b-q-text{font-size:16px;line-height:1.4;font-style:italic;}
@@ -528,12 +532,12 @@ const SPORTS = [
   {id:'mlb', name:'MLB', accent:'court', heat:98, status:'ALDS GM5 SAT · GUARDIANS FORCE DECIDER, 9-5 GM4 WIN', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
   {id:'nfl', name:'NFL', accent:'away', heat:80, status:'BUCS STUN COWBOYS 24-16 ON TNF · WEEK 6 SUNDAY', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:82, status:'SHANGHAI MASTERS · DAY 2 DONE, HURKACZ-DJOKOVIC NEXT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
-  {id:'padel', name:'Padel', accent:'away', heat:65, status:'DÜSSELDORF QUARTERFINALS LIVE TODAY · TOP SEEDS IN ACTION', deep:'light', sub:'Premier Padel tour'},
+  {id:'padel', name:'Padel', accent:'away', heat:66, status:'TAPIA/COELLO, LEBRÓN/AUGSBURGER INTO DÜSSELDORF SEMIS', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:55, status:'CHINA GAMES · MAVS v ROCKETS IN MACAO · OPENER OCT 20', deep:'light', sub:'NBA'},
   {id:'f1', name:'F1', accent:'away', heat:80, status:'SINGAPORE GP · HAMILTON TAKES SPRINT POLE · SPRINT SAT', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:42, status:'FIGHT NIGHT SAT · ALLEN v DUNCAN, LAS VEGAS', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:40, status:'FIGHT NIGHT SAT · SCHOFIELD v BAHDI, CHICAGO', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:62, status:'LIVE · 1ST T20I, SRI LANKA BATTING FIRST IN RAWALPINDI', deep:'light', sub:'International & league cricket'},
+  {id:'cricket', name:'Cricket', accent:'away', heat:99, live:true, status:'LIVE · 1ST T20I, SRI LANKA BATTING FIRST IN RAWALPINDI', deep:'light', sub:'International & league cricket'},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -564,10 +568,10 @@ const GAMES = {
     {status:'SAT', away:{abbr:'ALCARAZ'}, home:{abbr:'CERUNDOLO/Q'}},
     {status:'R2', away:{abbr:'HURKACZ'}, home:{abbr:'DJOKOVIC'}, note:'Marquee 2nd rounder'},
   ]},
-  padel:{context:'DÜSSELDORF · QUARTERFINALS TODAY', games:[
-    {status:'QF TODAY', away:{abbr:'COELLO/TAPIA'}, home:{abbr:'GUERRERO/LEAL'}, note:'No. 1 seeds'},
-    {status:'QF TODAY', away:{abbr:'LEBRON/AUGSBURGER'}, home:{abbr:'GONZALEZ/CAMPAGNOLO'}, note:'No. 3 seeds'},
-    {status:'QF TODAY', away:{abbr:'GALAN/CHINGOTTO'}, home:{abbr:'NIETO/YANGUAS'}, note:'Defending champs'},
+  padel:{context:'DÜSSELDORF · QUARTERFINALS', games:[
+    {status:'FINAL', away:{abbr:'TAPIA/COELLO'}, home:{abbr:'ALFONSO/LIBAAK'}, note:'6-2, 7-5 · No. 1 seeds through'},
+    {status:'FINAL', away:{abbr:'LEBRON/AUGSBURGER'}, home:{abbr:'ARCE SIMO/TELLO'}, note:'6-3, 6-3 · No. 3 seeds through'},
+    {status:'SAT', away:{abbr:'GALAN/CHINGOTTO'}, home:{abbr:'TBD'}, note:'Remaining QFs · defending champs'},
   ]},
   basketball:{context:'NBA CHINA GAMES · PRESEASON', games:[
     {status:'FRI 8:00 AM ET', away:{abbr:'DAL'}, home:{abbr:'HOU'}, note:'Macao · Flagg vs Durant'},
@@ -585,7 +589,7 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'TB',record:'24'}, home:{abbr:'DAL',record:'16'}, note:'Bucs win, 1-4 · Cowboys fall to 2-3'},
   ]},
   cricket:{context:'PAK v SL · 1ST T20I', games:[
-    {status:'LIVE', away:{abbr:'SL'}, home:{abbr:'PAK'}, note:'SL batting first · Rawalpindi'},
+    {status:'LIVE', away:{abbr:'SL'}, home:{abbr:'PAK'}, away_score:'19/2 (3.4)', note:'Mendis out 1st ball · Rawalpindi'},
   ]},
 };
 
@@ -845,6 +849,19 @@ const ARTICLES = [
     ],
     pull:'All three top seeds are through to the quarterfinals — the favorites had a clean day in Düsseldorf.',
   },
+  {id:'dusseldorf-padel-qf-recap', sport:'padel', cat:'recap',
+    headline:'Tapia-Coello and Lebrón-Augsburger Reach the Semifinals in Düsseldorf',
+    dek:'The No. 1 and No. 3 seeds both won in straight sets on Friday, while the rest of the men\'s quarterfinals — including defending champions Galán-Chingotto — were held over to Saturday.',
+    byline:'Clutch Room Padel Desk', mins:4, time:'Oct 9, 2026',
+    qa:[['What were the results?','Agustín Tapia and Arturo Coello (No. 1 seeds) beat Gonzalo Alfonso and Vicente Libaak 6-2, 7-5; Juan Lebrón and Leo Augsburger (No. 3 seeds) beat Miguel Arce Simo and Javi Tello 6-3, 6-3.'],
+        ['When do Galán-Chingotto play their quarterfinal?','Their match wasn\'t completed Friday — it\'s part of the remaining men\'s quarterfinals scheduled for Saturday, October 10.']],
+    body:[
+      'Two of Friday\'s two completed men\'s quarterfinals in Düsseldorf went exactly as seeded. Agustín Tapia and Arturo Coello, the No. 1 seeds, beat Gonzalo Alfonso and Vicente Libaak 6-2, 7-5 on Center Court, and Juan Lebrón and Leo Augsburger, seeded No. 3, were just as clean on Court 2, beating Miguel Arce Simo and Javi Tello 6-3, 6-3.',
+      'Both pairs move into Saturday\'s semifinals having dropped zero sets across their last two rounds. Notably, only two of the four men\'s quarterfinals were completed Friday — the match involving defending champions Alejandro Galán and Federico Chingotto was not among them and is still to be played as part of Saturday\'s remaining quarterfinal action, meaning the bracket\'s headline potential matchup with Tapia-Coello is still at least one round away from being set.',
+      'On the women\'s side, Friday also wrapped three quarterfinals: Ariana Sánchez and Alejandra Ustero Prieto, the No. 3 seeds, beat Ariana Salazar Bengoechea and Alba Osoro Ulrich (No. 7) 6-1, 6-1; María Calvo and Claudia Fernández Sánchez (No. 4) beat Marta Ortega Gallego and Sofía Araujo (No. 5) 6-0, 6-3; and Beatriz González Fernández and Paula Josemaría Martín, the No. 2 seeds, beat María Guinart España and Alba Alonso De Villa 6-0, 6-1.',
+    ],
+    pull:'Tapia-Coello and Lebrón-Augsburger didn\'t drop a set — but the draw\'s biggest potential quarterfinal, against defending champions Galán-Chingotto, is still unplayed.',
+  },
   {id:'nba-tipoff-primer', sport:'basketball', cat:'preview',
     headline:'Knicks Raise a Championship Banner, Then Face LeBron and the 76ers',
     dek:'Opening Night, October 20: the champion Knicks get their rings before hosting a Philadelphia team now built around LeBron James and Jaylen Brown.',
@@ -887,16 +904,18 @@ const ARTICLES = [
   },
 
   {id:'pak-sl-1st-t20i-recap', sport:'cricket', cat:'recap',
-    headline:'Sri Lanka Win the Toss, Elect to Bat First in Rawalpindi Opener',
-    dek:'Kusal Mendis sent Sri Lanka in under lights at Rawalpindi Cricket Stadium, with Lahiru Udara and Kamil Mishara at the crease as the series gets underway.',
-    byline:'Clutch Room Cricket Desk', mins:3, time:'Oct 9, 2026',
+    headline:'Gone First Ball! Mendis Falls for a Duck, Sri Lanka Slip to 19/2',
+    dek:'The Sri Lankan captain is out before he faces a delivery, and Kamil Mishara follows inside the powerplay — Pakistan have the perfect start in Rawalpindi.',
+    byline:'Clutch Room Cricket Desk', mins:4, time:'Oct 9, 2026',
     qa:[['Who won the toss?','Sri Lanka, who chose to bat first.'],
-        ['Who\'s out in the middle?','Lahiru Udara and Kamil Mishara opened the Sri Lankan innings.']],
+        ['What\'s the score?','Sri Lanka 19/2 after 3.4 overs — Kusal Mendis and Kamil Mishara both gone.']],
     body:[
-      'The series opener is underway at Rawalpindi Cricket Stadium. Kusal Mendis won the toss and sent Sri Lanka in to bat first under lights, with Lahiru Udara and Kamil Mishara opening the innings against Pakistan\'s new-ball attack.',
-      'Sri Lanka\'s XI leans on its spin depth through the middle overs — Theekshana, Wellalage and the rest of Mendis\'s slow-bowling options — while Pakistan, set by captain Sahibzada Farhan, will look to make early inroads before that phase of the innings arrives.',
-      'This article will be updated with the final result once the match concludes.',
+      'GONE! First ball of the match and Kusal Mendis is out for a golden duck — the captain doesn\'t even get off the mark, and Rawalpindi is on its feet. Pakistan could not have scripted a better start if they\'d written it themselves.',
+      'Sri Lanka need steadying and don\'t get it. In the fourth over, Kamil Mishara goes too, caught trying to force the pace — 19/2, two big wickets down inside the powerplay, and suddenly it\'s Pakistan\'s new-ball attack dictating every single ball.',
+      'Lahiru Udara is left to rebuild with Kamindu Mendis coming to the crease, against a Pakistan side set by captain Sahibzada Farhan that smelled blood from literally the first delivery. Sri Lanka\'s spin-heavy middle order — Wellalage, Theekshana and the rest — is still to come, but this is about as rough a start as a chasing captaincy plan gets.',
+      'This article will keep updating with commentary on every major moment as the innings unfolds.',
     ],
+    pull:'First ball of the match. Captain gone for a golden duck. Rawalpindi erupts.',
   },
 
   {id:'ufc-fight-night-allen-duncan', sport:'ufc', cat:'preview',
@@ -1277,8 +1296,10 @@ function renderHome(){
   const sportTileHtml = (s,i) => {
     const peek = peekFor(s.id);
     const big = tierOf(s.heat) === 1;
-    return `<a class="b-tile ${big?'b-2':''}" href="#/sport/${s.id}" style="--accent:var(--${s.accent});--tint:${big?22:tierOf(s.heat)===2?13:8}%;">
+    const accent = s.live ? 'live' : s.accent;
+    return `<a class="b-tile ${big?'b-2':''} ${s.live?'b-live':''}" href="#/sport/${s.id}" style="--accent:var(--${accent});--tint:${s.live?26:big?22:tierOf(s.heat)===2?13:8}%;">
       <span class="b-go">${String(i+1).padStart(2,'0')} →</span>
+      ${s.live ? `<span class="b-live-badge"><span class="dot"></span>LIVE</span>` : ''}
       <span class="b-icon">${SPORT_ICONS[s.id]||''}</span>
       <span class="b-name disp">${s.name}</span>
       <span class="b-status">${s.status}</span>

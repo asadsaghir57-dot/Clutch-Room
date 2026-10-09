@@ -1308,12 +1308,16 @@ function footer(){
 }
 
 function renderHome(){
-  const hero = articleById('dodgers-nlds-clinch-recap');
+  const hero = articleById('pak-sl-1st-t20i-recap');
   const debate = ARTICLES.find(a=>a.cat==='debate' && a.sport==='football');
   const ranked = [...SPORTS].sort((a,b)=>b.heat-a.heat);
   const main = ranked.filter(s=>tierOf(s.heat)<=3);
   const quiet = ranked.filter(s=>tierOf(s.heat)===4);
-  const peekFor = id => ARTICLES.find(a=>a.sport===id);
+  const peekFor = id => {
+    const forSport = ARTICLES.filter(a=>a.sport===id);
+    const recaps = forSport.filter(a=>a.cat==='recap');
+    return recaps.length ? recaps[recaps.length-1] : forSport[0];
+  };
   const forTake = debate.takes.find(t=>t.side==='for');
 
   const sportTileHtml = (s,i) => {
@@ -1334,7 +1338,7 @@ function renderHome(){
   ${masthead({sport:null})}
   <main class="wrap">
     <a class="hero-main" href="#/article/${hero.id}" style="display:block;margin-top:28px;">
-      <span class="hero-kicker">Top Story · MLB</span>
+      <span class="hero-kicker">Top Story · ${sportById(hero.sport).name}</span>
       <h1>${hero.headline}</h1>
       <p class="hero-dek">${hero.dek}</p>
       <div class="hero-meta">${hero.byline} · ${hero.time} · ${hero.mins} min read</div>

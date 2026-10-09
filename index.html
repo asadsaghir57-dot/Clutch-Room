@@ -147,7 +147,8 @@ h1,h2,h3,.disp{
 .lt-label{flex:none;display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#EDEDE8;}
 .lt-label .dot{width:6px;height:6px;border-radius:50%;background:var(--court);animation:pulse 1.3s ease-in-out infinite;}
 @media (prefers-reduced-motion: reduce){.lt-label .dot{animation:none;}}
-.lt-card{flex:none;display:flex;align-items:center;gap:10px;background:#1A1917;border:1px solid #2B2A26;border-radius:999px;padding:7px 14px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#EDEDE8;white-space:nowrap;}
+.lt-card{flex:none;display:flex;align-items:center;gap:10px;background:#1A1917;border:1px solid #2B2A26;border-radius:999px;padding:7px 14px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#EDEDE8;white-space:nowrap;text-decoration:none;transition:border-color .15s ease;}
+.lt-card:hover{border-color:var(--court);}
 .lt-card .st{font-weight:700;letter-spacing:0.05em;font-size:10px;padding:2px 7px;border-radius:3px;}
 .lt-card .st.live{background:var(--court);color:#fff;}
 .lt-card .st.upcoming{background:#2B2A26;color:#9F9D97;}
@@ -1214,13 +1215,35 @@ function subnavHtml(sport){
   </div></div>`;
 }
 
+function liveNowCardHtml(s){
+  const g = GAMES[s.id] && GAMES[s.id].games[0];
+  const icon = SPORT_ICONS[s.id] || '';
+  const matchup = g ? `${g.away.abbr} vs ${g.home.abbr}` : s.name;
+  const score = g && g.away_score;
+  const detail = g && g.note;
+  return `<a class="lt-card" href="#/sport/${s.id}">
+    <span class="b-icon" style="width:16px;height:16px;">${icon}</span>
+    <span class="st live">LIVE</span>
+    <span>${matchup}</span>
+    ${score ? `<span class="score tnum">${score}</span>` : ''}
+    ${detail ? `<span>${detail}</span>` : ''}
+  </a>`;
+}
+function liveNowHtml(){
+  const liveSports = SPORTS.filter(s=>s.live);
+  if(!liveSports.length) return '';
+  return `<div class="live-tracker">
+    <div class="live-tracker-inner">
+      <span class="lt-label"><span class="dot"></span>Live Now</span>
+      ${liveSports.map(liveNowCardHtml).join('')}
+    </div>
+  </div>`;
+}
 function masthead(ctx){
   const sport = ctx.sport ? sportById(ctx.sport) : null;
   return `
   <div class="masthead">
-    <div class="live-tracker" id="live-tracker" hidden>
-      <div class="live-tracker-inner" id="live-tracker-inner"></div>
-    </div>
+    ${liveNowHtml()}
     ${scorebarHtml(ctx.sport)}
     <div class="wrap masthead-top">
       <a class="logo disp" href="#/">CLUTCH<span class="dot">·</span>ROOM</a>
@@ -1652,7 +1675,6 @@ function route(){
   updatedSecs = 0;
   const secsEl = document.getElementById('updated-secs');
   if(secsEl) secsEl.textContent = '0';
-  initLiveTracker();
 }
 window.addEventListener('hashchange', route);
 
@@ -1697,51 +1719,6 @@ function initScrollReveal(){
   }
 }
 
-/* ---------------- live tracker: db-backed, updates for every open viewer without a republish ---------------- */
-let liveUnsub = null;
-let dbPromise = null;
-function timeAgo(iso){
-  if(!iso) return '';
-  const diff = Math.max(0, Date.now() - new Date(iso).getTime());
-  const m = Math.floor(diff/60000);
-  if(m < 1) return 'just now';
-  if(m < 60) return m+'m ago';
-  const h = Math.floor(m/60);
-  if(h < 24) return h+'h ago';
-  return Math.floor(h/24)+'d ago';
-}
-function liveCardHtml(d){
-  const statusCls = (d.status||'').toLowerCase();
-  const icon = SPORT_ICONS[d.sport] || '';
-  return `<div class="lt-card">
-    <span class="b-icon" style="width:16px;height:16px;">${icon}</span>
-    <span class="st ${statusCls}">${d.status}</span>
-    <span>${d.matchup}</span>
-    ${d.scoreLine ? `<span class="score tnum">${d.scoreLine}</span>` : ''}
-    <span>${d.detail||''}</span>
-    <span class="ago">${timeAgo(d.updatedAt)}</span>
-  </div>`;
-}
-async function initLiveTracker(){
-  const mount = document.getElementById('live-tracker');
-  const inner = document.getElementById('live-tracker-inner');
-  if(!mount || !inner) return;
-  if(liveUnsub){ liveUnsub(); liveUnsub = null; }
-  if(!dbPromise) dbPromise = (window.claude ? window.claude.use('db') : Promise.resolve(null)).catch(()=>null);
-  const db = await dbPromise;
-  if(!db) return;
-  const freshMount = document.getElementById('live-tracker');
-  const freshInner = document.getElementById('live-tracker-inner');
-  if(!freshMount || !freshInner) return;
-  liveUnsub = db.collection('live').onSnapshot(snap=>{
-    const m = document.getElementById('live-tracker');
-    const i = document.getElementById('live-tracker-inner');
-    if(!m || !i) return;
-    if(snap.empty){ m.hidden = true; i.innerHTML=''; return; }
-    m.hidden = false;
-    i.innerHTML = '<span class="lt-label"><span class="dot"></span>Live Tracker</span>' + snap.docs.map(doc=>liveCardHtml(doc.data())).join('');
-  }, err=>{ console.error('live tracker:', err); });
-}
 
 let updatedSecs = 0;
 setInterval(function(){

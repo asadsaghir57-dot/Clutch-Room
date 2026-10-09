@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Clutch Room</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -484,19 +489,10 @@ details.seo[open] summary::before{transform:rotate(90deg);}
 /* ---------- motion ---------- */
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-.b-tile,.card,.wire-card{animation:fadeUp .45s cubic-bezier(.2,.7,.3,1) both;}
 .hero-main{animation:fadeUp .5s cubic-bezier(.2,.7,.3,1) both;}
-.bento .b-tile:nth-child(1){animation-delay:0ms;} .bento .b-tile:nth-child(2){animation-delay:45ms;}
-.bento .b-tile:nth-child(3){animation-delay:90ms;} .bento .b-tile:nth-child(4){animation-delay:135ms;}
-.bento .b-tile:nth-child(5){animation-delay:180ms;} .bento .b-tile:nth-child(6){animation-delay:225ms;}
-.bento .b-tile:nth-child(7){animation-delay:270ms;} .bento .b-tile:nth-child(8){animation-delay:315ms;}
-.bento .b-tile:nth-child(9){animation-delay:360ms;} .bento .b-tile:nth-child(10){animation-delay:405ms;}
-.rail .card:nth-child(1){animation-delay:0ms;} .rail .card:nth-child(2){animation-delay:50ms;}
-.rail .card:nth-child(3){animation-delay:100ms;} .rail .card:nth-child(4){animation-delay:150ms;}
-.rail .card:nth-child(5){animation-delay:200ms;} .rail .card:nth-child(6){animation-delay:250ms;}
-.wire .wire-card:nth-child(1){animation-delay:0ms;} .wire .wire-card:nth-child(2){animation-delay:50ms;}
-.wire .wire-card:nth-child(3){animation-delay:100ms;} .wire .wire-card:nth-child(4){animation-delay:150ms;}
-.wire .wire-card:nth-child(5){animation-delay:200ms;}
+/* staggered scroll-reveal: hidden until each card/tile crosses into view, then cascades in by sibling order */
+.b-tile,.card,.wire-card,.div-col,.comp-item{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.2,.7,.3,1),transform .5s cubic-bezier(.2,.7,.3,1);}
+.b-tile.in-view,.card.in-view,.wire-card.in-view,.div-col.in-view,.comp-item.in-view{opacity:1;transform:translateY(0);}
 #app{animation:fadeIn .25s ease both;}
 .icon-btn svg,.chev{transition:transform .15s ease;}
 .icon-btn:hover svg{transform:scale(1.12);}
@@ -504,7 +500,8 @@ details.seo[open] summary::before{transform:rotate(90deg);}
 .b-tile:hover .b-icon{transform:scale(1.15) rotate(-4deg);}
 .scorebar-live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--live);margin-right:6px;animation:pulse 1.3s ease-in-out infinite;}
 @media (prefers-reduced-motion: reduce){
-  .b-tile,.card,.wire-card,.hero-main,#app{animation:none !important;}
+  .hero-main,#app{animation:none !important;}
+  .b-tile,.card,.wire-card,.div-col,.comp-item{opacity:1 !important;transform:none !important;transition:none !important;}
   .b-tile:hover .b-icon{transform:none;}
   .scorebar-live-dot{animation:none;}
 }
@@ -527,6 +524,8 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
   .masthead-top{flex-wrap:wrap;}
 }
 </style>
+</head>
+<body>
 
 <div id="app"></div>
 
@@ -1633,12 +1632,54 @@ function route(){
   }
   window.scrollTo(0,0);
   onScrollEffects();
+  initScrollReveal();
   updatedSecs = 0;
   const secsEl = document.getElementById('updated-secs');
   if(secsEl) secsEl.textContent = '0';
   initLiveTracker();
 }
 window.addEventListener('hashchange', route);
+
+/* ---------------- staggered scroll-reveal ---------------- */
+let revealEls = [];
+let revealScrollBound = false;
+function onRevealScroll(){
+  if(revealScrollTicking) return;
+  revealScrollTicking = true;
+  requestAnimationFrame(checkReveals);
+}
+let revealScrollTicking = false;
+function checkReveals(){
+  revealScrollTicking = false;
+  if(!revealEls.length) return;
+  const vh = window.innerHeight || 800;
+  const stepIndex = new Map();
+  revealEls = revealEls.filter(el=>{
+    if(el.getBoundingClientRect().top >= vh - 40) return true;
+    const parent = el.parentElement;
+    const idx = stepIndex.get(parent) || 0;
+    stepIndex.set(parent, idx+1);
+    el.style.transitionDelay = (Math.min(idx,9) * 55) + 'ms';
+    el.classList.add('in-view');
+    return false;
+  });
+}
+function initScrollReveal(){
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const els = document.querySelectorAll('.b-tile,.card,.wire-card,.div-col,.comp-item');
+  if(reduceMotion){
+    els.forEach(el=>el.classList.add('in-view'));
+    revealEls = [];
+    return;
+  }
+  revealEls = Array.from(els);
+  checkReveals();
+  if(!revealScrollBound){
+    window.addEventListener('scroll', onRevealScroll, {passive:true});
+    window.addEventListener('resize', onRevealScroll);
+    revealScrollBound = true;
+  }
+}
 
 /* ---------------- live tracker: db-backed, updates for every open viewer without a republish ---------------- */
 let liveUnsub = null;
@@ -1737,3 +1778,5 @@ setInterval(function(){
 
 route();
 </script>
+</body>
+</html>

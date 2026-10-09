@@ -341,15 +341,6 @@ a.board-row{display:grid;}
 .injury-item .st{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.04em;text-transform:uppercase;color:var(--clay);display:block;margin-top:1px;}
 .injury-item .dt{font-size:12.5px;color:var(--ink-muted);margin-top:3px;}
 
-details.seo{border:1px solid var(--line);border-radius:6px;background:var(--ink);color:var(--paper);}
-details.seo summary{cursor:pointer;padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;list-style:none;display:flex;align-items:center;gap:8px;}
-details.seo summary::-webkit-details-marker{display:none;}
-details.seo summary::before{content:"▸";transition:transform .15s;}
-details.seo[open] summary::before{transform:rotate(90deg);}
-.seo-body{padding:0 16px 16px;font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.6;}
-.seo-body .k{color:#D1A851;display:block;margin-top:10px;}
-.seo-body .v{color:var(--paper);word-break:break-word;}
-.seo-ld{background:rgba(255,255,255,0.06);border-radius:4px;padding:8px 10px;margin-top:6px;white-space:pre-wrap;}
 
 /* ---------- MLB "Baseball Edition" hub ---------- */
 .mlb-page{background:#0A0C0B;color:#EDEDE8;margin:0 -9999px;padding:0 9999px;}
@@ -538,7 +529,7 @@ const SPORTS = [
   {id:'nfl', name:'NFL', accent:'away', heat:80, status:'BUCS STUN COWBOYS 24-16 ON TNF · WEEK 6 SUNDAY', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:82, status:'SHANGHAI MASTERS · DAY 2 DONE, HURKACZ-DJOKOVIC NEXT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:65, status:'DÜSSELDORF QUARTERFINALS LIVE TODAY · TOP SEEDS IN ACTION', deep:'light', sub:'Premier Padel tour'},
-  {id:'basketball', name:'Basketball', accent:'away', heat:70, status:'OPENING NIGHT OCT 20 · CHAMPION KNICKS HOST 76ERS', deep:'light', sub:'NBA'},
+  {id:'basketball', name:'Basketball', accent:'away', heat:55, status:'CHINA GAMES · MAVS v ROCKETS IN MACAO · OPENER OCT 20', deep:'light', sub:'NBA'},
   {id:'f1', name:'F1', accent:'away', heat:78, status:'SINGAPORE GP · RUSSELL TOPS FP1, SPRINT QUALIFYING TODAY', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:42, status:'FIGHT NIGHT SAT · ALLEN v DUNCAN, LAS VEGAS', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:40, status:'FIGHT NIGHT SAT · SCHOFIELD v BAHDI, CHICAGO', deep:'light', sub:'Professional boxing'},
@@ -578,10 +569,10 @@ const GAMES = {
     {status:'QF TODAY', away:{abbr:'LEBRON/AUGSBURGER'}, home:{abbr:'GONZALEZ/CAMPAGNOLO'}, note:'No. 3 seeds'},
     {status:'QF TODAY', away:{abbr:'GALAN/CHINGOTTO'}, home:{abbr:'NIETO/YANGUAS'}, note:'Defending champs'},
   ]},
-  basketball:{context:'OPENING NIGHT OCT 20', games:[
-    {status:'TUE 3:00 PM ET', away:{abbr:'BOS',record:'0-0'}, home:{abbr:'DET',record:'0-0'}},
-    {status:'TUE 7:00 PM ET', away:{abbr:'PHI',record:'0-0'}, home:{abbr:'NYK',record:'0-0'}, note:'Banner night'},
-    {status:'TUE 9:30 PM ET', away:{abbr:'SAS',record:'0-0'}, home:{abbr:'OKC',record:'0-0'}},
+  basketball:{context:'NBA CHINA GAMES · PRESEASON', games:[
+    {status:'FRI 8:00 AM ET', away:{abbr:'DAL'}, home:{abbr:'HOU'}, note:'Macao · Flagg vs Durant'},
+    {status:'SUN 8:00 AM ET', away:{abbr:'DAL'}, home:{abbr:'HOU'}, note:'Macao · Game 2'},
+    {status:'TUE OCT 20 · 7:00 PM ET', away:{abbr:'PHI',record:'0-0'}, home:{abbr:'NYK',record:'0-0'}, note:'Opening Night · Banner night'},
   ]},
   ufc:{context:'FIGHT NIGHT', games:[
     {status:'SAT 10:00 PM ET', away:{abbr:'ALLEN'}, home:{abbr:'DUNCAN'}, note:'Main event · Las Vegas'},
@@ -865,6 +856,19 @@ const ARTICLES = [
       'Opening Night has three games and one obvious centerpiece: the Knicks, NBA champions for the first time in over fifty years, raise their banner and get their rings at Madison Square Garden — then have to actually play a basketball game, against a 76ers team that spent the offseason rebuilding around LeBron James and Jaylen Brown.',
       'The nightcap is its own story. Spurs-Thunder is a rerun of last season\'s Western Conference Finals, a rivalry with real stakes attached from the very first possession of the year.',
       'Opening-night box scores rarely predict anything, but a banner-raising loss hits different than a quiet one — New York will want to avoid finding that out the hard way in front of its own crowd.',
+    ],
+  },
+
+  {id:'nba-china-games-macao', sport:'basketball', cat:'preview',
+    headline:'Before Opening Night, Flagg and Durant Meet First — in Macao',
+    dek:'The Mavericks and Rockets open the NBA preseason with two China Games at The Venetian Arena, headlined by Cooper Flagg\'s first look against Kevin Durant\'s new-look Houston core.',
+    byline:'Clutch Room Basketball Desk', mins:4, time:'Oct 9, 2026',
+    qa:[['Where and when are these games?','Dallas and Houston play two preseason games at The Venetian Arena in Macao — Friday, October 9, and Sunday, October 11.'],
+        ['Who\'s the headline matchup?','Reigning Rookie of the Year Cooper Flagg and Kyrie Irving for Dallas against Kevin Durant and Houston\'s young core; Kyrie Irving\'s preseason debut availability has been a live storyline into Game 1.']],
+    body:[
+      'Weeks before Opening Night banners and rings take over Madison Square Garden, the first real look at two Western Conference contenders comes from 8,100 miles away. The Mavericks and Rockets meet for the first of two NBA China Games at The Venetian Arena in Macao, with a second meeting set for Sunday.',
+      'Dallas is building its season around Cooper Flagg, who enters his second year as the reigning Rookie of the Year, and Kyrie Irving — whose preseason debut availability head coach Dusty May has had to address directly ahead of tipoff. Houston counters with Kevin Durant leading a young core that took a real step forward last season.',
+      'Preseason results rarely carry forward, but the setting does the opposite of hide anything: two teams with real expectations get an early, unfiltered look at each other before the games start counting.',
     ],
   },
 
@@ -1555,16 +1559,6 @@ function renderArticle(id){
   const a = articleById(id);
   if(!a){ return `${masthead({sport:null})}<main class="wrap"><p style="padding:60px 0;">Article not found.</p></main>${footer()}`; }
   const s = sportById(a.sport);
-  const slug = a.headline.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
-  const metaTitle = `${a.headline} | Clutch Room ${s.name}`;
-  const metaDesc = a.dek.length>155 ? a.dek.slice(0,152)+'…' : a.dek;
-  const ld = `{
-  "@type": "${a.cat==='preview' ? 'SportsEvent' : 'NewsArticle'}",
-  "headline": "${a.headline.replace(/"/g,'\\"')}",
-  "sport": "${s.name}",
-  "datePublished": "${a.time}",
-  "author": "${a.byline}"${a.cat==='debate' ? ',\n  "genre": "Opinion/Debate"' : ''}
-}`;
   return `
   ${masthead({sport:a.sport})}
   <main class="wrap">
@@ -1584,17 +1578,6 @@ function renderArticle(id){
         ${a.qa ? `<div class="qa"><span class="label">Quick Answers</span><dl>${a.qa.map(([q,ans])=>`<dt>${q}</dt><dd>${ans}</dd>`).join('')}</dl></div>` : ''}
         ${a.body.map((p,i)=> i===1 && a.pull ? `<p>${p}</p><div class="pullquote">${a.pull}</div>` : `<p>${p}</p>`).join('')}
         ${a.takes ? `<div class="takes">${a.takes.map(t=>`<div class="take-card ${t.side}"><span class="who">${t.who}</span><p>${t.text}</p></div>`).join('')}</div>` : ''}
-
-        <details class="seo">
-          <summary>Search &amp; AI Visibility (SEO/GEO)</summary>
-          <div class="seo-body">
-            <span class="k">URL slug</span><span class="v">/${a.sport}/${slug}</span>
-            <span class="k">Meta title</span><span class="v">${metaTitle}</span>
-            <span class="k">Meta description</span><span class="v">${metaDesc}</span>
-            <span class="k">Structured data (JSON-LD)</span><div class="seo-ld">${ld}</div>
-            <span class="k">GEO note</span><span class="v">Quick Answers block above is written as direct, extractable Q&amp;A so AI answer engines can cite it verbatim.</span>
-          </div>
-        </details>
       </div>
 
       <div class="sidebar">

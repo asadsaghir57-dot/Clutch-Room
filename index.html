@@ -530,10 +530,10 @@ const SPORTS = [
   {id:'tennis', name:'Tennis', accent:'court', heat:82, status:'SHANGHAI MASTERS · DAY 2 DONE, HURKACZ-DJOKOVIC NEXT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:65, status:'DÜSSELDORF QUARTERFINALS LIVE TODAY · TOP SEEDS IN ACTION', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:55, status:'CHINA GAMES · MAVS v ROCKETS IN MACAO · OPENER OCT 20', deep:'light', sub:'NBA'},
-  {id:'f1', name:'F1', accent:'away', heat:78, status:'SINGAPORE GP · RUSSELL TOPS FP1, SPRINT QUALIFYING TODAY', deep:'none', sub:'Formula 1'},
+  {id:'f1', name:'F1', accent:'away', heat:80, status:'SINGAPORE GP · HAMILTON TAKES SPRINT POLE · SPRINT SAT', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:42, status:'FIGHT NIGHT SAT · ALLEN v DUNCAN, LAS VEGAS', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:40, status:'FIGHT NIGHT SAT · SCHOFIELD v BAHDI, CHICAGO', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:60, status:'PAKISTAN WIN 1ST T20I BY 5 RUNS · LEAD SERIES 1-0', deep:'light', sub:'International & league cricket'},
+  {id:'cricket', name:'Cricket', accent:'away', heat:62, status:'LIVE · 1ST T20I, SRI LANKA BATTING FIRST IN RAWALPINDI', deep:'light', sub:'International & league cricket'},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -584,9 +584,8 @@ const GAMES = {
   nfl:{context:'THURSDAY NIGHT FOOTBALL · FINAL', games:[
     {status:'FINAL', away:{abbr:'TB',record:'24'}, home:{abbr:'DAL',record:'16'}, note:'Bucs win, 1-4 · Cowboys fall to 2-3'},
   ]},
-  cricket:{context:'PAK v SL · T20I SERIES 1-0', games:[
-    {status:'FINAL', away:{abbr:'SL'}, home:{abbr:'PAK'}, note:'Pakistan win by 5 runs · 1st T20I'},
-    {status:'NEXT', away:{abbr:'SL'}, home:{abbr:'PAK'}, note:'2nd T20I · Rawalpindi'},
+  cricket:{context:'PAK v SL · 1ST T20I', games:[
+    {status:'LIVE', away:{abbr:'SL'}, home:{abbr:'PAK'}, note:'SL batting first · Rawalpindi'},
   ]},
 };
 
@@ -888,15 +887,15 @@ const ARTICLES = [
   },
 
   {id:'pak-sl-1st-t20i-recap', sport:'cricket', cat:'recap',
-    headline:'Pakistan Hold Off Sri Lanka by 5 Runs to Open the Series',
-    dek:'A tight finish under the Rawalpindi lights went Pakistan\'s way as Sahibzada Farhan\'s side defended their total to take a 1-0 lead in the three-match T20I series.',
-    byline:'Clutch Room Cricket Desk', mins:4, time:'Oct 9, 2026',
-    qa:[['What was the result?','Pakistan beat Sri Lanka by 5 runs in the 1st T20I at Rawalpindi Cricket Stadium.'],
-        ['What does it mean for the series?','Pakistan lead the three-match T20I series 1-0, with the 2nd T20I still to come at the same venue.']],
+    headline:'Sri Lanka Win the Toss, Elect to Bat First in Rawalpindi Opener',
+    dek:'Kusal Mendis sent Sri Lanka in under lights at Rawalpindi Cricket Stadium, with Lahiru Udara and Kamil Mishara at the crease as the series gets underway.',
+    byline:'Clutch Room Cricket Desk', mins:3, time:'Oct 9, 2026',
+    qa:[['Who won the toss?','Sri Lanka, who chose to bat first.'],
+        ['Who\'s out in the middle?','Lahiru Udara and Kamil Mishara opened the Sri Lankan innings.']],
     body:[
-      'Pakistan got the series off on the right foot with a 5-run win over Sri Lanka at Rawalpindi Cricket Stadium, surviving a late push from the chasing side to see out a tight finish under lights.',
-      'Sahibzada Farhan\'s decision to back a top order built around Saim Ayub and Fakhar Zaman paid off with enough runs on the board, while Pakistan\'s mixed seam-and-spin attack did just enough in the back end of the Sri Lankan chase to protect the margin.',
-      'Kusal Mendis\'s spin-heavy attack — Theekshana, Wellalage and Viyaskanth — kept the game competitive deep into the chase, but Sri Lanka came up five runs short. The series now shifts to the 2nd T20I at the same venue, with Pakistan needing one more win to clinch it.',
+      'The series opener is underway at Rawalpindi Cricket Stadium. Kusal Mendis won the toss and sent Sri Lanka in to bat first under lights, with Lahiru Udara and Kamil Mishara opening the innings against Pakistan\'s new-ball attack.',
+      'Sri Lanka\'s XI leans on its spin depth through the middle overs — Theekshana, Wellalage and the rest of Mendis\'s slow-bowling options — while Pakistan, set by captain Sahibzada Farhan, will look to make early inroads before that phase of the innings arrives.',
+      'This article will be updated with the final result once the match concludes.',
     ],
   },
 
@@ -963,6 +962,19 @@ const ARTICLES = [
       'Because this is a sprint weekend, there\'s no FP2 or FP3 to adjust setups before it counts — Sprint Qualifying sets Saturday\'s sprint grid directly off this one session\'s read, which puts extra weight on a practice that\'s normally just a data-gathering exercise.',
     ],
     pull:'One practice session, then straight into Sprint Qualifying — Russell\'s Friday pace carries extra weight on a compressed weekend.',
+  },
+  {id:'f1-singapore-sprint-quali-recap', sport:'f1', cat:'recap',
+    headline:'Hamilton Grabs a Surprise Sprint Pole, Four Tenths Clear of Gasly',
+    dek:'Fourth in Friday practice, Lewis Hamilton found another gear when it counted — taking Sprint Qualifying pole at Marina Bay with Pierre Gasly and Fernando Alonso completing the top three.',
+    byline:'Clutch Room F1 Desk', mins:4, time:'Oct 9, 2026',
+    qa:[['Who took sprint pole?','Lewis Hamilton, with a 1:33.7, just under a second clear of Pierre Gasly in second.'],
+        ['Who else made the top three?','Fernando Alonso was third, 1.2 seconds off Hamilton\'s pace.']],
+    body:[
+      'Lewis Hamilton\'s Ferrari was fourth-fastest in Friday practice. By the end of Sprint Qualifying, it was on pole — a 1:33.7 around Marina Bay that left Pierre Gasly\'s Alpine in second, roughly nine tenths back, with Fernando Alonso third for Aston Martin, 1.2 seconds off the pace.',
+      'It\'s a result that scrambles the script written after practice, where Russell, Leclerc and Norris had set the pace. None of that trio starts Saturday\'s sprint at the front — a reminder that on a single-lap, low-fuel, track-evolving Singapore surface, practice pace and qualifying pace don\'t always point the same direction.',
+      'Hamilton\'s grid penalty-free pole also stands in contrast to teammate Charles Leclerc\'s weekend — and to George Russell, who already knew he was starting Sunday\'s Grand Prix near the back after his earlier engine-change penalty, though that penalty doesn\'t apply to Saturday\'s sprint grid.',
+    ],
+    pull:'Fourth in practice, first in qualifying — Hamilton\'s sprint pole flips the form book Marina Bay seemed to be writing on Friday.',
   },
 
   {id:'nfl-tnf-bucs-cowboys-recap', sport:'nfl', cat:'recap',

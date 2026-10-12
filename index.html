@@ -177,6 +177,7 @@ h1,h2,h3,.disp{
 .pill-preview{background:var(--away-soft);color:var(--away);}
 .pill-injury{background:var(--clay-soft);color:var(--clay);}
 .pill-debate{background:var(--gold-soft);color:var(--gold);}
+.pill-analysis{background:var(--ink);color:var(--paper);}
 .chip{
   font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.03em;
   padding:6px 11px;border:1px solid var(--line);border-radius:999px;color:var(--ink-muted);background:var(--paper-raised);
@@ -296,6 +297,22 @@ a.board-row{display:grid;}
 .card p{font-size:13.5px;line-height:1.45;color:var(--ink-muted);margin:0;}
 .card .meta{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-muted);display:flex;gap:8px;margin-top:auto;}
 
+/* ---------- sports news (long-form) ---------- */
+.sn-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;padding:36px 0 60px;}
+.sn-card{
+  border:1px solid var(--line);border-radius:10px;background:var(--paper-raised);
+  padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow);
+  transition:border-color .15s ease,transform .15s ease;
+}
+.sn-card:hover{border-color:var(--accent,var(--court));transform:translateY(-2px);}
+.sn-card-top{display:flex;align-items:center;gap:10px;}
+.sn-card-sport{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent,var(--court));}
+.sn-card h3{font-family:'Anton',sans-serif;text-transform:none;letter-spacing:0;font-size:24px;line-height:1.15;font-weight:400;}
+.sn-card p{font-size:14.5px;line-height:1.5;color:var(--ink-muted);margin:0;}
+.sn-card .meta{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-muted);display:flex;gap:8px;margin-top:auto;}
+.sn-empty{padding:60px 0;text-align:center;color:var(--ink-muted);border-top:1px solid var(--line);}
+@media (max-width:760px){.sn-grid{grid-template-columns:1fr;}}
+
 /* ---------- placeholder hub ---------- */
 .ph-skel{border:1px dashed var(--line);border-radius:6px;padding:30px;margin-top:28px;text-align:center;color:var(--ink-muted);}
 .ph-skel .disp{font-size:26px;color:var(--ink);margin-bottom:8px;}
@@ -324,6 +341,10 @@ a.board-row{display:grid;}
 .qa dl{margin:0;}
 
 .pullquote{border-left:3px solid var(--accent,var(--court));margin:26px 0;padding:2px 0 2px 20px;font-size:21px;line-height:1.4;font-style:italic;}
+.related-callout{display:block;margin:30px 0 10px;padding:18px 20px;border:1px solid var(--line);border-radius:8px;background:var(--paper-raised);text-decoration:none;transition:border-color .15s ease;}
+.related-callout:hover{border-color:var(--accent,var(--court));}
+.related-callout .rc-label{display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent,var(--court));margin-bottom:6px;}
+.related-callout .rc-headline{display:block;font-family:'Anton',sans-serif;font-size:17px;color:var(--ink);}
 
 .takes{display:flex;flex-direction:column;gap:14px;margin:26px 0;}
 .take-card{border-radius:6px;padding:16px 18px;border:1px solid var(--line);}
@@ -565,6 +586,7 @@ const CAT = {
   preview:{label:'Preview & Odds', cls:'pill-preview'},
   injury:{label:'Injury Watch', cls:'pill-injury'},
   debate:{label:'Debate', cls:'pill-debate'},
+  analysis:{label:'Sports News', cls:'pill-analysis'},
 };
 
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
@@ -1272,6 +1294,7 @@ function masthead(ctx){
             ${SPORTS.filter(s=>s.deep!=='full').map(s=>`<a href="#/sport/${s.id}">${s.name}</a>`).join('')}
           </span>
         </span>
+        <a href="#/sports-news" class="${ctx.page==='sports-news'?'active':''}">Sports News</a>
         <a href="#/about" class="${ctx.page==='about'?'active':''}">About</a>
       </nav>
       <div class="nav-divider"></div>
@@ -1571,6 +1594,30 @@ function renderNFLHub(){
   ${footer()}`;
 }
 
+function analysisCard(a){
+  const s = sportById(a.sport);
+  return `<a class="sn-card" href="#/article/${a.id}" style="--accent:var(--${s.accent})">
+    <span class="sn-card-top"><span class="sn-card-sport">${s.name}</span>${catPill(a.cat)}</span>
+    <h3>${a.headline}</h3>
+    <p>${a.dek}</p>
+    <div class="meta"><span>${a.byline}</span><span>·</span><span>${a.time}</span><span>·</span><span>${a.mins} min read</span></div>
+  </a>`;
+}
+function renderSportsNews(){
+  const pieces = [...ARTICLES].filter(a=>a.cat==='analysis').reverse();
+  return `
+  ${masthead({sport:null, page:'sports-news'})}
+  <main class="wrap">
+    <div class="about-hero">
+      <span class="eyebrow">Sports News</span>
+      <h1 class="disp">The deep dives — full breakdowns, not just the score.</h1>
+      <p>When a story is big enough — a championship game, a title race, a result that actually changes something — it gets the long-form treatment here: complete analysis, real statistics, and the context a quick recap doesn't have room for. Every piece links back to its quick recap, and vice versa.</p>
+    </div>
+    ${pieces.length ? `<div class="sn-grid">${pieces.map(analysisCard).join('')}</div>`
+      : `<div class="sn-empty"><p>Nothing's hit the long-form bar yet — check back once a big one breaks.</p></div>`}
+  </main>
+  ${footer()}`;
+}
 function renderAbout(){
   return `
   ${masthead({sport:null, page:'about'})}
@@ -1655,6 +1702,10 @@ function renderArticle(id){
         ${a.qa ? `<div class="qa"><span class="label">Quick Answers</span><dl>${a.qa.map(([q,ans])=>`<dt>${q}</dt><dd>${ans}</dd>`).join('')}</dl></div>` : ''}
         ${a.body.map((p,i)=> i===1 && a.pull ? `<p>${p}</p><div class="pullquote">${a.pull}</div>` : `<p>${p}</p>`).join('')}
         ${a.takes ? `<div class="takes">${a.takes.map(t=>`<div class="take-card ${t.side}"><span class="who">${t.who}</span><p>${t.text}</p></div>`).join('')}</div>` : ''}
+        ${a.related ? (()=>{ const r = articleById(a.related); return r ? `<a class="related-callout" href="#/article/${r.id}">
+          <span class="rc-label">${a.cat==='analysis' ? 'Read the quick recap' : 'Read the full breakdown'} →</span>
+          <span class="rc-headline">${r.headline}</span>
+        </a>` : ''; })() : ''}
       </div>
 
       <div class="sidebar">
@@ -1687,6 +1738,8 @@ function route(){
     app.innerHTML = renderArticle(hash.split('/')[1]);
   } else if(hash === 'about'){
     app.innerHTML = renderAbout();
+  } else if(hash === 'sports-news'){
+    app.innerHTML = renderSportsNews();
   } else {
     app.innerHTML = renderHome();
   }

@@ -568,7 +568,7 @@ const SPORTS = [
   {id:'football', name:'Football', accent:'court', heat:88, status:'MATCHWEEK 6 · LIVERPOOL v MAN CITY SUNDAY, UCL MD2 NEXT WEEK', deep:'full',
     sub:'Premier League · Champions League · La Liga · Serie A · Bundesliga · MLS · Saudi Pro League',
     leagues:['All','Champions League','Premier League','La Liga','Serie A','Bundesliga','MLS','Saudi Pro League']},
-  {id:'mlb', name:'MLB', accent:'court', heat:98, status:'ALDS GM5 SAT · GUARDIANS FORCE DECIDER, 9-5 GM4 WIN', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
+  {id:'mlb', name:'MLB', accent:'court', heat:92, status:'NLCS GM1 · BREWERS BEAT DODGERS 2-1, LEAD SERIES 1-0', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
   {id:'nfl', name:'NFL', accent:'away', heat:82, status:'RAVENS WIN IT IN OT 30-23 · WEEK 5 SUNDAY DONE', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:82, status:'SHANGHAI MASTERS · DAY 2 DONE, HURKACZ-DJOKOVIC NEXT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:48, status:'TAPIA/COELLO WIN DÜSSELDORF · BEAT STUPACZUK/SANZ IN FINAL', deep:'light', sub:'Premier Padel tour'},
@@ -592,9 +592,9 @@ const CAT = {
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
   mlb:{context:'MLB POSTSEASON', games:[
-    {status:'FINAL', away:{abbr:'CLE',record:'9'}, home:{abbr:'CWS',record:'5'}, note:'ALDS Gm4 · series tied 2-2'},
-    {status:'SAT · TIME TBD', away:{abbr:'CWS'}, home:{abbr:'CLE'}, note:'ALDS Gm5 · winner-take-all, Cleveland'},
-    {status:'SUN · TIME TBD', away:{abbr:'LAD'}, home:{abbr:'MIL'}, note:'NLCS Gm1 · Milwaukee'},
+    {status:'FINAL', away:{abbr:'CWS',record:'0'}, home:{abbr:'CLE',record:'2'}, note:'ALDS Gm5 · Guardians complete 0-2 comeback'},
+    {status:'FINAL', away:{abbr:'LAD',record:'1'}, home:{abbr:'MIL',record:'2'}, note:'NLCS Gm1 · Brewers lead 1-0'},
+    {status:'TONIGHT 8:00 PM ET', away:{abbr:'CLE'}, home:{abbr:'TB'}, note:'ALCS Gm1 · Tropicana Field'},
   ]},
   football:{context:'MATCHWEEK 6', games:[
     {status:'SAT 5:30 PM ET', away:{abbr:'MUN'}, home:{abbr:'TOT'}},
@@ -774,18 +774,18 @@ const ARTICLES = [
     ],
     pull:'Pages got the go-ahead hit, Muncy got the exclamation point, and Glasnow got the win despite five walks.',
   },
-  {id:'dodgers-nlcs-recap', sport:'mlb', cat:'preview',
-    headline:'Dodgers-Brewers II: Defending Champs Open NLCS on the Road Sunday',
-    dek:'The two-time reigning champions open their NLCS defense in Milwaukee on Sunday — same two teams, same round, one year later.',
-    byline:'Clutch Room MLB Desk', mins:5, time:'Oct 8, 2026',
-    qa:[['When does the NLCS start?','Game 1 is Sunday, October 11, at American Family Field in Milwaukee.'],
-        ['Who\'s playing?','The two-time defending champion Dodgers face the Brewers in a rematch of last year\'s NLCS.']],
+  {id:'dodgers-nlcs-recap', sport:'mlb', cat:'recap',
+    headline:'Brewers Take Game 1, Holding Off the Dodgers 2-1',
+    dek:'Brice Turang\'s solo homer and a late Luis Lara RBI single were enough — Milwaukee\'s bullpen shut the door on a Dodgers offense that managed seven hits but just one run off deadline pickup Tarik Skubal\'s strong start.',
+    byline:'Clutch Room MLB Desk', mins:5, time:'Oct 12, 2026',
+    qa:[['What was the final score?','Brewers 2, Dodgers 1, at American Family Field — Milwaukee leads the series 1-0.'],
+        ['How did the Dodgers lose a game their starter pitched well in?','Tarik Skubal went 5 innings, allowing 2 runs on 5 hits with 7 strikeouts, but the Dodgers offense stranded too many of their 7 hits — Milwaukee\'s bullpen took over from Jacob Misiorowski and didn\'t allow a run the rest of the way.']],
     body:[
-      'For the second straight October, it\'s Dodgers against Brewers for a National League pennant. Los Angeles enters as the two-time reigning World Series champion, having beaten Milwaukee in last year\'s NLCS on the way to the title, and Game 1 is set for Sunday at American Family Field.',
-      'The Brewers get the series back on their own field this time, which is the one structural difference from a year ago — Milwaukee won the NL\'s best regular-season record and home-field advantage throughout the series.',
-      'Neither roster is a mystery to the other at this point. A rematch this quick, with this much shared playoff history, tends to come down to the margins: bullpen usage, a bench call in the sixth inning, who\'s rested and who isn\'t by Game 4.',
+      'Los Angeles actually struck first: Andy Pages singled home Shohei Ohtani in the second inning for an early 1-0 lead. It didn\'t last. Brice Turang tied it with a 384-foot solo homer in the fourth, and Luis Lara\'s RBI single in the fifth put Milwaukee ahead for good, driving in pinch-runner Mitchell.',
+      'Tarik Skubal, the deadline acquisition from Detroit who gave the Dodgers a reigning two-time Cy Young winner alongside Shohei Ohtani, did his job — 5 innings, 2 earned runs, 7 strikeouts against 2 walks. It just wasn\'t enough support: Los Angeles finished with 7 hits and only the one run to show for it, while Milwaukee\'s bullpen was perfect from the moment Jacob Misiorowski left after a taxing outing. D. Hall earned the win, T. Megill the save.',
+      'It\'s the Brewers\' first win in this rematch of last year\'s NLCS, which the Dodgers swept on their way to a second straight title. Milwaukee gets the chance to even last year\'s ledger with home-field advantage already banked — Game 2 is next at American Family Field.',
     ],
-    pull:'Same two teams, same round, one year later — this time Milwaukee has home field for Game 1.',
+    pull:'Skubal struck out seven in five innings and still took the loss — the Dodgers just couldn\'t cash in their seven hits.',
   },
   {id:'alds-game4-recap', sport:'mlb', cat:'recap',
     headline:'Guardians Erupt for Six in the Sixth, Force a Deciding Game 5',
@@ -800,15 +800,27 @@ const ARTICLES = [
     ],
     pull:'Chicago had the series in hand and a chance to close it at home — six Cleveland runs in one inning changed everything.',
   },
+  {id:'alds-game5-recap', sport:'mlb', cat:'recap',
+    headline:'Guardians Complete the Comeback, Shut Out White Sox 2-0 in Game 5',
+    dek:'José Ramírez\'s two-run homer in the fourth was all Cleveland needed, finishing off a series they trailed 0-2 and sending the White Sox home after a 21-strikeout night.',
+    byline:'Clutch Room MLB Desk', mins:4, time:'Oct 12, 2026',
+    qa:[['What was the final score?','Guardians 2, White Sox 0, in the decisive Game 5 — Cleveland completed a comeback from down 0-2 in the series.'],
+        ['What\'s next for Cleveland?','They open the ALCS against the Tampa Bay Rays, Game 1 tonight at Tropicana Field.']],
+    body:[
+      'Chicago\'s improbable postseason run ends the way it started getting complicated: with the bats going cold. The White Sox struck out 21 times and managed just three hits in Saturday\'s Game 5, unable to answer José Ramírez\'s two-run homer in the fourth inning — the only runs scored all night in a 2-0 Cleveland win.',
+      'The result completes a real comeback for the Guardians, who trailed the series 0-2 before winning three straight to close it out. It\'s a crushing way for Chicago\'s season to end, a team that had a chance to clinch at home in Game 4 instead watching the series slip away over the final three games.',
+      'Cleveland now turns around for an even bigger challenge: the Tampa Bay Rays, who swept the Yankees to reach the ALCS and have had extra rest waiting for an opponent. Game 1 is tonight at Tropicana Field.',
+    ],
+  },
   {id:'mlb-injury-watch', sport:'mlb', cat:'debate',
     headline:'First Take: Can the Dodgers Really Three-Peat?',
-    dek:'Los Angeles is two wins from a third straight World Series appearance. Two Clutch Room writers argue whether history says it can finish the job.',
-    byline:'Clutch Room Debate Desk', mins:5, time:'Oct 8, 2026',
+    dek:'Los Angeles trails the NLCS 0-1 after a tight Game 1 loss to Milwaukee. Two Clutch Room writers argue whether history still says the Dodgers finish the job.',
+    byline:'Clutch Room Debate Desk', mins:5, time:'Oct 12, 2026',
     takes:[
-      {side:'for', who:'Take: Back it until it\'s beaten', text:'This group has already done the hardest part twice — winning in October, in pressure games, against good teams. Until someone actually beats them, the default has to be the two-time champs get through again.'},
-      {side:'against', who:'Take: Repeats are rare for a reason', text:'Back-to-back titles are hard enough; nobody has three-peated in a generation. Milwaukee has home field this time and has already proven it can push this exact roster. Bet against history at your own risk.'},
+      {side:'for', who:'Take: One loss changes nothing', text:'This group has already done the hardest part twice — winning in October, in pressure games, against good teams. A tight Game 1 road loss with a strong Skubal start is not a crisis. Until someone actually beats them four times, the default has to be the two-time champs get through again.'},
+      {side:'against', who:'Take: Repeats are rare for a reason', text:'Back-to-back titles are hard enough; nobody has three-peated in a generation. Milwaukee has home field this time, has already pushed this exact roster to a Game 1 win, and the Dodgers\' bats went quiet when it mattered. Bet against history at your own risk.'},
     ],
-    body:['Two titles in, the conversation around the Dodgers has shifted from "can they win" to "how many times." Fair question with the Brewers standing in the way again, in the same round, this time without home field.'],
+    body:['Two titles in, the conversation around the Dodgers has shifted from "can they win" to "how many times." Fair question with the Brewers standing in the way again, in the same round — and this time, Milwaukee has already drawn first blood.'],
   },
 
   {id:'china-open-recap', sport:'tennis', cat:'recap',
@@ -1585,8 +1597,8 @@ function renderMLBHub(){
   const arts = ARTICLES.filter(a=>a.sport==='mlb');
   const byCat = c => arts.filter(a=>a.cat===c);
   const rails = ['recap','preview','injury','debate'].map(c=>({c, items:byCat(c)})).filter(r=>r.items.length);
-  const hero = articleById('dodgers-nlds-clinch-recap');
-  const statLine = hero.pull.replace(/Muncy/i, '<b>Muncy</b>');
+  const hero = articleById('dodgers-nlcs-recap');
+  const statLine = hero.pull.replace(/Skubal/i, '<b>Skubal</b>');
   return `
   ${masthead({sport:'mlb'})}
   <div class="mlb-progress" id="mlb-progress"></div>
@@ -1602,8 +1614,8 @@ function renderMLBHub(){
     </div>
     <div class="mlb-pins">
       <div class="mlb-pin" style="left:8%;top:0;"><div class="circle">NLDS<br>WON 4-1</div><div class="leader"></div></div>
-      <div class="mlb-pin" style="left:46%;top:14px;"><div class="circle">NLCS GM1<br>SUN · MIL</div><div class="leader"></div></div>
-      <div class="mlb-pin" style="right:6%;left:auto;top:0;"><div class="circle">MUNCY HR<br>9TH INNING</div><div class="leader"></div></div>
+      <div class="mlb-pin" style="left:46%;top:14px;"><div class="circle">NLCS GM1<br>MIL 2-1</div><div class="leader"></div></div>
+      <div class="mlb-pin" style="right:6%;left:auto;top:0;"><div class="circle">TURANG HR<br>4TH INNING</div><div class="leader"></div></div>
     </div>
     <p class="mlb-stat-line">${statLine}</p>
     <div class="mlb-section">

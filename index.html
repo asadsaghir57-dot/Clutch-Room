@@ -571,9 +571,9 @@ const SPORTS = [
   {id:'mlb', name:'MLB', accent:'court', heat:98, status:'ALDS GM5 SAT · GUARDIANS FORCE DECIDER, 9-5 GM4 WIN', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
   {id:'nfl', name:'NFL', accent:'away', heat:82, status:'RAVENS WIN IT IN OT 30-23 · WEEK 5 SUNDAY DONE', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:82, status:'SHANGHAI MASTERS · DAY 2 DONE, HURKACZ-DJOKOVIC NEXT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
-  {id:'padel', name:'Padel', accent:'away', heat:66, status:'TAPIA/COELLO, LEBRÓN/AUGSBURGER INTO DÜSSELDORF SEMIS', deep:'light', sub:'Premier Padel tour'},
-  {id:'basketball', name:'Basketball', accent:'away', heat:55, status:'CHINA GAMES · MAVS v ROCKETS IN MACAO · OPENER OCT 20', deep:'light', sub:'NBA'},
-  {id:'f1', name:'F1', accent:'away', heat:80, status:'SINGAPORE GP · HAMILTON TAKES SPRINT POLE · SPRINT SAT', deep:'none', sub:'Formula 1'},
+  {id:'padel', name:'Padel', accent:'away', heat:48, status:'TAPIA/COELLO WIN DÜSSELDORF · BEAT STUPACZUK/SANZ IN FINAL', deep:'light', sub:'Premier Padel tour'},
+  {id:'basketball', name:'Basketball', accent:'away', heat:45, status:'CHINA SERIES SPLITS 1-1 · OPENER OCT 20', deep:'light', sub:'NBA'},
+  {id:'f1', name:'F1', accent:'away', heat:70, status:'VERSTAPPEN WINS SINGAPORE, 2ND STRAIGHT · LEADS EVERY LAP', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:42, status:'FIGHT NIGHT SAT · ALLEN v DUNCAN, LAS VEGAS', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:40, status:'FIGHT NIGHT SAT · SCHOFIELD v BAHDI, CHICAGO', deep:'light', sub:'Professional boxing'},
   {id:'cricket', name:'Cricket', accent:'away', heat:68, status:'PAKISTAN WIN 2ND T20I BY 82 · SERIES 2-0, DECIDER TUE', deep:'light', sub:'International & league cricket'},
@@ -927,6 +927,17 @@ const ARTICLES = [
     ],
     pull:'Tapia-Coello and Lebrón-Augsburger didn\'t drop a set — but the draw\'s biggest potential quarterfinal, against defending champions Galán-Chingotto, is still unplayed.',
   },
+  {id:'dusseldorf-padel-final-recap', sport:'padel', cat:'recap',
+    headline:'Tapia-Coello Win Düsseldorf, Beating Stupaczuk-Sanz in Straight Sets',
+    dek:'The No. 1 seeds closed out the title 6-2, 7-6(5) on Sunday, after defending champions Galán-Chingotto were knocked out by the same Stupaczuk-Sanz pair in the semifinals.',
+    byline:'Clutch Room Padel Desk', mins:4, time:'Oct 12, 2026',
+    qa:[['Who won the title?','Agustín Tapia and Arturo Coello, the No. 1 seeds, beating Franco Stupaczuk and Jon Sanz 6-2, 7-6(5) in the final.'],
+        ['What happened to the defending champions?','Alejandro Galán and Federico Chingotto were beaten by Stupaczuk-Sanz 7-6(3), 6-4 in the semifinal, ending their title defense one round short of the final.']],
+    body:[
+      'Agustín Tapia and Arturo Coello completed an unbeaten week in Düsseldorf, beating Franco Stupaczuk and Jon Sanz 6-2, 7-6(5) in Sunday\'s final to win the title without dropping a set across the whole tournament.',
+      'Stupaczuk and Sanz were the surprise finalists, having knocked out defending champions Alejandro Galán and Federico Chingotto in the semifinal, 7-6(3), 6-4 — the result that ended any chance of the Tapia-Coello vs. Galán-Chingotto final the draw had been building toward all week. In the women\'s event, María Calvo and Claudia Fernández Sánchez won their final 6-3, 6-0.',
+    ],
+  },
   {id:'nba-tipoff-primer', sport:'basketball', cat:'preview',
     headline:'Knicks Raise a Championship Banner, Then Face LeBron and the 76ers',
     dek:'Opening Night, October 20: the champion Knicks get their rings before hosting a Philadelphia team now built around LeBron James and Jaylen Brown.',
@@ -950,6 +961,17 @@ const ARTICLES = [
       'Weeks before Opening Night banners and rings take over Madison Square Garden, the first real look at two Western Conference contenders comes from 8,100 miles away. The Mavericks and Rockets meet for the first of two NBA China Games at The Venetian Arena in Macao, with a second meeting set for Sunday.',
       'Dallas is building its season around Cooper Flagg, who enters his second year as the reigning Rookie of the Year, and Kyrie Irving — whose preseason debut availability head coach Dusty May has had to address directly ahead of tipoff. Houston counters with Kevin Durant leading a young core that took a real step forward last season.',
       'Preseason results rarely carry forward, but the setting does the opposite of hide anything: two teams with real expectations get an early, unfiltered look at each other before the games start counting.',
+    ],
+  },
+  {id:'nba-china-games-recap', sport:'basketball', cat:'recap',
+    headline:'Mavericks Take Game 2 in Macao, 132-115, as the China Series Splits 1-1',
+    dek:'Kyrie Irving scored 17 in his return and Cooper Flagg added 14 points and seven assists as Dallas evened the series after Houston won the opener.',
+    byline:'Clutch Room Basketball Desk', mins:3, time:'Oct 12, 2026',
+    qa:[['What was the final score?','Mavericks 132, Rockets 115, in Game 2 of the NBA China Games in Macao.'],
+        ['How did the two-game series finish?','Split 1-1 — Houston won Game 1, 135-117, before Dallas took Game 2.']],
+    body:[
+      'The Mavericks and Rockets split their two-game NBA China Games series, with Dallas closing it out 132-115 in Macao after Houston had taken the opener 135-117. Kyrie Irving scored 17 points in his return to action, and Cooper Flagg added 14 points and seven assists. Marcus Smart led Houston with 20 points in his first appearance for the Rockets.',
+      'Preseason results carry no real weight, but both sides got what they came for: an early, competitive look at their new-look rosters before the games start counting toward anything.',
     ],
   },
 
@@ -1058,6 +1080,33 @@ const ARTICLES = [
       'Hamilton\'s grid penalty-free pole also stands in contrast to teammate Charles Leclerc\'s weekend — and to George Russell, who already knew he was starting Sunday\'s Grand Prix near the back after his earlier engine-change penalty, though that penalty doesn\'t apply to Saturday\'s sprint grid.',
     ],
     pull:'Fourth in practice, first in qualifying — Hamilton\'s sprint pole flips the form book Marina Bay seemed to be writing on Friday.',
+  },
+  {id:'f1-singapore-race-recap', sport:'f1', cat:'recap',
+    headline:'Verstappen Leads Every Lap in Singapore, His Second Straight Win',
+    dek:'Max Verstappen controlled the Singapore Grand Prix from lights to flag, beating Charles Leclerc by 7.3 seconds for his second consecutive victory after Malaysia.',
+    byline:'Clutch Room F1 Desk', mins:4, time:'Oct 12, 2026',
+    qa:[['What was the final result?','Max Verstappen won from pole, leading every lap, with Charles Leclerc second (+7.335s) and Kimi Antonelli third (+24.573s).'],
+        ['What does this mean for the championship?','It\'s Verstappen\'s second straight win, moving him up to fourth in the standings, though Kimi Antonelli still leads comfortably on 335 points.']],
+    body:[
+      'Max Verstappen led every single lap of the Singapore Grand Prix, converting pole position into a start-to-finish win and backing up his victory in Malaysia with another dominant performance — his first Singapore win in 250 F1 starts. Charles Leclerc held second for Ferrari, 7.3 seconds back, with Kimi Antonelli completing the podium 24.6 seconds behind.',
+      'Lando Norris and Oscar Piastri took fourth and fifth for McLaren, while Lewis Hamilton — who topped Friday practice and had talked up Ferrari\'s pace into the weekend — could only manage sixth, more than 53 seconds off the win. George Russell\'s grid penalty from his earlier engine change left him to recover to ninth.',
+      'It\'s back-to-back wins for Verstappen and Red Bull, and while Kimi Antonelli\'s championship lead remains substantial, two dominant results in a row from the defending-form Red Bull car are exactly the kind of late-season momentum that turns a comfortable points gap into a genuine title fight.',
+    ],
+    related:'f1-singapore-race-breakdown',
+  },
+  {id:'f1-singapore-race-breakdown', sport:'f1', cat:'analysis',
+    headline:'Lights to Flag: Breaking Down Verstappen\'s Dominant Singapore Weekend',
+    dek:'A full look at how Red Bull turned pole position into a start-to-finish win at Marina Bay, who else moved up the order, and what it means for a championship race that\'s suddenly tighter than the points gap suggests.',
+    byline:'Clutch Room F1 Desk', mins:7, time:'Oct 12, 2026',
+    qa:[['Did anyone seriously challenge Verstappen?','No — leading every lap means there was no safety-car reshuffle or strategy gamble that put him under real pressure; Leclerc\'s 7.3-second gap at the flag was as close as it got.'],
+        ['What happened to Hamilton after his strong Friday and sprint pole?','He finished sixth, 53.2 seconds off the win in the Grand Prix — a reminder that single-lap pace and full-race race pace are different problems at Marina Bay.']],
+    body:[
+      'There\'s a version of "led every lap" that still involves late drama — a safety car bunching the field, a slow pit stop, a late-race tire gamble from a rival. Singapore wasn\'t that. Max Verstappen converted pole into the lead at turn one and was never seriously challenged for it, crossing the line 7.335 seconds clear of Charles Leclerc\'s Ferrari. It was his first win at this circuit in 250 career starts — a genuinely rare hole in his résumé, now filled.',
+      'The full order behind him tells its own story about where the grid actually stands heading into the season\'s final stretch. Kimi Antonelli held third for Mercedes despite carrying the championship lead and all the pressure that comes with it, finishing 24.6 seconds back. Lando Norris and Oscar Piastri were fourth and fifth for McLaren, a result that keeps the team in touch without threatening the podium picture. Lewis Hamilton\'s race was the real disappointment of the weekend: after topping Friday practice and talking confidently about Ferrari\'s pace, he slipped to sixth, over 53 seconds behind Verstappen by the finish — a gap that single-lap speed on a Friday simply didn\'t predict.',
+      'George Russell\'s recovery drive to ninth, from the grid penalty picked up after his Sepang engine change, was a quietly useful result for Mercedes\' constructors\' points, even if it did nothing for his own championship math. Further back, Pierre Gasly, Oliver Bearman, Esteban Ocon and Carlos Sainz all finished a lap down, and three cars failed to see the finish: Lance Stroll, Franco Colapinto and Gabriel Bortoleto all retired, Bortoleto\'s race ending after just seven laps.',
+      'The standings now read Antonelli 335, Russell 238, Hamilton 222, Verstappen 213, Leclerc 209 — numbers that still have Antonelli comfortably in front, but a 335-to-213 gap with races still to run is a very different conversation after back-to-back Verstappen wins than it was before Malaysia. Red Bull has found real pace at exactly the point in the season where it matters most to be peaking, and a driver who\'d gone winless for most of the year now has two in a row.',
+    ],
+    related:'f1-singapore-race-recap',
   },
 
   {id:'nfl-tnf-bucs-cowboys-recap', sport:'nfl', cat:'recap',
@@ -1182,7 +1231,7 @@ const TRACK_LAYOUTS = {
   austin: `<path d="M50 150 L50 90 Q50 60 80 55 Q110 50 120 75 Q130 100 160 90 Q190 80 185 55 L300 40 Q340 35 345 70 L345 120 Q345 150 310 150 L270 150 Q240 150 240 125 Q240 100 210 105 Q180 110 185 135 Q190 160 160 165 L90 165 Q50 165 50 150 Z" stroke="url(#trackGrad)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
   mexico: `<path d="M40 60 L300 60 Q330 60 330 90 L330 130 Q330 150 310 150 L270 150 Q250 150 250 130 L250 110 Q250 95 235 95 L200 95 Q185 95 185 110 L185 150 Q185 170 165 170 L70 170 Q40 170 40 140 Z" stroke="url(#trackGrad)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
 };
-const CURRENT_TRACK = 'singapore';
+const CURRENT_TRACK = 'austin';
 function f1TrackSvg(){
   const layout = TRACK_LAYOUTS[CURRENT_TRACK] || TRACK_LAYOUTS.singapore;
   return `<svg width="400" height="280" viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1223,17 +1272,19 @@ const F1_SEASON_RESULTS = [
     podium:[{driver:'G. Russell',team:'Mercedes'},{driver:'M. Verstappen',team:'Red Bull'},{driver:'I. Hadjar',team:'Red Bull'}]},
   {round:16, gp:'Sepang, Malaysia', winner:'M. Verstappen', team:'Red Bull', note:'Verstappen\'s & Red Bull\'s 1st win of 2026 — Bahrain GP relocated here',
     podium:[{driver:'M. Verstappen',team:'Red Bull'},{driver:'K. Antonelli',team:'Mercedes'},{driver:'L. Hamilton',team:'Ferrari'}]},
+  {round:17, gp:'Singapore', winner:'M. Verstappen', team:'Red Bull', note:'Led every lap — 2nd straight win after Malaysia',
+    podium:[{driver:'M. Verstappen',team:'Red Bull'},{driver:'C. Leclerc',team:'Ferrari'},{driver:'K. Antonelli',team:'Mercedes'}]},
 ];
 const F1_STANDINGS = [
-  {pos:1, driver:'K. Antonelli', team:'Mercedes', pts:320},
-  {pos:2, driver:'G. Russell', team:'Mercedes', pts:236},
-  {pos:3, driver:'L. Hamilton', team:'Ferrari', pts:214},
-  {pos:4, driver:'C. Leclerc', team:'Ferrari', pts:191},
-  {pos:5, driver:'L. Norris', team:'McLaren', pts:188},
-  {pos:6, driver:'M. Verstappen', team:'Red Bull', pts:188},
-  {pos:7, driver:'O. Piastri', team:'McLaren', pts:128},
-  {pos:8, driver:'I. Hadjar', team:'Red Bull', pts:96},
-  {pos:9, driver:'L. Lawson', team:'Racing Bulls', pts:65},
+  {pos:1, driver:'K. Antonelli', team:'Mercedes', pts:335},
+  {pos:2, driver:'G. Russell', team:'Mercedes', pts:238},
+  {pos:3, driver:'L. Hamilton', team:'Ferrari', pts:222},
+  {pos:4, driver:'M. Verstappen', team:'Red Bull', pts:213},
+  {pos:5, driver:'C. Leclerc', team:'Ferrari', pts:209},
+  {pos:6, driver:'L. Norris', team:'McLaren', pts:200},
+  {pos:7, driver:'O. Piastri', team:'McLaren', pts:138},
+  {pos:8, driver:'I. Hadjar', team:'Red Bull', pts:97},
+  {pos:9, driver:'L. Lawson', team:'Racing Bulls', pts:71},
   {pos:10, driver:'P. Gasly', team:'Alpine', pts:41},
 ];
 function renderF1Results(){
@@ -1575,14 +1626,14 @@ function renderF1Hub(){
     <div class="f1-track-wrap">${f1TrackSvg()}</div>
     <div class="f1-next">
       <span class="eyebrow">Next Race</span>
-      <h1>Singapore Grand Prix</h1>
+      <h1>United States Grand Prix</h1>
       <div class="f1-countdown" id="f1-countdown">
         <div class="unit"><div class="num" id="f1-d">00</div><div class="lbl">Days</div></div>
         <div class="unit"><div class="num" id="f1-h">00</div><div class="lbl">Hours</div></div>
         <div class="unit"><div class="num" id="f1-m">00</div><div class="lbl">Minutes</div></div>
         <div class="unit"><div class="num" id="f1-sec">00</div><div class="lbl">Seconds</div></div>
       </div>
-      <p>F1 returns to Marina Bay for the first night race of this slot on the calendar, run in sprint format. Practice and sprint qualifying go Friday, the sprint and full qualifying Saturday, and the Grand Prix itself Sunday at 8:00 PM local — all after dark under the street-circuit floodlights.</p>
+      <p>F1 heads to the Circuit of the Americas in Austin off the back of Max Verstappen's second straight win in Singapore. Practice and qualifying run Friday and Saturday, with the Grand Prix itself Sunday, October 25 at 3:00 PM local.</p>
       <a class="f1-pill-btn" href="#/">← Back to All Sports</a>
     </div>
 
@@ -1591,31 +1642,31 @@ function renderF1Hub(){
       <div class="f1-helmet-section">
         <div class="f1-helmet-grid">
           <div class="f1-helmet-stats">
-            <div><div class="n" style="font-size:24px;">Verstappen</div><div class="l">Chasing a long-awaited first Singapore win — "no guarantees," he says</div></div>
-            <div><div class="n" style="font-size:24px;">Ferrari</div><div class="l">Hamilton &amp; Leclerc: team says they're "here to attack"</div></div>
+            <div><div class="n" style="font-size:24px;">Verstappen</div><div class="l">Two straight wins — Malaysia, then a lights-to-flag Singapore</div></div>
+            <div><div class="n" style="font-size:24px;">Mercedes</div><div class="l">Russell's long-delayed engine upgrade is finally expected to arrive in Austin</div></div>
           </div>
           <div id="f1-helmet-wrap">${F1_HELMET_SVG}</div>
           <div class="f1-helmet-stats right">
-            <div><div class="n" style="font-size:24px;">Russell</div><div class="l">Starts from the back on an engine penalty, promises a recovery drive</div></div>
-            <div><div class="n" style="font-size:24px;">Mercedes</div><div class="l">Splitting car specs between drivers to chase more pace</div></div>
+            <div><div class="n" style="font-size:24px;">Antonelli</div><div class="l">Still leads the championship at 335 points, but the gap to Verstappen is 122 and shrinking</div></div>
+            <div><div class="n" style="font-size:24px;">Leclerc</div><div class="l">Two straight runner-up finishes behind Verstappen's Red Bull</div></div>
           </div>
         </div>
       </div>
-      <p class="f1-quote">No clear favorite across Ferrari, Mercedes, Red Bull and McLaren — <b>Singapore looks wide open this year.</b></p>
+      <p class="f1-quote">Two wins in a row for Verstappen and Red Bull — <b>the title race just got a lot more interesting.</b></p>
       <div style="height:70px;"></div>
     </div>
 
     <div class="f1-schedule">
-      <div class="f1-schedule-head"><h2>Race Weekend Schedule</h2><div class="f1-tabs"><span class="on">My Time (ET)</span><span>Singapore Time</span></div></div>
-      <div class="f1-row"><span class="s">Practice 1</span><span class="t">Fri · 4:30 AM ET (4:30 PM SGT)</span></div>
-      <div class="f1-row"><span class="s">Sprint Qualifying</span><span class="t">Fri · 8:30 AM ET (8:30 PM SGT)</span></div>
-      <div class="f1-row"><span class="s">Sprint</span><span class="t">Sat · 5:00 AM ET (5:00 PM SGT)</span></div>
-      <div class="f1-row"><span class="s">Qualifying</span><span class="t">Sat · 9:00 AM ET (9:00 PM SGT)</span></div>
-      <div class="f1-row"><span class="s">Race</span><span class="t">Sun · 8:00 AM ET (8:00 PM SGT)</span></div>
+      <div class="f1-schedule-head"><h2>Race Weekend Schedule</h2><div class="f1-tabs"><span class="on">My Time (ET)</span><span>Austin Time</span></div></div>
+      <div class="f1-row"><span class="s">Practice 1</span><span class="t">Fri · 1:30 PM ET (12:30 PM CDT)</span></div>
+      <div class="f1-row"><span class="s">Practice 2</span><span class="t">Fri · 5:00 PM ET (4:00 PM CDT)</span></div>
+      <div class="f1-row"><span class="s">Practice 3</span><span class="t">Sat · 1:30 PM ET (12:30 PM CDT)</span></div>
+      <div class="f1-row"><span class="s">Qualifying</span><span class="t">Sat · 5:00 PM ET (4:00 PM CDT)</span></div>
+      <div class="f1-row"><span class="s">Race</span><span class="t">Sun · 4:00 PM ET (3:00 PM CDT)</span></div>
     </div>
 
     <div class="f1-schedule" style="padding-top:0;">
-      <div class="f1-schedule-head"><h2>Season So Far</h2><span class="eyebrow">16 of 23 rounds · R14 cancelled</span></div>
+      <div class="f1-schedule-head"><h2>Season So Far</h2><span class="eyebrow">17 of 23 rounds · R14 cancelled</span></div>
       ${renderF1Results()}
     </div>
 
@@ -1893,7 +1944,7 @@ setInterval(function(){
 }, 1000);
 
 /* ---------------- F1 scroll-driven helmet + MLB scroll progress ---------------- */
-const F1_RACE_TARGET = Date.now() + (3*86400 + 6*3600 + 12*60) * 1000;
+const F1_RACE_TARGET = new Date('2026-10-25T20:00:00Z').getTime();
 let scrollTicking = false;
 function onScrollEffects(){
   const helmet = document.getElementById('f1-helmet');

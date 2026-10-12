@@ -576,8 +576,8 @@ const SPORTS = [
   {id:'padel', name:'Padel', accent:'away', heat:48, status:'TAPIA/COELLO WIN DÜSSELDORF · BEAT STUPACZUK/SANZ IN FINAL', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:45, status:'CHINA SERIES SPLITS 1-1 · OPENER OCT 20', deep:'light', sub:'NBA'},
   {id:'f1', name:'F1', accent:'away', heat:70, status:'VERSTAPPEN WINS SINGAPORE, 2ND STRAIGHT · LEADS EVERY LAP', deep:'none', sub:'Formula 1'},
-  {id:'ufc', name:'UFC', accent:'away', heat:42, status:'FIGHT NIGHT SAT · ALLEN v DUNCAN, LAS VEGAS', deep:'light', sub:'Mixed martial arts'},
-  {id:'boxing', name:'Boxing', accent:'away', heat:40, status:'FIGHT NIGHT SAT · SCHOFIELD v BAHDI, CHICAGO', deep:'light', sub:'Professional boxing'},
+  {id:'ufc', name:'UFC', accent:'away', heat:35, status:'ALLEN SUBMITS DUNCAN IN RD 5 · WIN STREAK TO FOUR', deep:'light', sub:'Mixed martial arts'},
+  {id:'boxing', name:'Boxing', accent:'away', heat:35, status:'SCHOFIELD WINS VACANT WBA TITLE BY DECISION', deep:'light', sub:'Professional boxing'},
   {id:'cricket', name:'Cricket', accent:'away', heat:68, status:'PAKISTAN WIN 2ND T20I BY 82 · SERIES 2-0, DECIDER TUE', deep:'light', sub:'International & league cricket'},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
@@ -620,12 +620,12 @@ const GAMES = {
     {status:'SUN 8:00 AM ET', away:{abbr:'DAL'}, home:{abbr:'HOU'}, note:'Macao · Game 2'},
     {status:'TUE OCT 20 · 7:00 PM ET', away:{abbr:'PHI',record:'0-0'}, home:{abbr:'NYK',record:'0-0'}, note:'Opening Night · Banner night'},
   ]},
-  ufc:{context:'FIGHT NIGHT', games:[
-    {status:'SAT 10:00 PM ET', away:{abbr:'ALLEN'}, home:{abbr:'DUNCAN'}, note:'Main event · Las Vegas'},
+  ufc:{context:'FIGHT NIGHT · FINAL', games:[
+    {status:'FINAL', away:{abbr:'ALLEN'}, home:{abbr:'DUNCAN'}, note:'Allen wins by R5 submission · Las Vegas'},
   ]},
-  boxing:{context:'FIGHT NIGHT', games:[
-    {status:'SAT', away:{abbr:'SCHOFIELD'}, home:{abbr:'BAHDI'}, note:'Vacant WBA lightweight'},
-    {status:'SAT', away:{abbr:'COLLAZO'}, home:{abbr:'SANDOVAL'}, note:'WBA/WBC flyweight'},
+  boxing:{context:'FIGHT NIGHT · FINAL', games:[
+    {status:'FINAL', away:{abbr:'SCHOFIELD'}, home:{abbr:'BAHDI'}, note:'Schofield wins vacant WBA title by decision'},
+    {status:'FINAL', away:{abbr:'MENDOZA'}, home:{abbr:'SANDOVAL'}, note:'Mendoza TKO, late sub, new unified flyweight champ'},
   ]},
   nfl:{context:'WEEK 5 · SUNDAY FINAL', games:[
     {status:'FINAL/OT', away:{abbr:'ATL',record:'23'}, home:{abbr:'BAL',record:'30'}, note:'Huntley OT winner · Ravens 4-1, 1st AFC North'},
@@ -1034,26 +1034,26 @@ const ARTICLES = [
     pull:'Farhan\'s 89 did the heavy lifting — Pakistan chase down 182 with four wickets and seven balls to spare.',
   },
 
-  {id:'ufc-fight-night-allen-duncan', sport:'ufc', cat:'preview',
-    headline:'UFC Fight Night: Allen vs. Duncan Headlines a Stacked Las Vegas Card',
-    dek:'Brendan Allen takes on Christian Leroy Duncan in Saturday\'s middleweight main event, part of an 11-fight card in Las Vegas.',
-    byline:'Clutch Room UFC Desk', mins:4, time:'Oct 8, 2026',
-    qa:[['Who\'s fighting in the main event?','Brendan Allen faces Christian Leroy Duncan in a middleweight main event.'],
-        ['Where and when?','Saturday, October 10, in Las Vegas, Nevada.']],
+  {id:'ufc-fight-night-allen-duncan', sport:'ufc', cat:'recap',
+    headline:'Brendan Allen Submits Christian Leroy Duncan in Round 5, Extends Win Streak to Four',
+    dek:'Allen took the judges out of it with a fifth-round rear-naked choke in Las Vegas, while Otari Tanzilovi stole the undercard with a highlight-reel knockout in his promotional debut.',
+    byline:'Clutch Room UFC Desk', mins:4, time:'Oct 12, 2026',
+    qa:[['How did the main event end?','Brendan Allen submitted Christian Leroy Duncan via rear-naked choke at 2:46 of Round 5.'],
+        ['What else happened on the card?','Jai Herbert beat Matheus Camilo by unanimous decision (29-28 on all three cards), and Otari Tanzilovi scored his first UFC win in spectacular fashion, knocking out Malcolm Wellmaker with a second-round head kick.']],
     body:[
-      'Saturday\'s card in Las Vegas is headlined by a middleweight matchup between Brendan Allen and Christian Leroy Duncan, with Andre Fili-Kai Kamaka III and Loopy Godinez-Ketlen Souza rounding out a deep 11-fight main and prelim card.',
-      'Allen has built his case as one of the division\'s more durable gatekeepers; Duncan gets the kind of main-event platform that can change how quickly a young middleweight moves up the rankings with a statement win.',
+      'Brendan Allen didn\'t need the scorecards. The middleweight worked Christian Leroy Duncan into deep water across five rounds and finished it with a rear-naked choke at 2:46 of the fifth, pushing his winning streak to four and reinforcing his case as one of the division\'s most reliable gatekeepers.',
+      'Jai Herbert added a clean, unanimous-decision win over Matheus Camilo (29-28 across all three cards), but the night\'s signature moment came from the undercard: Otari Tanzilovi, in his first UFC appearance, knocked out Malcolm Wellmaker with a second-round head kick — the kind of finish that turns a prelim fighter into a name worth remembering.',
     ],
   },
-  {id:'boxing-chicago-schofield-bahdi', sport:'boxing', cat:'preview',
-    headline:'Schofield-Bahdi Headlines a Title-Heavy Chicago Card',
-    dek:'Floyd Schofield meets Lucas Bahdi for the vacant WBA lightweight title Saturday, with a flyweight unification also on the card.',
-    byline:'Clutch Room Boxing Desk', mins:4, time:'Oct 8, 2026',
-    qa:[['What\'s the main event?','Floyd Schofield vs. Lucas Bahdi for the vacant WBA lightweight title.'],
-        ['What else is on the card?','Oscar Collazo defends his WBA/WBC flyweight titles against Ricardo Sandoval.']],
+  {id:'boxing-chicago-schofield-bahdi', sport:'boxing', cat:'recap',
+    headline:'Schofield Outworks Bahdi for Unanimous Decision, Claims Vacant WBA Title',
+    dek:'Both fighters hit the canvas in Chicago, but Floyd Schofield\'s volume — 117 landed punches to Bahdi\'s 74 — settled it clearly on the cards. Earlier, a late-notice replacement stunned the flyweight co-feature.',
+    byline:'Clutch Room Boxing Desk', mins:5, time:'Oct 12, 2026',
+    qa:[['What was the final verdict?','Floyd Schofield won by unanimous decision, 115-111, 116-110 and 119-108, to claim the vacant WBA lightweight title.'],
+        ['What happened to the Collazo-Sandoval flyweight fight?','Oscar Collazo withdrew with a rib injury before fight week. Late replacement Sergio Mendoza stepped in and stopped Ricardo Sandoval with three knockdowns, becoming unified flyweight champion.']],
     body:[
-      'Chicago hosts a genuinely title-heavy Saturday card: Floyd Schofield and Lucas Bahdi fight for the vacant WBA lightweight belt in the main event, while Oscar Collazo puts his WBA and WBC flyweight titles on the line against Ricardo Sandoval.',
-      'A vacant-title main event always carries its own pressure — no champion\'s aura to hide behind, just two fighters with a clean shot at becoming one.',
+      'Floyd Schofield claimed the vacant WBA lightweight title at Wintrust Arena, outworking Lucas Bahdi across the full distance for a unanimous decision — scorecards of 115-111, 116-110 and 119-108. Both fighters were dropped during the fight, but the volume gap was decisive: Schofield landed 117 punches to Bahdi\'s 74, using speed and movement to control the pace and recover whenever Bahdi found success.',
+      'The night\'s bigger surprise came earlier. Oscar Collazo, the scheduled flyweight titleholder, withdrew with a rib injury in training, and the WBC/WBA bout went ahead anyway with late replacement Sergio Mendoza stepping in against Ricardo Sandoval. Mendoza scored three knockdowns and stopped Sandoval at 1:43, walking away as the new unified flyweight champion in what was supposed to be someone else\'s fight entirely.',
     ],
   },
 

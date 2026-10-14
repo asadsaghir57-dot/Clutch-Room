@@ -105,7 +105,12 @@ h1,h2,h3,.disp{
 .nav a.active::after{transform:scaleX(1);}
 .nav a:focus-visible{outline:2px solid var(--court);outline-offset:1px;}
 .nav-more{position:relative;}
-.nav-more-trigger{display:inline-flex;align-items:center;gap:4px;cursor:pointer;}
+.nav-more-trigger{
+  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;
+  padding:10px 14px;border-radius:5px;color:var(--ink-muted);position:relative;transition:color .12s ease;
+  display:inline-flex;align-items:center;gap:4px;cursor:pointer;
+}
+.nav-more-trigger:hover{color:var(--ink);}
 .nav-more .chev{display:inline-block;font-size:9px;transition:transform .15s ease;}
 .nav-more:hover .chev,.nav-more:focus-within .chev,.nav-more.open .chev{transform:rotate(180deg);}
 .nav-more-list{display:none;position:absolute;right:0;top:100%;margin-top:6px;background:var(--paper-raised);border:1px solid var(--line);border-radius:8px;box-shadow:0 12px 28px rgba(20,24,28,0.14);padding:6px;min-width:172px;z-index:20;}
@@ -131,27 +136,31 @@ h1,h2,h3,.disp{
 .search-empty{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-muted);padding:8px;}
 
 /* ---------- row 1: scoreboard strip ---------- */
-.scorebar{background:var(--paper-raised);border-bottom:1px solid var(--line);}
-.scorebar-inner{display:flex;align-items:stretch;min-height:50px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.scorebar{background:linear-gradient(100deg,#141310,#1C1A15 55%,#141310);border-bottom:2px solid var(--accent,var(--court));}
+.scorebar-inner{display:flex;align-items:stretch;min-height:52px;overflow-x:auto;overflow-y:visible;-webkit-overflow-scrolling:touch;}
 .scorebar-inner::-webkit-scrollbar{height:0;}
-.scorebar-select-wrap{flex:none;border-right:1px solid var(--line);display:flex;align-items:center;}
-.scorebar-select{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.03em;color:var(--ink);background-color:transparent;border:none;padding:9px 26px 9px 16px;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ink-muted) 50%),linear-gradient(135deg,var(--ink-muted) 50%,transparent 50%);background-position:calc(100% - 14px) 50%,calc(100% - 9px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;}
-.scorebar-context{flex:none;display:flex;align-items:center;padding:0 16px;border-right:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.08em;color:var(--ink-muted);white-space:nowrap;}
+.scorebar-select-wrap{flex:none;border-right:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;}
+.scorebar-select{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.03em;color:#F2F1EE;background-color:transparent;border:none;padding:9px 26px 9px 16px;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,#9F9D97 50%),linear-gradient(135deg,#9F9D97 50%,transparent 50%);background-position:calc(100% - 14px) 50%,calc(100% - 9px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;}
+.scorebar-select option{color:#121212;}
+.scorebar-context{flex:none;display:flex;align-items:center;padding:0 16px;border-right:1px solid rgba(255,255,255,0.1);border-left:3px solid var(--accent,var(--court));font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.08em;color:#F2F1EE;white-space:nowrap;}
 .scorebar-games{flex:1;display:flex;}
-.scorebar-empty{padding:0 18px;display:flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-muted);white-space:nowrap;}
-.game-card{flex:0 0 auto;min-width:172px;border-right:1px solid var(--line);padding:7px 16px;display:flex;flex-direction:column;justify-content:center;gap:4px;}
-.game-status{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-muted);}
+.scorebar-empty{padding:0 18px;display:flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#9F9D97;white-space:nowrap;}
+.game-card{flex:0 0 auto;min-width:172px;border-right:1px solid rgba(255,255,255,0.1);padding:7px 16px;display:flex;flex-direction:column;justify-content:center;gap:4px;transition:background .12s ease;}
+.scorebar-games .game-card:nth-child(even){background:rgba(255,255,255,0.03);}
+.game-card:hover{background:rgba(255,255,255,0.05);}
+.game-status{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#9F9D97;}
 .game-status.live{color:var(--live);}
 .game-status.live::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--live);margin-right:5px;animation:pulse 1.3s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:0.5;}50%{opacity:1;}}
 @media (prefers-reduced-motion: reduce){.game-status.live::before{animation:none;}}
 .game-row{display:flex;justify-content:space-between;align-items:center;gap:10px;}
 .team{display:flex;align-items:center;gap:6px;min-width:0;}
-.team-abbr{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;}
-.team-record{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--ink-muted);}
-.team-score{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;}
-.scorebar-updated{flex:none;display:flex;align-items:center;padding:0 16px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-muted);white-space:nowrap;border-left:1px solid var(--line);font-variant-numeric:tabular-nums;}
-.scorebar-full{flex:none;display:flex;align-items:center;padding:0 18px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--court);white-space:nowrap;border-left:1px solid var(--line);}
+.team-abbr{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:#F2F1EE;}
+.team-record{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:#9F9D97;}
+.team-score{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:#F2F1EE;}
+.scorebar-updated{flex:none;display:flex;align-items:center;padding:0 16px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#9F9D97;white-space:nowrap;border-left:1px solid rgba(255,255,255,0.1);font-variant-numeric:tabular-nums;}
+.scorebar-full{flex:none;display:flex;align-items:center;padding:0 18px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#F2F1EE;white-space:nowrap;border-left:1px solid rgba(255,255,255,0.1);transition:opacity .12s ease;}
+.scorebar-full:hover{opacity:0.75;}
 
 /* ---------- live tracker (db-backed, updates without a republish) ---------- */
 .live-tracker{background:var(--ink);border-bottom:1px solid var(--line);}
@@ -1312,6 +1321,14 @@ const SPORT_ICONS = {
   boxing: '<svg viewBox="0 0 28 28"><path d="M8 13 V8 a3 3 0 0 1 6 0 v5" fill="none" stroke="#7A1812" stroke-width="1.5" stroke-linecap="round"/><path d="M14 13 V6 a3 3 0 0 1 6 0 v9 a7 7 0 0 1-14 0 v-4 a2 2 0 0 1 4 0 v2" fill="#B3261E" stroke="#7A1812" stroke-width="1.1" stroke-linejoin="round"/></svg>',
   cricket: '<svg viewBox="0 0 28 28"><path d="M13 26 C9.3 26 8.2 23 8.2 19.3 L8.2 11.5 C8.2 8.5 10 7 12.5 7 C15 7 16.6 8.6 16.6 11.5 L16.6 19.3 C16.6 23 16.3 26 13 26 Z" fill="#C8A165" stroke="#8A6327" stroke-width="1"/><rect x="11.2" y="2" width="2.8" height="6.3" rx="1" fill="#3A2A15"/><path d="M11.4 3.3 L13.8 3.3 M11.4 5 L13.8 5 M11.4 6.7 L13.8 6.7" stroke="#6B4A22" stroke-width="0.6"/><circle cx="21" cy="20" r="3" fill="#B3261E" stroke="#7A1812" stroke-width="0.8"/><path d="M19.3 18.6 Q21 20 19.3 21.4 M22.7 18.6 Q21 20 22.7 21.4" stroke="#F0D9C8" stroke-width="0.5" fill="none"/></svg>',
 };
+/* vivid, fixed hues for the dark scorebar ticker -- independent of the page's light/dark --accent
+   tokens, which include near-black/near-white "away" values that would vanish against a dark bar */
+const TICKER_ACCENT = {
+  football:'#E2453B', mlb:'#E2453B', tennis:'#E2453B',
+  nfl:'#D1A851', basketball:'#D1A851', cricket:'#D1A851',
+  padel:'#C96B57', ufc:'#C96B57', boxing:'#C96B57',
+  f1:'#6FA8DC',
+};
 function debateTileIcon(){ return '<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="22" height="14" rx="4"/><path d="M9 19 L9 24 L14 19"/><circle cx="10" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="14" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="18" cy="12" r="1.1" fill="currentColor" stroke="none"/></svg>'; }
 
 const articleById = id => ARTICLES.find(a=>a.id===id);
@@ -1841,7 +1858,7 @@ function scorebarHtml(activeSportId){
   const current = activeSportId || 'mlb';
   const s = sportById(current);
   const g = GAMES[current];
-  return `<div class="scorebar"><div class="scorebar-inner">
+  return `<div class="scorebar" style="--accent:${TICKER_ACCENT[current]||'#E2453B'};"><div class="scorebar-inner">
     <div class="scorebar-select-wrap">
       <select class="scorebar-select" onchange="jumpSport(this.value)" aria-label="Choose sport">
         ${SPORTS.map(sp=>`<option value="${sp.id}" ${sp.id===current?'selected':''}>${sp.name}</option>`).join('')}

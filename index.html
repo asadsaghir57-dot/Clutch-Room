@@ -22,7 +22,7 @@
   --gold-soft:#F1E7D1;
   --away:#0A0A0A;
   --away-soft:#EAE9E6;
-  --live:#B3261E;
+  --live:#166534;
   --shadow: 0 1px 0 rgba(18,18,18,0.06);
 }
 @media (prefers-color-scheme: dark){
@@ -40,7 +40,7 @@
     --gold-soft:#302811;
     --away:#F6F5F1;
     --away-soft:#242320;
-    --live:#E2453B;
+    --live:#4ADE80;
     --shadow: 0 1px 0 rgba(0,0,0,0.4);
   }
 }
@@ -58,7 +58,7 @@
   --gold-soft:#302811;
   --away:#F6F5F1;
   --away-soft:#242320;
-  --live:#E2453B;
+  --live:#4ADE80;
   --shadow: 0 1px 0 rgba(0,0,0,0.4);
 }
 
@@ -245,12 +245,16 @@ h1,h2,h3,.disp{
 .b-tile.b-quote .b-q-who{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#9F9D97;margin-top:auto;padding-top:10px;border-top:1px solid #2B2A26;}
 .b-tile.b-quote .b-q-link{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:#D1A851;align-self:flex-start;}
 .b-tile.b-quiet{background:var(--paper-raised);}
-.b-tile.b-quiet .b-quiet-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-muted);}
-.b-quiet-row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--line);}
+.b-tile.b-quiet .b-quiet-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:4px;}
+.b-quiet-row{display:flex;flex-direction:column;gap:4px;padding:10px 0;border-bottom:1px solid var(--line);transition:opacity .12s ease;}
 .b-quiet-row:last-child{border-bottom:none;}
-.b-quiet-row .nm{font-size:14px;font-weight:600;}
-.b-quiet-row .st{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--ink-muted);}
+.b-quiet-row:hover{opacity:0.72;}
+.b-quiet-row .nm{font-size:14px;font-weight:700;}
+.b-quiet-row .st{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-muted);line-height:1.5;letter-spacing:0.01em;}
 @media (max-width:760px){.bento{grid-template-columns:repeat(2,1fr);}.b-tile.b-2{grid-column:span 2;}}
+.bento-secondary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;}
+.bento-secondary .b-tile{min-height:0;padding:18px;}
+@media (max-width:760px){.bento-secondary{grid-template-columns:1fr;}}
 
 /* ---------- priority board ---------- */
 .board-head{display:flex;align-items:baseline;justify-content:space-between;margin:38px 0 4px;border-bottom:2px solid var(--ink);padding-bottom:8px;}
@@ -1845,7 +1849,7 @@ function scorebarHtml(activeSportId){
     </div>
     ${g ? `<div class="scorebar-context">${g.context}</div><div class="scorebar-games">${g.games.map(gameCardHtml).join('')}</div>`
         : `<div class="scorebar-empty">No games scheduled for ${s.name} right now</div>`}
-    <span class="scorebar-updated"><span class="scorebar-live-dot"></span>Updated <span id="updated-secs">0</span>s ago</span>
+    <span class="scorebar-updated">${g && g.games.some(x=>x.status && x.status.toUpperCase().startsWith('LIVE')) ? '<span class="scorebar-live-dot"></span>' : ''}Updated <span id="updated-secs">0</span>s ago</span>
     <a class="scorebar-full" href="#/sport/${current}">Full Hub »</a>
   </div></div>`;
 }
@@ -1863,7 +1867,7 @@ function subnavHtml(sport){
     <a class="subtab active" href="#/sport/${sport.id}">Home</a>
     ${tabs.map(t=> hasRail(t.cat)
       ? `<span class="subtab" role="button" tabindex="0" onclick="scrollToRail('rail-${t.cat}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">${t.label}</span>`
-      : `<span class="subtab disabled">${t.label}</span>`
+      : `<span class="subtab disabled" title="No ${t.label.toLowerCase()} articles yet for ${sport.name}">${t.label}</span>`
     ).join('')}
   </div></div>`;
 }
@@ -2044,6 +2048,8 @@ function renderHome(){
   const debate = ARTICLES.find(a=>a.cat==='debate' && a.sport==='football');
   const ranked = [...SPORTS].sort((a,b)=>b.heat-a.heat);
   const main = ranked.filter(s=>tierOf(s.heat)<=3);
+  const primary = main.slice(0,5);
+  const secondary = main.slice(5);
   const quiet = ranked.filter(s=>tierOf(s.heat)===4);
   const peekFor = id => {
     const forSport = ARTICLES.filter(a=>a.sport===id);
@@ -2088,19 +2094,25 @@ function renderHome(){
       <div class="hero-meta">${hero.byline} · ${hero.time} · ${hero.mins} min read</div>
     </a>
 
-    <div class="bento-head"><h2>What's Happening Right Now</h2><span class="sub">Ranked by heat, not alphabet — ${main.length} sports in play</span></div>
+    <div class="bento-head"><h2>What's Happening Right Now</h2><span class="sub">Ranked by heat, not alphabet — ${primary.length} sports leading</span></div>
     <div class="bento">
-      ${main.map((s,i)=>sportTileHtml(s,i)).join('')}
+      ${primary.map((s,i)=>sportTileHtml(s,i)).join('')}
+    </div>
+    <div class="bento-secondary">
+      ${secondary.length ? `<div class="b-tile b-quiet">
+        <span class="b-quiet-label">Also in Play</span>
+        ${secondary.map(s=>`<a class="b-quiet-row" href="#/sport/${s.id}" style="color:inherit;text-decoration:none;"><span class="nm">${s.name}</span><span class="st">${s.status}</span></a>`).join('')}
+      </div>` : ''}
+      <div class="b-tile b-quiet">
+        <span class="b-quiet-label">Quiet This Week</span>
+        ${quiet.map(s=>`<a class="b-quiet-row" href="#/sport/${s.id}" style="color:inherit;text-decoration:none;"><span class="nm">${s.name}</span><span class="st">${s.status}</span></a>`).join('')}
+      </div>
       <a class="b-tile b-quote" href="#/article/${debate.id}">
         <span class="b-q-label">Today's Debate</span>
         <span class="b-q-text">"${forTake.text}"</span>
         <span class="b-q-who">${forTake.who}</span>
         <span class="b-q-link">Read both sides →</span>
       </a>
-      <div class="b-tile b-quiet">
-        <span class="b-quiet-label">Quiet This Week</span>
-        ${quiet.map(s=>`<a class="b-quiet-row" href="#/sport/${s.id}" style="color:inherit;text-decoration:none;"><span class="nm">${s.name}</span><span class="st">${s.status}</span></a>`).join('')}
-      </div>
     </div>
 
     <div class="bento-head"><h2>Insider Wire</h2><span class="sub">Beat reporter notes, continuously tracked</span></div>

@@ -1947,7 +1947,6 @@ function footer(){
 }
 
 function renderHome(){
-  const hero = articleById('pak-sl-1st-t20i-recap');
   const debate = ARTICLES.find(a=>a.cat==='debate' && a.sport==='football');
   const ranked = [...SPORTS].sort((a,b)=>b.heat-a.heat);
   const main = ranked.filter(s=>tierOf(s.heat)<=3);
@@ -1957,6 +1956,18 @@ function renderHome(){
     const recaps = forSport.filter(a=>a.cat==='recap');
     return recaps.length ? recaps[recaps.length-1] : forSport[0];
   };
+  // Hero always tracks the hottest sport's best available current story (analysis piece
+  // preferred over a quick recap) instead of a hardcoded id that goes stale as news moves on.
+  const heroFor = (sportId) => {
+    const forSport = ARTICLES.filter(a=>a.sport===sportId);
+    const analyses = forSport.filter(a=>a.cat==='analysis');
+    if(analyses.length) return analyses[analyses.length-1];
+    const recaps = forSport.filter(a=>a.cat==='recap');
+    if(recaps.length) return recaps[recaps.length-1];
+    return forSport[0];
+  };
+  let hero = null;
+  for(const s of ranked){ hero = heroFor(s.id); if(hero) break; }
   const forTake = debate.takes.find(t=>t.side==='for');
 
   const sportTileHtml = (s,i) => {

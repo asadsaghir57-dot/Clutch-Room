@@ -162,10 +162,12 @@ h1,h2,h3,.disp{
 .subnav-id{display:flex;align-items:center;gap:8px;padding:10px 0;flex:none;}
 .subnav-id .mono-badge{width:22px;height:22px;border-radius:4px;background:var(--accent,var(--court));color:#fff;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;flex:none;}
 .subnav-id .sp-name{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:16px;white-space:nowrap;}
-.subtab{flex:none;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;color:var(--ink-muted);padding:13px 0;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;white-space:nowrap;}
+.subtab{position:relative;flex:none;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;color:var(--ink-muted);padding:13px 0;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;white-space:nowrap;}
 .subtab:hover{color:var(--ink);}
 .subtab.active{color:var(--ink);border-color:var(--accent,var(--court));}
 .subtab.disabled{opacity:0.4;cursor:default;}
+.subtab:not(.disabled)::after{content:"";position:absolute;inset:-4px 0;}
+.subtab:focus-visible{outline:2px solid var(--accent,var(--court));outline-offset:3px;border-radius:2px;}
 
 /* ---------- pills / tags ---------- */
 .pill{
@@ -179,12 +181,14 @@ h1,h2,h3,.disp{
 .pill-debate{background:var(--gold-soft);color:var(--gold);}
 .pill-analysis{background:var(--ink);color:var(--paper);}
 .chip{
-  font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.03em;
+  position:relative;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:0.03em;
   padding:6px 11px;border:1px solid var(--line);border-radius:999px;color:var(--ink-muted);background:var(--paper-raised);
   cursor:pointer;transition:border-color .12s ease,color .12s ease;
 }
 .chip:hover{color:var(--ink);}
 .chip.on{color:var(--ink);border-color:var(--accent,currentColor);background:color-mix(in srgb, var(--accent,var(--court)) 10%, var(--paper-raised));}
+.chip::after{content:"";position:absolute;inset:-9px -2px;}
+.chip:focus-visible{outline:2px solid var(--accent,var(--court));outline-offset:2px;}
 .fixtures-fallback{display:none;font-family:'JetBrains Mono',monospace;color:var(--ink-muted);font-size:12.5px;margin-top:12px;line-height:1.6;}
 
 /* ---------- home hero ---------- */
@@ -1847,7 +1851,7 @@ function subnavHtml(sport){
     <div class="subnav-id"><span class="mono-badge">${sport.name.slice(0,2).toUpperCase()}</span><span class="sp-name">${sport.name}</span></div>
     <a class="subtab active" href="#/sport/${sport.id}">Home</a>
     ${tabs.map(t=> hasRail(t.cat)
-      ? `<span class="subtab" onclick="scrollToRail('rail-${t.cat}')">${t.label}</span>`
+      ? `<span class="subtab" role="button" tabindex="0" onclick="scrollToRail('rail-${t.cat}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">${t.label}</span>`
       : `<span class="subtab disabled">${t.label}</span>`
     ).join('')}
   </div></div>`;
@@ -1908,7 +1912,9 @@ function scrollToRail(id){ const el=document.getElementById(id); if(el) el.scrol
 
 function filterLeague(league){
   document.querySelectorAll('.league-chips .chip').forEach(c=>{
-    c.classList.toggle('on', c.dataset.league===league);
+    const on = c.dataset.league===league;
+    c.classList.toggle('on', on);
+    c.setAttribute('aria-pressed', on ? 'true' : 'false');
   });
   document.querySelectorAll('#app .card[data-league]').forEach(card=>{
     card.style.display = (league==='All' || card.dataset.league===league) ? '' : 'none';
@@ -2027,7 +2033,7 @@ function renderHub(sport){
       <h1 class="disp">${s.name}</h1>
       <div class="sport-sub mono">${s.sub}</div>
       <div class="hub-status">${heatMeter(s.heat)}<span class="mono" style="font-size:11px;color:var(--ink-muted);">${s.status}</span></div>
-      ${s.leagues ? `<div class="league-chips">${s.leagues.map((l,i)=>`<span class="chip ${i===0?'on':''}" data-league="${l}" onclick="filterLeague('${l}')">${l}</span>`).join('')}</div>` : ''}
+      ${s.leagues ? `<div class="league-chips">${s.leagues.map((l,i)=>`<span class="chip ${i===0?'on':''}" data-league="${l}" role="button" tabindex="0" aria-pressed="${i===0?'true':'false'}" onclick="filterLeague('${l}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">${l}</span>`).join('')}</div>` : ''}
     </div>
     ${rails.map(r=>`
       <div id="rail-${r.c}">

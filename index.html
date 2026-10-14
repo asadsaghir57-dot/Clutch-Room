@@ -567,18 +567,18 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
 
 <script>
 const SPORTS = [
-  {id:'football', name:'Football', accent:'court', heat:88, status:'MATCHWEEK 6 · LIVERPOOL v MAN CITY SUNDAY, UCL MD2 NEXT WEEK', deep:'full',
+  {id:'football', name:'Football', accent:'court', heat:88, status:'CITY ROUTS LIVERPOOL 3-0 · UCL MD2 CITY-PSG TONIGHT AT ETIHAD', deep:'full',
     sub:'Premier League · Champions League · La Liga · Serie A · Bundesliga · MLS · Saudi Pro League',
     leagues:['All','Champions League','Premier League','La Liga','Serie A','Bundesliga','MLS','Saudi Pro League']},
-  {id:'mlb', name:'MLB', accent:'court', heat:92, status:'NLCS GM1 · BREWERS BEAT DODGERS 2-1, LEAD SERIES 1-0', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
+  {id:'mlb', name:'MLB', accent:'court', heat:92, status:'BREWERS LEAD NLCS 2-0 · GM3 TONIGHT AT LA, ALCS TIED 1-1', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
   {id:'nfl', name:'NFL', accent:'away', heat:82, status:'RAVENS WIN IT IN OT 30-23 · WEEK 5 SUNDAY DONE', deep:'none', sub:'National Football League'},
-  {id:'tennis', name:'Tennis', accent:'court', heat:82, status:'SHANGHAI MASTERS · DAY 2 DONE, HURKACZ-DJOKOVIC NEXT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
-  {id:'padel', name:'Padel', accent:'away', heat:48, status:'TAPIA/COELLO WIN DÜSSELDORF · BEAT STUPACZUK/SANZ IN FINAL', deep:'light', sub:'Premier Padel tour'},
+  {id:'tennis', name:'Tennis', accent:'court', heat:82, status:'SHANGHAI MASTERS · ALCARAZ OUT IN R3 UPSET, ZVEREV LEADS QF FIELD', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
+  {id:'padel', name:'Padel', accent:'away', heat:40, status:'GALAN/CHINGOTTO WIN DÜSSELDORF · BEAT TAPIA/COELLO IN FINAL', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:45, status:'CHINA SERIES SPLITS 1-1 · OPENER OCT 20', deep:'light', sub:'NBA'},
-  {id:'f1', name:'F1', accent:'away', heat:70, status:'VERSTAPPEN WINS SINGAPORE, 2ND STRAIGHT · LEADS EVERY LAP', deep:'none', sub:'Formula 1'},
+  {id:'f1', name:'F1', accent:'away', heat:70, status:'VERSTAPPEN WINS SINGAPORE, 2ND STRAIGHT · AUSTIN NEXT OCT 23-25', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:35, status:'ALLEN SUBMITS DUNCAN IN RD 5 · WIN STREAK TO FOUR', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:35, status:'SCHOFIELD WINS VACANT WBA TITLE BY DECISION', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:68, status:'PAKISTAN WIN 2ND T20I BY 82 · SERIES 2-0, DECIDER TUE', deep:'light', sub:'International & league cricket'},
+  {id:'cricket', name:'Cricket', accent:'away', heat:55, status:'SRI LANKA WIN DEAD RUBBER BY 8 WKTS · PAKISTAN TAKE SERIES 2-1', deep:'light', sub:'International & league cricket'},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -593,31 +593,28 @@ const CAT = {
 
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
-  mlb:{context:'MLB POSTSEASON', games:[
-    {status:'FINAL', away:{abbr:'CWS',record:'0'}, home:{abbr:'CLE',record:'2'}, note:'ALDS Gm5 · Guardians complete 0-2 comeback'},
-    {status:'FINAL', away:{abbr:'LAD',record:'1'}, home:{abbr:'MIL',record:'2'}, note:'NLCS Gm1 · Brewers lead 1-0'},
-    {status:'TONIGHT 8:00 PM ET', away:{abbr:'CLE'}, home:{abbr:'TB'}, note:'ALCS Gm1 · Tropicana Field'},
+  mlb:{context:'MLB LCS · BREWERS LEAD NLCS 2-0, ALCS TIED 1-1', games:[
+    {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'7'}, note:'NLCS Gm2 · Brewers go up 2-0 on Dodgers'},
+    {status:'TONIGHT 8:00 PM ET', away:{abbr:'MIL'}, home:{abbr:'LAD'}, note:'NLCS Gm3 · Dodger Stadium · Brewers lead series 2-0'},
+    {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm2 · Rays even series 1-1, Gm3 Thu at Cleveland'},
   ]},
-  football:{context:'MATCHWEEK 6', games:[
-    {status:'SAT 5:30 PM ET', away:{abbr:'MUN'}, home:{abbr:'TOT'}},
-    {status:'SUN 4:30 PM ET', away:{abbr:'LIV'}, home:{abbr:'MCI'}},
-    {status:'TUE OCT 13', away:{abbr:'ATM'}, home:{abbr:'MUN'}, note:'UCL MD2'},
-    {status:'WED OCT 14', away:{abbr:'MCI'}, home:{abbr:'PSG'}, note:'UCL MD2'},
+  football:{context:'MATCHWEEK 6 COMPLETE · UCL MD2 CITY-PSG TONIGHT', games:[
+    {status:'FINAL', away:{abbr:'TOT',record:'1'}, home:{abbr:'MUN',record:'1'}, note:'Solanke\'s stoppage-time leveler denies United after Bentancur red card'},
+    {status:'FINAL', away:{abbr:'MCI',record:'3'}, home:{abbr:'LIV',record:'0'}, note:'Haaland, Doku, Cherki score in 16 minutes as 10-man Liverpool collapse'},
+    {status:'FINAL', away:{abbr:'MUN',record:'0'}, home:{abbr:'ATM',record:'2'}, note:'UCL MD2 · Barrios, Lookman sink United in Madrid'},
+    {status:'WED 3:00 PM ET', away:{abbr:'PSG'}, home:{abbr:'MCI'}, note:'UCL MD2 · Etihad Stadium'},
   ]},
-  tennis:{context:'SHANGHAI MASTERS · R1 COMPLETE', games:[
-    {status:'FINAL', away:{abbr:'ARNALDI'}, home:{abbr:'TOMIC'}, note:'6-3, 6-1'},
-    {status:'FINAL', away:{abbr:'BU'}, home:{abbr:'VAN ASSCHE'}, note:'7-6(3), 6-3'},
-    {status:'SAT', away:{abbr:'ALCARAZ'}, home:{abbr:'CERUNDOLO/Q'}},
-    {status:'R2', away:{abbr:'HURKACZ'}, home:{abbr:'DJOKOVIC'}, note:'Marquee 2nd rounder'},
+  tennis:{context:'SHANGHAI MASTERS · QUARTERFINALS SET', games:[
+    {status:'FINAL', away:{abbr:'BERGS'}, home:{abbr:'ALCARAZ'}, note:'7-5, 7-6(4) · Bergs stuns world No. 2 in R3'},
+    {status:'FINAL', away:{abbr:'DAVIDOVICH FOKINA'}, home:{abbr:'HURKACZ'}, note:'1-6, 6-3, 7-6(6) · R16, after Hurkacz\'s Djokovic upset'},
+    {status:'FINAL', away:{abbr:'ZVEREV'}, home:{abbr:'BUBLIK'}, note:'7-6(6), 4-6, 7-6(1) · No. 1 seed survives into QFs'},
   ]},
-  padel:{context:'DÜSSELDORF · QUARTERFINALS', games:[
-    {status:'FINAL', away:{abbr:'TAPIA/COELLO'}, home:{abbr:'ALFONSO/LIBAAK'}, note:'6-2, 7-5 · No. 1 seeds through'},
-    {status:'FINAL', away:{abbr:'LEBRON/AUGSBURGER'}, home:{abbr:'ARCE SIMO/TELLO'}, note:'6-3, 6-3 · No. 3 seeds through'},
-    {status:'SAT', away:{abbr:'GALAN/CHINGOTTO'}, home:{abbr:'TBD'}, note:'Remaining QFs · defending champs'},
+  padel:{context:'DÜSSELDORF COMPLETE · NEXT UP DUBAI P1 NOV 8', games:[
+    {status:'FINAL', away:{abbr:'GALAN/CHINGOTTO'}, home:{abbr:'TAPIA/COELLO'}, note:'7-6(7), 6-2 · defending champs repeat in Germany'},
   ]},
   basketball:{context:'NBA CHINA GAMES · PRESEASON', games:[
-    {status:'FRI 8:00 AM ET', away:{abbr:'DAL'}, home:{abbr:'HOU'}, note:'Macao · Flagg vs Durant'},
-    {status:'SUN 8:00 AM ET', away:{abbr:'DAL'}, home:{abbr:'HOU'}, note:'Macao · Game 2'},
+    {status:'FINAL', away:{abbr:'HOU',record:'135'}, home:{abbr:'DAL',record:'117'}, note:'NBA China Gm1 · Macao · Rockets romp, Flagg scores 19'},
+    {status:'FINAL', away:{abbr:'DAL',record:'132'}, home:{abbr:'HOU',record:'115'}, note:'NBA China Gm2 · Macao · Mavericks even series 1-1'},
     {status:'TUE OCT 20 · 7:00 PM ET', away:{abbr:'PHI',record:'0-0'}, home:{abbr:'NYK',record:'0-0'}, note:'Opening Night · Banner night'},
   ]},
   ufc:{context:'FIGHT NIGHT · FINAL', games:[
@@ -632,9 +629,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'17'}, home:{abbr:'NE',record:'45'}, note:'Patriots rout Raiders'},
     {status:'FINAL', away:{abbr:'ARI',record:'21'}, home:{abbr:'DET',record:'45'}, note:'Lions rout Cardinals'},
   ]},
-  cricket:{context:'PAK v SL · SERIES 2-0', games:[
-    {status:'FINAL', away:{abbr:'SL',record:'133'}, home:{abbr:'PAK',record:'215'}, note:'Pakistan win by 82 · Sadaqat 96 (51)'},
-    {status:'TUE', away:{abbr:'SL'}, home:{abbr:'PAK'}, note:'3rd T20I · Rawalpindi · dead rubber'},
+  cricket:{context:'PAK v SL · SERIES WON 2-1', games:[
+    {status:'FINAL', away:{abbr:'SL',record:'172/2'}, home:{abbr:'PAK',record:'168/8'}, note:'3rd T20I · Mendis 87* seals consolation win, Pakistan take series 2-1'},
   ]},
 };
 
@@ -887,16 +883,33 @@ const ARTICLES = [
     body:['A four-time champion chasing a fifth Shanghai title is this week\'s version of an argument tennis has every season: is a great champion repeating more impressive, or does the sport need the trophy to go somewhere new? Worth having it properly with the draw freshly out.'],
   },
 
-  {id:'ucl-recap', sport:'football', league:'Champions League', cat:'preview',
-    headline:'Champions League Matchday 2 Preview: Atlético-United, City-PSG Headline',
-    dek:'Matchday 2 arrives October 13-14 with Atlético Madrid hosting Manchester United and Manchester City facing Paris Saint-Germain among the standout fixtures.',
-    byline:'Clutch Room Football Desk', mins:5, time:'Oct 8, 2026',
-    qa:[['When is Matchday 2?','Tuesday and Wednesday, October 13-14, 2026.'],
-        ['What are the headline games?','Atlético Madrid vs Manchester United, Galatasaray vs Barcelona, Roma vs Real Madrid, and Manchester City vs Paris Saint-Germain.']],
+  {id:'ucl-recap', sport:'football', league:'Champions League', cat:'recap',
+    headline:'Tresoldi\'s Hat-Trick Sinks Inter as Barcelona and Arsenal Win Big on Matchday 2',
+    dek:'Nicolò Tresoldi\'s treble fired Club Brugge to a 4-3 San Siro thriller, Lamine Yamal set up both Barcelona goals in a comeback win, and Sabah won a Champions League match for the first time in their history.',
+    byline:'Clutch Room Football Desk', mins:5, time:'Oct 14, 2026',
+    qa:[['What were Tuesday\'s results?','Barcelona 4-1 Galatasaray, Arsenal 3-0 Lille, Sporting CP 2-0 Lens, Viking 3-3 Bayern Munich, Inter 3-4 Club Brugge, Atlético Madrid 2-0 Manchester United, Sabah 2-0 Slavia Praha, Villarreal 3-1 Napoli, Leipzig 1-0 PSV.'],
+        ['What about Wednesday\'s games?','Manchester City vs. PSG, Roma vs. Real Madrid and the rest of Wednesday\'s slate are still to be played.']],
     body:[
-      'The league phase\'s second round brings some of the competition\'s heaviest fixtures forward early: Atlético Madrid host Manchester United and Galatasaray welcome Barcelona on Tuesday, while Roma face Real Madrid and Manchester City host Paris Saint-Germain on Wednesday.',
-      'For a format that spreads 36 teams across eight league-phase games apiece, getting fixtures this heavy by Matchday 2 means the picture of who\'s actually contending starts taking shape almost immediately.',
+      'Nicolò Tresoldi scored a hat-trick as Club Brugge beat Inter 4-3 in a genuine San Siro thriller, the night\'s best individual performance on a matchday that had no shortage of them. Barcelona came from behind to beat Galatasaray 4-1 behind two Lamine Yamal assists, and Arsenal cruised past Lille 3-0 with Jurriën Timber named Player of the Match.',
+      'Elsewhere, Sporting CP\'s Luis Suárez became the club\'s outright all-time leading scorer in the competition during a 2-0 win at Lens, Harry Kane extended his Champions League scoring streak to nine straight games (a penalty and a header) but still only salvaged a 3-3 draw for Bayern Munich at Viking, and Sabah beat Slavia Praha 2-0 for the first Champions League win in the club\'s history.',
+      'Atlético Madrid beat Manchester United 2-0, Villarreal beat Napoli 3-1, and Leipzig edged PSV 1-0 in a tighter, quieter corner of the matchday. Wednesday still has the two heaviest remaining fixtures to come — Manchester City host PSG, and Roma face Real Madrid.',
     ],
+    related:'ucl-breakout-performances',
+  },
+  {id:'ucl-breakout-performances', sport:'football', league:'Champions League', cat:'analysis',
+    headline:'The Breakout Night: Tresoldi, Mickels and the Players Who Made Matchday 2',
+    dek:'A hat-trick from a forward most casual fans had never heard of, a historic first win for the competition\'s smallest club, and a teenager setting up goals for fun — the real story of Matchday 2 was written by players outside the usual headlines.',
+    byline:'Clutch Room Football Desk', mins:7, time:'Oct 14, 2026',
+    qa:[['Who was the standout performer of the matchday?','Nicolò Tresoldi, who scored a hat-trick for Club Brugge in a 4-3 win away at Inter Milan — arguably the single best individual performance of Matchday 2.'],
+        ['What made Sabah\'s result historic?','Their 2-0 win over Slavia Praha, sealed by Joy-Lance Mickels, was the first Champions League win in the Azerbaijani club\'s history.']],
+    body:[
+      'Every Champions League matchday has its headline result, but Matchday 2\'s most interesting story wasn\'t at the top of the table — it was the players making their names inside games that weren\'t supposed to be about them. Nicolò Tresoldi\'s hat-trick for Club Brugge, away at a full San Siro against Inter, is the kind of performance that changes how a player gets talked about overnight. Brugge won 4-3 in a genuine shootout of a match, and Tresoldi was directly responsible for more of it than anyone else on the pitch.',
+      'Lamine Yamal didn\'t need to score to be the best player on the field in Barcelona\'s 4-1 comeback win over Galatasaray — he set up both Fermín López\'s header and Anthony Gordon\'s goal, continuing to look like a teenager operating on a completely different timeline than his actual age. He was a deserved Player of the Match, and at this point in his career, that\'s becoming the expectation rather than the story.',
+      'The quieter breakout belongs to Sabah. Beating Slavia Praha 2-0, sealed by a goal from Joy-Lance Mickels, doesn\'t sound like a historic result on paper — until you know it\'s the first Champions League win in the Azerbaijani club\'s history. For a team whose entire competitive existence in Europe\'s top competition had been winless, that\'s a result worth more to the club than three points usually are.',
+      'A few players extended rather than started their stories: Luis Suárez became Sporting CP\'s all-time leading scorer in the competition, a record built over time rather than in one night, while Harry Kane\'s penalty and header stretched his Champions League scoring run to nine consecutive games — a streak that now says as much about his consistency as any single performance could. Jurriën Timber\'s Player of the Match award in Arsenal\'s comfortable 3-0 win over Lille was the night\'s most conventional kind of good, the sort of performance that holds a clean sheet together without ever needing a moment of individual brilliance to be noticed.',
+      'Put together, Matchday 2 is a reminder of what the Champions League\'s league phase was actually built to surface: not just the usual superclub storylines, but a 20-year-old forward most casual fans had never heard of a day ago, and a club from Azerbaijan writing its first real sentence in the competition\'s history.',
+    ],
+    related:'ucl-recap',
   },
   {id:'clasico-preview', sport:'football', league:'La Liga', cat:'preview',
     headline:'El Clásico Set for October 25 at Camp Nou',
@@ -1218,6 +1231,18 @@ const ARTICLES = [
       'With the series already secured 2-0, Tuesday\'s third T20I at the same Rawalpindi venue is a dead rubber on the scoreboard but not necessarily in substance — it\'s the last chance for Sri Lanka\'s middle order to find answers before the tour moves into ODIs, and the last data point before Pakistan\'s selectors have to decide whether Sadaqat\'s breakout innings earns him a longer run in the XI.',
     ],
     related:'pak-sl-2nd-t20i-recap',
+  },
+  {id:'pak-sl-3rd-t20i-recap', sport:'cricket', cat:'recap',
+    headline:'Mendis\' 87 Hands Sri Lanka a Consolation Win as Pakistan Take the Series 2-1',
+    dek:'Kusal Mendis blazed an unbeaten 87 off 48 to chase down Pakistan\'s 168/8 with 17 balls to spare in the dead-rubber finale at Rawalpindi, denying the hosts a clean sweep.',
+    byline:'Clutch Room Cricket Desk', mins:4, time:'Oct 13, 2026',
+    qa:[['What was the final score?','Sri Lanka 172/2 beat Pakistan 168/8 by 8 wickets, with 17 balls remaining.'],
+        ['Who starred for either side?','Kusal Mendis made an unbeaten 87 off 48 for Sri Lanka; Sahibzada Farhan top-scored for Pakistan with 76, and Dasun Shanaka took 3/21.']],
+    body:[
+      'Pakistan\'s bid for a clean sweep fell short in Rawalpindi as Sri Lanka ran down 168/8 with eight wickets and 17 balls to spare, Kusal Mendis leading the chase with an unbeaten 87 off just 48 balls.',
+      'Sahibzada Farhan had given the hosts something to defend, top-scoring with 76, but Dasun Shanaka\'s 3/21 kept Pakistan below 170 on a ground that had produced 215 just two days earlier. It proved well short once Mendis found his range.',
+      'The result means Sri Lanka become the first side to beat Pakistan in five T20Is on home soil, even as Pakistan close out the series 2-1 on the back of the first two games. The tour now shifts to the ODI leg.',
+    ],
   },
 ];
 

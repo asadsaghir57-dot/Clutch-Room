@@ -2544,7 +2544,7 @@ function renderNFLHub(){
 
 function analysisCard(a){
   const s = sportById(a.sport);
-  return `<a class="sn-card" href="#/article/${a.id}" style="--accent:var(--${s.accent})">
+  return `<a class="sn-card" href="#/article/${a.id}" data-sport="${a.sport}" style="--accent:var(--${s.accent})">
     <span class="sn-card-top"><span class="sn-card-sport">${s.name}</span>${catPill(a.cat)}</span>
     <h3>${a.headline}</h3>
     <p>${a.dek}</p>
@@ -2553,6 +2553,7 @@ function analysisCard(a){
 }
 function renderSportsNews(){
   const pieces = [...ARTICLES].filter(a=>a.cat==='analysis').reverse();
+  const sportsPresent = SPORTS.filter(s=>pieces.some(a=>a.sport===s.id));
   return `
   ${masthead({sport:null, page:'sports-news'})}
   <main class="wrap">
@@ -2561,10 +2562,30 @@ function renderSportsNews(){
       <h1 class="disp">The deep dives — full breakdowns, not just the score.</h1>
       <p>When a story is big enough — a championship game, a title race, a result that actually changes something — it gets the long-form treatment here: complete analysis, real statistics, and the context a quick recap doesn't have room for. Every piece links back to its quick recap, and vice versa.</p>
     </div>
+    ${sportsPresent.length > 1 ? `<div class="league-chips">
+      <span class="chip on" data-sport="All" role="button" tabindex="0" aria-pressed="true" onclick="filterSportsNews('All')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">All</span>
+      ${sportsPresent.map(s=>`<span class="chip" data-sport="${s.id}" role="button" tabindex="0" aria-pressed="false" onclick="filterSportsNews('${s.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">${s.name}</span>`).join('')}
+    </div>` : ''}
     ${pieces.length ? `<div class="sn-grid">${pieces.map(analysisCard).join('')}</div>`
       : `<div class="sn-empty"><p>Nothing's hit the long-form bar yet — check back once a big one breaks.</p></div>`}
+    <p id="no-sn-articles" class="fixtures-fallback" style="display:none;">No Sports News pieces for this sport yet.</p>
   </main>
   ${footer()}`;
+}
+function filterSportsNews(sportId){
+  document.querySelectorAll('#app .league-chips .chip').forEach(c=>{
+    const on = c.dataset.sport===sportId;
+    c.classList.toggle('on', on);
+    c.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  let anyVisible = false;
+  document.querySelectorAll('#app .sn-card').forEach(card=>{
+    const show = sportId==='All' || card.dataset.sport===sportId;
+    card.style.display = show ? '' : 'none';
+    if(show) anyVisible = true;
+  });
+  const empty = document.getElementById('no-sn-articles');
+  if(empty) empty.style.display = anyVisible ? 'none' : 'block';
 }
 function renderAbout(){
   return `

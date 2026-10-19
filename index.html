@@ -597,8 +597,8 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
 <script>
 const SPORTS = [
   {id:'football', name:'Football', accent:'court', heat:86, status:'PSG STUN CITY 4-2 · REAL MADRID WIN LATE IN ROME · UCL MD2 COMPLETE', deep:'full',
-    sub:'Premier League · Champions League · La Liga · Serie A · Bundesliga · MLS · Saudi Pro League',
-    leagues:['All','Champions League','Premier League','La Liga','Serie A','Bundesliga','MLS','Saudi Pro League']},
+    sub:'Premier League · Champions League · La Liga',
+    leagues:['All','Champions League','Premier League','La Liga']},
   {id:'mlb', name:'MLB', accent:'court', heat:97, status:'BREWERS SWEEP NLCS, REACH FIRST WORLD SERIES SINCE 1982 · ALCS GM6 TONIGHT', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
   {id:'nfl', name:'NFL', accent:'away', heat:76, status:'WEEK 7: CHIEFS, BILLS, STEELERS WIN · COMMANDERS-49ERS TONIGHT', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'DAVIDOVICH FOKINA WINS SHANGHAI FOR FIRST MASTERS 1000 TITLE', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
@@ -627,7 +627,7 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},
     {status:'TONIGHT 8:00 PM ET', away:{abbr:'CLE'}, home:{abbr:'TB'}, note:'ALCS Gm6 · Tropicana Field · Guardians face elimination'},
   ]},
-  football:{context:'UCL MD2 COMPLETE · PSG STUN CITY 4-2, REAL MADRID WIN LATE IN ROME', games:[
+  football:{context:'UCL MD2 COMPLETE · BIG WEEKEND ACROSS EUROPE', games:[
     {status:'FINAL', away:{abbr:'PSG',record:'4'}, home:{abbr:'MCI',record:'2'}, note:'UCL MD2 · PSG stun Man City at the Etihad'},
     {status:'FINAL', away:{abbr:'RMA',record:'4'}, home:{abbr:'ROM',record:'3'}, note:'UCL MD2 · Real Madrid score 3 in the final 8 minutes to win in Rome'},
     {status:'FINAL', away:{abbr:'LIV',record:'6'}, home:{abbr:'LASK',record:'3'}, note:'UCL MD2'},
@@ -640,6 +640,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'BRU',record:'4'}, home:{abbr:'INT',record:'3'}, note:'UCL MD2 · Club Brugge edge Inter 4-3'},
     {status:'FINAL', away:{abbr:'ARS',record:'1'}, home:{abbr:'NFO',record:'0'}, note:'Premier League · Arsenal win at Nottingham Forest'},
     {status:'FINAL', away:{abbr:'CRY',record:'0'}, home:{abbr:'BHA',record:'5'}, note:'Premier League · Brighton rout Crystal Palace'},
+    {status:'FINAL', away:{abbr:'SEV',record:'1'}, home:{abbr:'RMA',record:'4'}, note:'La Liga · Real Madrid cruise past Sevilla'},
+    {status:'FINAL', away:{abbr:'BAR',record:'5'}, home:{abbr:'BET',record:'2'}, note:'La Liga · Barcelona rout Real Betis on the road'},
   ]},
   tennis:{context:'SHANGHAI MASTERS COMPLETE · DAVIDOVICH FOKINA WINS FIRST MASTERS 1000', games:[
     {status:'FINAL', away:{abbr:'DAVIDOVICH FOKINA'}, home:{abbr:'ZVEREV'}, note:'QF · Davidovich Fokina rallies from a set down to beat the No. 1 seed'},
@@ -1008,6 +1010,17 @@ const ARTICLES = [
       'With Matchday 2 now complete across both nights, City\'s home defeat and Madrid\'s late drama were the two results that will dominate the conversation heading into Matchday 3, which starts Tuesday with Fenerbahçe-Slavia Praha, Roma-Slovan Bratislava and Liverpool-Villarreal, before City face AEK Athens and PSG host Barcelona on Wednesday.',
     ],
     pull:'City\'s first home defeat of the season and a Real Madrid team that scored three goals in eight minutes to steal a result in Rome.',
+  },
+  {id:'weekend-roundup-europe', sport:'football', league:'La Liga', cat:'recap',
+    headline:'Real Madrid and Barcelona Both Cruise Into the Clásico Build-Up',
+    dek:'Real Madrid beat Sevilla 4-1 and Barcelona won 5-2 away at Real Betis — a confidence-building weekend for both sides two weeks out from El Clásico at Camp Nou.',
+    byline:'Clutch Room Football Desk', mins:4, time:'Oct 19, 2026',
+    qa:[['What were the results?','Real Madrid beat Sevilla 4-1; Barcelona won 5-2 away at Real Betis.'],
+        ['Why does this matter?','Both sides now arrive at the October 25 Clásico off comfortable, confidence-building wins rather than carrying problems into it.']],
+    body:[
+      'Both Madrid and Barcelona used the weekend to build momentum ahead of El Clásico on October 25. Real Madrid beat Sevilla 4-1 at home, a comfortable scoreline that never looked in doubt.',
+      'Barcelona\'s result was the more eye-catching of the two: a 5-2 win away at Real Betis, a side that\'s normally difficult to break down at home. With both sides delivering dominant weekend wins, the pressure now shifts to whichever team blinks first over the final two weeks of build-up.',
+    ],
   },
   {id:'clasico-preview', sport:'football', league:'La Liga', cat:'preview',
     headline:'El Clásico Set for October 25 at Camp Nou',

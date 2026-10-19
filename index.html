@@ -114,6 +114,7 @@ h1,h2,h3,.disp{
 .nav-more .chev{display:inline-block;font-size:9px;transition:transform .15s ease;}
 .nav-more:hover .chev,.nav-more:focus-within .chev,.nav-more.open .chev{transform:rotate(180deg);}
 .nav-more-list{display:none;position:absolute;right:0;top:100%;margin-top:6px;background:var(--paper-raised);border:1px solid var(--line);border-radius:8px;box-shadow:0 12px 28px rgba(20,24,28,0.14);padding:6px;min-width:172px;z-index:20;}
+.nav-more-list::before{content:"";position:absolute;top:-6px;left:0;right:0;height:6px;}
 .nav-more:hover .nav-more-list,.nav-more:focus-within .nav-more-list,.nav-more.open .nav-more-list{display:block;}
 .nav-more-list a{display:block;border-radius:5px;}
 .nav-more-list a::after{display:none;}

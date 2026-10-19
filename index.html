@@ -596,18 +596,18 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
 
 <script>
 const SPORTS = [
-  {id:'football', name:'Football', accent:'court', heat:88, status:'CITY ROUTS LIVERPOOL 3-0 · UCL MD2 CITY-PSG TONIGHT AT ETIHAD', deep:'full',
+  {id:'football', name:'Football', accent:'court', heat:86, status:'PSG STUN CITY 4-2 · REAL MADRID WIN LATE IN ROME · UCL MD2 COMPLETE', deep:'full',
     sub:'Premier League · Champions League · La Liga · Serie A · Bundesliga · MLS · Saudi Pro League',
     leagues:['All','Champions League','Premier League','La Liga','Serie A','Bundesliga','MLS','Saudi Pro League']},
-  {id:'mlb', name:'MLB', accent:'court', heat:92, status:'BREWERS LEAD NLCS 2-0 · GM3 TONIGHT AT LA, ALCS TIED 1-1', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
-  {id:'nfl', name:'NFL', accent:'away', heat:82, status:'RAVENS WIN IT IN OT 30-23 · WEEK 5 SUNDAY DONE', deep:'none', sub:'National Football League'},
-  {id:'tennis', name:'Tennis', accent:'court', heat:82, status:'SHANGHAI MASTERS · R16 DONE, ZVEREV-DE MINAUR HEADLINES STACKED QF FIELD', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
-  {id:'padel', name:'Padel', accent:'away', heat:38, status:'TAPIA/COELLO WIN DÜSSELDORF, 3RD STRAIGHT TITLE · MILANO P1 NEXT', deep:'light', sub:'Premier Padel tour'},
-  {id:'basketball', name:'Basketball', accent:'away', heat:45, status:'CHINA SERIES SPLITS 1-1 · OPENER OCT 20', deep:'light', sub:'NBA'},
-  {id:'f1', name:'F1', accent:'away', heat:70, status:'VERSTAPPEN WINS SINGAPORE, 2ND STRAIGHT · AUSTIN NEXT OCT 23-25', deep:'none', sub:'Formula 1'},
-  {id:'ufc', name:'UFC', accent:'away', heat:35, status:'ALLEN SUBMITS DUNCAN IN RD 5 · WIN STREAK TO FOUR', deep:'light', sub:'Mixed martial arts'},
-  {id:'boxing', name:'Boxing', accent:'away', heat:35, status:'SCHOFIELD WINS VACANT WBA TITLE BY DECISION', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:55, status:'SRI LANKA WIN DEAD RUBBER BY 8 WKTS · PAKISTAN TAKE SERIES 2-1', deep:'light', sub:'International & league cricket'},
+  {id:'mlb', name:'MLB', accent:'court', heat:97, status:'BREWERS SWEEP NLCS, REACH FIRST WORLD SERIES SINCE 1982 · ALCS GM6 TONIGHT', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
+  {id:'nfl', name:'NFL', accent:'away', heat:76, status:'WEEK 7: CHIEFS, BILLS, STEELERS WIN · COMMANDERS-49ERS TONIGHT', deep:'none', sub:'National Football League'},
+  {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'DAVIDOVICH FOKINA WINS SHANGHAI FOR FIRST MASTERS 1000 TITLE', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
+  {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
+  {id:'basketball', name:'Basketball', accent:'away', heat:58, status:'NBA SEASON OPENS TOMORROW · CELTICS-PISTONS, KNICKS-76ERS, THUNDER-SPURS', deep:'light', sub:'NBA'},
+  {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
+  {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
+  {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
+  {id:'cricket', name:'Cricket', accent:'away', heat:52, status:'PAKISTAN OPEN ODI TRI-SERIES WITH WIN OVER SRI LANKA', deep:'light', sub:'International & league cricket'},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -622,55 +622,54 @@ const CAT = {
 
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
-  mlb:{context:'MLB LCS · BREWERS LEAD NLCS 2-0, ALCS TIED 1-1', games:[
-    {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'7'}, note:'NLCS Gm2 · Brewers go up 2-0 on Dodgers'},
-    {status:'TONIGHT 8:00 PM ET', away:{abbr:'MIL'}, home:{abbr:'LAD'}, note:'NLCS Gm3 · Dodger Stadium · Brewers lead series 2-0'},
-    {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm2 · Rays even series 1-1, Gm3 Thu at Cleveland'},
+  mlb:{context:'BREWERS SWEEP NLCS 4-0 · ALCS GM6 TONIGHT, RAYS LEAD 3-2', games:[
+    {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
+    {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},
+    {status:'TONIGHT 8:00 PM ET', away:{abbr:'CLE'}, home:{abbr:'TB'}, note:'ALCS Gm6 · Tropicana Field · Guardians face elimination'},
   ]},
-  football:{context:'MATCHWEEK 6 COMPLETE · UCL MD2 FULL SLATE TONIGHT', games:[
-    {status:'FINAL', away:{abbr:'TOT',record:'1'}, home:{abbr:'MUN',record:'1'}, note:'Solanke\'s stoppage-time leveler denies United after Bentancur red card'},
-    {status:'FINAL', away:{abbr:'MCI',record:'3'}, home:{abbr:'LIV',record:'0'}, note:'Haaland, Doku, Cherki score in 16 minutes as 10-man Liverpool collapse'},
-    {status:'FINAL', away:{abbr:'MUN',record:'0'}, home:{abbr:'ATM',record:'2'}, note:'UCL MD2 · Barrios, Lookman sink United in Madrid'},
+  football:{context:'UCL MD2 COMPLETE · PSG STUN CITY 4-2, REAL MADRID WIN LATE IN ROME', games:[
+    {status:'FINAL', away:{abbr:'PSG',record:'4'}, home:{abbr:'MCI',record:'2'}, note:'UCL MD2 · PSG stun Man City at the Etihad'},
+    {status:'FINAL', away:{abbr:'RMA',record:'4'}, home:{abbr:'ROM',record:'3'}, note:'UCL MD2 · Real Madrid score 3 in the final 8 minutes to win in Rome'},
+    {status:'FINAL', away:{abbr:'LIV',record:'6'}, home:{abbr:'LASK',record:'3'}, note:'UCL MD2'},
+    {status:'FINAL', away:{abbr:'COM',record:'2'}, home:{abbr:'FEY',record:'3'}, note:'UCL MD2'},
+    {status:'FINAL', away:{abbr:'AEK',record:'1'}, home:{abbr:'SHK',record:'3'}, note:'UCL MD2'},
+    {status:'FINAL', away:{abbr:'POR',record:'2'}, home:{abbr:'BET',record:'3'}, note:'UCL MD2'},
+    {status:'FINAL', away:{abbr:'STU',record:'3'}, home:{abbr:'SLB',record:'0'}, note:'UCL MD2'},
+    {status:'FINAL', away:{abbr:'FEN',record:'0'}, home:{abbr:'AVL',record:'6'}, note:'UCL MD2 · Aston Villa rout Fenerbahçe'},
+    {status:'FINAL', away:{abbr:'DOR',record:'0'}, home:{abbr:'BOD',record:'1'}, note:'UCL MD2'},
     {status:'FINAL', away:{abbr:'BRU',record:'4'}, home:{abbr:'INT',record:'3'}, note:'UCL MD2 · Club Brugge edge Inter 4-3'},
-    {status:'TODAY 6:45 PM ET', away:{abbr:'LIV'}, home:{abbr:'LASK'}, note:'UCL MD2'},
-    {status:'TODAY 6:45 PM ET', away:{abbr:'COM'}, home:{abbr:'FEY'}, note:'UCL MD2'},
-    {status:'TODAY 3:00 PM ET', away:{abbr:'AEK'}, home:{abbr:'SHK'}, note:'UCL MD2'},
-    {status:'TODAY 3:00 PM ET', away:{abbr:'POR'}, home:{abbr:'BET'}, note:'UCL MD2'},
-    {status:'TODAY 3:00 PM ET', away:{abbr:'RMA'}, home:{abbr:'ROM'}, note:'UCL MD2 · Stadio Olimpico'},
-    {status:'TODAY 3:00 PM ET', away:{abbr:'STU'}, home:{abbr:'SLB'}, note:'UCL MD2'},
-    {status:'TODAY 3:00 PM ET', away:{abbr:'FEN'}, home:{abbr:'AVL'}, note:'UCL MD2'},
-    {status:'TODAY 3:00 PM ET', away:{abbr:'PSG'}, home:{abbr:'MCI'}, note:'UCL MD2 · Etihad Stadium'},
-    {status:'TODAY 3:00 PM ET', away:{abbr:'DOR'}, home:{abbr:'BOD'}, note:'UCL MD2'},
+    {status:'FINAL', away:{abbr:'ARS',record:'1'}, home:{abbr:'NFO',record:'0'}, note:'Premier League · Arsenal win at Nottingham Forest'},
+    {status:'FINAL', away:{abbr:'CRY',record:'0'}, home:{abbr:'BHA',record:'5'}, note:'Premier League · Brighton rout Crystal Palace'},
   ]},
-  tennis:{context:'SHANGHAI MASTERS · QUARTERFINALS SET', games:[
-    {status:'FINAL', away:{abbr:'ZVEREV'}, home:{abbr:'BUBLIK'}, note:'7-6(6), 4-6, 7-6(1) · No. 1 seed survives into QFs'},
-    {status:'FINAL', away:{abbr:'DE MINAUR'}, home:{abbr:'KHACHANOV'}, note:'6-3, 6-4 · R16, sets up QF vs Zverev'},
-    {status:'FINAL', away:{abbr:'MEDVEDEV'}, home:{abbr:'TSITSIPAS'}, note:'6-4, 7-5 · R16, Medvedev into QFs'},
-    {status:'FINAL', away:{abbr:'JODAR'}, home:{abbr:'VAN DE ZANDSCHULP'}, note:'6-7(4), 6-4, 6-2 · R16, Jodar\'s 3rd straight comeback win'},
-    {status:'FINAL/RET', away:{abbr:'RUUD'}, home:{abbr:'AUGER-ALIASSIME'}, note:'5-2, 15-15 ret. · Auger-Aliassime exits with knee injury'},
+  tennis:{context:'SHANGHAI MASTERS COMPLETE · DAVIDOVICH FOKINA WINS FIRST MASTERS 1000', games:[
+    {status:'FINAL', away:{abbr:'DAVIDOVICH FOKINA'}, home:{abbr:'ZVEREV'}, note:'QF · Davidovich Fokina rallies from a set down to beat the No. 1 seed'},
+    {status:'FINAL', away:{abbr:'DAVIDOVICH FOKINA'}, home:{abbr:'HURKACZ'}, note:'SF · Davidovich Fokina reaches his first Masters 1000 final'},
+    {status:'FINAL', away:{abbr:'JODAR'}, home:{abbr:'DAVIDOVICH FOKINA'}, note:'Final · Davidovich Fokina wins 1-6, 7-6(5), 6-4 for his first ATP Masters 1000 title'},
   ]},
-  padel:{context:'DÜSSELDORF COMPLETE · MILANO P1 UNDERWAY', games:[
-    {status:'FINAL', away:{abbr:'STUPACZUK/SANZ'}, home:{abbr:'TAPIA/COELLO'}, note:'6-2, 7-6(5) · Tapia/Coello win 3rd straight title'},
+  padel:{context:'MILANO P1 COMPLETE · TAPIA/COELLO WIN AGAIN', games:[
+    {status:'FINAL', away:{abbr:'LEBRÓN/AUGSBURGER'}, home:{abbr:'TAPIA/COELLO'}, note:'Milano P1 Final · Tapia/Coello win 4-6, 6-3, 6-2 for back-to-back P1 titles'},
   ]},
-  basketball:{context:'NBA CHINA GAMES · PRESEASON', games:[
+  basketball:{context:'NBA SEASON OPENS TOMORROW · 3-GAME OPENING NIGHT', games:[
     {status:'FINAL', away:{abbr:'HOU',record:'135'}, home:{abbr:'DAL',record:'117'}, note:'NBA China Gm1 · Macao · Rockets romp, Flagg scores 19'},
     {status:'FINAL', away:{abbr:'DAL',record:'132'}, home:{abbr:'HOU',record:'115'}, note:'NBA China Gm2 · Macao · Mavericks even series 1-1'},
+    {status:'TUE OCT 20 · 3:00 PM ET', away:{abbr:'BOS',record:'0-0'}, home:{abbr:'DET',record:'0-0'}, note:'Opening Night'},
     {status:'TUE OCT 20 · 7:00 PM ET', away:{abbr:'PHI',record:'0-0'}, home:{abbr:'NYK',record:'0-0'}, note:'Opening Night · Banner night'},
+    {status:'TUE OCT 20 · 9:30 PM ET', away:{abbr:'OKC',record:'0-0'}, home:{abbr:'SAS',record:'0-0'}, note:'Opening Night'},
   ]},
-  ufc:{context:'FIGHT NIGHT · FINAL', games:[
-    {status:'FINAL', away:{abbr:'ALLEN'}, home:{abbr:'DUNCAN'}, note:'Allen wins by R5 submission · Las Vegas'},
+  ufc:{context:'FIGHT NIGHT EDMONTON · FINAL', games:[
+    {status:'FINAL', away:{abbr:'BUCKLEY'}, home:{abbr:'MALOTT'}, note:'Malott KOs Buckley at 2:32 of Round 2 · Edmonton'},
   ]},
-  boxing:{context:'FIGHT NIGHT · FINAL', games:[
-    {status:'FINAL', away:{abbr:'SCHOFIELD'}, home:{abbr:'BAHDI'}, note:'Schofield wins vacant WBA title by decision'},
-    {status:'FINAL', away:{abbr:'MENDOZA'}, home:{abbr:'SANDOVAL'}, note:'Mendoza TKO, late sub, new unified flyweight champ'},
+  boxing:{context:'DUBOIS STOPS WARDLEY · REMATCH FINAL', games:[
+    {status:'FINAL', away:{abbr:'WARDLEY'}, home:{abbr:'DUBOIS'}, note:'Dubois stops Wardley in Round 2 of their rematch'},
   ]},
-  nfl:{context:'WEEK 5 · SUNDAY FINAL', games:[
-    {status:'FINAL/OT', away:{abbr:'ATL',record:'23'}, home:{abbr:'BAL',record:'30'}, note:'Huntley OT winner · Ravens 4-1, 1st AFC North'},
-    {status:'FINAL', away:{abbr:'LV',record:'17'}, home:{abbr:'NE',record:'45'}, note:'Patriots rout Raiders'},
-    {status:'FINAL', away:{abbr:'ARI',record:'21'}, home:{abbr:'DET',record:'45'}, note:'Lions rout Cardinals'},
+  nfl:{context:'WEEK 7 · SUNDAY DONE, MNF TONIGHT', games:[
+    {status:'FINAL', away:{abbr:'LAC',record:'6'}, home:{abbr:'KC',record:'22'}, note:'Week 7 · Chiefs cruise past Chargers'},
+    {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
+    {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
+    {status:'TONIGHT 8:15 PM ET', away:{abbr:'WSH'}, home:{abbr:'SF'}, note:'Week 7 · Monday Night Football'},
   ]},
-  cricket:{context:'PAK v SL · SERIES WON 2-1', games:[
-    {status:'FINAL', away:{abbr:'SL',record:'172/2'}, home:{abbr:'PAK',record:'168/8'}, note:'3rd T20I · Mendis 87* seals consolation win, Pakistan take series 2-1'},
+  cricket:{context:'ODI TRI-SERIES OPENS · PAKISTAN BEAT SRI LANKA', games:[
+    {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
 };
 
@@ -866,6 +865,37 @@ const ARTICLES = [
       'Cleveland now turns around for an even bigger challenge: the Tampa Bay Rays, who swept the Yankees to reach the ALCS and have had extra rest waiting for an opponent. Game 1 is tonight at Tropicana Field.',
     ],
   },
+  {id:'brewers-sweep-nlcs-recap', sport:'mlb', cat:'recap',
+    headline:'Brewers Complete 4-0 NLCS Sweep, Reach First World Series Since 1982',
+    dek:'Garrett Mitchell\'s go-ahead homer off Tanner Scott in the sixth sent Milwaukee past a late Dodgers rally, 6-4 in Game 4 — a year after being swept by LA in the same round.',
+    byline:'Clutch Room MLB Desk', mins:6, time:'Oct 15, 2026',
+    qa:[['What was the final score of the sweep-clinching game?','Brewers 6, Dodgers 4, in Game 4 at Dodger Stadium on October 15 — Milwaukee\'s fourth straight win of the series.'],
+        ['Was it ever in doubt?','Yes. Shohei Ohtani\'s first home run of the postseason put the Dodgers up 4-0 in the second inning. Milwaukee clawed back and Garrett Mitchell\'s go-ahead homer off Tanner Scott in the sixth put them in front for good.']],
+    body:[
+      'A year ago, the Dodgers swept this exact matchup on their way to a second straight title. This time the Brewers returned the favor: a 6-4 win in Game 4 at Dodger Stadium completed a four-game sweep of the two-time defending champions and sent Milwaukee to its first World Series since 1982.',
+      'It didn\'t look like a sweep in the making early. Shohei Ohtani hit his first home run of this postseason in the second inning, part of a three-run burst that put Los Angeles up 4-0 and had Dodger Stadium rocking for a Game 5 that would have sent the series back to Milwaukee. The Brewers spent the rest of the night taking that game away from them.',
+      'Garrett Mitchell\'s go-ahead home run off Tanner Scott in the sixth inning was the swing that turned the game, and it fit a pattern from the whole series: Milwaukee came back in every one of the four games, never trailing for good. Jake Bauers, who hit .286 with six RBIs for the series including three in the clincher, was named NLCS MVP for exactly that kind of contribution.',
+      'Milwaukee\'s bullpen slammed the door from there, and the Brewers became the first team in MLB history to sweep the Dodgers a year after being swept by them in the same round. They now wait for the winner of a Rays-Guardians ALCS that is still going, with Tampa Bay leading 3-2 heading into Game 6.',
+    ],
+    pull:'Down 4-0 in the second inning, the Brewers never trailed again — completing a sweep of the team that swept them a year ago.',
+    related:'brewers-world-series-bound-analysis',
+  },
+  {id:'brewers-world-series-bound-analysis', sport:'mlb', cat:'analysis',
+    headline:'How the Brewers Swept the Two-Time Champs: Inside Milwaukee\'s NLCS Blueprint',
+    dek:'A full look at how Milwaukee won four straight against the best record in baseball — late-game bullpen dominance, timely power, and a lineup that refused to stay down.',
+    byline:'Clutch Room MLB Desk', mins:9, time:'Oct 16, 2026',
+    qa:[['Did the Brewers ever trail going into the final innings of a game?','In Game 4, yes — 4-0 after two innings. They outscored the Dodgers 6-0 the rest of the way. Across the series, Milwaukee repeatedly answered Dodgers leads rather than building big ones of their own.'],
+        ['Who won series MVP and why?','Jake Bauers, batting .286 with six RBIs across the four games, including three in the Game 4 clincher — the kind of contribution that showed up at the moments Milwaukee needed it most.']],
+    body:[
+      'Sweeps tend to look inevitable in the recap and chaotic in the box scores, and this one was no exception. Milwaukee\'s four wins over Los Angeles came by a combined margin of just nine runs across four games — 2-1, 7-4, 6-2, 6-4 — the signature of a series that was close in the moment and only looks lopsided from the end result.',
+      'The through-line was composure after conceding the first real punch. In Game 1, the Dodgers struck first before Brice Turang\'s solo homer and a late Luis Lara RBI single put Milwaukee ahead for good. In Game 4, the deficit was bigger — Ohtani\'s three-run blast made it 4-0 by the second inning — and the response was the same: claw back, take the lead late, and let the bullpen close it out.',
+      'That bullpen is the other half of the story. Across the series, Milwaukee\'s relief corps was the difference-maker in low-margin games, repeatedly stranding Dodgers threats and protecting one-run and two-run leads in the middle innings rather than racking up strikeout totals in blowouts. It\'s a formula built for exactly this kind of series — close, nervy, decided by a handful of swings rather than a dominant starting rotation.',
+      'Jake Bauers\' NLCS MVP award reflects where Milwaukee actually won the series: not with one signature performance, but with a .286 average and six RBIs spread across all four games, three of them arriving in the sixth inning of the clincher when the Brewers needed a go-ahead run most. That kind of contribution doesn\'t show up as a single highlight — it shows up as a team that kept finding a way to answer, inning after inning, game after game.',
+      'What makes the sweep remarkable beyond the scoreline is the opponent: a Dodgers team that had won back-to-back titles and swept this exact Brewers roster in last year\'s NLCS. Milwaukee is the first team in MLB history to return that exact favor — sweeping the team that swept them, one year later, in the same round. For a franchise that hadn\'t reached the World Series since 1982, that context makes this less an upset than a complete turning of the tables.',
+      'Milwaukee now waits on the winner of an ALCS that\'s gone the distance — Tampa Bay leads Cleveland 3-2 with Game 6 tonight at Tropicana Field. Whoever survives inherits a Brewers team that has shown, four times in a row, that it doesn\'t need to lead early to win late.',
+    ],
+    related:'brewers-sweep-nlcs-recap',
+  },
   {id:'mlb-injury-watch', sport:'mlb', cat:'debate',
     headline:'First Take: Can the Dodgers Really Three-Peat?',
     dek:'Los Angeles trails the NLCS 0-1 after a tight Game 1 loss to Milwaukee. Two Clutch Room writers argue whether history still says the Dodgers finish the job.',
@@ -922,6 +952,20 @@ const ARTICLES = [
     ],
     body:['A four-time champion chasing a fifth Shanghai title is this week\'s version of an argument tennis has every season: is a great champion repeating more impressive, or does the sport need the trophy to go somewhere new? Worth having it properly with the draw freshly out.'],
   },
+  {id:'shanghai-final-recap', sport:'tennis', cat:'recap',
+    headline:'Davidovich Fokina Wins Shanghai for His First Masters 1000 Title',
+    dek:'Alejandro Davidovich Fokina beat Rafael Jodar 1-6, 7-6(5), 6-4 in a two-hour, 28-minute final — a run that also knocked out Hubert Hurkacz and top seed Alexander Zverev along the way.',
+    byline:'Clutch Room Tennis Desk', mins:6, time:'Oct 18, 2026',
+    qa:[['What was the final score?','Alejandro Davidovich Fokina beat Rafael Jodar 1-6, 7-6(5), 6-4 in two hours and 28 minutes.'],
+        ['Who else did Davidovich Fokina beat en route to the title?','He saved a match point against Frances Tiafoe in the third round, then rallied from a set down to beat both Hubert Hurkacz and top seed Alexander Zverev.']],
+    body:[
+      'Not the champion anyone in Shanghai\'s draw projected a week ago: Alejandro Davidovich Fokina beat Rafael Jodar 1-6, 7-6(5), 6-4 in the final, claiming his third ATP Tour title overall and, for the first time in his career, a Masters 1000 trophy.',
+      'The path there was the story as much as the final itself. Davidovich Fokina saved a match point against Frances Tiafoe just to survive the third round, then rallied from a set down to beat Hubert Hurkacz and — in the quarterfinals — top seed Alexander Zverev, the man this draw had been projected to run through on the way to a potential Djokovic final that never materialized.',
+      'Jodar, the next-gen star who reached his own first Masters 1000 final, took the opening set 6-1 and looked for a stretch like he\'d close this out in straight sets. Davidovich Fokina turned it in the second-set tiebreak and leaned on the deeper petrol tank over two and a half hours, closing it out 6-4 in the third.',
+      'It settles, in the most direct way possible, the question this week\'s draw raised before a ball was struck: this wasn\'t a fifth title for an established champion repeating in familiar territory — it\'s a new name on the trophy, won the hard way, through three separate comeback wins against three different kinds of opponents.',
+    ],
+    pull:'He saved a match point just to reach the third round. By the final, he\'d beaten the No. 1 seed and a fellow first-time finalist to win his first Masters 1000.',
+  },
 
   {id:'ucl-recap', sport:'football', league:'Champions League', cat:'recap',
     headline:'Tresoldi\'s Hat-Trick Sinks Inter as Barcelona and Arsenal Win Big on Matchday 2',
@@ -950,6 +994,20 @@ const ARTICLES = [
       'Put together, Matchday 2 is a reminder of what the Champions League\'s league phase was actually built to surface: not just the usual superclub storylines, but a 20-year-old forward most casual fans had never heard of a day ago, and a club from Azerbaijan writing its first real sentence in the competition\'s history.',
     ],
     related:'ucl-recap',
+  },
+  {id:'ucl-md2-wednesday-recap', sport:'football', league:'Champions League', cat:'recap',
+    headline:'PSG Stun Manchester City 4-2, Real Madrid Score Three Late to Win in Rome',
+    dek:'Wednesday closed out Matchday 2 with City\'s first home defeat of the campaign and a Real Madrid comeback that turned a 3-1 deficit into a 4-3 win in the final eight minutes.',
+    byline:'Clutch Room Football Desk', mins:6, time:'Oct 15, 2026',
+    qa:[['What happened at the Etihad?','Paris Saint-Germain won 4-2 away at Manchester City, City\'s first home defeat of the season.'],
+        ['How did Real Madrid beat Roma?','Madrid trailed for most of the match before scoring three times in the final eight minutes to win 4-3 in Rome.']],
+    body:[
+      'Manchester City\'s unbeaten home record this season didn\'t survive Matchday 2. Paris Saint-Germain went to the Etihad and won 4-2, the kind of result that reshapes how the rest of City\'s league phase gets talked about and confirms PSG remain the team to beat even with last season\'s continental success behind them.',
+      'In Rome, Real Madrid needed a finish to match the occasion. Trailing Roma for most of the night, Carlo Ancelotti\'s side scored three times in the final eight minutes to turn what looked like a damaging away defeat into a 4-3 win — the kind of late collapse-and-recovery that will be remembered as one of the signature results of this Champions League season regardless of how the rest of it goes.',
+      'Elsewhere on a genuinely stacked Wednesday slate: Liverpool won 6-3 away at LASK, Feyenoord beat Como 3-2, Aston Villa routed Fenerbahçe 6-0, Shakhtar Donetsk beat AEK Athens 3-1, Real Betis beat Porto 3-2, Stuttgart won 3-0 at Slovan Bratislava, and Bodø/Glimt beat Borussia Dortmund 1-0 in one of the night\'s bigger surprises.',
+      'With Matchday 2 now complete across both nights, City\'s home defeat and Madrid\'s late drama were the two results that will dominate the conversation heading into Matchday 3, which starts Tuesday with Fenerbahçe-Slavia Praha, Roma-Slovan Bratislava and Liverpool-Villarreal, before City face AEK Athens and PSG host Barcelona on Wednesday.',
+    ],
+    pull:'City\'s first home defeat of the season and a Real Madrid team that scored three goals in eight minutes to steal a result in Rome.',
   },
   {id:'clasico-preview', sport:'football', league:'La Liga', cat:'preview',
     headline:'El Clásico Set for October 25 at Camp Nou',
@@ -1019,6 +1077,17 @@ const ARTICLES = [
     body:[
       'Agustín Tapia and Arturo Coello completed an unbeaten week in Düsseldorf, beating Franco Stupaczuk and Jon Sanz 6-2, 7-6(5) in Sunday\'s final to win the title without dropping a set across the whole tournament.',
       'Stupaczuk and Sanz were the surprise finalists, having knocked out defending champions Alejandro Galán and Federico Chingotto in the semifinal, 7-6(3), 6-4 — the result that ended any chance of the Tapia-Coello vs. Galán-Chingotto final the draw had been building toward all week. In the women\'s event, María Calvo and Claudia Fernández Sánchez won their final 6-3, 6-0.',
+    ],
+  },
+  {id:'milano-padel-final-recap', sport:'padel', cat:'recap',
+    headline:'Tapia-Coello Win Milano P1 Too, Beating Lebrón-Augsburger in Three',
+    dek:'A week after Düsseldorf, Agustín Tapia and Arturo Coello won again — this time the hard way, dropping the opening set before closing it out 4-6, 6-3, 6-2.',
+    byline:'Clutch Room Padel Desk', mins:4, time:'Oct 18, 2026',
+    qa:[['Who won the men\'s final?','Agustín Tapia and Arturo Coello beat Juan Lebrón and Leo Augsburger 4-6, 6-3, 6-2.'],
+        ['What happened in the women\'s final?','Bea González and Paula Josemaría beat Andrea Ustero and Ariana Sánchez 7-6, 6-3.']],
+    body:[
+      'Tapia and Coello made it back-to-back titles, but Milano made them work for it in a way Düsseldorf never did. Lebrón and Augsburger, the No. 3 seeds, took the opening set 6-4 and had the No. 1 pair on the back foot before Tapia-Coello reset, took the second set 6-3, and closed out the title 6-2 in the decider.',
+      'It\'s a different kind of statement than the straight-sets week in Düsseldorf — proof the top pair can win a final that isn\'t going entirely their way, not just the ones where it is. In the women\'s final, Bea González and Paula Josemaría beat Andrea Ustero and Ariana Sánchez 7-6, 6-3 for their own title.',
     ],
   },
   {id:'nba-tipoff-primer', sport:'basketball', cat:'preview',
@@ -1107,6 +1176,26 @@ const ARTICLES = [
     body:[
       'Floyd Schofield claimed the vacant WBA lightweight title at Wintrust Arena, outworking Lucas Bahdi across the full distance for a unanimous decision — scorecards of 115-111, 116-110 and 119-108. Both fighters were dropped during the fight, but the volume gap was decisive: Schofield landed 117 punches to Bahdi\'s 74, using speed and movement to control the pace and recover whenever Bahdi found success.',
       'The night\'s bigger surprise came earlier. Oscar Collazo, the scheduled flyweight titleholder, withdrew with a rib injury in training, and the WBC/WBA bout went ahead anyway with late replacement Sergio Mendoza stepping in against Ricardo Sandoval. Mendoza scored three knockdowns and stopped Sandoval at 1:43, walking away as the new unified flyweight champion in what was supposed to be someone else\'s fight entirely.',
+    ],
+  },
+  {id:'ufc-fight-night-buckley-malott', sport:'ufc', cat:'recap',
+    headline:'Mike Malott Knocks Out Joaquin Buckley in Edmonton',
+    dek:'A kick, a knee and a finishing punch left Buckley face-down on the canvas at 2:32 of Round 2 — the welterweight main event\'s decisive moment at Rogers Place.',
+    byline:'Clutch Room UFC Desk', mins:4, time:'Oct 17, 2026',
+    qa:[['How did the main event end?','Mike Malott knocked out Joaquin Buckley at 2:32 of Round 2 with a combination that started with a head kick and finished with a punch.'],
+        ['What else happened on the card?','Jasmine Jasudavicius upset Erin Blanchfield by unanimous decision (29-28 on all three cards), Kyle Nelson finished Cristian Perez in 27 seconds, and Javad Mahjoub stopped Joel Faglier in Round 2.']],
+    body:[
+      'Mike Malott delivered the kind of finish that headlines highlight reels for years: a kick toward Joaquin Buckley\'s head, followed immediately by a knee to the jaw, and as Buckley tried to keep throwing back, a finishing punch that put him face-down on the canvas at 2:32 of the second round in front of a home Canadian crowd at Rogers Place.',
+      'The co-main event produced the card\'s biggest upset on paper: Jasmine Jasudavicius outworked Erin Blanchfield for a clean unanimous decision, all three judges scoring it 29-28 in her favor. Earlier on the main card, Kyle Nelson needed just 27 seconds to finish Cristian Perez, and Javad Mahjoub stopped Joel Faglier in the second round of their heavyweight bout.',
+    ],
+  },
+  {id:'boxing-dubois-wardley-2', sport:'boxing', cat:'recap',
+    headline:'Dubois Stops Wardley in Round 2 of Their Rematch',
+    dek:'The decisive action came early in the second round, settling a score the first fight between the two heavyweights left open.',
+    byline:'Clutch Room Boxing Desk', mins:3, time:'Oct 18, 2026',
+    qa:[['How did the fight end?','Daniel Dubois stopped Fabio Wardley in the second round of their heavyweight rematch.']],
+    body:[
+      'Daniel Dubois settled the rematch quickly, stopping Fabio Wardley in the second round with the decisive action arriving early in the frame. Where the first meeting between the two heavyweights left questions open, this one didn\'t go the distance for either fighter to answer them again.',
     ],
   },
 
@@ -1245,6 +1334,18 @@ const ARTICLES = [
       'For a Cardinals team moving on from a former top-five pick less than two years after drafting him, it\'s an early and pointed statement about the direction of their receiver room. For Houston, it\'s a bet that reuniting Harrison with a quarterback who already knows how to target him is worth more than the draft capital spent to get there.',
     ],
   },
+  {id:'nfl-week7-sunday-recap', sport:'nfl', cat:'recap',
+    headline:'Chiefs, Bills and Steelers Win as Week 7\'s Sunday Slate Wraps Up',
+    dek:'Kansas City cruised past the Chargers, Buffalo held off a late Las Vegas push, and Pittsburgh needed overtime to beat Tampa Bay — three of twelve Sunday results ahead of Washington-San Francisco on Monday night.',
+    byline:'Clutch Room NFL Desk', mins:5, time:'Oct 19, 2026',
+    qa:[['What were the headline results?','Kansas City Chiefs 22, Los Angeles Chargers 6; Buffalo Bills 33, Las Vegas Raiders 30; Pittsburgh Steelers 26, Tampa Bay Buccaneers 19 (OT).'],
+        ['What else happened Sunday?','A full twelve-game slate including Houston 34-31 Jacksonville, Chicago 31-23 Atlanta, Cleveland 13-10 Baltimore, New England 26-19 NY Jets, New Orleans 34-27 NY Giants, Carolina 25-14 Philadelphia, Arizona 18-16 LA Rams and Green Bay 23-13 Dallas.']],
+    body:[
+      'Kansas City took care of business early, controlling the Chargers from the opening drive in a 22-6 win that was never seriously in doubt. Buffalo\'s afternoon was tighter than the final score suggests — a late push from Las Vegas made it 33-30 before the Bills closed it out.',
+      'Pittsburgh needed the extra period to beat Tampa Bay 26-19 in overtime, the only game of the day that didn\'t get decided in regulation. Elsewhere, Carolina\'s 25-14 win over Philadelphia was the day\'s biggest form-reversal result, and Arizona\'s 18-16 defensive grind past the Rams was the lowest-scoring game of the week.',
+      'Washington hosts San Francisco on Monday Night Football to close out Week 7.',
+    ],
+  },
   {id:'pak-sl-2nd-t20i-recap', sport:'cricket', cat:'recap',
     headline:'Sadaqat\'s 96 Powers Pakistan to 215, Sri Lanka Crushed by 82 Runs',
     dek:'Maaz Sadaqat and Sahibzada Farhan put on a batting clinic in Rawalpindi as Pakistan posted 215/3 and bowled Sri Lanka out for 133, taking an unassailable 2-0 series lead.',
@@ -1299,6 +1400,18 @@ const ARTICLES = [
       'Across all three matches, the series came down to a simple read: when Farhan and Sadaqat both scored, Pakistan won comfortably; when Pakistan\'s bowling let a Sri Lankan top-order batter get set — Udara in Game 1, Mendis in Game 3 — the margins tightened or flipped entirely. Imran\'s consistency with the ball was the swing factor keeping that from mattering more often than it did.',
     ],
     related:'pak-sl-3rd-t20i-recap',
+  },
+  {id:'pak-sl-odi-1st-match-recap', sport:'cricket', cat:'recap',
+    headline:'Pakistan Open ODI Tri-Series With a 37-Run Win Over Sri Lanka',
+    dek:'Pakistan posted 305 at Rawalpindi and held on as Sri Lanka fell short at 268 — Salman Ali Agha, playing his first international since being dropped as T20I captain, named Player of the Match.',
+    byline:'Clutch Room Cricket Desk', mins:5, time:'Oct 18, 2026',
+    qa:[['What was the final result?','Pakistan 305, Sri Lanka 268 — Pakistan won by 37 runs.'],
+        ['Who was Player of the Match?','Salman Ali Agha — his first international appearance since being dropped from the Test squad and sacked as T20I captain.']],
+    body:[
+      'Pakistan opened the ODI tri-series with England and Sri Lanka the way they wanted to: a comfortable, if not dominant, 37-run win at Rawalpindi, posting 305 and holding off a Sri Lankan chase that fell short at 268.',
+      'The story of the day belonged to Salman Ali Agha. His Player of the Match performance came in his first international outing since a rough stretch that saw him dropped from the Test squad mid-tour and removed as T20I captain — a genuine statement return in a format where Pakistan need him most heading into World Cup preparation.',
+      'The tri-series runs through October 31, with Pakistan, England and Sri Lanka all using these matches explicitly as building blocks toward the ODI World Cup rather than treating them as a standalone series — captain Shaheen Shah Afridi has been clear that the format is the focus for the rest of the month.',
+    ],
   },
 ];
 
@@ -2230,15 +2343,15 @@ function renderMLBHub(){
   const arts = ARTICLES.filter(a=>a.sport==='mlb');
   const byCat = c => arts.filter(a=>a.cat===c);
   const rails = ['recap','preview','injury','debate'].map(c=>({c, items:byCat(c)})).filter(r=>r.items.length);
-  const hero = articleById('dodgers-nlcs-recap');
-  const statLine = hero.pull.replace(/Skubal/i, '<b>Skubal</b>');
+  const hero = articleById('brewers-sweep-nlcs-recap');
+  const statLine = hero.pull.replace(/sweep/i, '<b>sweep</b>');
   return `
   ${masthead({sport:'mlb'})}
   <div class="mlb-progress" id="mlb-progress"></div>
   <div class="mlb-page">
     <nav class="mlb-nav"><span class="mlb-logo">CLUTCH ROOM — BASEBALL EDITION</span><span class="mlb-links"><a href="#/sport/mlb">Home</a><a href="#/">All Sports</a></span></nav>
     <div class="mlb-hero">
-      <span class="mlb-ghost">NLCS</span>
+      <span class="mlb-ghost">WS</span>
       <div class="mlb-hero-content">
         <span class="eyebrow">MLB Postseason · ${s.status}</span>
         <h1>${hero.headline}</h1>
@@ -2247,8 +2360,8 @@ function renderMLBHub(){
     </div>
     <div class="mlb-pins">
       <div class="mlb-pin" style="left:8%;top:0;"><div class="circle">NLDS<br>WON 4-1</div><div class="leader"></div></div>
-      <div class="mlb-pin" style="left:46%;top:14px;"><div class="circle">NLCS GM1<br>MIL 2-1</div><div class="leader"></div></div>
-      <div class="mlb-pin" style="right:6%;left:auto;top:0;"><div class="circle">TURANG HR<br>4TH INNING</div><div class="leader"></div></div>
+      <div class="mlb-pin" style="left:46%;top:14px;"><div class="circle">NLCS<br>WON 4-0</div><div class="leader"></div></div>
+      <div class="mlb-pin" style="right:6%;left:auto;top:0;"><div class="circle">ALCS GM6<br>TB LEADS 3-2</div><div class="leader"></div></div>
     </div>
     <p class="mlb-stat-line">${statLine}</p>
     <div class="mlb-section">

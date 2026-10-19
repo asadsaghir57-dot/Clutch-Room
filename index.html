@@ -501,6 +501,50 @@ a.board-row{display:grid;}
 .fx-score{font-weight:700;text-align:center;}
 .fx-status{color:var(--ink-muted);font-size:11.5px;text-align:right;white-space:nowrap;}
 
+/* ---------- cricket: live match card + summary/scorecard ---------- */
+.cric-card{border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin-top:18px;background:var(--paper-raised);}
+.cric-card.is-live{border-color:var(--live);}
+.cric-card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.cric-card-title{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:18px;letter-spacing:0.02em;}
+.cric-live-tag{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.06em;color:var(--live);}
+.cric-live-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--live);margin-right:6px;animation:pulse 1.3s ease-in-out infinite;}
+@media (prefers-reduced-motion: reduce){.cric-live-tag .dot{animation:none;}}
+.cric-card-sub{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);margin-top:6px;}
+.cric-card-teams{margin-top:16px;display:flex;flex-direction:column;gap:10px;}
+.cric-card-team{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:14px;}
+.cric-card-team .nm{flex:1;font-weight:600;}
+.cric-card-team .sc{font-size:18px;font-weight:700;}
+.cric-card-team .ov{color:var(--ink-muted);font-size:11px;}
+.cric-badge{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--paper);border:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;flex:none;}
+.cric-card-result{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-muted);}
+.cric-report{margin-top:22px;}
+.cric-report-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+.cric-report-head .sub{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-muted);}
+.cric-report-tabs,.cric-sc-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+.cric-pom{margin-top:16px;padding:14px 16px;border-radius:8px;background:color-mix(in srgb, var(--court) 10%, var(--paper-raised));display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
+.cric-pom .l{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-muted);}
+.cric-pom .nm{font-weight:700;}
+.cric-pom .line{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-muted);}
+.cric-summary-block{margin-top:18px;}
+.cric-summary-head{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:0.02em;padding-bottom:8px;border-bottom:1px solid var(--line);}
+.cric-summary-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:10px;}
+.cric-summary-col .h{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:6px;}
+.cric-summary-col .row{display:flex;justify-content:space-between;gap:10px;padding:5px 0;font-size:13px;}
+.cric-summary-col .row .st{color:var(--ink-muted);font-size:12px;flex:none;}
+@media (max-width:640px){.cric-summary-cols{grid-template-columns:1fr;}}
+.cric-innings{margin-top:14px;}
+.cric-bat-table,.cric-bowl-table{width:100%;}
+.cric-bat-row,.cric-bowl-row{display:grid;grid-template-columns:1fr repeat(5,44px);align-items:start;gap:6px;padding:8px 0;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:12.5px;}
+.cric-bat-row span:not(.nm):not(.dismissal),.cric-bowl-row span:not(.nm){text-align:right;}
+.cric-bat-head,.cric-bowl-head{color:var(--ink-muted);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;border-bottom:1px solid var(--ink);}
+.cric-bat-row .nm{font-weight:600;}
+.cric-bat-row .dismissal{display:block;font-weight:400;color:var(--ink-muted);font-size:11px;text-transform:none;letter-spacing:0;margin-top:2px;}
+.cric-bat-extras,.cric-bat-total{display:flex;justify-content:space-between;padding:8px 0;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-muted);}
+.cric-bat-total{font-weight:700;color:var(--ink);border-top:1px solid var(--line);}
+.cric-fow{margin:14px 0;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-muted);line-height:1.6;}
+.cric-fow .h{display:block;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;font-size:10px;color:var(--ink);margin-bottom:4px;}
+@media (max-width:640px){.cric-bat-row,.cric-bowl-row{grid-template-columns:1fr repeat(5,32px);font-size:11px;}}
+
 /* ---------- team / competition directory ---------- */
 .div-section{margin-top:44px;padding-top:30px;border-top:1px solid var(--line);}
 .div-section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;}
@@ -766,6 +810,79 @@ const FIXTURES = {
     ]},
   ]},
 };
+
+/* ---------------- cricket: live match card + full scorecards (real, verified data only) ---------------- */
+const CRICKET_LIVE_MATCH = {
+  series:'Pakistan ODI Tri-Series 2026', matchLabel:'2nd Match (D/N)',
+  venue:'Rawalpindi Cricket Stadium', date:'Oct 20, 2026',
+  status:'upcoming',
+  teams:{
+    away:{abbr:'ENG', name:'England'},
+    home:{abbr:'PAK', name:'Pakistan'},
+  },
+  toss:null, resultLine:'1:00 PM PKT · Toss not yet in',
+};
+const CRICKET_SCORECARDS = {
+  'pak-sl-1st-odi':{
+    title:'Pakistan vs Sri Lanka', series:'Pakistan ODI Tri-Series 2026',
+    matchInfo:'1st Match (D/N), Rawalpindi, October 18, 2026',
+    result:'Pakistan won by 37 runs',
+    playerOfMatch:{name:'Salman Agha', team:'PAK', line:'107 (90)'},
+    innings:[
+      {team:'Pakistan', abbr:'PAK', total:305, overs:'49.5', wkts:10,
+        batting:[
+          {name:'Fakhar Zaman', dismissal:'c Colombage b Madushanka', r:16,b:19,fours:2,sixes:1,sr:84.21},
+          {name:'Saim Ayub', dismissal:'c Liyanage b Madushanka', r:7,b:8,fours:0,sixes:1,sr:87.50},
+          {name:'Babar Azam', dismissal:'c Rathnayake b Malinga', r:45,b:57,fours:6,sixes:0,sr:78.94},
+          {name:'Saad Baig †', dismissal:'c Colombage b Malinga', r:39,b:40,fours:3,sixes:2,sr:97.50},
+          {name:'Salman Agha', dismissal:'c Shanaka b Asitha Fernando', r:107,b:90,fours:10,sixes:1,sr:118.89},
+          {name:'Hasan Nawaz', dismissal:'c Rathnayake b Asitha Fernando', r:37,b:49,fours:2,sixes:2,sr:75.51},
+          {name:'Arafat Minhas', dismissal:'c Kamindu Mendis b Asitha Fernando', r:18,b:15,fours:2,sixes:0,sr:120.00},
+          {name:'Faheem Ashraf', dismissal:'c Kusal Mendis b Malinga', r:6,b:6,fours:0,sixes:0,sr:100.00},
+          {name:'Shaheen Shah Afridi (c)', dismissal:'not out', r:13,b:12,fours:2,sixes:0,sr:108.33},
+          {name:'Naseem Shah', dismissal:'lbw b Malinga', r:0,b:1,fours:0,sixes:0,sr:0.00},
+          {name:'Haris Rauf', dismissal:'run out (Arachchige/Malinga)', r:0,b:4,fours:0,sixes:0,sr:0.00},
+        ],
+        extras:'17 (lb 4, nb 2, w 11)',
+        fow:'1-23 (Saim Ayub, 3.4), 2-32 (Fakhar Zaman, 5.5), 3-106 (Babar Azam, 19.4), 4-118 (Saad Baig, 21.5), 5-215 (Hasan Nawaz, 37.2), 6-279 (Arafat Minhas, 44.6), 7-291 (Salman Agha, 46.5), 8-293 (Faheem Ashraf, 47.2), 9-293 (Naseem Shah, 47.3), 10-305 (Haris Rauf, 49.5)',
+        bowling:[
+          {name:'Asitha Fernando', o:10,m:1,r:59,w:3,econ:5.90},
+          {name:'Dilshan Madushanka', o:10,m:0,r:67,w:2,econ:6.70},
+          {name:'Dasun Shanaka', o:7,m:0,r:41,w:0,econ:5.85},
+          {name:'Eshan Malinga', o:9.5,m:1,r:46,w:4,econ:4.67},
+          {name:'Sachindu Colombage', o:10,m:0,r:61,w:0,econ:6.10},
+          {name:'Kamindu Mendis', o:2,m:0,r:19,w:0,econ:9.50},
+          {name:'Sahan Arachchige', o:1,m:0,r:8,w:0,econ:8.00},
+        ],
+      },
+      {team:'Sri Lanka', abbr:'SL', total:268, overs:'48.1', wkts:10,
+        batting:[
+          {name:'Kamindu Mendis', dismissal:'c Faheem Ashraf b Shaheen Shah Afridi', r:44,b:50,fours:4,sixes:0,sr:88.00},
+          {name:'Avishka Fernando', dismissal:'c Faheem Ashraf b Naseem Shah', r:5,b:9,fours:1,sixes:0,sr:55.55},
+          {name:'Kusal Mendis (c) †', dismissal:'c Saim Ayub b Faheem Ashraf', r:18,b:34,fours:2,sixes:0,sr:52.94},
+          {name:'Pavan Rathnayake', dismissal:'c Salman Agha b Faheem Ashraf', r:79,b:74,fours:6,sixes:2,sr:106.75},
+          {name:'Sahan Arachchige', dismissal:'c Saad Baig b Shaheen Shah Afridi', r:3,b:5,fours:0,sixes:0,sr:60.00},
+          {name:'Janith Liyanage', dismissal:'c Babar Azam b Haris Rauf', r:60,b:74,fours:5,sixes:0,sr:81.08},
+          {name:'Dasun Shanaka', dismissal:'c Babar Azam b Shaheen Shah Afridi', r:28,b:18,fours:3,sixes:1,sr:155.55},
+          {name:'Sachindu Colombage', dismissal:'c Saad Baig b Naseem Shah', r:1,b:4,fours:0,sixes:0,sr:25.00},
+          {name:'Eshan Malinga', dismissal:'run out (Babar Azam/Saad Baig)', r:2,b:6,fours:0,sixes:0,sr:33.33},
+          {name:'Asitha Fernando', dismissal:'b Haris Rauf', r:7,b:10,fours:1,sixes:0,sr:70.00},
+          {name:'Dilshan Madushanka', dismissal:'not out', r:1,b:5,fours:0,sixes:0,sr:20.00},
+        ],
+        extras:'20 (lb 3, w 17)',
+        fow:'1-30 (Avishka Fernando, 5.3), 2-66 (Kusal Mendis, 13.5), 3-83 (Kamindu Mendis, 17.5), 4-91 (Sahan Arachchige, 19.3), 5-210 (Pavan Rathnayake, 37.2), 6-253 (Janith Liyanage, 43.4), 7-256 (Dasun Shanaka, 44.2), 8-260 (Sachindu Colombage, 45.4), 9-260 (Eshan Malinga, 45.5), 10-268 (Asitha Fernando, 48.1)',
+        bowling:[
+          {name:'Shaheen Shah Afridi', o:10,m:0,r:55,w:3,econ:5.50},
+          {name:'Naseem Shah', o:10,m:0,r:43,w:2,econ:4.30},
+          {name:'Haris Rauf', o:9.1,m:0,r:48,w:2,econ:5.23},
+          {name:'Faheem Ashraf', o:8,m:0,r:49,w:2,econ:6.12},
+          {name:'Arafat Minhas', o:9,m:0,r:56,w:0,econ:6.22},
+          {name:'Saim Ayub', o:2,m:0,r:14,w:0,econ:7.00},
+        ],
+      },
+    ],
+  },
+};
 function renderFixtures(key){
   const fx = FIXTURES[key];
   return `<div class="fx-wrap">
@@ -780,6 +897,118 @@ function renderFixtures(key){
       </div>
     `).join('')}
   </div>`;
+}
+
+/* ---------------- cricket: live match card + summary + scorecard ---------------- */
+function teamBadge(abbr){
+  return `<span class="cric-badge">${abbr}</span>`;
+}
+function renderCricketMatchCard(m){
+  const live = m.status === 'live';
+  return `<div class="cric-card ${live?'is-live':''}">
+    <div class="cric-card-head">
+      <span class="cric-card-title">${m.teams.away.name} vs ${m.teams.home.name}</span>
+      ${live ? `<span class="cric-live-tag"><span class="dot"></span>LIVE</span>` : ''}
+    </div>
+    <div class="cric-card-sub">${m.series} · ${m.matchInfo || m.matchLabel} · ${m.venue}</div>
+    <div class="cric-card-teams">
+      <div class="cric-card-team">
+        ${teamBadge(m.teams.away.abbr)}
+        <span class="nm">${m.teams.away.name}</span>
+        ${m.teams.away.score!=null ? `<span class="sc tnum">${m.teams.away.score}${m.teams.away.wkts!=null?'/'+m.teams.away.wkts:''}</span><span class="ov">(${m.teams.away.overs} ov)</span>` : ''}
+      </div>
+      <div class="cric-card-team">
+        ${teamBadge(m.teams.home.abbr)}
+        <span class="nm">${m.teams.home.name}</span>
+        ${m.teams.home.score!=null ? `<span class="sc tnum">${m.teams.home.score}${m.teams.home.wkts!=null?'/'+m.teams.home.wkts:''}</span><span class="ov">(${m.teams.home.overs} ov)</span>` : ''}
+      </div>
+    </div>
+    <div class="cric-card-result">${m.resultLine}</div>
+  </div>`;
+}
+function topBatters(inn,n){ return [...inn.batting].sort((a,b)=>b.r-a.r).slice(0,n); }
+function topBowlers(inn,n){ return [...inn.bowling].sort((a,b)=>b.w-a.w || a.econ-b.econ).slice(0,n); }
+function renderCricketSummary(matchId){
+  const m = CRICKET_SCORECARDS[matchId];
+  if(!m) return '';
+  return `<div class="cric-pom"><span class="l">Player of the Match</span><span class="nm">${m.playerOfMatch.name}</span><span class="line">(${m.playerOfMatch.team}) · ${m.playerOfMatch.line}</span></div>
+  ${m.innings.map((inn,i)=>{
+    const bowlInn = m.innings[1-i];
+    return `<div class="cric-summary-block">
+      <div class="cric-summary-head">${inn.team} · ${inn.total}${inn.wkts<10?'/'+inn.wkts:''} (${inn.overs})</div>
+      <div class="cric-summary-cols">
+        <div class="cric-summary-col">
+          <span class="h">Top batting</span>
+          ${topBatters(inn,3).map(b=>`<div class="row"><span class="nm">${b.name}</span><span class="st tnum">${b.r} (${b.b})</span></div>`).join('')}
+        </div>
+        <div class="cric-summary-col">
+          <span class="h">Top bowling</span>
+          ${topBowlers(bowlInn,3).map(b=>`<div class="row"><span class="nm">${b.name}</span><span class="st tnum">${b.w}/${b.r} (${b.o})</span></div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+  }).join('')}`;
+}
+function renderCricketScorecardTable(matchId){
+  const m = CRICKET_SCORECARDS[matchId];
+  if(!m) return '';
+  return `<div class="cric-sc-tabs">
+    ${m.innings.map((inn,i)=>`<span class="chip ${i===0?'on':''}" data-inn="${i}" role="button" tabindex="0" aria-pressed="${i===0?'true':'false'}" onclick="showCricInnings('${matchId}',${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">${inn.team}</span>`).join('')}
+  </div>
+  ${m.innings.map((inn,i)=>`<div class="cric-innings" data-inn="${i}" style="${i===0?'':'display:none;'}">
+    <div class="cric-bat-table">
+      <div class="cric-bat-row cric-bat-head"><span class="nm">Batting</span><span>R</span><span>B</span><span>4s</span><span>6s</span><span>SR</span></div>
+      ${inn.batting.map(b=>`<div class="cric-bat-row">
+        <span class="nm">${b.name}<span class="dismissal">${b.dismissal}</span></span>
+        <span class="tnum">${b.r}</span><span class="tnum">${b.b}</span><span class="tnum">${b.fours}</span><span class="tnum">${b.sixes}</span><span class="tnum">${b.sr.toFixed(2)}</span>
+      </div>`).join('')}
+      <div class="cric-bat-extras">Extras <span class="tnum">${inn.extras}</span></div>
+      <div class="cric-bat-total">Total <span class="tnum">${inn.total} (${inn.wkts} wkts, ${inn.overs} ov)</span></div>
+    </div>
+    <div class="cric-fow"><span class="h">Fall of wickets</span><span class="line">${inn.fow}</span></div>
+    <div class="cric-bowl-table">
+      <div class="cric-bowl-row cric-bowl-head"><span class="nm">Bowling</span><span>O</span><span>M</span><span>R</span><span>W</span><span>Econ</span></div>
+      ${inn.bowling.map(b=>`<div class="cric-bowl-row">
+        <span class="nm">${b.name}</span><span class="tnum">${b.o}</span><span class="tnum">${b.m}</span><span class="tnum">${b.r}</span><span class="tnum">${b.w}</span><span class="tnum">${b.econ.toFixed(2)}</span>
+      </div>`).join('')}
+    </div>
+  </div>`).join('')}`;
+}
+function showCricInnings(matchId, idx){
+  document.querySelectorAll(`.cric-sc-tabs .chip`).forEach((c,i)=>{
+    const on = i===idx;
+    c.classList.toggle('on', on);
+    c.setAttribute('aria-pressed', on?'true':'false');
+  });
+  document.querySelectorAll(`.cric-innings`).forEach(el=>{
+    el.style.display = Number(el.dataset.inn)===idx ? '' : 'none';
+  });
+}
+function renderCricketWidgets(){
+  const latestMatchId = Object.keys(CRICKET_SCORECARDS).slice(-1)[0];
+  return `
+    ${renderCricketMatchCard(CRICKET_LIVE_MATCH)}
+    ${latestMatchId ? `
+    <div class="cric-report">
+      <div class="cric-report-head"><h3 class="disp">${CRICKET_SCORECARDS[latestMatchId].title}</h3><span class="sub">${CRICKET_SCORECARDS[latestMatchId].result}</span></div>
+      <div class="cric-report-tabs">
+        <span class="chip on" data-view="summary" role="button" tabindex="0" aria-pressed="true" onclick="showCricView('summary')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Summary</span>
+        <span class="chip" data-view="scorecard" role="button" tabindex="0" aria-pressed="false" onclick="showCricView('scorecard')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Scorecard</span>
+      </div>
+      <div class="cric-view" data-view="summary">${renderCricketSummary(latestMatchId)}</div>
+      <div class="cric-view" data-view="scorecard" style="display:none;">${renderCricketScorecardTable(latestMatchId)}</div>
+    </div>` : ''}
+  `;
+}
+function showCricView(view){
+  document.querySelectorAll('.cric-report-tabs .chip').forEach(c=>{
+    const on = c.dataset.view===view;
+    c.classList.toggle('on', on);
+    c.setAttribute('aria-pressed', on?'true':'false');
+  });
+  document.querySelectorAll('.cric-view').forEach(el=>{
+    el.style.display = el.dataset.view===view ? '' : 'none';
+  });
 }
 
 /* ---------------- team / competition directories (names are public fact, not trademarked art — no crests) ---------------- */
@@ -2519,6 +2748,7 @@ function renderLightHub(sport){
       <div class="sport-sub mono">${s.sub}</div>
       <div class="hub-status">${heatMeter(s.heat)}<span class="mono" style="font-size:11px;color:var(--ink-muted);">${s.status}</span></div>
     </div>
+    ${sport==='cricket' ? renderCricketWidgets() : ''}
     <div id="rail-preview">
       <div class="rail-head"><h3 class="disp">Latest</h3></div>
       <div class="rail">${arts.map(articleCard).join('')}</div>

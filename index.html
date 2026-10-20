@@ -644,8 +644,8 @@ const SPORTS = [
   {id:'football', name:'Football', accent:'court', heat:88, status:'UCL MD3 TOMORROW · BARCELONA AT PSG HEADLINES A STACKED WEEK', deep:'full',
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga']},
-  {id:'mlb', name:'MLB', accent:'court', heat:97, status:'BREWERS SWEEP NLCS, REACH FIRST WORLD SERIES SINCE 1982 · ALCS GM6 TONIGHT', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
-  {id:'nfl', name:'NFL', accent:'away', heat:76, status:'WEEK 7: CHIEFS, BILLS, STEELERS WIN · COMMANDERS-49ERS TONIGHT', deep:'none', sub:'National Football League'},
+  {id:'mlb', name:'MLB', accent:'court', heat:97, status:'BREWERS SWEEP NLCS, REACH FIRST WORLD SERIES SINCE 1982 · ALCS GM6 LIVE, RAYS CAN CLINCH', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:true},
+  {id:'nfl', name:'NFL', accent:'away', heat:76, status:'WEEK 7: CHIEFS, BILLS, STEELERS WIN · 49ERS LEAD COMMANDERS, MNF LIVE', deep:'none', sub:'National Football League', live:true},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:58, status:'NBA SEASON OPENS TOMORROW · CELTICS-PISTONS, KNICKS-76ERS, THUNDER-SPURS', deep:'light', sub:'NBA'},
@@ -667,10 +667,10 @@ const CAT = {
 
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
-  mlb:{context:'BREWERS SWEEP NLCS 4-0 · ALCS GM6 TONIGHT, RAYS LEAD 3-2', games:[
+  mlb:{context:'BREWERS SWEEP NLCS 4-0 · ALCS GM6 LIVE, RAYS LEAD 3-2', games:[
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
     {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},
-    {status:'TONIGHT 8:00 PM ET', away:{abbr:'CLE'}, home:{abbr:'TB'}, note:'ALCS Gm6 · Tropicana Field · Guardians face elimination'},
+    {status:'LIVE · 1ST', away:{abbr:'CLE',record:'0'}, home:{abbr:'TB',record:'0'}, note:'ALCS Gm6 · Tropicana Field · Rays can clinch the pennant, Guardians face elimination'},
   ]},
   football:{context:'UCL MD3 TOMORROW · BARCELONA AT PSG HEADLINES A LOADED WEEK', games:[
     {status:'TOMORROW 3:00 PM ET', away:{abbr:'BAR'}, home:{abbr:'PSG'}, note:'UCL MD3 · Parc des Princes · Europe\'s two form teams collide'},
@@ -716,11 +716,11 @@ const GAMES = {
   boxing:{context:'DUBOIS STOPS WARDLEY · REMATCH FINAL', games:[
     {status:'FINAL', away:{abbr:'WARDLEY'}, home:{abbr:'DUBOIS'}, note:'Dubois stops Wardley in Round 2 of their rematch'},
   ]},
-  nfl:{context:'WEEK 7 · SUNDAY DONE, MNF TONIGHT', games:[
+  nfl:{context:'WEEK 7 · SUNDAY DONE, MNF LIVE', games:[
     {status:'FINAL', away:{abbr:'LAC',record:'6'}, home:{abbr:'KC',record:'22'}, note:'Week 7 · Chiefs cruise past Chargers'},
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
-    {status:'TONIGHT 8:15 PM ET', away:{abbr:'WSH'}, home:{abbr:'SF'}, note:'Week 7 · Monday Night Football'},
+    {status:'LIVE · 1ST', away:{abbr:'WSH',record:'0'}, home:{abbr:'SF',record:'7'}, note:'Week 7 · Monday Night Football · Levi\'s Stadium'},
   ]},
   cricket:{context:'PAKISTAN v ENGLAND TODAY · 2ND ODI AT RAWALPINDI', games:[
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},

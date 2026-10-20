@@ -667,7 +667,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: ENGLAND 91/1 (14.3 OV) CHASING 303 v PAKISTAN · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: ENGLAND 128/3 (20.2 OV) CHASING 303 v PAKISTAN · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -738,7 +738,7 @@ const GAMES = {
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
   cricket:{context:'LIVE: PAKISTAN v ENGLAND · 2ND ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG',record:'91/1'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · England 91/1 (14.3 ov), chasing 303'},
+    {status:'LIVE', away:{abbr:'ENG',record:'128/3'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · England 128/3 (20.2 ov), chasing 303'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
 };
@@ -832,10 +832,10 @@ const CRICKET_LIVE_MATCH = {
   venue:'Rawalpindi Cricket Stadium', date:'Oct 20, 2026',
   status:'live',
   teams:{
-    away:{abbr:'ENG', name:'England', score:91, wkts:1, overs:'14.3'},
+    away:{abbr:'ENG', name:'England', score:128, wkts:3, overs:'20.2'},
     home:{abbr:'PAK', name:'Pakistan', score:302, wkts:9, overs:'50.0'},
   },
-  toss:'England won the toss and elected to field', resultLine:'England 91/1 (14.3 ov), chasing 303 · Tom Banton 44*, Ben Duckett c Fakhar Zaman b Haris Rauf 45 (46) · need 212 from 35.3 ov · Pakistan 302/9',
+  toss:'England won the toss and elected to field', resultLine:'England 128/3 (20.2 ov), chasing 303 · Joe Root 19* (16), Sam Curran 0* (0) · need 175 from 29.4 ov · Pakistan 302/9',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -1833,7 +1833,7 @@ const ARTICLES = [
     dek:'Pakistan recover from 81/4 to post 302/9 behind Hasan Nawaz\'s 79 and Arafat Minhas\'s 59, and England are motoring in reply until Haris Rauf ends a brisk opening stand.',
     byline:'Clutch Room Cricket Desk', mins:9, time:'Oct 20, 2026',
     qa:[['Who won the toss?','England, who chose to field first.'],
-        ['What\'s the score?','England 91/1 after 14.3 overs, chasing 303 — Tom Banton 44* (41b, 4 fours, 2 sixes) after Ben Duckett fell for 45 (46b, 8 fours). Pakistan were bowled out for 302 (50 ov) — Hasan Nawaz 79, Arafat Minhas 59, Sonny Baker 3/65.']],
+        ['What\'s the score?','England 128/3 after 20.2 overs, chasing 303 — Joe Root 19* (16b) and Sam Curran 0* at the crease, 175 needed. Pakistan were bowled out for 302 (50 ov) — Hasan Nawaz 79, Arafat Minhas 59, Sonny Baker 3/65.']],
     body:[
       'Harry Brook wins the toss at Rawalpindi Cricket Stadium and sends Pakistan in under the lights — the same read the touring side took in the series opener against Sri Lanka, only this time it\'s a full-strength England attack doing the asking.',
       'Early breakthrough for England. Fakhar Zaman goes without scoring, caught by Joe Root off Gus Atkinson, and the tourists have the start they wanted — a big wicket inside the powerplay against the team that steamrolled Sri Lanka two days ago.',

@@ -667,7 +667,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: ENGLAND 188/5 (34 OV) CHASING 303 v PAKISTAN · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'PAKISTAN BEAT ENGLAND BY 87 RUNS · ARAFAT MINHAS TAKES 6/40 IN 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket'},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -737,8 +737,9 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'LIVE: PAKISTAN v ENGLAND · 2ND ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG',record:'188/5'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · England 188/5 (34 ov), chasing 303'},
+  cricket:{context:'PAKISTAN WIN 2ND ODI BY 87 RUNS · NEXT: PAK v ENG AT GADDAFI STADIUM, LAHORE, OCT 25', games:[
+    {status:'SUN OCT 25 (D/N)', away:{abbr:'ENG'}, home:{abbr:'PAK'}, note:'ODI Tri-Series 4th Match · Gaddafi Stadium, Lahore'},
+    {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · Pakistan win by 87 runs, Arafat Minhas (59 & 6/40) named Player of the Match'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
 };
@@ -828,14 +829,14 @@ const FIXTURES = {
 
 /* ---------------- cricket: live match card + full scorecards (real, verified data only) ---------------- */
 const CRICKET_LIVE_MATCH = {
-  series:'Pakistan ODI Tri-Series 2026', matchLabel:'2nd Match (D/N)',
-  venue:'Rawalpindi Cricket Stadium', date:'Oct 20, 2026',
-  status:'live',
+  series:'Pakistan ODI Tri-Series 2026', matchLabel:'4th Match (D/N)',
+  venue:'Gaddafi Stadium', date:'Oct 25, 2026',
+  status:'upcoming',
   teams:{
-    away:{abbr:'ENG', name:'England', score:188, wkts:5, overs:'34.0'},
-    home:{abbr:'PAK', name:'Pakistan', score:302, wkts:9, overs:'50.0'},
+    away:{abbr:'ENG', name:'England', score:null, wkts:null, overs:null},
+    home:{abbr:'PAK', name:'Pakistan', score:null, wkts:null, overs:null},
   },
-  toss:'England won the toss and elected to field', resultLine:'England 188/5 (34.0 ov), chasing 303 · Will Jacks 8* (11), Jordan Cox 11* (13) · need 115 from 96 balls · Pakistan 302/9',
+  toss:null, resultLine:'Series shifts to Lahore · Pakistan, 2-0 up after wins over Sri Lanka and England, can move to the brink of the final',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -893,6 +894,65 @@ const CRICKET_SCORECARDS = {
           {name:'Faheem Ashraf', o:8,m:0,r:49,w:2,econ:6.12},
           {name:'Arafat Minhas', o:9,m:0,r:56,w:0,econ:6.22},
           {name:'Saim Ayub', o:2,m:0,r:14,w:0,econ:7.00},
+        ],
+      },
+    ],
+  },
+  'pak-eng-2nd-odi':{
+    title:'Pakistan vs England', series:'Pakistan ODI Tri-Series 2026',
+    matchInfo:'2nd Match (D/N), Rawalpindi, October 20, 2026',
+    result:'Pakistan won by 87 runs',
+    playerOfMatch:{name:'Arafat Minhas', team:'PAK', line:'59 (58) & 6/40'},
+    innings:[
+      {team:'Pakistan', abbr:'PAK', total:302, overs:'50.0', wkts:9,
+        batting:[
+          {name:'Fakhar Zaman', dismissal:'c Joe Root b Gus Atkinson', r:0,b:1,fours:0,sixes:0,sr:0.00},
+          {name:'Saim Ayub', dismissal:'c Sam Curran b Sonny Baker', r:8,b:6,fours:1,sixes:0,sr:133.33},
+          {name:'Babar Azam', dismissal:'b Will Jacks', r:34,b:52,fours:4,sixes:0,sr:65.38},
+          {name:'Saad Baig †', dismissal:'c Sam Curran b Gus Atkinson', r:35,b:54,fours:5,sixes:0,sr:64.81},
+          {name:'Salman Ali Agha', dismissal:'c Gus Atkinson b Adil Rashid', r:16,b:19,fours:2,sixes:0,sr:84.21},
+          {name:'Hasan Nawaz', dismissal:'b Jamie Overton', r:79,b:74,fours:5,sixes:4,sr:106.76},
+          {name:'Arafat Minhas', dismissal:'c Harry Brook b Sonny Baker', r:59,b:58,fours:9,sixes:0,sr:101.72},
+          {name:'Faheem Ashraf', dismissal:'c Will Jacks b Sam Curran', r:39,b:26,fours:5,sixes:1,sr:150.00},
+          {name:'Shaheen Shah Afridi (c)', dismissal:'not out', r:10,b:5,fours:2,sixes:0,sr:200.00},
+          {name:'Naseem Shah', dismissal:'c Jamie Overton b Sonny Baker', r:1,b:3,fours:0,sixes:0,sr:33.33},
+          {name:'Haris Rauf', dismissal:'not out', r:4,b:2,fours:1,sixes:0,sr:200.00},
+        ],
+        extras:'17 (b 1, lb 11, w 5)',
+        fow:'1-0 (Fakhar Zaman, 0.1), 2-31 (Saim Ayub, 5.5), 3-59 (Babar Azam, 14.2), 4-81 (Salman Ali Agha, 18.4), 5-133 (Saad Baig, 27.3), 6-211 (Hasan Nawaz, 39.5), 7-283 (Arafat Minhas, 48.0), 8-285 (Faheem Ashraf, 48.3), 9-296 (Naseem Shah, 49.3)',
+        bowling:[
+          {name:'Gus Atkinson', o:7,m:0,r:35,w:2,econ:5.00},
+          {name:'Sonny Baker', o:9,m:0,r:65,w:3,econ:7.22},
+          {name:'Will Jacks', o:10,m:0,r:45,w:1,econ:4.50},
+          {name:'Jamie Overton', o:10,m:0,r:38,w:1,econ:3.80},
+          {name:'Adil Rashid', o:8,m:0,r:55,w:1,econ:6.88},
+          {name:'Sam Curran', o:5,m:0,r:40,w:1,econ:8.00},
+          {name:'Joe Root', o:1,m:0,r:12,w:0,econ:12.00},
+        ],
+      },
+      {team:'England', abbr:'ENG', total:215, overs:'38.4', wkts:10,
+        batting:[
+          {name:'Tom Banton', dismissal:'c Shaheen Shah Afridi b Arafat Minhas', r:57,b:53,fours:5,sixes:2,sr:107.55},
+          {name:'Ben Duckett', dismissal:'c Fakhar Zaman b Haris Rauf', r:45,b:46,fours:8,sixes:0,sr:97.83},
+          {name:'Joe Root', dismissal:'b Naseem Shah', r:33,b:35,fours:2,sixes:0,sr:94.29},
+          {name:'Harry Brook (c)', dismissal:'b Arafat Minhas', r:5,b:7,fours:0,sixes:0,sr:71.43},
+          {name:'Sam Curran', dismissal:'c sub (Muhammad Ghazi Ghori) b Haris Rauf', r:27,b:39,fours:0,sixes:1,sr:69.23},
+          {name:'Jordan Cox †', dismissal:'lbw b Arafat Minhas', r:18,b:16,fours:1,sixes:1,sr:112.50},
+          {name:'Will Jacks', dismissal:'c Shaheen Shah Afridi b Arafat Minhas', r:19,b:24,fours:1,sixes:1,sr:79.17},
+          {name:'Jamie Overton', dismissal:'c Hasan Nawaz b Arafat Minhas', r:1,b:4,fours:0,sixes:0,sr:25.00},
+          {name:'Gus Atkinson', dismissal:'run out (Arafat Minhas)', r:7,b:5,fours:1,sixes:0,sr:140.00},
+          {name:'Adil Rashid', dismissal:'lbw b Arafat Minhas', r:0,b:1,fours:0,sixes:0,sr:0.00},
+          {name:'Sonny Baker', dismissal:'not out', r:1,b:2,fours:0,sixes:0,sr:50.00},
+        ],
+        extras:'2 (w 2)',
+        fow:'1-91 (Ben Duckett, 14.3), 2-120 (Tom Banton, 18.3), 3-128 (Harry Brook, 20.2), 4-165 (Joe Root, 28.5), 5-177 (Sam Curran, 31.3), 6-197 (Jordan Cox, 34.5), 7-205 (Jamie Overton, 36.4), 8-214 (Will Jacks, 38.1), 9-214 (Adil Rashid, 38.2), 10-215 (Gus Atkinson, 38.4)',
+        bowling:[
+          {name:'Shaheen Shah Afridi', o:7,m:0,r:36,w:0,econ:5.14},
+          {name:'Naseem Shah', o:7,m:0,r:46,w:1,econ:6.57},
+          {name:'Faheem Ashraf', o:2,m:0,r:14,w:0,econ:7.00},
+          {name:'Haris Rauf', o:6,m:0,r:32,w:2,econ:5.33},
+          {name:'Saim Ayub', o:8,m:0,r:47,w:0,econ:5.88},
+          {name:'Arafat Minhas', o:8.4,m:0,r:40,w:6,econ:4.62},
         ],
       },
     ],
@@ -1829,11 +1889,11 @@ const ARTICLES = [
     ],
   },
   {id:'pak-eng-2nd-odi-recap', sport:'cricket', cat:'recap',
-    headline:'Nawaz and Minhas Fifties Push Pakistan to 302, Then Banton-Duckett Put On 91 Before Rauf Strikes',
-    dek:'Pakistan recover from 81/4 to post 302/9 behind Hasan Nawaz\'s 79 and Arafat Minhas\'s 59, and England are motoring in reply until Haris Rauf ends a brisk opening stand.',
-    byline:'Clutch Room Cricket Desk', mins:9, time:'Oct 20, 2026',
+    headline:'Arafat Minhas Caps 59 With 6/40 as Pakistan Beat England by 87 Runs',
+    dek:'Hasan Nawaz and Minhas\'s fifties pushed Pakistan to 302/9, then Minhas ran through England\'s middle and lower order to bowl the tourists out for 215 — Pakistan move 2-0 up in the tri-series.',
+    byline:'Clutch Room Cricket Desk', mins:11, time:'Oct 20, 2026',
     qa:[['Who won the toss?','England, who chose to field first.'],
-        ['What\'s the score?','England 188/5 after 34 overs, chasing 303 — Will Jacks 8* (11b) and Jordan Cox 11* (13b) at the crease, 115 needed from 96 balls. Pakistan were bowled out for 302 (50 ov) — Hasan Nawaz 79, Arafat Minhas 59, Sonny Baker 3/65.']],
+        ['What was the final result?','Pakistan won by 87 runs. Pakistan made 302/9 (50 ov); England were bowled out for 215 in 38.4 overs. Arafat Minhas was named Player of the Match for his 59 (58b) with the bat and 6/40 with the ball.']],
     body:[
       'Harry Brook wins the toss at Rawalpindi Cricket Stadium and sends Pakistan in under the lights — the same read the touring side took in the series opener against Sri Lanka, only this time it\'s a full-strength England attack doing the asking.',
       'Early breakthrough for England. Fakhar Zaman goes without scoring, caught by Joe Root off Gus Atkinson, and the tourists have the start they wanted — a big wicket inside the powerplay against the team that steamrolled Sri Lanka two days ago.',
@@ -1851,9 +1911,16 @@ const ARTICLES = [
       'England\'s reply starts the way Pakistan would have feared. Tom Banton and Ben Duckett take the long handle from the outset, racing to a 50-run opening stand inside eight overs and keeping the required rate comfortably behind them through the Powerplay.',
       'The pair push on to 91 before Haris Rauf finally breaks through. He bangs a short ball into the pitch, Duckett mistimes the pull, and Fakhar Zaman settles it at deep fine leg — Duckett goes for 45 off 46 balls (8 fours), England 91/1 after 14.3 overs.',
       'Tom Banton stands unbeaten on 44 (41b, 4 fours, 2 sixes) as Harry Brook comes to the crease. England need 212 from 35.3 overs at a required rate of 5.97, just behind their current rate of 6.27 — firmly on course chasing 303.',
-      'This article will keep updating with commentary on every major moment as the chase unfolds.',
+      'Banton pushes on to his own half-century — 50 off 46 balls, five fours and two sixes — but two overs after Brook arrives, Arafat Minhas gets him. Banton skips down looking to go big, can\'t get to the pitch of it, and lobs a leading edge back to Shaheen Shah Afridi at mid-off. He\'s out for 57 (53b), England 120/2 in the 19th over.',
+      'Minhas strikes again almost immediately. Brook is beaten by one that goes straight on and loses his off stump without playing a shot — bowled for 5 off 7 balls. England are 128/3 in the 21st over, two wickets down inside three overs.',
+      'Joe Root, who\'d been ticking along since Duckett\'s fall, tries to steady things with Sam Curran, and the pair drag England from 128 to 165 — but Naseem Shah finds Root\'s inside edge onto the stumps. He\'s bowled for a patient 33 off 35 balls, 165/4 in the 29th over.',
+      'Curran doesn\'t last much longer. He slaps a Haris Rauf short ball straight to the substitute fielder at deep midwicket and departs for 27 off 39 balls, England 177/5 in the 32nd over — the required rate now climbing past seven.',
+      'Jordan Cox tries to wrestle the chase back alongside Will Jacks, but Minhas, still on at the other end, traps him dead in front — lbw for 18, England 197/6 in the 35th over.',
+      'Jamie Overton lasts four balls before he too falls to Minhas, miscuing a hit down the ground where Hasan Nawaz settles the catch at long-on. England are 205/7 in the 37th over, 98 short with 14 overs gone to spare.',
+      'The tail offers no resistance. Jacks holes out off Minhas to Shaheen Shah Afridi for 19, Gus Atkinson is run out by Minhas himself for 7, and Adil Rashid is lbw to Minhas without scoring — three wickets in the space of four balls either side of the 38th over. Sonny Baker survives the last couple of deliveries unbeaten on 1 as England are bowled out for 215 in 38.4 overs.',
+      'Arafat Minhas finishes with 6/40 from 8.4 overs to go with his 59 earlier in the day, comfortably the Player of the Match as Pakistan win by 87 runs. It\'s Pakistan\'s second win in two games in the tri-series, and the squad now moves on to Lahore, where they face England again on October 25 in the fourth match of the round robin.',
     ],
-    pull:'Nawaz and Minhas fifties got Pakistan to 302 — now Banton and Duckett\'s 91-run opening stand has England motoring in reply before Haris Rauf strikes.',
+    pull:'Arafat Minhas finishes with 59 and 6/40 as Pakistan bowl England out for 215, winning the 2nd ODI by 87 runs to move 2-0 up in the tri-series.',
   },
 ];
 

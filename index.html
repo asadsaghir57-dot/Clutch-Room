@@ -667,7 +667,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: ENGLAND 128/3 (20.2 OV) CHASING 303 v PAKISTAN · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: ENGLAND 165/4 (28.5 OV) CHASING 303 v PAKISTAN · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -738,7 +738,7 @@ const GAMES = {
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
   cricket:{context:'LIVE: PAKISTAN v ENGLAND · 2ND ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG',record:'128/3'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · England 128/3 (20.2 ov), chasing 303'},
+    {status:'LIVE', away:{abbr:'ENG',record:'165/4'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · England 165/4 (28.5 ov), chasing 303'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
 };
@@ -832,10 +832,10 @@ const CRICKET_LIVE_MATCH = {
   venue:'Rawalpindi Cricket Stadium', date:'Oct 20, 2026',
   status:'live',
   teams:{
-    away:{abbr:'ENG', name:'England', score:128, wkts:3, overs:'20.2'},
+    away:{abbr:'ENG', name:'England', score:165, wkts:4, overs:'28.5'},
     home:{abbr:'PAK', name:'Pakistan', score:302, wkts:9, overs:'50.0'},
   },
-  toss:'England won the toss and elected to field', resultLine:'England 128/3 (20.2 ov), chasing 303 · Joe Root 19* (16), Sam Curran 0* (0) · need 175 from 29.4 ov · Pakistan 302/9',
+  toss:'England won the toss and elected to field', resultLine:'England 165/4 (28.5 ov), chasing 303 · Sam Curran 23* (32) · need 138 from 21.1 ov · Pakistan 302/9',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -1829,11 +1829,11 @@ const ARTICLES = [
     ],
   },
   {id:'pak-eng-2nd-odi-recap', sport:'cricket', cat:'recap',
-    headline:'Nawaz and Minhas Fifties Push Pakistan to 302, Then Banton-Duckett Put On 91 Before Rauf Strikes',
-    dek:'Pakistan recover from 81/4 to post 302/9 behind Hasan Nawaz\'s 79 and Arafat Minhas\'s 59, and England are motoring in reply until Haris Rauf ends a brisk opening stand.',
+    headline:'Nawaz and Minhas Power Pakistan to 302, Minhas Strikes Twice Before Naseem Removes Root',
+    dek:'Pakistan recover from 81/4 to post 302/9 behind Hasan Nawaz\'s 79 and Arafat Minhas\'s 59, and England lose Banton, Brook and Root in the chase before Sam Curran steadies things at 165/4.',
     byline:'Clutch Room Cricket Desk', mins:9, time:'Oct 20, 2026',
     qa:[['Who won the toss?','England, who chose to field first.'],
-        ['What\'s the score?','England 128/3 after 20.2 overs, chasing 303 — Joe Root 19* (16b) and Sam Curran 0* at the crease, 175 needed. Pakistan were bowled out for 302 (50 ov) — Hasan Nawaz 79, Arafat Minhas 59, Sonny Baker 3/65.']],
+        ['What\'s the score?','England 165/4 after 28.5 overs, chasing 303 — Sam Curran 23* (32b) at the crease, 138 needed from 21.1 overs. Pakistan were bowled out for 302 (50 ov) — Hasan Nawaz 79, Arafat Minhas 59, Sonny Baker 3/65.']],
     body:[
       'Harry Brook wins the toss at Rawalpindi Cricket Stadium and sends Pakistan in under the lights — the same read the touring side took in the series opener against Sri Lanka, only this time it\'s a full-strength England attack doing the asking.',
       'Early breakthrough for England. Fakhar Zaman goes without scoring, caught by Joe Root off Gus Atkinson, and the tourists have the start they wanted — a big wicket inside the powerplay against the team that steamrolled Sri Lanka two days ago.',
@@ -1851,9 +1851,13 @@ const ARTICLES = [
       'England\'s reply starts the way Pakistan would have feared. Tom Banton and Ben Duckett take the long handle from the outset, racing to a 50-run opening stand inside eight overs and keeping the required rate comfortably behind them through the Powerplay.',
       'The pair push on to 91 before Haris Rauf finally breaks through. He bangs a short ball into the pitch, Duckett mistimes the pull, and Fakhar Zaman settles it at deep fine leg — Duckett goes for 45 off 46 balls (8 fours), England 91/1 after 14.3 overs.',
       'Tom Banton stands unbeaten on 44 (41b, 4 fours, 2 sixes) as Harry Brook comes to the crease. England need 212 from 35.3 overs at a required rate of 5.97, just behind their current rate of 6.27 — firmly on course chasing 303.',
+      'Arafat Minhas strikes third ball after his own dashing fifty in the Pakistan innings. Banton can\'t believe he\'s picked out Shaheen Shah Afridi in the ring — slightly short, and he whirls his arms through a wallop across the line, but the fielder barely has to move. Banton departs for a well-made 57 off 53 balls (5 fours, 2 sixes), England 120/2 in the 19th over.',
+      'Two in two overs for Minhas. Whether it\'s the dew coming down or just a perfectly pitched delivery, this one grips and straightens through Harry Brook\'s defences — full length, and the England captain may have been caught on the back foot when he needed to go forward. It spins past off stump and rattles the timber. Brook goes for just 5, and England slip to 128/3 in the 21st over, suddenly up against it against Pakistan\'s spin.',
+      'Joe Root and Sam Curran set about the rebuild, picking off singles and the occasional boundary to keep the chase ticking without taking on undue risk. Root looks fluent until Naseem Shah returns with the old ball and changes everything — pace is pace, as they say, and Naseem skids one through him at 138kph/86mph that takes the toe end of the bat before crashing into off stump. Root departs for 33 off 35 balls (2 fours), and England slip to 165/4 in the 29th over, needing 138 from 21.1 overs at a required rate of 6.51 against a current rate of 5.72.',
+      'Sam Curran digs in at the other end, unbeaten on 23 off 32 balls, as England try to avoid a fifth wicket before the lower middle order is exposed.',
       'This article will keep updating with commentary on every major moment as the chase unfolds.',
     ],
-    pull:'Nawaz and Minhas fifties got Pakistan to 302 — now Banton and Duckett\'s 91-run opening stand has England motoring in reply before Haris Rauf strikes.',
+    pull:'Nawaz and Minhas fifties got Pakistan to 302 — Minhas struck twice and Naseem Shah removed Joe Root as England slipped to 165/4 in reply.',
   },
 ];
 

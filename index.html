@@ -644,8 +644,8 @@ const SPORTS = [
   {id:'football', name:'Football', accent:'court', heat:88, status:'UCL MD3 TODAY · BARCELONA AT PSG HEADLINES A STACKED WEEK', deep:'full',
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga']},
-  {id:'mlb', name:'MLB', accent:'court', heat:97, status:'BREWERS SWEEP NLCS, REACH FIRST WORLD SERIES SINCE 1982 · ALCS GM6 LIVE, RAYS (UP 3-2) LEAD GM6 3-0', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:true},
-  {id:'nfl', name:'NFL', accent:'away', heat:76, status:'WEEK 7: CHIEFS, BILLS, STEELERS WIN · COMMANDERS AT 49ERS LIVE', deep:'none', sub:'National Football League', live:true},
+  {id:'mlb', name:'MLB', accent:'court', heat:97, status:'BREWERS SWEEP NLCS, REACH FIRST WORLD SERIES SINCE 1982 · ALCS GM6 LIVE, RAYS (UP SERIES 3-2) LEAD GM6 3-1', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:true},
+  {id:'nfl', name:'NFL', accent:'away', heat:76, status:'WEEK 7: CHIEFS, BILLS, STEELERS WIN · 49ERS LEAD COMMANDERS 23-10 LATE', deep:'none', sub:'National Football League', live:true},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:58, status:'NBA SEASON OPENS TODAY · CELTICS-PISTONS, KNICKS-76ERS, THUNDER-SPURS', deep:'light', sub:'NBA'},
@@ -668,7 +668,7 @@ const CAT = {
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
   mlb:{context:'ALCS GM6 LIVE · RAYS LEAD SERIES 3-2, GUARDIANS FACE ELIMINATION', games:[
-    {status:'LIVE 4TH', away:{abbr:'CLE',record:'0'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm6 · Tropicana Field · Guardians face elimination, trail 0-3'},
+    {status:'LIVE 7TH', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm6 · Tropicana Field · Guardians face elimination, trail 1-3'},
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
     {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},
   ]},
@@ -716,8 +716,8 @@ const GAMES = {
   boxing:{context:'DUBOIS STOPS WARDLEY · REMATCH FINAL', games:[
     {status:'FINAL', away:{abbr:'WARDLEY'}, home:{abbr:'DUBOIS'}, note:'Dubois stops Wardley in Round 2 of their rematch'},
   ]},
-  nfl:{context:'WEEK 7 · MNF LIVE, 49ERS LEAD COMMANDERS', games:[
-    {status:'LIVE 2ND', away:{abbr:'WSH',record:'3'}, home:{abbr:'SF',record:'13'}, note:'Week 7 · Monday Night Football · Kittle, McCaffrey TDs put 49ers up 13-3'},
+  nfl:{context:'WEEK 7 · MNF LIVE, 49ERS LEAD COMMANDERS 23-10', games:[
+    {status:'LIVE 3RD', away:{abbr:'WSH',record:'10'}, home:{abbr:'SF',record:'23'}, note:'Week 7 · Monday Night Football · McCaffrey 2 rush TDs lead 49ers, Diggs TD cuts it to 23-10'},
     {status:'FINAL', away:{abbr:'LAC',record:'6'}, home:{abbr:'KC',record:'22'}, note:'Week 7 · Chiefs cruise past Chargers'},
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},

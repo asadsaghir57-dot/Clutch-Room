@@ -663,7 +663,7 @@ const SPORTS = [
   {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 7: CHIEFS, BILLS, STEELERS WIN · 49ERS HOLD OFF COMMANDERS 23-17, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
-  {id:'basketball', name:'Basketball', accent:'away', heat:58, status:'OPENING NIGHT LIVE: PISTONS LEAD CELTICS 114-105 LATE IN Q4 · KNICKS-76ERS, THUNDER-SPURS STILL AHEAD', deep:'light', sub:'NBA', live:true},
+  {id:'basketball', name:'Basketball', accent:'away', heat:62, status:'PISTONS STUN CELTICS 121-113, ERASE 22-PT DEFICIT IN OPENER · KNICKS-76ERS, THUNDER-SPURS STILL AHEAD', deep:'light', sub:'NBA', live:false},
   {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
@@ -718,10 +718,10 @@ const GAMES = {
   padel:{context:'MILANO P1 COMPLETE · TAPIA/COELLO WIN AGAIN', games:[
     {status:'FINAL', away:{abbr:'LEBRÓN/AUGSBURGER'}, home:{abbr:'TAPIA/COELLO'}, note:'Milano P1 Final · Tapia/Coello win 4-6, 6-3, 6-2 for back-to-back P1 titles'},
   ]},
-  basketball:{context:'NBA SEASON OPENS TODAY · 3-GAME OPENING NIGHT', games:[
+  basketball:{context:'OPENING NIGHT: PISTONS STUN CELTICS 121-113, ERASE 22-PT DEFICIT · PHI-NYK, OKC-SAS STILL TO COME', games:[
     {status:'FINAL', away:{abbr:'HOU',record:'135'}, home:{abbr:'DAL',record:'117'}, note:'NBA China Gm1 · Macao · Rockets romp, Flagg scores 19'},
     {status:'FINAL', away:{abbr:'DAL',record:'132'}, home:{abbr:'HOU',record:'115'}, note:'NBA China Gm2 · Macao · Mavericks even series 1-1'},
-    {status:'LIVE Q4 2:02', away:{abbr:'BOS',record:'105'}, home:{abbr:'DET',record:'114'}, note:'Opening Night · Paul George leads Boston with 34 pts, 5 stl; Jalen Duren has 22 pts, 9 reb for Detroit'},
+    {status:'FINAL', away:{abbr:'BOS',record:'113'}, home:{abbr:'DET',record:'121'}, note:'Opening Night · Little Caesars Arena · Pistons erase a 22-pt deficit with a 23-0 fourth-quarter run; Cunningham 22 pts/8 ast, Duren 22 pts/9 reb, Green 5 threes off the bench; Paul George sets Celtics debut record with 38 pts, Tatum 13 on 6-of-23'},
     {status:'TUE OCT 20 · 7:00 PM ET', away:{abbr:'PHI',record:'0-0'}, home:{abbr:'NYK',record:'0-0'}, note:'Opening Night · Banner night'},
     {status:'TUE OCT 20 · 9:30 PM ET', away:{abbr:'OKC',record:'0-0'}, home:{abbr:'SAS',record:'0-0'}, note:'Opening Night'},
   ]},
@@ -1613,6 +1613,20 @@ const ARTICLES = [
       'The Mavericks and Rockets split their two-game NBA China Games series, with Dallas closing it out 132-115 in Macao after Houston had taken the opener 135-117. Kyrie Irving scored 17 points in his return to action, and Cooper Flagg added 14 points and seven assists. Marcus Smart led Houston with 20 points in his first appearance for the Rockets.',
       'Preseason results carry no real weight, but both sides got what they came for: an early, competitive look at their new-look rosters before the games start counting toward anything.',
     ],
+  },
+  {id:'pistons-celtics-opener-recap', sport:'basketball', cat:'recap',
+    headline:'Pistons Erase a 22-Point Hole, Stun Paul George\'s Celtics 121-113 in Opener',
+    dek:'Detroit trailed by 22 with eight minutes left and still won, closing the season opener on a 23-0 run as Cade Cunningham, Jalen Duren and Javonte Green overcame a 38-point Celtics debut from Paul George.',
+    byline:'Clutch Room Basketball Desk', mins:5, time:'Oct 20, 2026',
+    qa:[['What was the final score?','Pistons 121, Celtics 113, at Little Caesars Arena in Detroit\'s season opener.'],
+        ['How big was the comeback?','Boston led 72-50 with about eight minutes to play before Detroit closed the game on a 23-0 run — one of the largest opening-night comebacks in NBA history.']],
+    body:[
+      'Paul George\'s first regular-season game in a Celtics uniform looked like a rout for most of three quarters. Boston led by as many as 22 points, up 72-50 with eight minutes to go, before the Pistons answered with a 23-0 run that turned Opening Night into one of the most stunning comebacks in franchise history — a 121-113 win at Little Caesars Arena.',
+      'Cade Cunningham ran the fourth-quarter surge, finishing with 22 points and eight assists and going 5-for-5 from the free-throw line down the stretch. Jalen Duren added 22 points and nine rebounds inside, and Duncan Robinson scored 15 of his 21 points in the final period alone. Javonte Green sparked the burst off the bench, hitting five 3-pointers and finishing a game-high plus-21 in just 18 minutes.',
+      'Boston had controlled the game behind Paul George, who set a Celtics debut scoring record with 38 points in his first appearance for his new team after the offseason trade that sent Jaylen Brown to Philadelphia. But Jayson Tatum struggled to find any rhythm, shooting just 6-for-23, and Boston\'s offense went cold at the exact moment Detroit\'s defense tightened and its bench caught fire.',
+      'It\'s the kind of win Detroit built its identity on a year ago: a team that doesn\'t blink when it falls behind. Boston, meanwhile, gets an uncomfortable answer to the one question hanging over its new-look roster — whether adding George was enough to paper over the loss of Brown on nights the shots aren\'t falling for Tatum.',
+    ],
+    pull:'Down 22 with eight minutes left, the Pistons closed the game on a 23-0 run to stun Paul George\'s Celtics in his regular-season debut.',
   },
 
   {id:'pak-sl-1st-t20i-preview', sport:'cricket', cat:'preview',

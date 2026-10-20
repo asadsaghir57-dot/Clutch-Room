@@ -656,14 +656,14 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
 
 <script>
 const SPORTS = [
-  {id:'football', name:'Football', accent:'court', heat:88, status:'UCL MD3 TODAY · BARCELONA AT PSG HEADLINES A STACKED WEEK', deep:'full',
+  {id:'football', name:'Football', accent:'court', heat:88, status:'UCL MD3 LIVE: PSG 1-1 BARCELONA, MAN CITY 4-1 AEK, LIVERPOOL 3-2 VILLARREAL', deep:'full',
     sub:'Premier League · Champions League · La Liga',
-    leagues:['All','Champions League','Premier League','La Liga']},
+    leagues:['All','Champions League','Premier League','La Liga'], live:true},
   {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES SET: RAYS CLINCH AL PENNANT 4-2 OVER GUARDIANS, FACE BREWERS STARTING FRIDAY', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
   {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 7: CHIEFS, BILLS, STEELERS WIN · 49ERS HOLD OFF COMMANDERS 23-17, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
-  {id:'basketball', name:'Basketball', accent:'away', heat:58, status:'NBA SEASON OPENS TODAY · CELTICS-PISTONS, KNICKS-76ERS, THUNDER-SPURS', deep:'light', sub:'NBA'},
+  {id:'basketball', name:'Basketball', accent:'away', heat:58, status:'OPENING NIGHT LIVE: CELTICS LEAD PISTONS 60-47 IN Q3 · KNICKS-76ERS, THUNDER-SPURS STILL AHEAD', deep:'light', sub:'NBA', live:true},
   {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
@@ -687,10 +687,10 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
     {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},
   ]},
-  football:{context:'UCL MD3 TODAY · BARCELONA AT PSG HEADLINES A LOADED WEEK', games:[
-    {status:'TODAY 3:00 PM ET', away:{abbr:'BAR'}, home:{abbr:'PSG'}, note:'UCL MD3 · Parc des Princes · Europe\'s two form teams collide'},
-    {status:'TODAY 3:00 PM ET', away:{abbr:'AEK'}, home:{abbr:'MCI'}, note:'UCL MD3'},
-    {status:'TODAY 3:00 PM ET', away:{abbr:'VIL'}, home:{abbr:'LIV'}, note:'UCL MD3'},
+  football:{context:'UCL MD3 LIVE · PSG-BARCELONA, CITY-AEK, LIVERPOOL-VILLARREAL ALL IN PROGRESS', games:[
+    {status:'LIVE 64\'', away:{abbr:'BAR',record:'1'}, home:{abbr:'PSG',record:'1'}, note:'UCL MD3 · Parc des Princes · Doué 38\' for PSG, Espart 55\' for Barcelona'},
+    {status:'LIVE 68\'', away:{abbr:'AEK',record:'1'}, home:{abbr:'MCI',record:'4'}, note:'UCL MD3 · Etihad Stadium · Foden brace (34\', 65\'), Anderson 12\', Cherki 57\' for City; Pilios 52\' for AEK'},
+    {status:'LIVE 68\'', away:{abbr:'VIL',record:'2'}, home:{abbr:'LIV',record:'3'}, note:'UCL MD3 · Anfield · Mac Allister brace (36\', 65\') and Araújo for Liverpool; Mikautadze 4\', Cardona 29\' for Villarreal'},
     {status:'WED OCT 21 3:00 PM ET', away:{abbr:'ARS'}, home:{abbr:'BAY'}, note:'UCL MD3'},
     {status:'WED OCT 21 3:00 PM ET', away:{abbr:'RBL'}, home:{abbr:'RMA'}, note:'UCL MD3'},
     {status:'FINAL', away:{abbr:'PSG',record:'4'}, home:{abbr:'MCI',record:'2'}, note:'UCL MD2 · PSG stun Man City at the Etihad'},
@@ -721,7 +721,7 @@ const GAMES = {
   basketball:{context:'NBA SEASON OPENS TODAY · 3-GAME OPENING NIGHT', games:[
     {status:'FINAL', away:{abbr:'HOU',record:'135'}, home:{abbr:'DAL',record:'117'}, note:'NBA China Gm1 · Macao · Rockets romp, Flagg scores 19'},
     {status:'FINAL', away:{abbr:'DAL',record:'132'}, home:{abbr:'HOU',record:'115'}, note:'NBA China Gm2 · Macao · Mavericks even series 1-1'},
-    {status:'TUE OCT 20 · 3:00 PM ET', away:{abbr:'BOS',record:'0-0'}, home:{abbr:'DET',record:'0-0'}, note:'Opening Night'},
+    {status:'LIVE Q3 10:24', away:{abbr:'BOS',record:'60'}, home:{abbr:'DET',record:'47'}, note:'Opening Night · Paul George leads Boston with 19 pts, 4 stl; Jalen Duren has 13 for Detroit'},
     {status:'TUE OCT 20 · 7:00 PM ET', away:{abbr:'PHI',record:'0-0'}, home:{abbr:'NYK',record:'0-0'}, note:'Opening Night · Banner night'},
     {status:'TUE OCT 20 · 9:30 PM ET', away:{abbr:'OKC',record:'0-0'}, home:{abbr:'SAS',record:'0-0'}, note:'Opening Night'},
   ]},

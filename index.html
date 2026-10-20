@@ -506,8 +506,10 @@ a.board-row{display:grid;}
 .fx-group h4{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent,var(--ink-muted));margin:0 0 6px;}
 .fx-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:13px;}
 .fx-row:last-child{border-bottom:none;}
-.fx-teams{font-weight:600;}
-.fx-teams .vs{color:var(--ink-muted);font-weight:400;font-size:11px;}
+.fx-teams{display:flex;align-items:center;gap:7px;font-weight:600;min-width:0;}
+.fx-teams .vs{color:var(--ink-muted);font-weight:400;font-size:11px;flex:none;}
+.fx-team{display:inline-flex;align-items:center;gap:6px;min-width:0;}
+.fx-badge{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;font-size:8px;font-weight:700;letter-spacing:0;color:#fff;flex:none;}
 .fx-score{font-weight:700;text-align:center;}
 .fx-status{color:var(--ink-muted);font-size:11.5px;text-align:right;white-space:nowrap;}
 
@@ -565,7 +567,8 @@ a.board-row{display:grid;}
 .div-team{font-size:14px;padding:7px 0;border-bottom:1px solid var(--line);color:var(--ink);}
 .div-team:last-child{border-bottom:none;}
 .comp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
-.comp-item{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border:1px solid var(--line);border-radius:6px;background:var(--paper-raised);}
+.comp-item{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border:1px solid var(--line);border-radius:6px;background:var(--paper-raised);cursor:pointer;transition:border-color .15s;}
+.comp-item:hover,.comp-item:focus-visible{border-color:var(--accent,var(--ink-muted));}
 .comp-item .nm{font-weight:600;font-size:14px;}
 .comp-item .sub-links{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-muted);letter-spacing:0.02em;}
 @media (max-width:860px){.div-grid{grid-template-columns:repeat(2,1fr);}.comp-grid{grid-template-columns:1fr;}}
@@ -893,6 +896,14 @@ const CRICKET_SCORECARDS = {
     ],
   },
 };
+function fxBadgeColor(abbr){
+  let h = 0;
+  for(let i=0;i<abbr.length;i++) h = (h*31 + abbr.charCodeAt(i)) % 360;
+  return `hsl(${h},55%,38%)`;
+}
+function fxTeam(abbr){
+  return `<span class="fx-team"><span class="fx-badge" style="background:${fxBadgeColor(abbr)}">${abbr.slice(0,3)}</span>${abbr}</span>`;
+}
 function renderFixtures(key){
   const fx = FIXTURES[key];
   return `<div class="fx-wrap">
@@ -900,7 +911,7 @@ function renderFixtures(key){
       <div class="fx-group">
         <h4>${w.week}</h4>
         ${w.games.map(g=>`<div class="fx-row">
-          <span class="fx-teams">${g.away} <span class="vs">at</span> ${g.home}</span>
+          <span class="fx-teams">${fxTeam(g.away)} <span class="vs">at</span> ${fxTeam(g.home)}</span>
           ${g.score ? `<span class="fx-score tnum">${g.score}</span>` : '<span></span>'}
           <span class="fx-status">${g.status}</span>
         </div>`).join('')}
@@ -1055,9 +1066,13 @@ function renderCompetitions(leagues){
   return `<div class="div-section">
     <div class="div-section-head"><h3 class="disp">Competitions We Cover</h3><span class="sub">${leagues.length} leagues tracked</span></div>
     <div class="comp-grid">
-      ${leagues.map(l=>`<div class="comp-item"><span class="nm">${l}</span><span class="sub-links">Recaps · Odds · Fixtures</span></div>`).join('')}
+      ${leagues.map(l=>`<div class="comp-item" role="button" tabindex="0" onclick="selectCompetition('${l}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><span class="nm">${l}</span><span class="sub-links">Recaps · Odds · Fixtures</span></div>`).join('')}
     </div>
   </div>`;
+}
+function selectCompetition(league){
+  filterLeague(league);
+  document.querySelector('.hub-head')?.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 /* ---------------- sample articles (illustrative — not live results) ---------------- */

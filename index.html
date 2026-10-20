@@ -652,7 +652,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'PAKISTAN v ENGLAND TODAY · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket'},
+  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: PAKISTAN 22/1 (4 OV) v ENGLAND · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -722,9 +722,9 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'PAKISTAN v ENGLAND TODAY · 2ND ODI AT RAWALPINDI', games:[
+  cricket:{context:'LIVE: PAKISTAN v ENGLAND · 2ND ODI AT RAWALPINDI', games:[
+    {status:'LIVE', away:{abbr:'ENG'}, home:{abbr:'PAK',record:'22/1'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · England won toss, elected to field'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
-    {status:'TODAY 1:00 PM PKT', away:{abbr:'ENG'}, home:{abbr:'PAK'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium'},
   ]},
 };
 
@@ -815,12 +815,12 @@ const FIXTURES = {
 const CRICKET_LIVE_MATCH = {
   series:'Pakistan ODI Tri-Series 2026', matchLabel:'2nd Match (D/N)',
   venue:'Rawalpindi Cricket Stadium', date:'Oct 20, 2026',
-  status:'upcoming',
+  status:'live',
   teams:{
     away:{abbr:'ENG', name:'England'},
-    home:{abbr:'PAK', name:'Pakistan'},
+    home:{abbr:'PAK', name:'Pakistan', score:22, wkts:1, overs:'4.0'},
   },
-  toss:'England won the toss and elected to field', resultLine:'1:00 PM PKT · England won the toss, elected to field',
+  toss:'England won the toss and elected to field', resultLine:'Pakistan 22/1 (4 ov) · Babar Azam 20*, Saim Ayub 1* · Fakhar Zaman c Root b Atkinson 0',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -1732,19 +1732,19 @@ const ARTICLES = [
       'The tri-series runs through October 31, with Pakistan, England and Sri Lanka all using these matches explicitly as building blocks toward the ODI World Cup rather than treating them as a standalone series — captain Shaheen Shah Afridi has been clear that the format is the focus for the rest of the month.',
     ],
   },
-  {id:'pak-eng-2nd-odi-preview', sport:'cricket', cat:'preview',
-    headline:'Pakistan Host England in a Tri-Series Heavyweight Clash at Rawalpindi',
-    dek:'A batting-friendly Rawalpindi surface and two full-strength squads set up the tri-series\' biggest test yet — full squads, conditions, and what to watch before the toss.',
-    byline:'Clutch Room Cricket Desk', mins:6, time:'Oct 20, 2026',
-    qa:[['When and where is the match?','Tuesday, October 20, 2026, 1:00 PM PKT at Rawalpindi Cricket Stadium — the 2nd match of the Pakistan ODI Tri-Series.'],
-        ['Has the toss happened yet?','Not as of publishing — this preview covers squads and conditions ahead of it; check back for the live score once it starts.']],
+  {id:'pak-eng-2nd-odi-recap', sport:'cricket', cat:'recap',
+    headline:'Fakhar Zaman Falls for a Duck as England Strike Early in Rawalpindi',
+    dek:'England won the toss and chose to field, and Gus Atkinson has Fakhar Zaman caught by Joe Root inside the first four overs — Babar Azam and Saim Ayub are steadying things as Pakistan move to 22/1.',
+    byline:'Clutch Room Cricket Desk', mins:4, time:'Oct 20, 2026',
+    qa:[['Who won the toss?','England, who chose to field first.'],
+        ['What\'s the score?','Pakistan 22/1 after 4 overs — Fakhar Zaman out for a duck, Babar Azam 20* and Saim Ayub 1* at the crease.']],
     body:[
-      'Pakistan\'s ODI tri-series opener was a confident 37-run win over Sri Lanka. The second match is a different proposition entirely: England arrive at Rawalpindi Cricket Stadium with a full-strength squad, and this is the first genuine heavyweight fixture of the series.',
-      'Pakistan captain Shaheen Shah Afridi leads a squad built around the top order of Babar Azam, Saim Ayub and Fakhar Zaman, with Salman Ali Agha coming off a man-of-the-match hundred in the opener and Hasan Nawaz and Shadab Khan adding depth through the middle. The bowling attack pairs the pace of Shaheen himself, Haris Rauf and Naseem Shah with the spin options of Abrar Ahmed and Sufiyan Moqim — Saad Baig and Muhammad Ghazi Ghori are both in the squad as wicketkeeping options.',
-      'England, led by Harry Brook, bring a squad that leans heavily on recent white-ball form: Ben Duckett and Will Jacks at the top, Joe Root and Jamie Overton through the middle, and a pace-heavy attack of Gus Atkinson, Josh Tongue, Sonny Baker and Henry Crocombe backed by the spin of Adil Rashid and Liam Dawson.',
-      'The pitch report points firmly toward batting: Rawalpindi is expected to play true and fast with mostly clear weather, the kind of surface that rewards stroke-making over patience and should set up a genuine run-scoring contest rather than a bowl-first grind. Whoever wins the toss will have a real decision to make, but conditions favor batting first and defending a total on a ground where chasing big scores under lights has its own risks.',
-      'With Pakistan 1-0 in the standings and both Pakistan and England using this tournament explicitly as ODI World Cup preparation, this is the match that tells you the most about where both sides actually stand heading into the back half of the tri-series.',
+      'Harry Brook wins the toss at Rawalpindi Cricket Stadium and sends Pakistan in under the lights — the same read the touring side took in the series opener against Sri Lanka, only this time it\'s a full-strength England attack doing the asking.',
+      'Early breakthrough for England. Fakhar Zaman goes without scoring, caught by Joe Root off Gus Atkinson, and the tourists have the start they wanted — a big wicket inside the powerplay against the team that steamrolled Sri Lanka two days ago.',
+      'Babar Azam doesn\'t let it rattle him. He\'s the fluent one at the other end, racing to 20 while Saim Ayub gets himself in, and Pakistan move to 22/1 after four overs — one big setback, but the platform is still there to build from.',
+      'This article will keep updating with commentary on every major moment as the innings unfolds.',
     ],
+    pull:'One ball into the contest for real and England already have what they came for — Fakhar Zaman gone, Babar Azam left to steady the innings.',
   },
 ];
 

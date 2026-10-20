@@ -157,6 +157,7 @@ h1,h2,h3,.disp{
 .game-row{display:flex;justify-content:space-between;align-items:center;gap:10px;}
 .team{display:flex;align-items:center;gap:6px;min-width:0;}
 .team-abbr{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:#F2F1EE;}
+.team-logo{width:16px;height:16px;object-fit:contain;border-radius:50%;background:#fff;flex:none;}
 .team-record{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:#9F9D97;}
 .team-score{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:#F2F1EE;}
 .scorebar-updated{flex:none;display:flex;align-items:center;padding:0 16px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#9F9D97;white-space:nowrap;border-left:1px solid rgba(255,255,255,0.1);font-variant-numeric:tabular-nums;}
@@ -510,6 +511,7 @@ a.board-row{display:grid;}
 .fx-teams .vs{color:var(--ink-muted);font-weight:400;font-size:11px;flex:none;}
 .fx-team{display:inline-flex;align-items:center;gap:6px;min-width:0;}
 .fx-badge{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;font-size:8px;font-weight:700;letter-spacing:0;color:#fff;flex:none;}
+.fx-badge.fx-logo{background:var(--paper);border:1px solid var(--line);object-fit:contain;padding:2px;}
 .fx-score{font-weight:700;text-align:center;}
 .fx-status{color:var(--ink-muted);font-size:11.5px;text-align:right;white-space:nowrap;}
 
@@ -896,22 +898,91 @@ const CRICKET_SCORECARDS = {
     ],
   },
 };
+/* real club crests, sourced from TheSportsDB; keyed by the site's own fixture/scoreboard codes.
+   Only football is populated so far — other sports fall back to the colored initials badge. */
+const TEAM_LOGOS = {
+  football: {
+    LEN:'https://r2.thesportsdb.com/images/media/team/badge/3pxoum1598797195.png',
+    SCP:'https://r2.thesportsdb.com/images/media/team/badge/5hiuk71783137875.png',
+    SLA:'https://r2.thesportsdb.com/images/media/team/badge/l7kl4n1759252139.png',
+    ARS:'https://r2.thesportsdb.com/images/media/team/badge/uyhbfe1612467038.png',
+    LIL:'https://r2.thesportsdb.com/images/media/team/badge/2giize1534005340.png',
+    ATM:'https://r2.thesportsdb.com/images/media/team/badge/0ulh3q1719984315.png',
+    MUN:'https://r2.thesportsdb.com/images/media/team/badge/xzqdr11517660252.png',
+    INT:'https://r2.thesportsdb.com/images/media/team/badge/ryhu6d1617113103.png',
+    BRU:'https://r2.thesportsdb.com/images/media/team/badge/mz8y0q1771129880.png',
+    GS:'https://r2.thesportsdb.com/images/media/team/badge/io7jk21767941298.png',
+    BAR:'https://r2.thesportsdb.com/images/media/team/badge/wq9sir1639406443.png',
+    RBL:'https://r2.thesportsdb.com/images/media/team/badge/zjgapo1594244951.png',
+    PSV:'https://r2.thesportsdb.com/images/media/team/badge/xfsz6i1721297428.png',
+    VIK:'https://r2.thesportsdb.com/images/media/team/badge/9mzq961590148192.png',
+    BAY:'https://r2.thesportsdb.com/images/media/team/badge/01ogkh1716960412.png',
+    VIL:'https://r2.thesportsdb.com/images/media/team/badge/vrypqy1473503073.png',
+    NAP:'https://r2.thesportsdb.com/images/media/team/badge/l8qyxv1742982541.png',
+    FEY:'https://r2.thesportsdb.com/images/media/team/badge/uturtx1473534803.png',
+    COM:'https://r2.thesportsdb.com/images/media/team/badge/02x81t1627405841.png',
+    LASK:'https://r2.thesportsdb.com/images/media/team/badge/oox26l1683556395.png',
+    LIV:'https://r2.thesportsdb.com/images/media/team/badge/kfaher1737969724.png',
+    ROM:'https://r2.thesportsdb.com/images/media/team/badge/jwro2s1760820674.png',
+    RMA:'https://r2.thesportsdb.com/images/media/team/badge/vwvwrw1473502969.png',
+    AVL:'https://r2.thesportsdb.com/images/media/team/badge/uwzw561787679026.png',
+    FEN:'https://r2.thesportsdb.com/images/media/team/badge/twxxvs1448199691.png',
+    SHK:'https://r2.thesportsdb.com/images/media/team/badge/sqrxsr1421791799.png',
+    AEK:'https://r2.thesportsdb.com/images/media/team/badge/4nogst1602773624.png',
+    BOD:'https://r2.thesportsdb.com/images/media/team/badge/uqpwwx1449165943.png',
+    BVB:'https://r2.thesportsdb.com/images/media/team/badge/tqo8ge1716960353.png',
+    DOR:'https://r2.thesportsdb.com/images/media/team/badge/tqo8ge1716960353.png',
+    MCI:'https://r2.thesportsdb.com/images/media/team/badge/vwpvry1467462651.png',
+    PSG:'https://r2.thesportsdb.com/images/media/team/badge/rwqrrq1473504808.png',
+    BET:'https://r2.thesportsdb.com/images/media/team/badge/2oqulv1663245386.png',
+    POR:'https://r2.thesportsdb.com/images/media/team/badge/xu47rb1628855600.png',
+    SLB:'https://r2.thesportsdb.com/images/media/team/badge/hj4kyc1781152436.png',
+    VFB:'https://r2.thesportsdb.com/images/media/team/badge/yppyux1473454085.png',
+    STU:'https://r2.thesportsdb.com/images/media/team/badge/yppyux1473454085.png',
+    NFO:null,
+    CRY:'https://r2.thesportsdb.com/images/media/team/badge/ia6i3m1656014992.png',
+    BHA:'https://r2.thesportsdb.com/images/media/team/badge/ywypts1448810904.png',
+    CHE:'https://r2.thesportsdb.com/images/media/team/badge/pbf4ul1782638263.png',
+    EVE:'https://r2.thesportsdb.com/images/media/team/badge/eqayrf1523184794.png',
+    BRE:'https://r2.thesportsdb.com/images/media/team/badge/grv1aw1546453779.png',
+    IPS:'https://r2.thesportsdb.com/images/media/team/badge/mdj1ey1634670785.png',
+    HUL:'https://r2.thesportsdb.com/images/media/team/badge/fbqqda1601726113.png',
+    FUL:'https://r2.thesportsdb.com/images/media/team/badge/xwwvyt1448811086.png',
+    NEW:'https://r2.thesportsdb.com/images/media/team/badge/lhwuiz1621593302.png',
+    SEV:'https://r2.thesportsdb.com/images/media/team/badge/vpsqqx1473502977.png',
+    ALA:'https://r2.thesportsdb.com/images/media/team/badge/mfn99h1734673842.png',
+    CEL:'https://r2.thesportsdb.com/images/media/team/badge/xfjtku1690436219.png',
+    RAC:'https://r2.thesportsdb.com/images/media/team/badge/97kkiq1536575158.png',
+    OSA:'https://r2.thesportsdb.com/images/media/team/badge/rvspvt1473502960.png',
+    SOC:'https://r2.thesportsdb.com/images/media/team/badge/vptvpr1473502986.png',
+    MAL:'https://r2.thesportsdb.com/images/media/team/badge/upqyvr1473502952.png',
+  },
+};
+function teamLogo(scope, abbr){
+  return (TEAM_LOGOS[scope] && TEAM_LOGOS[scope][abbr]) || null;
+}
 function fxBadgeColor(abbr){
   let h = 0;
   for(let i=0;i<abbr.length;i++) h = (h*31 + abbr.charCodeAt(i)) % 360;
   return `hsl(${h},55%,38%)`;
 }
-function fxTeam(abbr){
-  return `<span class="fx-team"><span class="fx-badge" style="background:${fxBadgeColor(abbr)}">${abbr.slice(0,3)}</span>${abbr}</span>`;
+function fxTeam(abbr, scope){
+  const logo = teamLogo(scope, abbr);
+  const mark = logo
+    ? `<img class="fx-badge fx-logo" src="${logo}" alt="" loading="lazy">`
+    : `<span class="fx-badge" style="background:${fxBadgeColor(abbr)}">${abbr.slice(0,3)}</span>`;
+  return `<span class="fx-team">${mark}${abbr}</span>`;
 }
+const FX_LOGO_SCOPE = {ucl:'football', nfl:'nfl'};
 function renderFixtures(key){
   const fx = FIXTURES[key];
+  const scope = FX_LOGO_SCOPE[key];
   return `<div class="fx-wrap">
     ${fx.weeks.map(w=>`
       <div class="fx-group">
         <h4>${w.week}</h4>
         ${w.games.map(g=>`<div class="fx-row">
-          <span class="fx-teams">${fxTeam(g.away)} <span class="vs">at</span> ${fxTeam(g.home)}</span>
+          <span class="fx-teams">${fxTeam(g.away, scope)} <span class="vs">at</span> ${fxTeam(g.home, scope)}</span>
           ${g.score ? `<span class="fx-score tnum">${g.score}</span>` : '<span></span>'}
           <span class="fx-status">${g.status}</span>
         </div>`).join('')}
@@ -2326,12 +2397,15 @@ function heatMeter(heat){
   return out+'</div>';
 }
 
-function gameCardHtml(g){
+function gameCardHtml(g, sport){
   const live = g.status && g.status.toUpperCase().startsWith('LIVE');
-  const row = (t,score)=>`<div class="game-row">
-    <div class="team"><span class="team-abbr">${t.abbr}</span>${t.record?`<span class="team-record">${t.record}</span>`:''}</div>
+  const row = (t,score)=>{
+    const logo = teamLogo(sport, t.abbr);
+    return `<div class="game-row">
+    <div class="team">${logo ? `<img class="team-logo" src="${logo}" alt="" loading="lazy">` : ''}<span class="team-abbr">${t.abbr}</span>${t.record?`<span class="team-record">${t.record}</span>`:''}</div>
     ${score!==undefined ? `<span class="team-score tnum">${score}</span>` : ''}
   </div>`;
+  };
   return `<div class="game-card">
     <span class="game-status ${live?'live':''}">${g.status}${g.note?' · '+g.note:''}</span>
     ${row(g.away, g.away_score)}
@@ -2349,7 +2423,7 @@ function scorebarHtml(activeSportId){
         ${SPORTS.map(sp=>`<option value="${sp.id}" ${sp.id===current?'selected':''}>${sp.name}</option>`).join('')}
       </select>
     </div>
-    ${g ? `<div class="scorebar-context">${g.context}</div><div class="scorebar-games">${g.games.map(gameCardHtml).join('')}</div>`
+    ${g ? `<div class="scorebar-context">${g.context}</div><div class="scorebar-games">${g.games.map(x=>gameCardHtml(x, current)).join('')}</div>`
         : `<div class="scorebar-empty">No games scheduled for ${s.name} right now</div>`}
     <span class="scorebar-updated">${g && g.games.some(x=>x.status && x.status.toUpperCase().startsWith('LIVE')) ? '<span class="scorebar-live-dot"></span>' : ''}Updated <span id="updated-secs">0</span>s ago</span>
     <a class="scorebar-full" href="#/sport/${current}">Full Hub »</a>

@@ -652,7 +652,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: PAKISTAN 22/1 (4 OV) v ENGLAND · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: PAKISTAN 51/2 (12 OV) v ENGLAND · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -723,7 +723,7 @@ const GAMES = {
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
   cricket:{context:'LIVE: PAKISTAN v ENGLAND · 2ND ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG'}, home:{abbr:'PAK',record:'22/1'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · England won toss, elected to field'},
+    {status:'LIVE', away:{abbr:'ENG'}, home:{abbr:'PAK',record:'51/2'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · England won toss, elected to field'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
 };
@@ -818,9 +818,9 @@ const CRICKET_LIVE_MATCH = {
   status:'live',
   teams:{
     away:{abbr:'ENG', name:'England'},
-    home:{abbr:'PAK', name:'Pakistan', score:22, wkts:1, overs:'4.0'},
+    home:{abbr:'PAK', name:'Pakistan', score:51, wkts:2, overs:'12.0'},
   },
-  toss:'England won the toss and elected to field', resultLine:'Pakistan 22/1 (4 ov) · Babar Azam 20*, Saim Ayub 1* · Fakhar Zaman c Root b Atkinson 0',
+  toss:'England won the toss and elected to field', resultLine:'Pakistan 51/2 (12 ov) · Babar Azam 29*, Saad Baig 11* · Fakhar Zaman c Root b Atkinson 0, Saim Ayub c Curran b Baker 8',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{

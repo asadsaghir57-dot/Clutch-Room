@@ -652,7 +652,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: PAKISTAN 51/2 (12 OV) v ENGLAND · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: PAKISTAN 87/4 (18.5 OV) v ENGLAND · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -723,7 +723,7 @@ const GAMES = {
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
   cricket:{context:'LIVE: PAKISTAN v ENGLAND · 2ND ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG'}, home:{abbr:'PAK',record:'51/2'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · England won toss, elected to field'},
+    {status:'LIVE', away:{abbr:'ENG'}, home:{abbr:'PAK',record:'87/4'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · England won toss, elected to field'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
 };
@@ -818,9 +818,9 @@ const CRICKET_LIVE_MATCH = {
   status:'live',
   teams:{
     away:{abbr:'ENG', name:'England'},
-    home:{abbr:'PAK', name:'Pakistan', score:51, wkts:2, overs:'12.0'},
+    home:{abbr:'PAK', name:'Pakistan', score:87, wkts:4, overs:'18.5'},
   },
-  toss:'England won the toss and elected to field', resultLine:'Pakistan 51/2 (12 ov) · Babar Azam 29*, Saad Baig 11* · Fakhar Zaman c Root b Atkinson 0, Saim Ayub c Curran b Baker 8',
+  toss:'England won the toss and elected to field', resultLine:'Pakistan 87/4 (18.5 ov) · Saad Baig 18*, Hasan Nawaz 6* · Fakhar Zaman c Root b Atkinson 0, Saim Ayub c Curran b Baker 8, Babar Azam b Jacks 34, Salman Agha c Atkinson b Rashid 16',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -1733,18 +1733,21 @@ const ARTICLES = [
     ],
   },
   {id:'pak-eng-2nd-odi-recap', sport:'cricket', cat:'recap',
-    headline:'Fakhar Zaman Falls for a Duck as England Strike Early in Rawalpindi',
-    dek:'England won the toss and chose to field, and Gus Atkinson has Fakhar Zaman caught by Joe Root inside the first four overs — Babar Azam and Saim Ayub are steadying things as Pakistan move to 22/1.',
-    byline:'Clutch Room Cricket Desk', mins:4, time:'Oct 20, 2026',
+    headline:'Babar Azam and Salman Agha Fall in a Rush as Pakistan Slide to 87/4',
+    dek:'Will Jacks bowls Babar Azam for 34 and Adil Rashid has Salman Agha caught at deep fine leg as England tighten the screws — Saad Baig and Hasan Nawaz are left to rebuild past the halfway mark at Rawalpindi.',
+    byline:'Clutch Room Cricket Desk', mins:6, time:'Oct 20, 2026',
     qa:[['Who won the toss?','England, who chose to field first.'],
-        ['What\'s the score?','Pakistan 22/1 after 4 overs — Fakhar Zaman out for a duck, Babar Azam 20* and Saim Ayub 1* at the crease.']],
+        ['What\'s the score?','Pakistan 87/4 after 18.5 overs — Babar Azam and Salman Agha both out, Saad Baig 18* and Hasan Nawaz 6* trying to rebuild.']],
     body:[
       'Harry Brook wins the toss at Rawalpindi Cricket Stadium and sends Pakistan in under the lights — the same read the touring side took in the series opener against Sri Lanka, only this time it\'s a full-strength England attack doing the asking.',
       'Early breakthrough for England. Fakhar Zaman goes without scoring, caught by Joe Root off Gus Atkinson, and the tourists have the start they wanted — a big wicket inside the powerplay against the team that steamrolled Sri Lanka two days ago.',
-      'Babar Azam doesn\'t let it rattle him. He\'s the fluent one at the other end, racing to 20 while Saim Ayub gets himself in, and Pakistan move to 22/1 after four overs — one big setback, but the platform is still there to build from.',
+      'It doesn\'t get easier for the openers. Sonny Baker digs one in short and tight to the body, Saim Ayub can\'t control the pull, and it spirals high to deep backward square where Curran settles under a droppable chance. Pakistan slip to 31/2 inside the powerplay.',
+      'Babar Azam and Saad Baig steady things for a while, dragging the total past fifty, but Will Jacks ends the resistance — a skiddy one from back of a length rattles Babar\'s off stump as he aims a loose clip across the line, camped on the back foot when he should have gone forward. He\'s out for 34, and Pakistan are 59/3.',
+      'Adil Rashid strikes almost immediately after coming on. Salman Agha goes for the sweep again, top-edges a flighted, slower delivery, and Atkinson pouches it running back from deep fine leg. Pakistan are 81/4 and the innings is unraveling against a disciplined England attack.',
+      'Saad Baig (18*) and Hasan Nawaz (6* after one big six) are at the crease trying to rebuild as Pakistan move to 87/4 after 18.5 overs — well behind where they\'d want to be at this stage against a bowling unit that hasn\'t given an inch.',
       'This article will keep updating with commentary on every major moment as the innings unfolds.',
     ],
-    pull:'One ball into the contest for real and England already have what they came for — Fakhar Zaman gone, Babar Azam left to steady the innings.',
+    pull:'Four wickets down and barely past the halfway mark — Pakistan\'s innings is unraveling against an England attack that hasn\'t missed a trick in the field.',
   },
 ];
 

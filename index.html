@@ -667,7 +667,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: PAKISTAN 302/9 (49.6 OV) v ENGLAND · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: ENGLAND 46/0 (7.4 OV) CHASING 303 v PAKISTAN · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -738,7 +738,7 @@ const GAMES = {
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
   cricket:{context:'LIVE: PAKISTAN v ENGLAND · 2ND ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · Pakistan 49.6 ov, England yet to bat'},
+    {status:'LIVE', away:{abbr:'ENG',record:'46/0'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · England 46/0 (7.4 ov), chasing 303'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
 };
@@ -832,10 +832,10 @@ const CRICKET_LIVE_MATCH = {
   venue:'Rawalpindi Cricket Stadium', date:'Oct 20, 2026',
   status:'live',
   teams:{
-    away:{abbr:'ENG', name:'England'},
-    home:{abbr:'PAK', name:'Pakistan', score:302, wkts:9, overs:'49.6'},
+    away:{abbr:'ENG', name:'England', score:46, wkts:0, overs:'7.4'},
+    home:{abbr:'PAK', name:'Pakistan', score:302, wkts:9, overs:'50.0'},
   },
-  toss:'England won the toss and elected to field', resultLine:'Pakistan 302/9 (49.6 ov) · Hasan Nawaz 79, Arafat Minhas 59, Faheem Ashraf 39 · England yet to bat, chasing 303',
+  toss:'England won the toss and elected to field', resultLine:'England 46/0 (7.4 ov), chasing 303 · Tom Banton 29*, Ben Duckett 16* · need 257 from 42.2 ov · Pakistan 302/9',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{

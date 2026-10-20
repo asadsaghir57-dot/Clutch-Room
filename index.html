@@ -665,7 +665,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: PAKISTAN 302/9 (49.6 OV) v ENGLAND · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: ENGLAND 8/0 (1.5 OV) CHASING 303 v PAKISTAN · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -735,8 +735,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'LIVE: PAKISTAN v ENGLAND · 2ND ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · Pakistan 49.6 ov, England yet to bat'},
+  cricket:{context:'LIVE: ENGLAND v PAKISTAN · 2ND ODI AT RAWALPINDI', games:[
+    {status:'LIVE', away:{abbr:'ENG',record:'8/0'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · Pakistan 302/9 (50 ov), England 8/0 (1.5 ov) chasing 303'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
 };
@@ -830,10 +830,10 @@ const CRICKET_LIVE_MATCH = {
   venue:'Rawalpindi Cricket Stadium', date:'Oct 20, 2026',
   status:'live',
   teams:{
-    away:{abbr:'ENG', name:'England'},
-    home:{abbr:'PAK', name:'Pakistan', score:302, wkts:9, overs:'49.6'},
+    away:{abbr:'ENG', name:'England', score:8, wkts:0, overs:'1.5'},
+    home:{abbr:'PAK', name:'Pakistan', score:302, wkts:9, overs:'50'},
   },
-  toss:'England won the toss and elected to field', resultLine:'Pakistan 302/9 (49.6 ov) · Hasan Nawaz 79, Arafat Minhas 59, Faheem Ashraf 39 · England yet to bat, chasing 303',
+  toss:'England won the toss and elected to field', resultLine:'Pakistan 302/9 (50 ov) · Hasan Nawaz 79, Arafat Minhas 59, Faheem Ashraf 39 · England 8/0 (1.5 ov), need 295 in 48.1 overs',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -1758,11 +1758,11 @@ const ARTICLES = [
     ],
   },
   {id:'pak-eng-2nd-odi-recap', sport:'cricket', cat:'recap',
-    headline:'Hasan Nawaz Fifty Carries Pakistan Past 150 as Saad Baig Becomes England\'s Fifth Scalp',
-    dek:'Gus Atkinson returns to end a patient 35 from Saad Baig, but Hasan Nawaz\'s first fifty of the series and a fresh stand with Arafat Minhas have Pakistan ticking past 32 overs at Rawalpindi.',
-    byline:'Clutch Room Cricket Desk', mins:7, time:'Oct 20, 2026',
+    headline:'Pakistan Post 302/9 as Nawaz, Minhas and Ashraf All Score Fifties-Adjacent Runs; England\'s Chase Underway',
+    dek:'Hasan Nawaz\'s 79 and Arafat Minhas\'s 59 set up a late Faheem Ashraf flurry that pushes Pakistan to 302/9 at Rawalpindi — now England are 8/0 chasing 303.',
+    byline:'Clutch Room Cricket Desk', mins:8, time:'Oct 20, 2026',
     qa:[['Who won the toss?','England, who chose to field first.'],
-        ['What\'s the score?','Pakistan 169/5 after 32.5 overs — Hasan Nawaz 59* off 50 balls (4 fours, 4 sixes) and Arafat Minhas 8* rebuilding after Saad Baig\'s dismissal.']],
+        ['What\'s the score?','Pakistan posted 302/9 off their 50 overs. England are 8/0 after 1.5 overs in reply, needing 295 off 48.1 overs.']],
     body:[
       'Harry Brook wins the toss at Rawalpindi Cricket Stadium and sends Pakistan in under the lights — the same read the touring side took in the series opener against Sri Lanka, only this time it\'s a full-strength England attack doing the asking.',
       'Early breakthrough for England. Fakhar Zaman goes without scoring, caught by Joe Root off Gus Atkinson, and the tourists have the start they wanted — a big wicket inside the powerplay against the team that steamrolled Sri Lanka two days ago.',
@@ -1773,9 +1773,15 @@ const ARTICLES = [
       'Then Brook turns back to Atkinson, and it pays off immediately. Baig swivels into a pull off a well-aimed bouncer but mistimes it, and Sam Curran dives forward at deep square leg to complete the catch. Baig departs for a patient 35 off 54 balls, and Pakistan are 133/5 in the 28th over.',
       'Hasan Nawaz doesn\'t blink. He brings up his fifty off 46 balls — his first of the series — with a mix of clean boundaries and the odd mistimed six that still clears the rope, and keeps the scoreboard moving even as partners fall around him.',
       'Arafat Minhas joins him at the crease and the pair settle into a new stand. Pakistan move to 169/5 after 32.5 overs — Hasan Nawaz unbeaten on 59 (50b, 4x4, 4x6) and Arafat Minhas 8* — with the lower-middle order still to come against an England attack that has stayed relentless all afternoon.',
-      'This article will keep updating with commentary on every major moment as the innings unfolds.',
+      'Nawaz keeps going. He brings up his maiden ODI fifty for the series — then goes well past it — but Jamie Overton finally gets him, cleaning up the stumps as Nawaz looks to force the pace. He departs for 79 off 74 balls (5 fours, 4 sixes), and Pakistan are 211/6 in the 39.5th over.',
+      'Arafat Minhas, who\'d been the calm foil all through the stand, doesn\'t slow down with Nawaz gone. He brings up his own fifty and keeps swinging, but Sonny Baker has the last word — Minhas skies one to Harry Brook in the deep and walks off for 59 off 58 balls (9 fours). Pakistan 283/7, 47.6 overs.',
+      'Faheem Ashraf wastes no time in the slog overs. He goes after Sam Curran and finds the gaps — 39 off just 26 balls with 5 fours and a six — before Curran gets his man, Will Jacks taking the catch. Pakistan slip to 285/8 in the 48.3rd over, still with plenty of late-innings fireworks to spare.',
+      'Naseem Shah doesn\'t last long at the other end — Sonny Baker has him caught by Jamie Overton for 1, and Pakistan are 296/9 with four balls of the innings to go.',
+      'Shaheen Afridi and Haris Rauf see Pakistan home from there. Rauf closes the innings with a four off Sonny Baker\'s final ball, and Pakistan finish on 302/9 from their 50 overs — Afridi unbeaten on 10, Rauf on 4. Sonny Baker the pick of the England bowlers with 3/65; Gus Atkinson removed the top order early for 2/35.',
+      'England\'s reply is underway. Tom Banton and Ben Duckett open the chase of 303, and it\'s a watchful start against the new ball — Shaheen Afridi and Naseem Shah probing good lengths. England move to 8/0 after 1.5 overs, needing 295 from 48.1 overs with the required rate already ticking past six an over.',
+      'This article will keep updating with commentary on every major moment as the chase unfolds.',
     ],
-    pull:'Five down but still moving — Hasan Nawaz\'s fifty has Pakistan ticking past 32 overs even as England keep finding the breakthroughs.',
+    pull:'302 all out — Nawaz, Minhas and a late Faheem Ashraf burst get Pakistan to a competitive total. Now England have to chase it down.',
   },
 ];
 

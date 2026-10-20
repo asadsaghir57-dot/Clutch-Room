@@ -166,6 +166,16 @@ h1,h2,h3,.disp{
 /* ---------- live tracker (db-backed, updates without a republish) ---------- */
 .live-tracker{background:var(--ink);border-bottom:1px solid var(--line);}
 .live-tracker-inner{max-width:1180px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:16px;overflow-x:auto;}
+.marquee-track{display:flex;align-items:center;gap:16px;flex:none;}
+@media (max-width:760px){
+  .live-tracker-inner{overflow-x:hidden;gap:0;}
+  .live-tracker-inner .marquee-track{animation:marquee-scroll 16s linear infinite;}
+}
+@keyframes marquee-scroll{from{transform:translateX(0);}to{transform:translateX(-100%);}}
+@media (max-width:760px) and (prefers-reduced-motion: reduce){
+  .live-tracker-inner .marquee-track{animation:none;}
+  .live-tracker-inner{overflow-x:auto;}
+}
 .lt-label{flex:none;display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#EDEDE8;}
 .lt-label .dot{width:6px;height:6px;border-radius:50%;background:var(--court);animation:pulse 1.3s ease-in-out infinite;}
 @media (prefers-reduced-motion: reduce){.lt-label .dot{animation:none;}}
@@ -652,7 +662,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: PAKISTAN 169/5 (32.5 OV) v ENGLAND · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: PAKISTAN 302/9 (49.6 OV) v ENGLAND · 2ND ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -723,7 +733,7 @@ const GAMES = {
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
   cricket:{context:'LIVE: PAKISTAN v ENGLAND · 2ND ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG'}, home:{abbr:'PAK',record:'169/5'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · England won toss, elected to field'},
+    {status:'LIVE', away:{abbr:'ENG'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Rawalpindi Cricket Stadium · Pakistan 49.6 ov, England yet to bat'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
 };
@@ -818,9 +828,9 @@ const CRICKET_LIVE_MATCH = {
   status:'live',
   teams:{
     away:{abbr:'ENG', name:'England'},
-    home:{abbr:'PAK', name:'Pakistan', score:169, wkts:5, overs:'32.5'},
+    home:{abbr:'PAK', name:'Pakistan', score:302, wkts:9, overs:'49.6'},
   },
-  toss:'England won the toss and elected to field', resultLine:'Pakistan 169/5 (32.5 ov) · Hasan Nawaz 59*, Arafat Minhas 8* · Fakhar Zaman c Root b Atkinson 0, Saim Ayub c Curran b Baker 8, Babar Azam b Jacks 34, Salman Agha c Atkinson b Rashid 16, Saad Baig c Curran b Atkinson 35',
+  toss:'England won the toss and elected to field', resultLine:'Pakistan 302/9 (49.6 ov) · Hasan Nawaz 79, Arafat Minhas 59, Faheem Ashraf 39 · England yet to bat, chasing 303',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -2366,10 +2376,11 @@ function liveNowCardHtml(s){
 function liveNowHtml(){
   const liveSports = SPORTS.filter(s=>s.live);
   if(!liveSports.length) return '';
+  const content = `<span class="lt-label"><span class="dot"></span>Live Now</span>${liveSports.map(liveNowCardHtml).join('')}`;
   return `<div class="live-tracker">
     <div class="live-tracker-inner">
-      <span class="lt-label"><span class="dot"></span>Live Now</span>
-      ${liveSports.map(liveNowCardHtml).join('')}
+      <div class="marquee-track">${content}</div>
+      <div class="marquee-track" aria-hidden="true">${content}</div>
     </div>
   </div>`;
 }

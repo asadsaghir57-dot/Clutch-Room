@@ -621,6 +621,8 @@ a.board-row{display:grid;}
 .rank-rating{text-align:right;font-weight:700;color:var(--ink);}
 @media (max-width:860px){.rank-grid{grid-template-columns:repeat(2,1fr);}.rank-grid.rank-grid-2{grid-template-columns:1fr;}}
 @media (max-width:640px){.rank-grid{grid-template-columns:1fr;}}
+.rank-tabs{display:flex;gap:8px;flex-wrap:wrap;}
+.rank-panels{margin-top:14px;max-width:480px;}
 .div-team{font-size:14px;padding:7px 0;border-bottom:1px solid var(--line);color:var(--ink);}
 .div-team:last-child{border-bottom:none;}
 .comp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
@@ -1536,10 +1538,36 @@ function renderRankGrid(cols, gridCls){
     </div>`).join('')}
   </div>`;
 }
+function showRankTab(prefix, idx){
+  document.querySelectorAll(`.rank-tabs[data-prefix="${prefix}"] .chip`).forEach((c,i)=>{
+    const on = i===idx;
+    c.classList.toggle('on', on);
+    c.setAttribute('aria-pressed', on?'true':'false');
+  });
+  document.querySelectorAll(`.rank-panel[data-prefix="${prefix}"]`).forEach(el=>{
+    el.style.display = Number(el.dataset.idx)===idx ? '' : 'none';
+  });
+}
+function renderRankTabs(cols, prefix){
+  return `<div class="rank-tabs" data-prefix="${prefix}">
+    ${cols.map((c,i)=>`<span class="chip ${i===0?'on':''}" role="button" tabindex="0" aria-pressed="${i===0?'true':'false'}" onclick="showRankTab('${prefix}',${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">${c.label}</span>`).join('')}
+  </div>
+  <div class="rank-panels">
+    ${cols.map((c,i)=>`<div class="rank-panel" data-prefix="${prefix}" data-idx="${i}" style="${i===0?'':'display:none;'}">
+      <div class="rank-table">
+        ${c.rows.map((r,ri)=>`<div class="rank-row">
+          <span class="rank-pos">${ri+1}</span>
+          <span class="rank-team">${stdTeamCell(r.abbr, r.team, c.scope)}</span>
+          <span class="tnum rank-rating">${r.rating}</span>
+        </div>`).join('')}
+      </div>
+    </div>`).join('')}
+  </div>`;
+}
 function renderCricketRankings(){
   return `<div class="div-section">
     <div class="div-section-head"><h3 class="disp">ICC Team Rankings</h3><span class="sub">Men's · rating points</span></div>
-    ${renderRankGrid(['odi','t20i','test'].map(k=>({label:CRICKET_RANKINGS[k].label, rows:CRICKET_RANKINGS[k].rows, scope:'cricket'})))}
+    ${renderRankTabs(['odi','t20i','test'].map(k=>({label:CRICKET_RANKINGS[k].label, rows:CRICKET_RANKINGS[k].rows, scope:'cricket'})), 'cricket-rank')}
   </div>`;
 }
 const TENNIS_RANKINGS = {

@@ -528,7 +528,12 @@ a.board-row{display:grid;}
 .std-row.std-head .tnum{text-align:right;}
 .std-pos{color:var(--ink-muted);}
 .std-team{display:flex;align-items:center;gap:9px;min-width:0;font-weight:600;}
-.std-badge{width:20px;height:20px;object-fit:contain;flex:none;background:var(--paper-raised);border-radius:50%;}
+.std-badge{width:20px;height:20px;object-fit:contain;flex:none;background:var(--paper-raised);border-radius:5px;}
+.std-badge.std-badge-dark{background:#121212;}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .std-badge.std-badge-dark{background:var(--paper-raised);}
+}
+:root[data-theme="dark"] .std-badge.std-badge-dark{background:var(--paper-raised);}
 .std-badge.std-badge-fallback{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-size:7px;font-weight:700;color:#fff;}
 .std-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .std-row .tnum{text-align:right;}
@@ -714,7 +719,7 @@ const SPORTS = [
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:88, status:'OPENING NIGHT SWEEP: PISTONS STUN CELTICS, 76ERS SPOIL KNICKS\' BANNER NIGHT, THUNDER ROUT SPURS 116-104 AS WEMBANYAMA GOES 1-OF-13', deep:'light', sub:'NBA', live:false},
-  {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
+  {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
   {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'FINAL: PAKISTAN BEAT ENGLAND BY 87 RUNS · NEXT: SL v ENG, OCT 22', deep:'light', sub:'International & league cricket', live:false},
@@ -1361,10 +1366,11 @@ const NFL_STANDINGS = [
     {abbr:'LAR', name:'Los Angeles Rams', w:2, l:4, t:0, pct:'.333'},
   ]},
 ];
+const STD_DARK_BACKDROP = new Set(['NZ']);
 function stdTeamCell(abbr, name, scope){
   const logo = teamLogo(scope, abbr);
   const mark = logo
-    ? `<img class="std-badge" src="${logo}" alt="" loading="lazy">`
+    ? `<img class="std-badge${STD_DARK_BACKDROP.has(abbr)?' std-badge-dark':''}" src="${logo}" alt="" loading="lazy">`
     : `<span class="std-badge std-badge-fallback" style="background:${fxBadgeColor(abbr)}">${abbr.slice(0,3)}</span>`;
   return `${mark}<span class="std-name">${name}</span>`;
 }

@@ -663,7 +663,7 @@ const SPORTS = [
   {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 7: CHIEFS, BILLS, STEELERS WIN · 49ERS HOLD OFF COMMANDERS 23-17, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
-  {id:'basketball', name:'Basketball', accent:'away', heat:90, status:'76ERS SPOIL KNICKS\' BANNER NIGHT 106-100 IN LEBRON & JAYLEN BROWN DEBUTS · THUNDER LEAD SPURS 112-100, 1:14 LEFT IN Q4', deep:'light', sub:'NBA', live:true},
+  {id:'basketball', name:'Basketball', accent:'away', heat:88, status:'OPENING NIGHT SWEEP: PISTONS STUN CELTICS, 76ERS SPOIL KNICKS\' BANNER NIGHT, THUNDER ROUT SPURS 116-104 AS WEMBANYAMA GOES 1-OF-13', deep:'light', sub:'NBA', live:false},
   {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
@@ -718,12 +718,12 @@ const GAMES = {
   padel:{context:'MILANO P1 COMPLETE · TAPIA/COELLO WIN AGAIN', games:[
     {status:'FINAL', away:{abbr:'LEBRÓN/AUGSBURGER'}, home:{abbr:'TAPIA/COELLO'}, note:'Milano P1 Final · Tapia/Coello win 4-6, 6-3, 6-2 for back-to-back P1 titles'},
   ]},
-  basketball:{context:'OPENING NIGHT: PISTONS STUN CELTICS 121-113 · 76ERS SPOIL KNICKS\' BANNER NIGHT 106-100 IN LEBRON & JAYLEN BROWN DEBUTS · THUNDER LEAD SPURS 112-100 LATE IN Q4', games:[
+  basketball:{context:'OPENING NIGHT COMPLETE: PISTONS STUN CELTICS 121-113 · 76ERS SPOIL KNICKS\' BANNER NIGHT 106-100 · THUNDER ROUT SPURS 116-104, WEMBANYAMA 1-OF-13', games:[
     {status:'FINAL', away:{abbr:'HOU',record:'135'}, home:{abbr:'DAL',record:'117'}, note:'NBA China Gm1 · Macao · Rockets romp, Flagg scores 19'},
     {status:'FINAL', away:{abbr:'DAL',record:'132'}, home:{abbr:'HOU',record:'115'}, note:'NBA China Gm2 · Macao · Mavericks even series 1-1'},
     {status:'FINAL', away:{abbr:'BOS',record:'113'}, home:{abbr:'DET',record:'121'}, note:'Opening Night · Little Caesars Arena · Pistons erase a 22-pt deficit with a 23-0 fourth-quarter run; Cunningham 22 pts/8 ast, Duren 22 pts/9 reb, Green 5 threes off the bench; Paul George sets Celtics debut record with 38 pts, Tatum 13 on 6-of-23'},
     {status:'FINAL', away:{abbr:'PHI',record:'106'}, home:{abbr:'NYK',record:'100'}, note:'Opening Night · Banner night at MSG · Maxey 28 pts; Jaylen Brown (Sixers debut) 19 pts/8 reb/6 ast, caps a 29-18 3rd quarter with a buzzer-beating 3 off a LeBron inbound; LeBron James (Sixers debut) 14 pts/9 reb/7 ast; Brunson 21 pts, Towns 19 pts/12 reb for New York'},
-    {status:'LIVE Q4 1:14', away:{abbr:'OKC',record:'112'}, home:{abbr:'SAS',record:'100'}, note:'Opening Night · WCF rematch · Gilgeous-Alexander 32 pts for OKC; De\'Aaron Fox 14 pts/7 reb/7 ast for San Antonio'},
+    {status:'FINAL', away:{abbr:'OKC',record:'116'}, home:{abbr:'SAS',record:'104'}, note:'Opening Night · WCF rematch at Frost Bank Center · Gilgeous-Alexander 32 pts/6 reb/4 ast, Jared McCain 20 pts off the bench for OKC; Stephon Castle 24 pts/7 reb for San Antonio, Victor Wembanyama held to 12 on 1-of-13 shooting in his season debut'},
   ]},
   ufc:{context:'FIGHT NIGHT EDMONTON · FINAL', games:[
     {status:'FINAL', away:{abbr:'BUCKLEY'}, home:{abbr:'MALOTT'}, note:'Malott KOs Buckley at 2:32 of Round 2 · Edmonton'},
@@ -1655,6 +1655,19 @@ const ARTICLES = [
       'None of this guarantees anything about April. But the Knicks are the team Philadelphia has to get through if the rebuild is going to mean anything, and the 76ers just beat them, on New York\'s own floor, on the night that was supposed to belong entirely to the champions. If the goal was proof of concept, Opening Night delivered it in the most literal way possible — one inbound pass, one catch-and-shoot 3, one game decided by the exact two players the trade was about.',
     ],
     related:'sixers-knicks-opener-recap',
+  },
+
+  {id:'thunder-spurs-opener-recap', sport:'basketball', cat:'recap',
+    headline:'Thunder Cap NBA Opening Night by Routing Spurs 116-104 as Wembanyama Goes 1-of-13',
+    dek:'Shai Gilgeous-Alexander scored 32 and Jared McCain added 20 off the bench in the season opener at Frost Bank Center, while Victor Wembanyama missed his first 12 shots before finishing with just 12 points.',
+    byline:'Clutch Room Basketball Desk', mins:4, time:'Oct 21, 2026',
+    qa:[['What was the final score?','Thunder 116, Spurs 104, in a rematch of last season\'s Western Conference finals at Frost Bank Center in San Antonio.'],
+        ['What happened to Victor Wembanyama?','He missed his first 12 shot attempts — his only field goal came on an alley-oop pass from De\'Aaron Fox at the third-quarter buzzer — and finished with 12 points on 1-of-13 shooting.']],
+    body:[
+      'Oklahoma City closed out NBA Opening Night the way it spent last postseason: in control against San Antonio. The Thunder led for all but the first five minutes, pulling away to a 65-44 halftime lead behind Shai Gilgeous-Alexander (32 points, 6 rebounds, 4 assists) and a reserve burst from Jared McCain, who scored 20 on 6-of-8 three-point shooting, in a 116-104 win at Frost Bank Center.',
+      'San Antonio cut the deficit to single digits in the third quarter, with Stephon Castle scoring 24 points and grabbing 7 rebounds to keep the Spurs within range. But Victor Wembanyama\'s season debut was a nightmare from the floor — he missed his first 12 field-goal attempts, including a blocked alley-oop try, before his only make came on a De\'Aaron Fox lob as time expired in the third quarter. He finished 1-of-13 for 12 points.',
+      'It\'s a single opening-night result, and nobody in San Antonio will mistake it for a trend after one off shooting night from their franchise cornerstone. But for a Thunder team that beat this same Spurs roster in last season\'s Western Conference finals, picking right back up with a 12-point road win is the cleanest possible start to a title defense.',
+    ],
   },
 
   {id:'pak-sl-1st-t20i-preview', sport:'cricket', cat:'preview',

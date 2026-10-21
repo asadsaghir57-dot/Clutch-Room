@@ -664,7 +664,7 @@ const SPORTS = [
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:88, status:'OPENING NIGHT SWEEP: PISTONS STUN CELTICS, 76ERS SPOIL KNICKS\' BANNER NIGHT, THUNDER ROUT SPURS 116-104 AS WEMBANYAMA GOES 1-OF-13', deep:'light', sub:'NBA', live:false},
-  {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
+  {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · ANTONELLI LEADS TITLE RACE BY 102 WITH 6 TO GO · VERSTAPPEN WON SINGAPORE', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
   {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'FINAL: PAKISTAN BEAT ENGLAND BY 87 RUNS · NEXT: SL v ENG, OCT 22', deep:'light', sub:'International & league cricket', live:false},
@@ -683,6 +683,7 @@ const CAT = {
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
   mlb:{context:'RAYS CLINCH AL PENNANT · WORLD SERIES: RAYS vs. BREWERS STARTS FRIDAY', games:[
+    {status:'FRI OCT 23 8:00 PM ET', away:{abbr:'TB'}, home:{abbr:'MIL'}, note:'World Series Gm1 · American Family Field · Brewers hold home-field advantage'},
     {status:'FINAL', away:{abbr:'CLE',record:'3'}, home:{abbr:'TB',record:'7'}, note:'ALCS Gm6 · Tropicana Field · Rays clinch AL pennant 4-2, advance to World Series vs. Brewers'},
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
     {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},
@@ -719,11 +720,16 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LEBRÓN/AUGSBURGER'}, home:{abbr:'TAPIA/COELLO'}, note:'Milano P1 Final · Tapia/Coello win 4-6, 6-3, 6-2 for back-to-back P1 titles'},
   ]},
   basketball:{context:'OPENING NIGHT COMPLETE: PISTONS STUN CELTICS 121-113 · 76ERS SPOIL KNICKS\' BANNER NIGHT 106-100 · THUNDER ROUT SPURS 116-104, WEMBANYAMA 1-OF-13', games:[
+    {status:'WED OCT 21 7:30 PM ET', away:{abbr:'MIN'}, home:{abbr:'MIA'}, note:'Regular season'},
+    {status:'WED OCT 21 10:00 PM ET', away:{abbr:'GSW'}, home:{abbr:'LAL'}, note:'Regular season'},
     {status:'FINAL', away:{abbr:'HOU',record:'135'}, home:{abbr:'DAL',record:'117'}, note:'NBA China Gm1 · Macao · Rockets romp, Flagg scores 19'},
     {status:'FINAL', away:{abbr:'DAL',record:'132'}, home:{abbr:'HOU',record:'115'}, note:'NBA China Gm2 · Macao · Mavericks even series 1-1'},
     {status:'FINAL', away:{abbr:'BOS',record:'113'}, home:{abbr:'DET',record:'121'}, note:'Opening Night · Little Caesars Arena · Pistons erase a 22-pt deficit with a 23-0 fourth-quarter run; Cunningham 22 pts/8 ast, Duren 22 pts/9 reb, Green 5 threes off the bench; Paul George sets Celtics debut record with 38 pts, Tatum 13 on 6-of-23'},
     {status:'FINAL', away:{abbr:'PHI',record:'106'}, home:{abbr:'NYK',record:'100'}, note:'Opening Night · Banner night at MSG · Maxey 28 pts; Jaylen Brown (Sixers debut) 19 pts/8 reb/6 ast, caps a 29-18 3rd quarter with a buzzer-beating 3 off a LeBron inbound; LeBron James (Sixers debut) 14 pts/9 reb/7 ast; Brunson 21 pts, Towns 19 pts/12 reb for New York'},
     {status:'FINAL', away:{abbr:'OKC',record:'116'}, home:{abbr:'SAS',record:'104'}, note:'Opening Night · WCF rematch at Frost Bank Center · Gilgeous-Alexander 32 pts/6 reb/4 ast, Jared McCain 20 pts off the bench for OKC; Stephon Castle 24 pts/7 reb for San Antonio, Victor Wembanyama held to 12 on 1-of-13 shooting in his season debut'},
+  ]},
+  f1:{context:'US GRAND PRIX · CIRCUIT OF THE AMERICAS · RACE SUNDAY OCT 25', games:[
+    {status:'SUN OCT 25 4:00 PM ET', away:{abbr:'ANTONELLI'}, home:{abbr:'RUSSELL'}, note:'US GP Rd 18 of 23 · Antonelli leads Russell 340-238 after Singapore; Verstappen 4th on 221 after winning from pole'},
   ]},
   ufc:{context:'FIGHT NIGHT EDMONTON · FINAL', games:[
     {status:'FINAL', away:{abbr:'BUCKLEY'}, home:{abbr:'MALOTT'}, note:'Malott KOs Buckley at 2:32 of Round 2 · Edmonton'},
@@ -738,6 +744,7 @@ const GAMES = {
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
   cricket:{context:'FINAL: PAKISTAN BEAT ENGLAND BY 87 RUNS · 2ND ODI AT RAWALPINDI', games:[
+    {status:'THU OCT 22', away:{abbr:'ENG'}, home:{abbr:'SL'}, note:'ODI Tri-Series 3rd Match · Rawalpindi Cricket Stadium · tri-series final is Oct 31 at Gaddafi Stadium, Lahore'},
     {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Pakistan win by 87 runs, Arafat Minhas Player of the Match (59 & 6/40)'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},

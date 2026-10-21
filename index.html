@@ -545,8 +545,12 @@ a.board-row{display:grid;}
 .nfl-std-team{display:flex;align-items:center;gap:7px;min-width:0;font-weight:600;}
 .nfl-std-row .tnum{text-align:right;}
 @media (max-width:640px){
-  .std-row{grid-template-columns:18px 1fr repeat(6,22px);column-gap:6px;font-size:10.5px;}
-  .std-name{font-size:11px;}
+  .std-col-wdl{display:none;}
+  .std-row{grid-template-columns:22px 1fr 34px 40px;column-gap:10px;font-size:13px;padding:11px 10px;}
+  .std-row.std-head{font-size:10.5px;}
+  .std-badge{width:24px;height:24px;}
+  .std-name{font-size:13.5px;}
+  .std-pts{font-size:14px;}
 }
 
 /* ---------- cricket: live match card + summary/scorecard ---------- */
@@ -1322,15 +1326,15 @@ function renderStandingsTable(key){
   return `<div class="div-section">
     <div class="div-section-head"><h3 class="disp">Standings</h3><span class="sub">${t.label}</span></div>
     <div class="std-table">
-      <div class="std-row std-head"><span class="std-pos"></span><span class="std-team">Team</span><span class="tnum">GP</span><span class="tnum">W</span><span class="tnum">D</span><span class="tnum">L</span><span class="tnum">GD</span><span class="tnum std-pts">Pts</span></div>
+      <div class="std-row std-head"><span class="std-pos"></span><span class="std-team">Team</span><span class="tnum std-col-gp">GP</span><span class="tnum std-col-wdl">W</span><span class="tnum std-col-wdl">D</span><span class="tnum std-col-wdl">L</span><span class="tnum std-col-wdl">GD</span><span class="tnum std-pts">Pts</span></div>
       ${t.rows.map((r,i)=>{
         const gd = r.gf - r.ga;
         const zone = stdZoneClass(t.zones, i+1);
         return `<div class="std-row ${zone.cls}" title="${zone.label}">
           <span class="std-pos">${i+1}</span>
           <span class="std-team">${stdTeamCell(r.abbr, r.team, 'football')}</span>
-          <span class="tnum">${r.gp}</span><span class="tnum">${r.w}</span><span class="tnum">${r.d}</span><span class="tnum">${r.l}</span>
-          <span class="tnum">${gd>0?'+':''}${gd}</span><span class="tnum std-pts">${r.pts}</span>
+          <span class="tnum std-col-gp">${r.gp}</span><span class="tnum std-col-wdl">${r.w}</span><span class="tnum std-col-wdl">${r.d}</span><span class="tnum std-col-wdl">${r.l}</span>
+          <span class="tnum std-col-wdl">${gd>0?'+':''}${gd}</span><span class="tnum std-pts">${r.pts}</span>
         </div>`;
       }).join('')}
     </div>

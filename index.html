@@ -1135,6 +1135,38 @@ const TEAM_LOGOS = {
     NO:'https://r2.thesportsdb.com/images/media/team/badge/nd46c71537821337.png',
     TB:'https://r2.thesportsdb.com/images/media/team/badge/2dfpdl1537820969.png',
   },
+  basketball: {
+    BOS:'https://r2.thesportsdb.com/images/media/team/badge/4j85bn1667936589.png',
+    BKN:'https://r2.thesportsdb.com/images/media/team/badge/hkafe61739948361.png',
+    NYK:'https://r2.thesportsdb.com/images/media/team/badge/4k8obt1778226764.png',
+    PHI:'https://r2.thesportsdb.com/images/media/team/badge/j6rlbi1778226857.png',
+    TOR:'https://r2.thesportsdb.com/images/media/team/badge/lct96a1778227205.png',
+    CHI:'https://r2.thesportsdb.com/images/media/team/badge/ehq8l31778197349.png',
+    CLE:'https://r2.thesportsdb.com/images/media/team/badge/pch9ct1778195828.png',
+    DET:'https://r2.thesportsdb.com/images/media/team/badge/lg7qrc1621594751.png',
+    IND:'https://r2.thesportsdb.com/images/media/team/badge/y3lutb1778226511.png',
+    MIL:'https://r2.thesportsdb.com/images/media/team/badge/olhug01621594702.png',
+    ATL:'https://r2.thesportsdb.com/images/media/team/badge/7o1noy1778226315.png',
+    CHA:'https://r2.thesportsdb.com/images/media/team/badge/xqtvvp1422380623.png',
+    MIA:'https://r2.thesportsdb.com/images/media/team/badge/b9tye31778226616.png',
+    ORL:'https://r2.thesportsdb.com/images/media/team/badge/j0mpu81778198371.png',
+    WAS:'https://r2.thesportsdb.com/images/media/team/badge/dxac7a1778227278.png',
+    DEN:'https://r2.thesportsdb.com/images/media/team/badge/s8ch7m1778197814.png',
+    MIN:'https://r2.thesportsdb.com/images/media/team/badge/epenxg1781034811.png',
+    OKC:'https://r2.thesportsdb.com/images/media/team/badge/bkhj5p1778199006.png',
+    POR:'https://r2.thesportsdb.com/images/media/team/badge/umehtv1778226952.png',
+    UTA:'https://r2.thesportsdb.com/images/media/team/badge/trct8w1778198868.png',
+    GSW:'https://r2.thesportsdb.com/images/media/team/badge/xokycb1778197905.png',
+    LAC:'https://r2.thesportsdb.com/images/media/team/badge/3gtb8s1719303125.png',
+    LAL:'https://r2.thesportsdb.com/images/media/team/badge/d8uoxw1714254511.png',
+    PHX:'https://r2.thesportsdb.com/images/media/team/badge/xfyknc1778198971.png',
+    SAC:'https://r2.thesportsdb.com/images/media/team/badge/k2buwo1778227426.png',
+    DAL:'https://r2.thesportsdb.com/images/media/team/badge/s5dx7c1778197536.png',
+    HOU:'https://r2.thesportsdb.com/images/media/team/badge/azoktf1780729261.png',
+    MEM:'https://r2.thesportsdb.com/images/media/team/badge/v44qp21778197640.png',
+    NOP:'https://r2.thesportsdb.com/images/media/team/badge/xoxjsr1778226698.png',
+    SAS:'https://r2.thesportsdb.com/images/media/team/badge/yc5qfx1781459158.png',
+  },
 };
 function teamLogo(scope, abbr){
   return (TEAM_LOGOS[scope] && TEAM_LOGOS[scope][abbr]) || null;
@@ -1352,6 +1384,67 @@ function renderNFLStandings(){
           ${div.teams.map(team=>`<div class="nfl-std-row">
             <span class="nfl-std-team">${stdTeamCell(team.abbr, team.name, 'nfl')}</span>
             <span class="tnum">${team.w}</span><span class="tnum">${team.l}</span><span class="tnum">${team.t}</span><span class="tnum">${team.pct}</span>
+          </div>`).join('')}
+        </div>
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
+const BASKETBALL_STANDINGS = [
+  {name:'Atlantic', teams:[
+    {abbr:'PHI', name:'Philadelphia 76ers', w:1, l:0, pct:'1.000'},
+    {abbr:'BOS', name:'Boston Celtics', w:0, l:1, pct:'.000'},
+    {abbr:'NYK', name:'New York Knicks', w:0, l:1, pct:'.000'},
+    {abbr:'BKN', name:'Brooklyn Nets', w:0, l:0, pct:'.000'},
+    {abbr:'TOR', name:'Toronto Raptors', w:0, l:0, pct:'.000'},
+  ]},
+  {name:'Central', teams:[
+    {abbr:'DET', name:'Detroit Pistons', w:1, l:0, pct:'1.000'},
+    {abbr:'CHI', name:'Chicago Bulls', w:0, l:0, pct:'.000'},
+    {abbr:'CLE', name:'Cleveland Cavaliers', w:0, l:0, pct:'.000'},
+    {abbr:'IND', name:'Indiana Pacers', w:0, l:0, pct:'.000'},
+    {abbr:'MIL', name:'Milwaukee Bucks', w:0, l:0, pct:'.000'},
+  ]},
+  {name:'Southeast', teams:[
+    {abbr:'ATL', name:'Atlanta Hawks', w:0, l:0, pct:'.000'},
+    {abbr:'CHA', name:'Charlotte Hornets', w:0, l:0, pct:'.000'},
+    {abbr:'MIA', name:'Miami Heat', w:0, l:0, pct:'.000'},
+    {abbr:'ORL', name:'Orlando Magic', w:0, l:0, pct:'.000'},
+    {abbr:'WAS', name:'Washington Wizards', w:0, l:0, pct:'.000'},
+  ]},
+  {name:'Northwest', teams:[
+    {abbr:'OKC', name:'Oklahoma City Thunder', w:1, l:0, pct:'1.000'},
+    {abbr:'DEN', name:'Denver Nuggets', w:0, l:0, pct:'.000'},
+    {abbr:'MIN', name:'Minnesota Timberwolves', w:0, l:0, pct:'.000'},
+    {abbr:'POR', name:'Portland Trail Blazers', w:0, l:0, pct:'.000'},
+    {abbr:'UTA', name:'Utah Jazz', w:0, l:0, pct:'.000'},
+  ]},
+  {name:'Pacific', teams:[
+    {abbr:'GSW', name:'Golden State Warriors', w:0, l:0, pct:'.000'},
+    {abbr:'LAC', name:'LA Clippers', w:0, l:0, pct:'.000'},
+    {abbr:'LAL', name:'Los Angeles Lakers', w:0, l:0, pct:'.000'},
+    {abbr:'PHX', name:'Phoenix Suns', w:0, l:0, pct:'.000'},
+    {abbr:'SAC', name:'Sacramento Kings', w:0, l:0, pct:'.000'},
+  ]},
+  {name:'Southwest', teams:[
+    {abbr:'DAL', name:'Dallas Mavericks', w:0, l:0, pct:'.000'},
+    {abbr:'HOU', name:'Houston Rockets', w:0, l:0, pct:'.000'},
+    {abbr:'MEM', name:'Memphis Grizzlies', w:0, l:0, pct:'.000'},
+    {abbr:'NOP', name:'New Orleans Pelicans', w:0, l:0, pct:'.000'},
+    {abbr:'SAS', name:'San Antonio Spurs', w:0, l:1, pct:'.000'},
+  ]},
+];
+function renderNBAStandings(){
+  return `<div class="div-section">
+    <div class="div-section-head"><h3 class="disp">Standings</h3><span class="sub">Eastern &amp; Western Conference · Opening Night</span></div>
+    <div class="div-grid">
+      ${BASKETBALL_STANDINGS.map(div=>`<div class="div-col">
+        <h4>${div.name}</h4>
+        <div class="nfl-std-table">
+          <div class="nfl-std-row nfl-std-head"><span class="nfl-std-team">Team</span><span class="tnum">W</span><span class="tnum">L</span><span class="tnum">PCT</span></div>
+          ${div.teams.map(team=>`<div class="nfl-std-row">
+            <span class="nfl-std-team">${stdTeamCell(team.abbr, team.name, 'basketball')}</span>
+            <span class="tnum">${team.w}</span><span class="tnum">${team.l}</span><span class="tnum">${team.pct}</span>
           </div>`).join('')}
         </div>
       </div>`).join('')}
@@ -3378,7 +3471,7 @@ function renderLightHub(sport){
       <div class="disp" style="font-size:20px;">FULL DESK LAUNCHING NEXT</div>
       <p>Recap, injury and debate coverage for ${s.name} build out as the story volume picks up.</p>
     </div>
-    ${sport==='basketball' ? renderDivisions('basketball', 'Eastern & Western Conference') : ''}
+    ${sport==='basketball' ? renderNBAStandings() : ''}
   </main>
   ${footer()}`;
 }

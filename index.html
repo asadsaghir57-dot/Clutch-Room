@@ -713,9 +713,9 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
 
 <script>
 const SPORTS = [
-  {id:'football', name:'Football', accent:'court', heat:88, status:'LIVE: BAYERN MUNICH 2-1 ARSENAL (72\'), REAL MADRID 2-0 RB LEIPZIG (63\') · UCL MD3 WEDNESDAY', deep:'full',
+  {id:'football', name:'Football', accent:'court', heat:88, status:'UCL MD3 FINAL: BAYERN MUNICH 2-2 ARSENAL (RICE EQUALIZES LATE), REAL MADRID ROUT RB LEIPZIG 4-1', deep:'full',
     sub:'Premier League · Champions League · La Liga',
-    leagues:['All','Champions League','Premier League','La Liga'], live:true},
+    leagues:['All','Champions League','Premier League','La Liga'], live:false},
   {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES SET: RAYS CLINCH AL PENNANT 4-2 OVER GUARDIANS, FACE BREWERS STARTING FRIDAY', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
   {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 7: CHIEFS, BILLS, STEELERS WIN · 49ERS HOLD OFF COMMANDERS 23-17, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
@@ -744,9 +744,9 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
     {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},
   ]},
-  football:{context:'UCL MD3 WEDNESDAY LIVE: BAYERN 2-1 ARSENAL (72\'), REAL MADRID 2-0 RB LEIPZIG (63\') · TUESDAY: PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL', games:[
-    {status:'LIVE', away:{abbr:'ARS',record:'1'}, home:{abbr:'BAY',record:'2'}, note:'UCL MD3 · Allianz Arena · 72\' · Eze 26\' puts Arsenal ahead, Davies 38\' levels it, Kane converts a penalty 64\' to put Bayern in front; Saka off injured in the first half'},
-    {status:'LIVE', away:{abbr:'RBL',record:'0'}, home:{abbr:'RMA',record:'2'}, note:'UCL MD3 · Santiago Bernabéu · 63\' · Bernardo Silva 43\' and Arda Güler 52\' (assist Mbappé) put Real Madrid 2-0 up'},
+  football:{context:'UCL MD3 COMPLETE: BAYERN 2-2 ARSENAL, REAL MADRID 4-1 RB LEIPZIG · TUESDAY: PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL', games:[
+    {status:'FINAL', away:{abbr:'ARS',record:'2'}, home:{abbr:'BAY',record:'2'}, note:'UCL MD3 · Allianz Arena · Eze 25\' puts Arsenal ahead, Davies 35\' levels for Bayern, Kane converts a penalty 61\' to put Bayern back in front, Rice equalizes 82\' for a 2-2 draw; Saka off injured in the first half'},
+    {status:'FINAL', away:{abbr:'RBL',record:'1'}, home:{abbr:'RMA',record:'4'}, note:'UCL MD3 · Santiago Bernabéu · Bernardo Silva 43\', Arda Güler 52\', Mbappé 83\' and Diomandé 87\' for Real Madrid; Gomis 85\' for Leipzig in a 4-1 win'},
     {status:'FINAL', away:{abbr:'BAR',record:'2'}, home:{abbr:'PSG',record:'4'}, note:'UCL MD3 · Parc des Princes · Doué 38\', L. Hernández 72\', Vitinha 81\', F. Ruiz 86\' for PSG; Espart 55\', Yamal 79\' for Barcelona'},
     {status:'FINAL', away:{abbr:'AEK',record:'1'}, home:{abbr:'MCI',record:'5'}, note:'UCL MD3 · Etihad Stadium · Foden hat-trick (34\', 65\', 76\'), Anderson 12\', Cherki 57\' for City; Pilios 52\' for AEK'},
     {status:'FINAL', away:{abbr:'VIL',record:'3'}, home:{abbr:'LIV',record:'4'}, note:'UCL MD3 · Anfield · Mac Allister brace (36\', 65\'), Araújo 45+2\', Wirtz 68\' for Liverpool; Mikautadze 4\', Cardona 29\', Oluwaseyi 87\' for Villarreal'},
@@ -2094,6 +2094,33 @@ const ARTICLES = [
       'None of this erases how important Haaland has been to City\'s attack this season — he remains the focal point in the games that matter most. But a 5-1 win on the road without him, built on a front-footed performance from Foden rather than a backup plan, is exactly the kind of evidence City will want on record as the Champions League schedule gets heavier and squad depth starts to matter as much as any single player.',
     ],
     related:'ucl-md3-tuesday-recap',
+  },
+  {id:'ucl-md3-wednesday-recap', sport:'football', league:'Champions League', cat:'recap',
+    headline:'Rice Rescues Arsenal Draw at Bayern, Real Madrid Rout Leipzig 4-1 to Close Out Matchday 3',
+    dek:'Declan Rice\'s 82nd-minute leveler denied Bayern Munich at the Allianz Arena, while Kylian Mbappé and Yan Diomandé struck late to turn a tight game into a rout at the Bernabéu.',
+    byline:'Clutch Room Football Desk', mins:6, time:'Oct 21, 2026',
+    qa:[['What happened at the Allianz Arena?','Bayern Munich and Arsenal drew 2-2 — Eberechi Eze (25\') and Declan Rice (82\') scored for Arsenal, Alphonso Davies (35\') and a Harry Kane penalty (61\') leveled it twice for Bayern.'],
+        ['How did Real Madrid fare against RB Leipzig?','Real Madrid won 4-1 at the Bernabéu, with goals from Bernardo Silva (43\'), Arda Güler (52\'), Kylian Mbappé (83\') and Yan Diomandé (87\'); Tidiam Gomis scored Leipzig\'s consolation (85\').']],
+    body:[
+      'Matchday 3 closed with a result nobody at the Allianz Arena saw coming by full time. Arsenal looked set for a first defeat in 14 league phase or group stage games after Harry Kane\'s 61st-minute penalty put Bayern Munich back in front, but Declan Rice raced onto a slick passing move from Noni Madueke and Viktor Gyökeres to beat Manuel Neuer from an acute angle in the 82nd minute and salvage a 2-2 draw. Eberechi Eze had opened the scoring in the 25th minute after replacing the injured Bukayo Saka, before Alphonso Davies leveled for Bayern in the 35th off a Kane assist.',
+      'Kane\'s penalty, awarded after his shot struck Jurrien Timber\'s arm, was also a milestone: it extended his run of scoring in Champions League matches to 10 in a row and took his career tally against Arsenal to 16 goals in 22 appearances. Bayern were missing Michael Olise (suspension) and Joshua Kimmich (family reasons).',
+      'At the Bernabéu, Real Madrid needed longer to get going but finished with a flourish. Bernardo Silva broke the deadlock in the 43rd minute after RB Leipzig goalkeeper Maarten Vandevoordt had saved an earlier Arda Güler effort, and Güler doubled the lead himself in the 52nd, tapping in a Kylian Mbappé header. Mbappé added his own goal in the 83rd before Yan Diomandé volleyed in a fourth in the 87th; Tidiam Gomis pulled one back for Leipzig on a quick counter in between (85\'). The 4-1 win keeps José Mourinho\'s side unbeaten through three Champions League matchdays heading into this weekend\'s Clásico against Barcelona.',
+    ],
+    related:'ucl-md3-kane-streak-analysis',
+    pull:'Declan Rice\'s 82nd-minute leveler denied Bayern at the Allianz Arena; across town, Mbappé and Diomandé turned a tight Bernabéu game into a rout.',
+  },
+  {id:'ucl-md3-kane-streak-analysis', sport:'football', league:'Champions League', cat:'analysis',
+    headline:'Harry Kane Is One Game From Matching Cristiano Ronaldo\'s Champions League Scoring Streak',
+    dek:'Kane\'s penalty against Arsenal stretched his run to 10 consecutive Champions League matches with a goal — level with everyone in the competition\'s history except Ronaldo, whose 11-game streak from 2017-18 remains the target.',
+    byline:'Clutch Room Football Desk', mins:5, time:'Oct 21, 2026',
+    qa:[['How long is Kane\'s current scoring streak?','10 consecutive Champions League matches with at least one goal, after his penalty against Arsenal on Matchday 3.'],
+        ['Whose record is he chasing?','Cristiano Ronaldo\'s — Ronaldo scored in 11 straight Champions League games between June 2017 and April 2018, still the competition\'s all-time mark.']],
+    body:[
+      'Harry Kane\'s 61st-minute penalty against Arsenal did more than drag Bayern Munich level — it stretched his run of scoring in consecutive Champions League matches to 10, matching every player in the competition\'s history bar one: Cristiano Ronaldo, who scored in 11 straight Champions League games between June 2017 and April 2018, a run that has stood untouched for more than eight years.',
+      'The penalty also extended a personal rivalry: Kane\'s goal was his 16th in 22 career appearances against Arsenal, a remarkable rate even by his standards. He had already broken Lionel Messi\'s record for most Champions League goals scored after turning 30, a mark he passed earlier this matchday cycle.',
+      'None of it was enough to win Wednesday\'s match outright — Declan Rice\'s 82nd-minute equalizer meant Kane\'s goal only bought a point, not three. But the streak survives the draw, and Bayern\'s next Champions League fixture is the one that will decide whether Kane ties or falls short of the Portuguese forward\'s record.',
+    ],
+    related:'ucl-md3-wednesday-recap',
   },
 
   {id:'dusseldorf-padel-preview', sport:'padel', cat:'recap',

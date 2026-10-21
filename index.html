@@ -267,10 +267,12 @@ h1,h2,h3,.disp{
 .b-tile.b-quote .b-q-link{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:#D1A851;align-self:flex-start;}
 .b-tile.b-quiet{background:var(--paper-raised);}
 .b-tile.b-quiet .b-quiet-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:4px;}
-.b-quiet-row{display:flex;flex-direction:column;gap:4px;padding:10px 0;border-bottom:1px solid var(--line);transition:opacity .12s ease;}
+.b-quiet-row{display:flex;flex-direction:column;gap:4px;padding:10px 6px;margin:0 -6px;border-bottom:1px solid var(--line);border-radius:6px;color:inherit;text-decoration:none;transition:background-color .12s ease;}
 .b-quiet-row:last-child{border-bottom:none;}
-.b-quiet-row:hover{opacity:0.72;}
+.b-quiet-row:hover,.b-quiet-row:focus-visible,.b-quiet-row:active{background-color:var(--line);}
+.b-quiet-row .nm-row{display:flex;align-items:center;justify-content:space-between;gap:8px;}
 .b-quiet-row .nm{font-size:14px;font-weight:700;}
+.b-quiet-row .go{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-muted);flex:none;}
 .b-quiet-row .st{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-muted);line-height:1.5;letter-spacing:0.01em;}
 @media (max-width:760px){.bento{grid-template-columns:repeat(2,1fr);}.b-tile.b-2{grid-column:span 2;}}
 .bento-secondary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;}
@@ -526,7 +528,7 @@ a.board-row{display:grid;}
 .std-row.std-head .tnum{text-align:right;}
 .std-pos{color:var(--ink-muted);}
 .std-team{display:flex;align-items:center;gap:9px;min-width:0;font-weight:600;}
-.std-badge{width:20px;height:20px;object-fit:contain;flex:none;}
+.std-badge{width:20px;height:20px;object-fit:contain;flex:none;background:var(--paper-raised);border-radius:50%;}
 .std-badge.std-badge-fallback{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-size:7px;font-weight:700;color:#fff;}
 .std-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .std-row .tnum{text-align:right;}
@@ -604,6 +606,16 @@ a.board-row{display:grid;}
 .div-section-head .sub{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);}
 .div-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 24px;}
 .div-col h4{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent,var(--court));margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+.rank-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 24px;}
+.rank-grid.rank-grid-2{grid-template-columns:repeat(2,1fr);}
+.rank-table{font-family:'JetBrains Mono',monospace;font-size:12.5px;}
+.rank-row{display:grid;grid-template-columns:20px 1fr 54px;align-items:center;column-gap:8px;padding:7px 0;border-bottom:1px solid var(--line);}
+.rank-row:last-child{border-bottom:none;}
+.rank-pos{color:var(--ink-muted);}
+.rank-team{display:flex;align-items:center;gap:8px;min-width:0;font-weight:600;overflow:hidden;}
+.rank-rating{text-align:right;font-weight:700;color:var(--ink);}
+@media (max-width:860px){.rank-grid{grid-template-columns:repeat(2,1fr);}.rank-grid.rank-grid-2{grid-template-columns:1fr;}}
+@media (max-width:640px){.rank-grid{grid-template-columns:1fr;}}
 .div-team{font-size:14px;padding:7px 0;border-bottom:1px solid var(--line);color:var(--ink);}
 .div-team:last-child{border-bottom:none;}
 .comp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
@@ -1167,6 +1179,19 @@ const TEAM_LOGOS = {
     NOP:'https://r2.thesportsdb.com/images/media/team/badge/xoxjsr1778226698.png',
     SAS:'https://r2.thesportsdb.com/images/media/team/badge/yc5qfx1781459158.png',
   },
+  cricket: {
+    IND:'https://r2.thesportsdb.com/images/media/team/badge/donl7g1646775159.png',
+    NZ:'https://r2.thesportsdb.com/images/media/team/badge/1yyh9s1646775166.png',
+    SA:'https://r2.thesportsdb.com/images/media/team/badge/hn47e51646775185.png',
+    PAK:'https://r2.thesportsdb.com/images/media/team/badge/03o8241646775177.png',
+    AUS:'https://r2.thesportsdb.com/images/media/team/badge/zvm8581646775132.png',
+    ENG:'https://r2.thesportsdb.com/images/media/team/badge/y5wcl81646775152.png',
+    SL:'https://r2.thesportsdb.com/images/media/team/badge/i5fqg01646775193.png',
+    AFG:'https://r2.thesportsdb.com/images/media/team/badge/bzu3v71646775261.png',
+    BAN:'https://r2.thesportsdb.com/images/media/team/badge/j74o4t1646775146.png',
+    WI:'https://r2.thesportsdb.com/images/media/team/badge/1x0a681646775209.png',
+    ZIM:'https://r2.thesportsdb.com/images/media/team/badge/7ah0831646775278.png',
+  },
 };
 function teamLogo(scope, abbr){
   return (TEAM_LOGOS[scope] && TEAM_LOGOS[scope][abbr]) || null;
@@ -1449,6 +1474,98 @@ function renderNBAStandings(){
         </div>
       </div>`).join('')}
     </div>
+  </div>`;
+}
+
+/* ---------------- ICC team rankings (verified via icc-cricket.com, Oct 2026) ---------------- */
+const CRICKET_RANKINGS = {
+  odi: {label:'ODI', rows:[
+    {abbr:'IND', team:'India', rating:115},
+    {abbr:'NZ', team:'New Zealand', rating:109},
+    {abbr:'SA', team:'South Africa', rating:104},
+    {abbr:'PAK', team:'Pakistan', rating:103},
+    {abbr:'AUS', team:'Australia', rating:102},
+    {abbr:'ENG', team:'England', rating:94},
+    {abbr:'SL', team:'Sri Lanka', rating:94},
+    {abbr:'AFG', team:'Afghanistan', rating:92},
+    {abbr:'BAN', team:'Bangladesh', rating:82},
+    {abbr:'WI', team:'West Indies', rating:79},
+  ]},
+  t20i: {label:'T20I', rows:[
+    {abbr:'ENG', team:'England', rating:269},
+    {abbr:'IND', team:'India', rating:267},
+    {abbr:'AUS', team:'Australia', rating:260},
+    {abbr:'NZ', team:'New Zealand', rating:247},
+    {abbr:'SA', team:'South Africa', rating:243},
+    {abbr:'PAK', team:'Pakistan', rating:240},
+    {abbr:'WI', team:'West Indies', rating:236},
+    {abbr:'BAN', team:'Bangladesh', rating:222},
+    {abbr:'SL', team:'Sri Lanka', rating:221},
+    {abbr:'AFG', team:'Afghanistan', rating:218},
+  ]},
+  test: {label:'Test', rows:[
+    {abbr:'AUS', team:'Australia', rating:126},
+    {abbr:'SA', team:'South Africa', rating:119},
+    {abbr:'NZ', team:'New Zealand', rating:106},
+    {abbr:'IND', team:'India', rating:105},
+    {abbr:'ENG', team:'England', rating:102},
+    {abbr:'BAN', team:'Bangladesh', rating:77},
+    {abbr:'SL', team:'Sri Lanka', rating:75},
+    {abbr:'WI', team:'West Indies', rating:74},
+    {abbr:'PAK', team:'Pakistan', rating:71},
+    {abbr:'ZIM', team:'Zimbabwe', rating:17},
+  ]},
+};
+function renderRankGrid(cols, gridCls){
+  return `<div class="rank-grid ${gridCls||''}">
+    ${cols.map(c=>`<div class="div-col">
+      <h4>${c.label}</h4>
+      <div class="rank-table">
+        ${c.rows.map((r,i)=>`<div class="rank-row">
+          <span class="rank-pos">${i+1}</span>
+          <span class="rank-team">${stdTeamCell(r.abbr, r.team, c.scope)}</span>
+          <span class="tnum rank-rating">${r.rating}</span>
+        </div>`).join('')}
+      </div>
+    </div>`).join('')}
+  </div>`;
+}
+function renderCricketRankings(){
+  return `<div class="div-section">
+    <div class="div-section-head"><h3 class="disp">ICC Team Rankings</h3><span class="sub">Men's · rating points</span></div>
+    ${renderRankGrid(['odi','t20i','test'].map(k=>({label:CRICKET_RANKINGS[k].label, rows:CRICKET_RANKINGS[k].rows, scope:'cricket'})))}
+  </div>`;
+}
+const TENNIS_RANKINGS = {
+  atp: {label:'ATP Singles', rows:[
+    {abbr:'ITA', team:'Jannik Sinner', rating:10950},
+    {abbr:'GER', team:'Alexander Zverev', rating:10070},
+    {abbr:'ESP', team:'Carlos Alcaraz', rating:5610},
+    {abbr:'USA', team:'Ben Shelton', rating:4720},
+    {abbr:'RUS', team:'Daniil Medvedev', rating:3660},
+    {abbr:'ITA', team:'Flavio Cobolli', rating:3640},
+    {abbr:'CAN', team:'Felix Auger-Aliassime', rating:3590},
+    {abbr:'AUS', team:'Alex de Minaur', rating:3430},
+    {abbr:'USA', team:'Frances Tiafoe', rating:3380},
+    {abbr:'FRA', team:'Arthur Fils', rating:3325},
+  ]},
+  wta: {label:'WTA Singles', rows:[
+    {abbr:'KAZ', team:'Elena Rybakina', rating:9196},
+    {abbr:'BLR', team:'Aryna Sabalenka', rating:7550},
+    {abbr:'RUS', team:'Mirra Andreeva', rating:6306},
+    {abbr:'USA', team:'Jessica Pegula', rating:6235},
+    {abbr:'USA', team:'Coco Gauff', rating:5974},
+    {abbr:'UKR', team:'Elina Svitolina', rating:5229},
+    {abbr:'CZE', team:'Karolina Muchova', rating:4833},
+    {abbr:'CZE', team:'Linda Noskova', rating:4678},
+    {abbr:'POL', team:'Iga Swiatek', rating:4389},
+    {abbr:'UKR', team:'Marta Kostyuk', rating:3920},
+  ]},
+};
+function renderTennisRankings(){
+  return `<div class="div-section">
+    <div class="div-section-head"><h3 class="disp">World Rankings</h3><span class="sub">ATP &amp; WTA Singles · points</span></div>
+    ${renderRankGrid(['atp','wta'].map(k=>({label:TENNIS_RANKINGS[k].label, rows:TENNIS_RANKINGS[k].rows, scope:'tennis'})), 'rank-grid-2')}
   </div>`;
 }
 
@@ -3288,11 +3405,11 @@ function renderHome(){
     <div class="bento-secondary">
       ${secondary.length ? `<div class="b-tile b-quiet">
         <span class="b-quiet-label">Also in Play</span>
-        ${secondary.map(s=>`<a class="b-quiet-row" href="#/sport/${s.id}" style="color:inherit;text-decoration:none;"><span class="nm">${s.name}</span><span class="st">${s.status}</span></a>`).join('')}
+        ${secondary.map(s=>`<a class="b-quiet-row" href="#/sport/${s.id}"><span class="nm-row"><span class="nm">${s.name}</span><span class="go">→</span></span><span class="st">${s.status}</span></a>`).join('')}
       </div>` : ''}
       <div class="b-tile b-quiet">
         <span class="b-quiet-label">Quiet This Week</span>
-        ${quiet.map(s=>`<a class="b-quiet-row" href="#/sport/${s.id}" style="color:inherit;text-decoration:none;"><span class="nm">${s.name}</span><span class="st">${s.status}</span></a>`).join('')}
+        ${quiet.map(s=>`<a class="b-quiet-row" href="#/sport/${s.id}"><span class="nm-row"><span class="nm">${s.name}</span><span class="go">→</span></span><span class="st">${s.status}</span></a>`).join('')}
       </div>
       <a class="b-tile b-quote" href="#/article/${debate.id}">
         <span class="b-q-label">Today's Debate</span>
@@ -3340,6 +3457,7 @@ function renderHub(sport){
       ${renderStandingsTable('laliga')}
       ${renderCompetitions(s.leagues.filter(l=>l!=='All'))}
     ` : ''}
+    ${sport==='tennis' ? renderTennisRankings() : ''}
   </main>
   ${footer()}`;
 }
@@ -3472,6 +3590,7 @@ function renderLightHub(sport){
       <p>Recap, injury and debate coverage for ${s.name} build out as the story volume picks up.</p>
     </div>
     ${sport==='basketball' ? renderNBAStandings() : ''}
+    ${sport==='cricket' ? renderCricketRankings() : ''}
   </main>
   ${footer()}`;
 }

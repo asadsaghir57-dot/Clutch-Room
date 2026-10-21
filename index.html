@@ -711,9 +711,9 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
 
 <script>
 const SPORTS = [
-  {id:'football', name:'Football', accent:'court', heat:88, status:'UCL MD3: PSG BEAT BARCELONA 4-2, CITY ROUT AEK 5-1 (FODEN HAT-TRICK), LIVERPOOL EDGE VILLARREAL 4-3', deep:'full',
+  {id:'football', name:'Football', accent:'court', heat:88, status:'LIVE: BAYERN MUNICH 2-1 ARSENAL (72\'), REAL MADRID 2-0 RB LEIPZIG (63\') · UCL MD3 WEDNESDAY', deep:'full',
     sub:'Premier League · Champions League · La Liga',
-    leagues:['All','Champions League','Premier League','La Liga'], live:false},
+    leagues:['All','Champions League','Premier League','La Liga'], live:true},
   {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES SET: RAYS CLINCH AL PENNANT 4-2 OVER GUARDIANS, FACE BREWERS STARTING FRIDAY', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
   {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 7: CHIEFS, BILLS, STEELERS WIN · 49ERS HOLD OFF COMMANDERS 23-17, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
@@ -742,12 +742,12 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
     {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},
   ]},
-  football:{context:'UCL MD3 TUESDAY COMPLETE: PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL · WEDNESDAY: ARSENAL-BAYERN, LEIPZIG-REAL MADRID', games:[
+  football:{context:'UCL MD3 WEDNESDAY LIVE: BAYERN 2-1 ARSENAL (72\'), REAL MADRID 2-0 RB LEIPZIG (63\') · TUESDAY: PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL', games:[
+    {status:'LIVE', away:{abbr:'ARS',record:'1'}, home:{abbr:'BAY',record:'2'}, note:'UCL MD3 · Allianz Arena · 72\' · Eze 26\' puts Arsenal ahead, Davies 38\' levels it, Kane converts a penalty 64\' to put Bayern in front; Saka off injured in the first half'},
+    {status:'LIVE', away:{abbr:'RBL',record:'0'}, home:{abbr:'RMA',record:'2'}, note:'UCL MD3 · Santiago Bernabéu · 63\' · Bernardo Silva 43\' and Arda Güler 52\' (assist Mbappé) put Real Madrid 2-0 up'},
     {status:'FINAL', away:{abbr:'BAR',record:'2'}, home:{abbr:'PSG',record:'4'}, note:'UCL MD3 · Parc des Princes · Doué 38\', L. Hernández 72\', Vitinha 81\', F. Ruiz 86\' for PSG; Espart 55\', Yamal 79\' for Barcelona'},
     {status:'FINAL', away:{abbr:'AEK',record:'1'}, home:{abbr:'MCI',record:'5'}, note:'UCL MD3 · Etihad Stadium · Foden hat-trick (34\', 65\', 76\'), Anderson 12\', Cherki 57\' for City; Pilios 52\' for AEK'},
     {status:'FINAL', away:{abbr:'VIL',record:'3'}, home:{abbr:'LIV',record:'4'}, note:'UCL MD3 · Anfield · Mac Allister brace (36\', 65\'), Araújo 45+2\', Wirtz 68\' for Liverpool; Mikautadze 4\', Cardona 29\', Oluwaseyi 87\' for Villarreal'},
-    {status:'WED OCT 21 3:00 PM ET', away:{abbr:'ARS'}, home:{abbr:'BAY'}, note:'UCL MD3'},
-    {status:'WED OCT 21 3:00 PM ET', away:{abbr:'RBL'}, home:{abbr:'RMA'}, note:'UCL MD3'},
     {status:'FINAL', away:{abbr:'PSG',record:'4'}, home:{abbr:'MCI',record:'2'}, note:'UCL MD2 · PSG stun Man City at the Etihad'},
     {status:'FINAL', away:{abbr:'RMA',record:'4'}, home:{abbr:'ROM',record:'3'}, note:'UCL MD2 · Real Madrid score 3 in the final 8 minutes to win in Rome'},
     {status:'FINAL', away:{abbr:'FEN',record:'0'}, home:{abbr:'AVL',record:'6'}, note:'UCL MD2 · Aston Villa rout Fenerbahçe'},

@@ -1603,7 +1603,7 @@ function renderRankTabs(cols, prefix){
 function renderCricketRankings(){
   return `<div class="div-section">
     <div class="div-section-head"><h3 class="disp">ICC Team Rankings</h3><span class="sub">Men's · rating points</span></div>
-    ${renderRankTabs(['odi','t20i','test'].map(k=>({label:CRICKET_RANKINGS[k].label, rows:CRICKET_RANKINGS[k].rows, scope:'cricket'})), 'cricket-rank')}
+    ${renderRankTabs(['t20i','odi','test'].map(k=>({label:CRICKET_RANKINGS[k].label, rows:CRICKET_RANKINGS[k].rows, scope:'cricket'})), 'cricket-rank')}
   </div>`;
 }
 const TENNIS_RANKINGS = {

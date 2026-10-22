@@ -656,7 +656,7 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
 
 <script>
 const SPORTS = [
-  {id:'football', name:'Football', accent:'court', heat:88, status:'UCL MD3 TODAY · BARCELONA AT PSG HEADLINES A STACKED WEEK', deep:'full',
+  {id:'football', name:'Football', accent:'court', heat:88, status:'UCL MD3 COMPLETE: PSG, REAL MADRID & LIVERPOOL STAY PERFECT · RICE SAVES ARSENAL DRAW AT BAYERN', deep:'full',
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga']},
   {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES SET: RAYS CLINCH AL PENNANT 4-2 OVER GUARDIANS, FACE BREWERS STARTING FRIDAY', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
@@ -667,7 +667,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:72, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'FINAL: PAKISTAN BEAT ENGLAND BY 87 RUNS · NEXT: SL v ENG, OCT 22', deep:'light', sub:'International & league cricket', live:false},
+  {id:'cricket', name:'Cricket', accent:'away', heat:75, status:'LIVE: SL 13/0 (1.6) CHASE 430 v ENG · BROOK\'S 202 POWERS ENGLAND TO 429/4 AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -687,12 +687,12 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
     {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},
   ]},
-  football:{context:'UCL MD3 TODAY · BARCELONA AT PSG HEADLINES A LOADED WEEK', games:[
-    {status:'TODAY 3:00 PM ET', away:{abbr:'BAR'}, home:{abbr:'PSG'}, note:'UCL MD3 · Parc des Princes · Europe\'s two form teams collide'},
-    {status:'TODAY 3:00 PM ET', away:{abbr:'AEK'}, home:{abbr:'MCI'}, note:'UCL MD3'},
-    {status:'TODAY 3:00 PM ET', away:{abbr:'VIL'}, home:{abbr:'LIV'}, note:'UCL MD3'},
-    {status:'WED OCT 21 3:00 PM ET', away:{abbr:'ARS'}, home:{abbr:'BAY'}, note:'UCL MD3'},
-    {status:'WED OCT 21 3:00 PM ET', away:{abbr:'RBL'}, home:{abbr:'RMA'}, note:'UCL MD3'},
+  football:{context:'UCL MD3 COMPLETE: BAYERN 2-2 ARSENAL, REAL MADRID 4-1 RB LEIPZIG, PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL', games:[
+    {status:'FINAL', away:{abbr:'ARS',record:'2'}, home:{abbr:'BAY',record:'2'}, note:'UCL MD3 · Allianz Arena · Eze 21\' puts Arsenal ahead (assist Ødegaard), Davies 35\' levels for Bayern (assist Kane), Kane penalty 61\' puts Bayern back in front, Rice equalizes 82\' for a 2-2 draw'},
+    {status:'FINAL', away:{abbr:'RBL',record:'1'}, home:{abbr:'RMA',record:'4'}, note:'UCL MD3 · Santiago Bernabéu · Bernardo Silva 44\', Arda Güler 52\' (assist Mbappé), Mbappé 83\' (assist Diomande) and Diomande 87\' (assist Díaz) for Real Madrid; Gomis 85\' for Leipzig in a 4-1 win'},
+    {status:'FINAL', away:{abbr:'BAR',record:'2'}, home:{abbr:'PSG',record:'4'}, note:'UCL MD3 · Parc des Princes · Doué 38\', L. Hernández 72\', Vitinha 81\', F. Ruiz 86\' for PSG; Espart 55\', Yamal 79\' for Barcelona'},
+    {status:'FINAL', away:{abbr:'AEK',record:'1'}, home:{abbr:'MCI',record:'5'}, note:'UCL MD3 · Etihad Stadium · Foden hat-trick (34\', 65\', 76\'), Anderson 12\', Cherki 57\' for City; Pilios 52\' for AEK · Haaland rested after an injury scare'},
+    {status:'FINAL', away:{abbr:'VIL',record:'3'}, home:{abbr:'LIV',record:'4'}, note:'UCL MD3 · Anfield · Mac Allister brace (36\', 65\'), Araújo 45+2\', Wirtz 68\' for Liverpool; Mikautadze 4\', Cardona 29\', Oluwaseyi 87\' for Villarreal · Liverpool erase a 2-goal deficit, teenager Ngumoha stars'},
     {status:'FINAL', away:{abbr:'PSG',record:'4'}, home:{abbr:'MCI',record:'2'}, note:'UCL MD2 · PSG stun Man City at the Etihad'},
     {status:'FINAL', away:{abbr:'RMA',record:'4'}, home:{abbr:'ROM',record:'3'}, note:'UCL MD2 · Real Madrid score 3 in the final 8 minutes to win in Rome'},
     {status:'FINAL', away:{abbr:'FEN',record:'0'}, home:{abbr:'AVL',record:'6'}, note:'UCL MD2 · Aston Villa rout Fenerbahçe'},
@@ -737,7 +737,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'FINAL: PAKISTAN BEAT ENGLAND BY 87 RUNS · 2ND ODI AT RAWALPINDI', games:[
+  cricket:{context:'LIVE: SL 13/0 (1.6 ov) CHASE 430 v ENG · BROOK\'S 202 POWERS ENGLAND TO 429/4 · 3RD ODI AT RAWALPINDI', games:[
+    {status:'LIVE', away:{abbr:'ENG',record:'429/4'}, home:{abbr:'SL',record:'13/0'}, note:'ODI Tri-Series 3rd Match · Sri Lanka won the toss, elected to field · England post 429/4 (Harry Brook 202 off 116) · Sri Lanka need 417 from 48.2 overs'},
     {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Pakistan win by 87 runs, Arafat Minhas Player of the Match (59 & 6/40)'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
@@ -830,12 +831,12 @@ const FIXTURES = {
 const CRICKET_LIVE_MATCH = {
   series:'Pakistan ODI Tri-Series 2026', matchLabel:'3rd Match (D/N)',
   venue:'Rawalpindi Cricket Stadium', date:'Oct 22, 2026',
-  status:'upcoming',
+  status:'live',
   teams:{
-    away:{abbr:'ENG', name:'England', score:null, wkts:null, overs:null},
-    home:{abbr:'SL', name:'Sri Lanka', score:null, wkts:null, overs:null},
+    away:{abbr:'ENG', name:'England', score:429, wkts:4, overs:'50.0'},
+    home:{abbr:'SL', name:'Sri Lanka', score:13, wkts:0, overs:'1.6'},
   },
-  toss:null, resultLine:'Thu Oct 22 · 1:00 PM PKT · Sri Lanka v England',
+  toss:'Sri Lanka won the toss and elected to field', resultLine:'England 429/4 (50 ov, Brook 202) · Sri Lanka 13/0 (1.6 ov), need 417 from 48.2 overs',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -1445,6 +1446,36 @@ const ARTICLES = [
     ],
     pull:'City\'s first home defeat of the season and a Real Madrid team that scored three goals in eight minutes to steal a result in Rome.',
   },
+  {id:'ucl-md3-recap', sport:'football', league:'Champions League', cat:'recap',
+    headline:'PSG, Real Madrid and Liverpool Stay Perfect as Rice Rescues Arsenal a Point at Bayern',
+    dek:'Matchday 3 produced 40 goals across two nights — Phil Foden\'s hat-trick, a Liverpool comeback from two down, a six-goal PSG-Barcelona thriller, and Declan Rice\'s 82nd-minute leveler denying Bayern Munich at the Allianz Arena.',
+    byline:'Clutch Room Football Desk', mins:7, time:'Oct 21, 2026',
+    qa:[['Who stayed unbeaten through three matchdays?','Paris Saint-Germain, Real Madrid and Liverpool all won to move to 3-0-0.'],
+        ['What happened at Bayern-Arsenal?','Bayern Munich and Arsenal drew 2-2 — Eberechi Eze (21\') and Declan Rice (82\') scored for Arsenal, Alphonso Davies (35\') and a Harry Kane penalty (61\') leveled it twice for Bayern.'],
+        ['How did Real Madrid beat Leipzig?','4-1 at the Bernabéu — Bernardo Silva (44\'), Arda Güler (52\'), Kylian Mbappé (83\') and Yan Diomande (87\') scored for Madrid, with Tidiam Gomis getting a consolation for Leipzig (85\').']],
+    body:[
+      'Tuesday\'s slate alone produced 19 goals across three games. Paris Saint-Germain survived a six-goal thriller with Barcelona at Parc des Princes, going 1-0 up through Désiré Doué (38\') before Xavi Espart\'s equalizer (55\') and Lamine Yamal\'s second-half leveler (79\') twice pulled Barcelona level. Lucas Hernández (72\') and late goals from Vitinha (81\') and Fabián Ruiz (86\') settled it 4-2 and kept PSG top of the table on nine points.',
+      'Phil Foden scored a hat-trick (34\', 65\', 76\') as Manchester City routed AEK Athens 5-1 at the Etihad, with Elliot Anderson opening the scoring for his first goal since joining the club and Rayan Cherki also on the scoresheet; Erling Haaland was rested on the bench after an injury scare. Across town at Anfield, Liverpool fell behind twice — Georges Mikautadze (4\') and Sergi Cardona (29\') put Villarreal 2-0 up after a Virgil van Dijk mistake — before 18-year-old Rio Ngumoha sparked a comeback that Alexis Mac Allister\'s brace (36\', 65\'), Ronald Araújo (45+2\') and Florian Wirtz (68\') turned into a 4-3 win, with Tani Oluwaseyi\'s late reply (87\') the final word for Villarreal.',
+      'Wednesday\'s two games were tighter. At the Allianz Arena, Eberechi Eze put Arsenal ahead in the 21st minute off a Martin Ødegaard pass, only for Alphonso Davies to level for Bayern (35\', assist Kane) and Harry Kane\'s 61st-minute penalty — awarded after Jurriën Timber\'s handball — to put the hosts back in front. Declan Rice had the last word, firing in from distance in the 82nd minute for a 2-2 draw that leaves Arsenal seventh on seven points.',
+      'Real Madrid needed less drama to stay perfect. Bernardo Silva broke through just before halftime (44\'), Arda Güler doubled the lead early in the second half off a Mbappé assist (52\'), and after Leipzig threatened nothing in reply, Mbappé (83\', his 12th goal of the season) and substitute Yan Diomande (87\') added late goals either side of a Tidiam Gomis consolation for Leipzig (85\'). Diomande\'s goal and his assist for Mbappé\'s came against the club he left for a reported €140 million fee in the summer. Real Madrid\'s 4-1 win keeps José Mourinho\'s side on nine points from three games, level with PSG and Liverpool at the top of the 36-team league phase table heading into the weekend\'s Clásico against Barcelona.',
+    ],
+    pull:'PSG, Real Madrid and Liverpool all moved to 3-0-0 as Matchday 3 produced 40 goals across two nights, headlined by Declan Rice\'s 82nd-minute leveler at Bayern.',
+    related:'ucl-md3-perfect-records-analysis',
+  },
+  {id:'ucl-md3-perfect-records-analysis', sport:'football', league:'Champions League', cat:'analysis',
+    headline:'Three Teams, Nine Points: Why PSG, Real Madrid and Liverpool Are Pulling Away Early',
+    dek:'A statistical look at the three sides with perfect records three matchdays into the new 36-team league phase — and the goal difference gap that already separates them from the rest of the pack.',
+    byline:'Clutch Room Football Desk', mins:6, time:'Oct 21, 2026',
+    qa:[['Which teams have won all three of their league phase games?','Paris Saint-Germain, Real Madrid and Liverpool, all on nine points after Matchday 3.'],
+        ['Who else is in good form?','Arsenal are seventh on seven points (two wins, one draw) after Wednesday\'s 2-2 draw at Bayern, who sit 14th on five points.']],
+    body:[
+      'Three matchdays into the Champions League\'s 36-team league phase, three clubs have separated themselves with maximum points: Paris Saint-Germain, Real Madrid and Liverpool are all 3-0-0. None of them has had an easy run of it — PSG needed a 4-2 escape against Barcelona on Tuesday, Liverpool trailed 2-0 at home to Villarreal before winning 4-3, and Real Madrid\'s wins have come by turning close games into routs late (three goals in the final eight minutes to beat Roma on Matchday 2, then two more in the last seven minutes against Leipzig on Matchday 3).',
+      'The common thread is depth off the bench. Real Madrid\'s matchwinner against Leipzig, Yan Diomande, started on the bench and came on to score and assist against his former club. Liverpool\'s spark against Villarreal, 18-year-old Rio Ngumoha, entered a game his side was losing 2-0 and helped turn it around. PSG\'s winning goals against Barcelona came from Vitinha and Fabián Ruiz in the final ten minutes, after Barcelona had twice pulled level through Xavi Espart and Lamine Yamal.',
+      'Behind the three leaders, Arsenal\'s 2-2 draw at Bayern Munich on Wednesday leaves them seventh with seven points from two wins and a draw — a highlight-reel away point built on Declan Rice\'s 82nd-minute equalizer, but a point that also means Mikel Arteta\'s side has now gone three Champions League matchdays without back-to-back wins. Bayern, by contrast, sit 14th on five points despite Harry Kane extending his scoring run to 10 consecutive Champions League appearances with Wednesday\'s penalty — proof that individual form and team results aren\'t moving in the same direction for everyone in the competition right now.',
+      'With the league phase running through late January, nine points from three games is not yet decisive — but it is already enough to put real distance between the pack and the three teams who haven\'t dropped a point.',
+    ],
+    related:'ucl-md3-recap',
+  },
   {id:'weekend-roundup-europe', sport:'football', league:'La Liga', cat:'recap',
     headline:'Real Madrid and Barcelona Both Cruise Into the Clásico Build-Up',
     dek:'Real Madrid beat Sevilla 4-1 and Barcelona won 5-2 away at Real Betis — a confidence-building weekend for both sides two weeks out from El Clásico at Camp Nou.',
@@ -1913,6 +1944,24 @@ const ARTICLES = [
       'This article will keep updating with commentary on every major moment as the chase unfolds.',
     ],
     pull:'Nawaz and Minhas fifties got Pakistan to 302 — now Banton and Duckett\'s 91-run opening stand has England motoring in reply before Haris Rauf strikes.',
+  },
+  {id:'sl-eng-3rd-odi-live', sport:'cricket', cat:'recap',
+    headline:'Harry Brook\'s 202 Lifts England to 429/4, Sri Lanka Need 430 to Win at Rawalpindi',
+    dek:'Brook\'s career-best double century, built with 21 fours and 10 sixes off 116 balls, anchors an England total of 429/4 after Sri Lanka won the toss and chose to field; the chase is under way.',
+    byline:'Clutch Room Cricket Desk', mins:8, time:'Oct 22, 2026',
+    qa:[['What\'s the score?','England posted 429/4 off their 50 overs — Harry Brook 202 (116b), Will Jacks 66* (30b) — and Sri Lanka are 13/0 after 1.6 overs, needing 417 more to win.'],
+        ['Who won the toss?','Sri Lanka, who chose to field first under the Rawalpindi lights.']],
+    body:[
+      'Sri Lanka win the toss at Rawalpindi Cricket Stadium and send England in, the same read the tourists took in the series opener against Pakistan — only this time it\'s England\'s turn to bat first and make them pay for it.',
+      'Tom Banton and Ben Duckett give England the fast start Sri Lanka feared, racing to a 74-run opening stand before Dunith Wellalage finally gets the breakthrough. Banton comes out of the crease looking for the lofted drive over extra cover, finds it straighter than he\'d like, and picks out long-off. He\'s gone for 50 off 51 balls, England 74/1 in the 14th over.',
+      'Wellalage strikes again two overs later. Duckett goes for the sweep against the flighted, tossed-up delivery, misses, and is hit low on the pad in front of middle and off — Joe Root tells his partner to forget the review, and Duckett has to go for 29. England 85/2.',
+      'Root and Brook don\'t let the double blow slow them down. The pair rebuild methodically through the middle overs, Root reaching fifty off 54 balls, before Sri Lanka finally find a way through in the 38th over — Root top-edges a back-of-a-length cutter trying to work it onside, and the catch pops up easily to midwicket off Asitha Fernando. Root departs for 69, but the damage is already done: England are 244/3, with a stand of 159 for the third wicket behind them.',
+      'Harry Brook, barely troubled all evening, goes from accomplished to historic. Fifty off 42 balls. A hundred off 75. By the time Will Jacks joins him the required rate is an afterthought — the pair add 150 in just 66 balls for the fourth wicket as Brook races to 150 off 97 and then 200 off 114, clearing the rope time and again against a Sri Lankan attack that has no answers left.',
+      'Brook finally falls off the very last ball of the innings, carving a wide full delivery straight to a well-set backward point — but by then it barely matters. England close on 429/4, Brook\'s innings worth 202 off 116 balls with 21 fours and 10 sixes, Jacks unbeaten on a brisk 66 off just 30. It\'s the highest score of the series by either side batting first.',
+      'Sri Lanka\'s reply starts cautiously, as it has to. Kamindu Mendis and Avishka Fernando are 13/0 after the first two overs, with 417 still needed from 48.2 overs at a required rate above 8.6 an over — a mountain to climb, even by the standards of a series that has already produced two 300-plus totals.',
+      'This article will keep updating with commentary on every major moment as the chase unfolds.',
+    ],
+    pull:'Harry Brook\'s 202 off 116 balls — 21 fours, 10 sixes — drives England to 429/4; Sri Lanka\'s chase of 430 is just getting under way.',
   },
 ];
 

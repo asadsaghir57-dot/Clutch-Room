@@ -563,6 +563,10 @@ a.board-row{display:grid;}
 /* ---------- cricket: live match card + summary/scorecard ---------- */
 .cric-card{border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin-top:18px;background:var(--paper-raised);}
 .cric-card.is-live{border-color:var(--live);}
+.cric-card.is-clickable{cursor:pointer;transition:border-color .15s;}
+.cric-card.is-clickable:hover,.cric-card.is-clickable:focus-visible{border-color:var(--accent,var(--ink-muted));}
+.cric-card-jump{margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.04em;color:var(--ink-muted);text-transform:uppercase;}
+.cric-card.is-clickable:hover .cric-card-jump{color:var(--ink);}
 .cric-card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;}
 .cric-card-title{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:18px;letter-spacing:0.02em;}
 .cric-live-tag{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.06em;color:var(--live);}
@@ -724,7 +728,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: ENG 253/3 (38.4) v SL · 3RD ODI', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:70, status:'LIVE: ENG 331/3 (43.4) v SL · 3RD ODI, Brook 146*', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -794,8 +798,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'LIVE: ENGLAND 253/3 (38.4) v SRI LANKA · 3RD ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG',record:'253/3 (38.4)'}, home:{abbr:'SL',record:'Yet to bat'}, note:'ODI Tri-Series 3rd Match · Sri Lanka won the toss and chose to field; Brook (97*) closing on a century with Jacks (2*)'},
+  cricket:{context:'LIVE: ENGLAND 331/3 (43.4) v SRI LANKA · 3RD ODI AT RAWALPINDI', games:[
+    {status:'LIVE', away:{abbr:'ENG',record:'331/3 (43.4)'}, home:{abbr:'SL',record:'Yet to bat'}, note:'ODI Tri-Series 3rd Match · Sri Lanka won the toss and chose to field; Brook (146*) and Jacks (29*) piling on after Root\'s 69'},
     {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Pakistan win by 87 runs, Arafat Minhas Player of the Match (59 & 6/40)'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
@@ -890,10 +894,10 @@ const CRICKET_LIVE_MATCH = {
   venue:'Rawalpindi Cricket Stadium', date:'Oct 22, 2026',
   status:'live',
   teams:{
-    away:{abbr:'ENG', name:'England', score:253, wkts:3, overs:'38.4'},
+    away:{abbr:'ENG', name:'England', score:331, wkts:3, overs:'43.4'},
     home:{abbr:'SL', name:'Sri Lanka', score:null, wkts:null, overs:null},
   },
-  toss:'Sri Lanka won the toss and chose to field', resultLine:'Sri Lanka won the toss and chose to field · England 253/3 after 38.4 overs (Brook 97*, Jacks 2*)',
+  toss:'Sri Lanka won the toss and chose to field', resultLine:'Sri Lanka won the toss and chose to field · England 331/3 after 43.4 overs (Brook 146*, Jacks 29*)',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -1639,9 +1643,10 @@ function renderTennisRankings(){
 function teamBadge(abbr){
   return `<span class="cric-badge">${abbr}</span>`;
 }
-function renderCricketMatchCard(m){
+function renderCricketMatchCard(m, hasReport){
   const live = m.status === 'live';
-  return `<div class="cric-card ${live?'is-live':''}">
+  const clickable = hasReport ? ' role="button" tabindex="0" onclick="document.getElementById(\'cric-report\').scrollIntoView({behavior:\'smooth\',block:\'start\'})" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();this.click();}"' : '';
+  return `<div class="cric-card ${live?'is-live':''}${hasReport?' is-clickable':''}"${clickable}>
     <div class="cric-card-head">
       <span class="cric-card-title">${m.teams.away.name} vs ${m.teams.home.name}</span>
       ${live ? `<span class="cric-live-tag"><span class="dot"></span>LIVE</span>` : ''}
@@ -1660,6 +1665,7 @@ function renderCricketMatchCard(m){
       </div>
     </div>
     <div class="cric-card-result">${m.resultLine}</div>
+    ${hasReport ? `<div class="cric-card-jump">${live?'View live scorecard':'View scorecard'} ↓</div>` : ''}
   </div>`;
 }
 function topBatters(inn,n){ return [...inn.batting].sort((a,b)=>b.r-a.r).slice(0,n); }
@@ -1667,9 +1673,14 @@ function topBowlers(inn,n){ return [...inn.bowling].sort((a,b)=>b.w-a.w || a.eco
 function renderCricketSummary(matchId){
   const m = CRICKET_SCORECARDS[matchId];
   if(!m) return '';
-  return `<div class="cric-pom"><span class="l">Player of the Match</span><span class="nm">${m.playerOfMatch.name}</span><span class="line">(${m.playerOfMatch.team}) · ${m.playerOfMatch.line}</span></div>
+  return `${m.playerOfMatch ? `<div class="cric-pom"><span class="l">Player of the Match</span><span class="nm">${m.playerOfMatch.name}</span><span class="line">(${m.playerOfMatch.team}) · ${m.playerOfMatch.line}</span></div>` : ''}
   ${m.innings.map((inn,i)=>{
-    const bowlInn = m.innings[1-i];
+    const bowlInn = m.innings[1-i] || {bowling:[]};
+    if(inn.yetToBat){
+      return `<div class="cric-summary-block">
+        <div class="cric-summary-head">${inn.team} · yet to bat</div>
+      </div>`;
+    }
     return `<div class="cric-summary-block">
       <div class="cric-summary-head">${inn.team} · ${inn.total}${inn.wkts<10?'/'+inn.wkts:''} (${inn.overs})</div>
       <div class="cric-summary-cols">
@@ -1692,6 +1703,7 @@ function renderCricketScorecardTable(matchId){
     ${m.innings.map((inn,i)=>`<span class="chip ${i===0?'on':''}" data-inn="${i}" role="button" tabindex="0" aria-pressed="${i===0?'true':'false'}" onclick="showCricInnings('${matchId}',${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">${inn.team}</span>`).join('')}
   </div>
   ${m.innings.map((inn,i)=>`<div class="cric-innings" data-inn="${i}" style="${i===0?'':'display:none;'}">
+    ${inn.yetToBat ? `<p class="fixtures-fallback">${inn.team} hasn't batted yet.</p>` : `
     <div class="cric-bat-table">
       <div class="cric-bat-row cric-bat-head"><span class="nm">Batting</span><span>R</span><span>B</span><span>4s</span><span>6s</span><span>SR</span></div>
       ${inn.batting.map(b=>`<div class="cric-bat-row">
@@ -1701,13 +1713,14 @@ function renderCricketScorecardTable(matchId){
       <div class="cric-bat-extras">Extras <span class="tnum">${inn.extras}</span></div>
       <div class="cric-bat-total">Total <span class="tnum">${inn.total} (${inn.wkts} wkts, ${inn.overs} ov)</span></div>
     </div>
-    <div class="cric-fow"><span class="h">Fall of wickets</span><span class="line">${inn.fow}</span></div>
+    ${inn.fow ? `<div class="cric-fow"><span class="h">Fall of wickets</span><span class="line">${inn.fow}</span></div>` : ''}
     <div class="cric-bowl-table">
       <div class="cric-bowl-row cric-bowl-head"><span class="nm">Bowling</span><span>O</span><span>M</span><span>R</span><span>W</span><span>Econ</span></div>
       ${inn.bowling.map(b=>`<div class="cric-bowl-row">
         <span class="nm">${b.name}</span><span class="tnum">${b.o}</span><span class="tnum">${b.m}</span><span class="tnum">${b.r}</span><span class="tnum">${b.w}</span><span class="tnum">${b.econ.toFixed(2)}</span>
       </div>`).join('')}
     </div>
+    `}
   </div>`).join('')}`;
 }
 function showCricInnings(matchId, idx){
@@ -1721,18 +1734,23 @@ function showCricInnings(matchId, idx){
   });
 }
 function renderCricketWidgets(){
-  const latestMatchId = Object.keys(CRICKET_SCORECARDS).slice(-1)[0];
+  const liveAbbrs = [CRICKET_LIVE_MATCH.teams.away.abbr, CRICKET_LIVE_MATCH.teams.home.abbr].sort().join(',');
+  const matchingId = Object.keys(CRICKET_SCORECARDS).find(id=>{
+    const abbrs = CRICKET_SCORECARDS[id].innings.map(inn=>inn.abbr).sort().join(',');
+    return abbrs === liveAbbrs;
+  });
+  const reportMatchId = matchingId || Object.keys(CRICKET_SCORECARDS).slice(-1)[0];
   return `
-    ${renderCricketMatchCard(CRICKET_LIVE_MATCH)}
-    ${latestMatchId ? `
-    <div class="cric-report">
-      <div class="cric-report-head"><h3 class="disp">${CRICKET_SCORECARDS[latestMatchId].title}</h3><span class="sub">${CRICKET_SCORECARDS[latestMatchId].result}</span></div>
+    ${renderCricketMatchCard(CRICKET_LIVE_MATCH, !!reportMatchId)}
+    ${reportMatchId ? `
+    <div class="cric-report" id="cric-report">
+      <div class="cric-report-head"><h3 class="disp">${CRICKET_SCORECARDS[reportMatchId].title}</h3><span class="sub">${CRICKET_SCORECARDS[reportMatchId].result}</span></div>
       <div class="cric-report-tabs">
         <span class="chip on" data-view="summary" role="button" tabindex="0" aria-pressed="true" onclick="showCricView('summary')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Summary</span>
         <span class="chip" data-view="scorecard" role="button" tabindex="0" aria-pressed="false" onclick="showCricView('scorecard')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Scorecard</span>
       </div>
-      <div class="cric-view" data-view="summary">${renderCricketSummary(latestMatchId)}</div>
-      <div class="cric-view" data-view="scorecard" style="display:none;">${renderCricketScorecardTable(latestMatchId)}</div>
+      <div class="cric-view" data-view="summary">${renderCricketSummary(reportMatchId)}</div>
+      <div class="cric-view" data-view="scorecard" style="display:none;">${renderCricketScorecardTable(reportMatchId)}</div>
     </div>` : ''}
   `;
 }
@@ -2623,17 +2641,16 @@ const ARTICLES = [
     pull:'Arafat Minhas backed up his maiden fifty with 6/40 — including four wickets in 17 balls — to seal an 87-run win and the Player of the Match award.',
   },
   {id:'eng-sl-3rd-odi-live', sport:'cricket', cat:'recap',
-    headline:'LIVE: Brook Blazes to Fifty as England Race to 194/2 vs Sri Lanka',
-    dek:'Harry Brook (68* off 53) and Joe Root (43*) put on a hundred-plus stand after Dunith Wellalage removed Tom Banton (50) and Ben Duckett (29) early, pushing England well clear at Rawalpindi.',
+    headline:'LIVE: Brook’s 146* Has England Past 330 as Sri Lanka Still Haven’t Bowled a Ball at Them',
+    dek:'Harry Brook has gone from fifty to a rampaging 146* (95 balls, 15 fours, 7 sixes), and with Will Jacks (29* off 12) now alongside him England have powered to 331/3 after 43.4 overs — Joe Root’s 69 the only wicket to fall since the early stumbles.',
     byline:'Clutch Room Cricket Desk', mins:3, time:'Oct 22, 2026',
-    qa:[['What is the latest score?','England are 194/2 after 32.2 overs, with Joe Root (43*) and Harry Brook (68*) at the crease, chasing nothing — Sri Lanka are yet to bat.'],
-        ['What happened before that?','Tom Banton (50 off 51) and Ben Duckett (29) put on 74 for the first wicket before both fell to Dunith Wellalage inside three overs of each other; Root and Brook have since added a maiden-free stand of over 100.']],
+    qa:[['What is the latest score?','England are 331/3 after 43.4 overs. Harry Brook is unbeaten on 146 (95 balls) and Will Jacks unbeaten on 29 (12 balls); Sri Lanka are yet to bat.'],
+        ['What happened to Joe Root?','Root fell for 69 (66 balls) in the 37th over, caught by Wellalage off Asitha Fernando, ending a 159-run third-wicket stand with Brook that broke the game open.']],
     body:[
       'Sri Lanka win the toss at Rawalpindi and opt to field again — the same read as the series opener, now chasing a first win of the tri-series after defeats to Pakistan and England.',
-      'Tom Banton and Ben Duckett give England exactly the start they want, racing through the powerplay and on to a brisk 74-run opening stand without much alarm.',
-      'The breakthrough finally comes in the 14th over. Dunith Wellalage draws Banton out of his crease — the shot isn\'t quite to the pitch, Banton goes looking for the lofted drive over extra cover, but it\'s too straight, and long-off makes no mistake. Banton departs for a run-a-ball 50 (51 balls, 9 fours), England 74/1.',
-      'Wellalage strikes again two overs later. Tossed up on the stumps, Ben Duckett misses the sweep and is hit low in front of middle and off. Huge appeal, the finger goes up, and Joe Root talks his partner out of a review — plumb. Duckett goes for 29 (39 balls), England slip to 85/2.',
-      'From there it\'s all England. Root and captain Harry Brook put the early wobble behind them, taking the score past 150 inside 27 overs before Brook accelerates — a fifty in 42 balls with two fours and three sixes. The pair move past a hundred together, and with Sri Lanka\'s attack unable to find another breakthrough, England motor on to 194/2 after 32.2 overs — Root unbeaten on 43, Brook unbeaten on 68 — at a run rate of 6.00.',
+      'Tom Banton and Ben Duckett give England exactly the start they want, racing through the powerplay and on to a brisk 74-run opening stand without much alarm, before Dunith Wellalage removes both inside three overs of each other — Banton for a run-a-ball 50, Duckett lbw for 29 — to leave England 85/2.',
+      'From there it is one-way traffic. Joe Root and captain Harry Brook rebuild and then accelerate, taking the third-wicket stand to 159 before Root, well set on 69, finally picks out Wellalage at long-on off Asitha Fernando in the 37th over.',
+      'It barely slows England down. Brook brings up a maiden century — 100 off 75 balls — and keeps going, reaching 146 not out off 95 (15 fours, 7 sixes) with Will Jacks (29* off just 12) finding the boundary almost at will alongside him. England have added 87 in the last six overs alone and sit at 331/3 after 43.4, with Sri Lanka’s attack yet to find a way back in and over six overs still to bowl.',
     ],
   },
 ];

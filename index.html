@@ -728,7 +728,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:70, status:'LIVE: SL 38/2 (6.2) chasing ENG 429/4 · 3RD ODI, Brook 202', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:72, status:'LIVE: SL 97/2 (15.5) chasing ENG 429/4 · 3RD ODI, Brook 202 (114b) fastest ODI double-ton', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -798,8 +798,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'LIVE: ENGLAND 331/3 (43.4) v SRI LANKA · 3RD ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG',record:'331/3 (43.4)'}, home:{abbr:'SL',record:'Yet to bat'}, note:'ODI Tri-Series 3rd Match · Sri Lanka won the toss and chose to field; Brook (146*) and Jacks (29*) piling on after Root\'s 69'},
+  cricket:{context:'LIVE: SRI LANKA 97/2 (15.5) CHASE ENGLAND\'S 429/4 · 3RD ODI AT RAWALPINDI, BROOK\'S 202 FASTEST ODI DOUBLE-TON', games:[
+    {status:'LIVE', away:{abbr:'ENG',record:'429/4 (50)'}, home:{abbr:'SL',record:'97/2 (15.5)'}, note:'ODI Tri-Series 3rd Match · Sri Lanka won the toss and chose to field; Harry Brook\'s 202 (114b) — the fastest ODI double-century ever — and Will Jacks\' unbeaten 66 power England to 429/4; Avishka Fernando (49*) and Pavan Rathnayake (27*) rebuilding Sri Lanka\'s chase of 430 after early wickets'},
     {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Pakistan win by 87 runs, Arafat Minhas Player of the Match (59 & 6/40)'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
@@ -895,9 +895,9 @@ const CRICKET_LIVE_MATCH = {
   status:'live',
   teams:{
     away:{abbr:'ENG', name:'England', score:429, wkts:4, overs:'50'},
-    home:{abbr:'SL', name:'Sri Lanka', score:38, wkts:2, overs:'6.2'},
+    home:{abbr:'SL', name:'Sri Lanka', score:97, wkts:2, overs:'15.5'},
   },
-  toss:'Sri Lanka won the toss and chose to field', resultLine:'Sri Lanka won the toss and chose to field · England 429/4 from 50 overs (Brook 202, Jacks 66*) · Sri Lanka 38/2 after 6.2 overs in reply',
+  toss:'Sri Lanka won the toss and chose to field', resultLine:'Sri Lanka won the toss and chose to field · England 429/4 from 50 overs (Brook 202 off 114b, fastest ODI double-century; Jacks 66*) · Sri Lanka 97/2 after 15.5 overs in reply (Avishka Fernando 49*, Pavan Rathnayake 27*)',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -2641,16 +2641,19 @@ const ARTICLES = [
     pull:'Arafat Minhas backed up his maiden fifty with 6/40 — including four wickets in 17 balls — to seal an 87-run win and the Player of the Match award.',
   },
   {id:'eng-sl-3rd-odi-live', sport:'cricket', cat:'recap',
-    headline:'LIVE: Brook’s 146* Has England Past 330 as Sri Lanka Still Haven’t Bowled a Ball at Them',
-    dek:'Harry Brook has gone from fifty to a rampaging 146* (95 balls, 15 fours, 7 sixes), and with Will Jacks (29* off 12) now alongside him England have powered to 331/3 after 43.4 overs — Joe Root’s 69 the only wicket to fall since the early stumbles.',
-    byline:'Clutch Room Cricket Desk', mins:3, time:'Oct 22, 2026',
-    qa:[['What is the latest score?','England are 331/3 after 43.4 overs. Harry Brook is unbeaten on 146 (95 balls) and Will Jacks unbeaten on 29 (12 balls); Sri Lanka are yet to bat.'],
-        ['What happened to Joe Root?','Root fell for 69 (66 balls) in the 37th over, caught by Wellalage off Asitha Fernando, ending a 159-run third-wicket stand with Brook that broke the game open.']],
+    headline:'LIVE: Brook’s Record 202 Sets Up 430, Sri Lanka Fighting Back to 97/2',
+    dek:'Harry Brook\'s 202 off 114 balls — the fastest double-century in ODI history — and Will Jacks\' unbeaten 66 blew England to 429/4, and after losing both openers cheaply Avishka Fernando (49*) and Pavan Rathnayake (27*) have steadied Sri Lanka\'s chase to 97/2 after 15.5 overs.',
+    byline:'Clutch Room Cricket Desk', mins:4, time:'Oct 22, 2026',
+    qa:[['What is the latest score?','Sri Lanka are 97/2 after 15.5 overs, chasing England\'s 429/4, after Avishka Fernando (49*) and Pavan Rathnayake (27*) steadied the innings following two early wickets.'],
+        ['What did Harry Brook do?','Brook made 202 off 114 balls with 21 fours and 10 sixes — the fastest double-century in ODI history — anchoring stands of 159 with Joe Root and 185 with Will Jacks before he was caught off the final ball of the innings.']],
     body:[
       'Sri Lanka win the toss at Rawalpindi and opt to field again — the same read as the series opener, now chasing a first win of the tri-series after defeats to Pakistan and England.',
-      'Tom Banton and Ben Duckett give England exactly the start they want, racing through the powerplay and on to a brisk 74-run opening stand without much alarm, before Dunith Wellalage removes both inside three overs of each other — Banton for a run-a-ball 50, Duckett lbw for 29 — to leave England 85/2.',
-      'From there it is one-way traffic. Joe Root and captain Harry Brook rebuild and then accelerate, taking the third-wicket stand to 159 before Root, well set on 69, finally picks out Wellalage at long-on off Asitha Fernando in the 37th over.',
-      'It barely slows England down. Brook brings up a maiden century — 100 off 75 balls — and keeps going, reaching 146 not out off 95 (15 fours, 7 sixes) with Will Jacks (29* off just 12) finding the boundary almost at will alongside him. England have added 87 in the last six overs alone and sit at 331/3 after 43.4, with Sri Lanka’s attack yet to find a way back in and over six overs still to bowl.',
+      'Tom Banton and Ben Duckett give England exactly the start they want, racing through the powerplay and on to a brisk opening stand before Dunith Wellalage removes both to leave England early inroads for Sri Lanka to cling to — Banton falls for a run-a-ball 50.',
+      'From there it is one-way traffic. Joe Root and captain Harry Brook rebuild and then accelerate, taking the third-wicket stand to 159 before Root, well set on 69 — a knock that takes him to 8,000 career ODI runs — finally picks out the deep off Asitha Fernando.',
+      'It does not slow England down at all. Brook keeps finding the boundary with Will Jacks for company, the pair piling on 185 together off just 79 balls, and Brook keeps swinging deep into the innings.',
+      'Brook brings up 200 — the fastest double-century in ODI history, in just 114 balls — before he is finally caught off the very last ball of the innings for 202 (21 fours, 10 sixes). Jacks is left unbeaten on 66. England close on 429/4, the highest ODI total ever scored in Pakistan and the most Sri Lanka have ever conceded.',
+      'Sri Lanka\'s reply starts in the worst possible way. Kamindu Mendis goes cheaply inside the powerplay, then Kusal Mendis is run out for a duck — a direct hit from Gus Atkinson catches him well short — and Sri Lanka are 24/2 chasing 430, already needing something special.',
+      'Avishka Fernando and Pavan Rathnayake dig in. No panic, just ones and twos mixed with the odd boundary, and the pair steadily rebuild — Fernando to 49 not out, Rathnayake to 27 not out — to drag Sri Lanka to 97/2 after 15.5 overs. The equation is still brutal: well over 300 needed from barely more than half the overs with England\'s bowlers fresh and a mountain of runs to defend.',
     ],
   },
 ];

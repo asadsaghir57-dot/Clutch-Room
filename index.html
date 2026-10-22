@@ -728,7 +728,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:70, status:'LIVE: ENG 331/3 (43.4) v SL · 3RD ODI, Brook 146*', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:70, status:'LIVE: ENG 429/4 (50) v SL · 3RD ODI, Brook 202, SL chasing', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -894,10 +894,10 @@ const CRICKET_LIVE_MATCH = {
   venue:'Rawalpindi Cricket Stadium', date:'Oct 22, 2026',
   status:'live',
   teams:{
-    away:{abbr:'ENG', name:'England', score:331, wkts:3, overs:'43.4'},
+    away:{abbr:'ENG', name:'England', score:429, wkts:4, overs:'50'},
     home:{abbr:'SL', name:'Sri Lanka', score:null, wkts:null, overs:null},
   },
-  toss:'Sri Lanka won the toss and chose to field', resultLine:'Sri Lanka won the toss and chose to field · England 331/3 after 43.4 overs (Brook 146*, Jacks 29*)',
+  toss:'Sri Lanka won the toss and chose to field', resultLine:'Sri Lanka won the toss and chose to field · England 429/4 from 50 overs (Brook 202, Jacks 66*) · Sri Lanka chase to follow',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{

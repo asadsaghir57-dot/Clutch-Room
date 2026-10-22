@@ -724,7 +724,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: ENG 62/0 (12.1) v SL · 3RD ODI', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'LIVE: ENG 105/2 (18.3) v SL · 3RD ODI', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -794,8 +794,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'LIVE: ENGLAND 62/0 (12.1) v SRI LANKA · 3RD ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG',record:'62/0 (12.1)'}, home:{abbr:'SL',record:'Yet to bat'}, note:'ODI Tri-Series 3rd Match · Sri Lanka won the toss and chose to field'},
+  cricket:{context:'LIVE: ENGLAND 105/2 (18.3) v SRI LANKA · 3RD ODI AT RAWALPINDI', games:[
+    {status:'LIVE', away:{abbr:'ENG',record:'105/2 (18.3)'}, home:{abbr:'SL',record:'Yet to bat'}, note:'ODI Tri-Series 3rd Match · Sri Lanka won the toss and chose to field; Wellalage removes Banton (50) and Duckett (29)'},
     {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Pakistan win by 87 runs, Arafat Minhas Player of the Match (59 & 6/40)'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
@@ -890,10 +890,10 @@ const CRICKET_LIVE_MATCH = {
   venue:'Rawalpindi Cricket Stadium', date:'Oct 22, 2026',
   status:'live',
   teams:{
-    away:{abbr:'ENG', name:'England', score:62, wkts:0, overs:'12.1'},
+    away:{abbr:'ENG', name:'England', score:105, wkts:2, overs:'18.3'},
     home:{abbr:'SL', name:'Sri Lanka', score:null, wkts:null, overs:null},
   },
-  toss:'Sri Lanka won the toss and chose to field', resultLine:'Sri Lanka won the toss and chose to field · England 62/0 after 12.1 overs (Banton 50*, Duckett 11*)',
+  toss:'Sri Lanka won the toss and chose to field', resultLine:'Sri Lanka won the toss and chose to field · England 105/2 after 18.3 overs (Root 20*, Brook 5*)',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -2590,6 +2590,20 @@ const ARTICLES = [
       'Gus Atkinson is run out backing up to the next ball, and England are bowled out for 215 in 38.4 overs — 87 runs short. Minhas finishes with 6/40, turning a maiden international half-century into a Player of the Match double that Pakistan will take as a serious statement two games into the tri-series, with England\'s reply never getting within shouting distance after his spell.',
     ],
     pull:'Arafat Minhas backed up his maiden fifty with 6/40 — including four wickets in 17 balls — to seal an 87-run win and the Player of the Match award.',
+  },
+  {id:'eng-sl-3rd-odi-live', sport:'cricket', cat:'recap',
+    headline:'LIVE: Wellalage Strikes Twice as England Reach 105/2 After 18 Overs vs Sri Lanka',
+    dek:'Tom Banton (50) and Ben Duckett (29) both fall to Dunith Wellalage after a brisk opening stand, but Joe Root and Harry Brook have England ticking along at Rawalpindi.',
+    byline:'Clutch Room Cricket Desk', mins:3, time:'Oct 22, 2026',
+    qa:[['What is the latest score?','England are 105/2 after 18.3 overs, with Joe Root (20*) and Harry Brook (5*) at the crease, chasing nothing — Sri Lanka are yet to bat.'],
+        ['What happened before that?','Tom Banton (50 off 51) and Ben Duckett (29) put on 74 for the first wicket before both fell to Dunith Wellalage inside three overs of each other.']],
+    body:[
+      'Sri Lanka win the toss at Rawalpindi and opt to field again — the same read as the series opener, now chasing a first win of the tri-series after defeats to Pakistan and England.',
+      'Tom Banton and Ben Duckett give England exactly the start they want, racing through the powerplay and on to a brisk 74-run opening stand without much alarm.',
+      'The breakthrough finally comes in the 14th over. Dunith Wellalage draws Banton out of his crease — the shot isn\'t quite to the pitch, Banton goes looking for the lofted drive over extra cover, but it\'s too straight, and long-off makes no mistake. Banton departs for a run-a-ball 50 (51 balls, 9 fours), England 74/1.',
+      'Wellalage strikes again two overs later. Tossed up on the stumps, Ben Duckett misses the sweep and is hit low in front of middle and off. Huge appeal, the finger goes up, and Joe Root talks his partner out of a review — plumb. Duckett goes for 29 (39 balls), England slip to 85/2.',
+      'Root and captain Harry Brook settle things through the drinks break, nudging the score along without further alarm. England move to 105/2 after 18.3 overs — Root unbeaten on 20, Brook on 5 — at a run rate of 5.67, with Sri Lanka still hunting the wicket that turns the innings.',
+    ],
   },
 ];
 

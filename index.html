@@ -713,18 +713,18 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
 
 <script>
 const SPORTS = [
-  {id:'football', name:'Football', accent:'court', heat:88, status:'UCL MD3 FINAL: BAYERN MUNICH 2-2 ARSENAL (RICE EQUALIZES LATE), REAL MADRID ROUT RB LEIPZIG 4-1', deep:'full',
+  {id:'football', name:'Football', accent:'court', heat:88, status:'EL CLÁSICO SUNDAY AT CAMP NOU · UCL MD3 FINAL: BAYERN 2-2 ARSENAL, REAL MADRID ROUT LEIPZIG 4-1', deep:'full',
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga'], live:false},
   {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES SET: RAYS CLINCH AL PENNANT 4-2 OVER GUARDIANS, FACE BREWERS STARTING FRIDAY', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
-  {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 7: CHIEFS, BILLS, STEELERS WIN · 49ERS HOLD OFF COMMANDERS 23-17, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
+  {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 7 OPENS TONIGHT: PATRIOTS AT BEARS (BOTH 4-2) · 49ERS 6-0 AFTER MNF WIN OVER COMMANDERS', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
-  {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
+  {id:'padel', name:'Padel', accent:'away', heat:40, status:'KUWAIT MAJOR OCT 22-30 · TAPIA/COELLO COMING OFF MILANO P1 TITLE', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:88, status:'OPENING NIGHT SWEEP: PISTONS STUN CELTICS, 76ERS SPOIL KNICKS\' BANNER NIGHT, THUNDER ROUT SPURS 116-104 AS WEMBANYAMA GOES 1-OF-13', deep:'light', sub:'NBA', live:false},
   {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
-  {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
-  {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'FINAL: PAKISTAN BEAT ENGLAND BY 87 RUNS · NEXT: SL v ENG, OCT 22', deep:'light', sub:'International & league cricket', live:false},
+  {id:'ufc', name:'UFC', accent:'away', heat:48, status:'UFC 333 SATURDAY IN ABU DHABI: VOLKANOVSKI vs EVLOEV FOR FEATHERWEIGHT TITLE', deep:'light', sub:'Mixed martial arts'},
+  {id:'boxing', name:'Boxing', accent:'away', heat:52, status:'SATURDAY: SMITH vs PUELLO IN SHEFFIELD, NAVARRETE vs FOSTER IN SAN ANTONIO', deep:'light', sub:'Professional boxing'},
+  {id:'cricket', name:'Cricket', accent:'away', heat:65, status:'TRI-SERIES: PAKISTAN 2-0 · SRI LANKA v ENGLAND TODAY IN RAWALPINDI', deep:'light', sub:'International & league cricket', live:false},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -740,11 +740,18 @@ const CAT = {
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
   mlb:{context:'RAYS CLINCH AL PENNANT · WORLD SERIES: RAYS vs. BREWERS STARTS FRIDAY', games:[
+    {status:'FRI 8:00 PM ET', away:{abbr:'TB'}, home:{abbr:'MIL'}, note:'World Series Gm1 · American Family Field · FOX'},
     {status:'FINAL', away:{abbr:'CLE',record:'3'}, home:{abbr:'TB',record:'7'}, note:'ALCS Gm6 · Tropicana Field · Rays clinch AL pennant 4-2, advance to World Series vs. Brewers'},
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
     {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},
   ]},
-  football:{context:'UCL MD3 COMPLETE: BAYERN 2-2 ARSENAL, REAL MADRID 4-1 RB LEIPZIG · TUESDAY: PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL', games:[
+  football:{context:'EL CLÁSICO SUNDAY · PL MW8 SATURDAY · UCL MD3 COMPLETE: BAYERN 2-2 ARSENAL, REAL MADRID 4-1 RB LEIPZIG · TUESDAY: PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL', games:[
+    {status:'SAT 7:30 AM ET', away:{abbr:'AVL'}, home:{abbr:'MCI'}, note:'Premier League MW8 · Aston Villa vs Man City'},
+    {status:'SAT 10:00 AM ET', away:{abbr:'EVE'}, home:{abbr:'ARS'}, note:'Premier League MW8 · Arsenal vs Everton'},
+    {status:'SAT 12:30 PM ET', away:{abbr:'TOT'}, home:{abbr:'CHE'}, note:'Premier League MW8 · Chelsea vs Spurs'},
+    {status:'SUN 10:00 AM ET', away:{abbr:'BHA'}, home:{abbr:'LIV'}, note:'Premier League MW8 · Liverpool vs Brighton'},
+    {status:'SUN 10:00 AM ET', away:{abbr:'BOU'}, home:{abbr:'MUN'}, note:'Premier League MW8 · Man Utd vs Bournemouth'},
+    {status:'SUN 4:00 PM ET', away:{abbr:'RMA'}, home:{abbr:'BAR'}, note:'La Liga MD10 · El Clásico · Spotify Camp Nou (21:00 CET)'},
     {status:'FINAL', away:{abbr:'ARS',record:'2'}, home:{abbr:'BAY',record:'2'}, note:'UCL MD3 · Allianz Arena · Eze 25\' puts Arsenal ahead, Davies 35\' levels for Bayern, Kane converts a penalty 61\' to put Bayern back in front, Rice equalizes 82\' for a 2-2 draw; Saka off injured in the first half'},
     {status:'FINAL', away:{abbr:'RBL',record:'1'}, home:{abbr:'RMA',record:'4'}, note:'UCL MD3 · Santiago Bernabéu · Bernardo Silva 43\', Arda Güler 52\', Mbappé 83\' and Diomandé 87\' for Real Madrid; Gomis 85\' for Leipzig in a 4-1 win'},
     {status:'FINAL', away:{abbr:'BAR',record:'2'}, home:{abbr:'PSG',record:'4'}, note:'UCL MD3 · Parc des Princes · Doué 38\', L. Hernández 72\', Vitinha 81\', F. Ruiz 86\' for PSG; Espart 55\', Yamal 79\' for Barcelona'},
@@ -775,26 +782,42 @@ const GAMES = {
   padel:{context:'MILANO P1 COMPLETE · TAPIA/COELLO WIN AGAIN', games:[
     {status:'FINAL', away:{abbr:'LEBRÓN/AUGSBURGER'}, home:{abbr:'TAPIA/COELLO'}, note:'Milano P1 Final · Tapia/Coello win 4-6, 6-3, 6-2 for back-to-back P1 titles'},
   ]},
-  basketball:{context:'OPENING NIGHT COMPLETE: PISTONS STUN CELTICS 121-113 · 76ERS SPOIL KNICKS\' BANNER NIGHT 106-100 · THUNDER ROUT SPURS 116-104, WEMBANYAMA 1-OF-13', games:[
+  basketball:{context:'THURSDAY: CAVS AT 76ERS, NUGGETS AT THUNDER · WEDNESDAY: WOLVES 131-106 HEAT (EDWARDS 45, GIANNIS 35 IN DEBUT) · OPENING NIGHT COMPLETE: PISTONS STUN CELTICS 121-113 · 76ERS SPOIL KNICKS\' BANNER NIGHT 106-100 · THUNDER ROUT SPURS 116-104, WEMBANYAMA 1-OF-13', games:[
+    {status:'THU 7:00 PM ET', away:{abbr:'CLE'}, home:{abbr:'PHI'}, note:'Cavaliers at 76ers'},
+    {status:'THU 9:30 PM ET', away:{abbr:'DEN'}, home:{abbr:'OKC'}, note:'Nuggets at Thunder'},
+    {status:'FINAL', away:{abbr:'MIN',record:'131'}, home:{abbr:'MIA',record:'106'}, note:'Wednesday · Kaseya Center · Anthony Edwards 45 pts/10 reb for Minnesota; Giannis Antetokounmpo 35 pts in his Heat debut'},
+    {status:'FINAL', away:{abbr:'GS',record:'105'}, home:{abbr:'LAL',record:'127'}, note:'Wednesday · Crypto.com Arena · Luka Doncic 28 pts/8 reb/7 ast for the Lakers; Stephen Curry 23 pts for Golden State'},
+    {status:'FINAL', away:{abbr:'DAL',record:'110'}, home:{abbr:'HOU',record:'128'}, note:'Wednesday · Toyota Center · Cooper Flagg 32 pts for Dallas; J. Smith 30 pts for Houston'},
+    {status:'FINAL', away:{abbr:'CHI',record:'92'}, home:{abbr:'TOR',record:'135'}, note:'Wednesday · Scotiabank Arena · Raptors win big in Kawhi Leonard\'s return; Barnes 23 pts'},
+    {status:'FINAL', away:{abbr:'UTA',record:'103'}, home:{abbr:'MEM',record:'123'}, note:'Wednesday · FedExForum · Jerome 45 pts for Memphis'},
     {status:'FINAL', away:{abbr:'HOU',record:'135'}, home:{abbr:'DAL',record:'117'}, note:'NBA China Gm1 · Macao · Rockets romp, Flagg scores 19'},
     {status:'FINAL', away:{abbr:'DAL',record:'132'}, home:{abbr:'HOU',record:'115'}, note:'NBA China Gm2 · Macao · Mavericks even series 1-1'},
     {status:'FINAL', away:{abbr:'BOS',record:'113'}, home:{abbr:'DET',record:'121'}, note:'Opening Night · Little Caesars Arena · Pistons erase a 22-pt deficit with a 23-0 fourth-quarter run; Cunningham 22 pts/8 ast, Duren 22 pts/9 reb, Green 5 threes off the bench; Paul George sets Celtics debut record with 38 pts, Tatum 13 on 6-of-23'},
     {status:'FINAL', away:{abbr:'PHI',record:'106'}, home:{abbr:'NYK',record:'100'}, note:'Opening Night · Banner night at MSG · Maxey 28 pts; Jaylen Brown (Sixers debut) 19 pts/8 reb/6 ast, caps a 29-18 3rd quarter with a buzzer-beating 3 off a LeBron inbound; LeBron James (Sixers debut) 14 pts/9 reb/7 ast; Brunson 21 pts, Towns 19 pts/12 reb for New York'},
     {status:'FINAL', away:{abbr:'OKC',record:'116'}, home:{abbr:'SAS',record:'104'}, note:'Opening Night · WCF rematch at Frost Bank Center · Gilgeous-Alexander 32 pts/6 reb/4 ast, Jared McCain 20 pts off the bench for OKC; Stephon Castle 24 pts/7 reb for San Antonio, Victor Wembanyama held to 12 on 1-of-13 shooting in his season debut'},
   ]},
-  ufc:{context:'FIGHT NIGHT EDMONTON · FINAL', games:[
+  ufc:{context:'UFC 333 SATURDAY · ABU DHABI', games:[
+    {status:'SAT 2:00 PM ET', away:{abbr:'EVLOEV'}, home:{abbr:'VOLKANOVSKI'}, note:'UFC 333 main event · Featherweight title · Etihad Arena, Abu Dhabi · Paramount+'},
     {status:'FINAL', away:{abbr:'BUCKLEY'}, home:{abbr:'MALOTT'}, note:'Malott KOs Buckley at 2:32 of Round 2 · Edmonton'},
   ]},
-  boxing:{context:'DUBOIS STOPS WARDLEY · REMATCH FINAL', games:[
+  boxing:{context:'SATURDAY: SMITH vs PUELLO (SHEFFIELD) · NAVARRETE vs FOSTER (SAN ANTONIO) · BOTH ON DAZN', games:[
+    {status:'SAT OCT 24', away:{abbr:'PUELLO'}, home:{abbr:'SMITH'}, note:'WBC junior welterweight title · Utilita Arena Sheffield · 12 rounds'},
+    {status:'SAT OCT 24', away:{abbr:'FOSTER'}, home:{abbr:'NAVARRETE'}, note:'WBO/IBF + WBC junior lightweight titles · San Antonio · 12 rounds'},
     {status:'FINAL', away:{abbr:'WARDLEY'}, home:{abbr:'DUBOIS'}, note:'Dubois stops Wardley in Round 2 of their rematch'},
   ]},
-  nfl:{context:'WEEK 7 · 49ERS BEAT COMMANDERS 23-17 IN MNF, IMPROVE TO 6-0', games:[
-    {status:'FINAL', away:{abbr:'WSH',record:'17'}, home:{abbr:'SF',record:'23'}, note:'Week 7 · Monday Night Football · McCaffrey scores twice, Mustapha\'s 4th-down pass breakup seals it after Washington rallies from 23-3 down'},
-    {status:'FINAL', away:{abbr:'LAC',record:'6'}, home:{abbr:'KC',record:'22'}, note:'Week 7 · Chiefs cruise past Chargers'},
-    {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
-    {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
+  nfl:{context:'WEEK 7 OPENS TONIGHT: PATRIOTS AT BEARS (TNF) · WEEK 6 WRAP: 49ERS BEAT COMMANDERS 23-17 IN MNF, IMPROVE TO 6-0', games:[
+    {status:'THU 8:15 PM ET', away:{abbr:'NE'}, home:{abbr:'CHI'}, note:'Week 7 · Thursday Night Football · Soldier Field · Prime Video · both teams 4-2'},
+    {status:'SUN 9:30 AM ET', away:{abbr:'PIT'}, home:{abbr:'NO'}, note:'Week 7 · Stade de France, Saint-Denis, France'},
+    {status:'SUN 1:00 PM ET', away:{abbr:'SF'}, home:{abbr:'ATL'}, note:'Week 7 · Mercedes-Benz Stadium'},
+    {status:'SUN 8:20 PM ET', away:{abbr:'KC'}, home:{abbr:'SEA'}, note:'Week 7 · Sunday Night Football · Lumen Field · NBC'},
+    {status:'MON 8:15 PM ET', away:{abbr:'DAL'}, home:{abbr:'PHI'}, note:'Week 7 · Monday Night Football · Lincoln Financial Field'},
+    {status:'FINAL', away:{abbr:'WSH',record:'17'}, home:{abbr:'SF',record:'23'}, note:'Week 6 · Monday Night Football · McCaffrey scores twice, Mustapha\'s 4th-down pass breakup seals it after Washington rallies from 23-3 down'},
+    {status:'FINAL', away:{abbr:'LAC',record:'6'}, home:{abbr:'KC',record:'22'}, note:'Week 6 · Chiefs cruise past Chargers'},
+    {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 6 · Bills hold off Raiders'},
+    {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 6 · Steelers win in OT'},
   ]},
-  cricket:{context:'FINAL: PAKISTAN BEAT ENGLAND BY 87 RUNS · 2ND ODI AT RAWALPINDI', games:[
+  cricket:{context:'TODAY: SRI LANKA v ENGLAND, 3RD MATCH · PAKISTAN WON BOTH OPENERS (BY 37 RUNS, BY 87 RUNS)', games:[
+    {status:'THU 4:00 AM ET', away:{abbr:'ENG'}, home:{abbr:'SL'}, note:'ODI Tri-Series 3rd Match · Rawalpindi Cricket Stadium · 1:00 PM PKT'},
     {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Pakistan win by 87 runs, Arafat Minhas Player of the Match (59 & 6/40)'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
@@ -1408,7 +1431,7 @@ function renderStandingsTable(key){
 }
 function renderNFLStandings(){
   return `<div class="div-section">
-    <div class="div-section-head"><h3 class="disp">Standings</h3><span class="sub">AFC &amp; NFC · Week 7</span></div>
+    <div class="div-section-head"><h3 class="disp">Standings</h3><span class="sub">AFC &amp; NFC · Through Week 6</span></div>
     <div class="div-grid">
       ${NFL_STANDINGS.map(div=>`<div class="div-col">
         <h4>${div.name}</h4>
@@ -2250,6 +2273,19 @@ const ARTICLES = [
     related:'sixers-knicks-opener-recap',
   },
 
+  {id:'wolves-heat-giannis-debut-recap', sport:'basketball', cat:'recap',
+    headline:'Edwards Drops 45 as Timberwolves Spoil Giannis\' Heat Debut, 131-106',
+    dek:'Giannis Antetokounmpo scored 35 in his first game in a Miami uniform, but Anthony Edwards matched Minnesota\'s start with 45 points and 10 rebounds as the Wolves won all four quarters at Kaseya Center.',
+    byline:'Clutch Room Basketball Desk', mins:3, time:'Oct 22, 2026',
+    qa:[['What was the final score?','Timberwolves 131, Heat 106, at Kaseya Center in Miami on Wednesday night.'],
+        ['How did Giannis Antetokounmpo do in his Heat debut?','He finished with 35 points, 6 rebounds and 1 assist, but Minnesota outscored Miami in all four quarters.']],
+    body:[
+      'Minnesota opened its season with a comfortable 25-point win in Miami, scoring 34, 35, 30 and 32 by quarter to lead 69-59 at the half and win every quarter. Anthony Edwards was the game\'s best player, finishing with 45 points, 10 rebounds and 3 assists.',
+      'It was also the first game in a Heat uniform for Giannis Antetokounmpo, who scored 35 points with 6 rebounds and an assist. Miami scored 32 in the first quarter, then 27, 22 and 25 over the final three periods and dropped to 0-1.',
+      'It is one night, but a 131-point output on the road is a loud way for Minnesota to start a season, and the Heat\'s early test is figuring out how to turn a 35-point night from their new star into a result.',
+    ],
+  },
+
   {id:'thunder-spurs-opener-recap', sport:'basketball', cat:'recap',
     headline:'Thunder Cap NBA Opening Night by Routing Spurs 116-104 as Wembanyama Goes 1-of-13',
     dek:'Shai Gilgeous-Alexander scored 32 and Jared McCain added 20 off the bench in the season opener at Frost Bank Center, while Victor Wembanyama missed his first 12 shots before finishing with just 12 points.',
@@ -2471,7 +2507,7 @@ const ARTICLES = [
     ],
   },
   {id:'nfl-week7-sunday-recap', sport:'nfl', cat:'recap',
-    headline:'Chiefs, Bills and Steelers Win as Week 7\'s Sunday Slate Wraps Up',
+    headline:'Chiefs, Bills and Steelers Win as Week 6\'s Sunday Slate Wraps Up',
     dek:'Kansas City cruised past the Chargers, Buffalo held off a late Las Vegas push, and Pittsburgh needed overtime to beat Tampa Bay — three of twelve Sunday results ahead of Washington-San Francisco on Monday night.',
     byline:'Clutch Room NFL Desk', mins:5, time:'Oct 19, 2026',
     qa:[['What were the headline results?','Kansas City Chiefs 22, Los Angeles Chargers 6; Buffalo Bills 33, Las Vegas Raiders 30; Pittsburgh Steelers 26, Tampa Bay Buccaneers 19 (OT).'],
@@ -2479,14 +2515,14 @@ const ARTICLES = [
     body:[
       'Kansas City took care of business early, controlling the Chargers from the opening drive in a 22-6 win that was never seriously in doubt. Buffalo\'s afternoon was tighter than the final score suggests — a late push from Las Vegas made it 33-30 before the Bills closed it out.',
       'Pittsburgh needed the extra period to beat Tampa Bay 26-19 in overtime, the only game of the day that didn\'t get decided in regulation. Elsewhere, Carolina\'s 25-14 win over Philadelphia was the day\'s biggest form-reversal result, and Arizona\'s 18-16 defensive grind past the Rams was the lowest-scoring game of the week.',
-      'Washington hosts San Francisco on Monday Night Football to close out Week 7.',
+      'Washington hosts San Francisco on Monday Night Football to close out Week 6.',
     ],
   },
   {id:'nfl-week7-mnf-recap', sport:'nfl', cat:'recap',
     headline:'49ers Hold Off Commanders Comeback, Win 23-17 to Stay Unbeaten',
     dek:'Christian McCaffrey scored twice and Malik Mustapha\'s fourth-down pass breakup sealed it as San Francisco improved to 6-0, surviving a Washington rally from a 23-3 deficit led by Jayden Daniels.',
     byline:'Clutch Room NFL Desk', mins:5, time:'Oct 20, 2026',
-    qa:[['What was the final score?','49ers 23, Commanders 17, on Monday Night Football to close out Week 7.'],
+    qa:[['What was the final score?','49ers 23, Commanders 17, on Monday Night Football to close out Week 6.'],
         ['How did Washington get back in it?','Down 23-3, Jayden Daniels threw a touchdown pass to Rachaad White with 9:22 left to cut the lead to 23-17; San Francisco\'s offense slowed in the second half after receiver Mike Evans left the game.']],
     body:[
       'San Francisco came out of the gate scoring touchdowns on each of its first two drives, and Christian McCaffrey\'s second score of the night made it 23-3 late in the third quarter — the kind of lead that looked like it would turn Monday night into a laugher.',

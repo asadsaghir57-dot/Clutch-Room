@@ -728,7 +728,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN WEEKEND STARTS FRIDAY · VERSTAPPEN CHASING 3RD STRAIGHT WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:70, status:'LIVE: SL 250/3 (34.1) chasing ENG 429/4, need 180 off 95 balls · 3RD ODI, Brook 202', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:70, status:'LIVE: SL 324/4 (40.3) chasing ENG 429/4, need 106 off 57 balls · 3RD ODI, Rathnayake 130, Shanaka 73*', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -798,8 +798,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'LIVE: SRI LANKA 250/3 (34.1) chasing 430 v ENGLAND 429/4 · 3RD ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG',record:'429/4 (50)'}, home:{abbr:'SL',record:'250/3 (34.1)'}, note:'ODI Tri-Series 3rd Match · Sri Lanka need 180 from 95 balls; Rathnayake (98*) and Shanaka (33*) at the crease after Avishka Fernando fell for 97 (c&b Overton) and Brook\'s record 202'},
+  cricket:{context:'LIVE: SRI LANKA 324/4 (40.3) chasing 430 v ENGLAND 429/4 · 3RD ODI AT RAWALPINDI', games:[
+    {status:'LIVE', away:{abbr:'ENG',record:'429/4 (50)'}, home:{abbr:'SL',record:'324/4 (40.3)'}, note:'ODI Tri-Series 3rd Match · Sri Lanka need 106 from 57 balls; Rathnayake fell for 130 (c Banton b Curran) with Shanaka unbeaten on 73* and Liyanage in, after Brook\'s record 202'},
     {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Pakistan win by 87 runs, Arafat Minhas Player of the Match (59 & 6/40)'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
   ]},
@@ -895,9 +895,9 @@ const CRICKET_LIVE_MATCH = {
   status:'live',
   teams:{
     away:{abbr:'ENG', name:'England', score:429, wkts:4, overs:'50'},
-    home:{abbr:'SL', name:'Sri Lanka', score:250, wkts:3, overs:'34.1'},
+    home:{abbr:'SL', name:'Sri Lanka', score:324, wkts:4, overs:'40.3'},
   },
-  toss:'Sri Lanka won the toss and chose to field', resultLine:'Sri Lanka won the toss and chose to field · England 429/4 from 50 overs (Brook 202, Jacks 66*) · Sri Lanka 250/3 after 34.1 overs in reply, need 180 from 95 balls (Pavan Rathnayake 98*, Dasun Shanaka 33*; Avishka Fernando c&b Overton 97)',
+  toss:'Sri Lanka won the toss and chose to field', resultLine:'Sri Lanka won the toss and chose to field · England 429/4 from 50 overs (Brook 202, Jacks 66*) · Sri Lanka 324/4 after 40.3 overs in reply, need 106 from 57 balls (Dasun Shanaka 73*, Janith Liyanage 1*; Pavan Rathnayake c Banton b Curran 130)',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -2641,10 +2641,10 @@ const ARTICLES = [
     pull:'Arafat Minhas backed up his maiden fifty with 6/40 — including four wickets in 17 balls — to seal an 87-run win and the Player of the Match award.',
   },
   {id:'eng-sl-3rd-odi-live', sport:'cricket', cat:'recap',
-    headline:'LIVE: Brook’s Record 202 Sets Target of 430 — Sri Lanka Fight to 217/3 After Avishka Falls 3 Short of a Ton',
-    dek:'Harry Brook’s 202 off 116 balls — the fastest double century in ODI history — lifted England to 429/4, the highest ODI total ever posted on Pakistani soil. Sri Lanka are 217/3 after 29.6 overs chasing 430, needing 213 from 20 overs after Avishka Fernando (97, c&b Overton) fell with Pavan Rathnayake unbeaten on 85.',
+    headline:'LIVE: Rathnayake’s 130 Falls Just Short as Shanaka’s Blitz Takes Sri Lanka to 324/4, Needing 106 From 57',
+    dek:'Harry Brook’s 202 off 116 balls — the fastest double century in ODI history — lifted England to 429/4, the highest ODI total ever posted on Pakistani soil. Pavan Rathnayake’s 130 ended a 323-run stand in the 41st over, but Dasun Shanaka’s unbeaten 73 off 37 balls has Sri Lanka 324/4 after 40.3 overs, needing 106 from the last 57 balls.',
     byline:'Clutch Room Cricket Desk', mins:4, time:'Oct 22, 2026',
-    qa:[['What is the latest score?','England 429/4 (50 overs). Sri Lanka are 217/3 after 29.6 overs, chasing 430, needing 213 from 20 overs. Pavan Rathnayake is unbeaten on 85 (75b), Dasun Shanaka unbeaten on 13 (6b).'],
+    qa:[['What is the latest score?','England 429/4 (50 overs). Sri Lanka are 324/4 after 40.3 overs, chasing 430, needing 106 from 57 balls. Dasun Shanaka is unbeaten on 73 (37b), Janith Liyanage is in at the other end on 1*.'],
         ['What record did Brook break?','The fastest double century in ODI history — 114 balls — beating Shubman Gill’s 117-ball mark, and the highest individual ODI score by an England batter, passing Ben Stokes’s 182.']],
     body:[
       'Sri Lanka win the toss at Rawalpindi and opt to field again — the same read as the series opener, now chasing a first win of the tri-series after defeats to Pakistan and England.',
@@ -2656,6 +2656,10 @@ const ARTICLES = [
       'Avishka Fernando and Pavan Rathnayake steady the innings and then some, both racing to fifties and dragging Sri Lanka from the wreckage into a real chase — a 166-run third-wicket stand that drags the required rate back toward reach.',
       'Then Jamie Overton strikes. Fernando looks to turn one away onside, only to pop a leading edge straight back at the bowler — Overton gobbles up the catch off his own bowling, and Fernando departs for 97 (83b, 11 fours, 2 sixes), three agonising runs short of a century. Sri Lanka 190/3.',
       'Rathnayake and Dasun Shanaka carry on regardless, with Shanaka depositing an early six to keep the board ticking. Sri Lanka move to 217/3 after 29.6 overs — Rathnayake unbeaten on 85 (75b, 9 fours, 3 sixes), Shanaka unbeaten on 13 (6b) — needing 213 more from 20 overs at a required rate above 10.6 an over, with the big-hitting depth of Wellalage, Liyanage and Arachchige still to come.',
+      'Rathnayake keeps piling on. He and Shanaka push the stand past 300 in the 38th over, and two balls later Shanaka slaps Atkinson over long-on for six — a slot ball into the crowd. Sri Lanka surge past the 300 mark with the required rate still hovering above 11.',
+      'Shanaka is suddenly the one cutting loose. He swats a flat sweep off Sam Curran for four to bring up a 30-ball fifty — his first in ODIs since 2023 — then clears his front leg and lifts the very next ball over cow corner for six.',
+      'Sam Curran finally ends it. Rathnayake, who has carried the chase since the 15th over, miscues a tired heave down the ground and Banton settles underneath it at long-on. He trudges off for 130 off 106 balls (15 fours, three sixes) as the fourth-wicket stand with Shanaka ends at 323/4 in the 41st over.',
+      'Janith Liyanage walks out to join Shanaka with the equation laid bare: Sri Lanka need 106 from the last 57 balls. Shanaka, unbeaten on 73 off just 37, is the one standing between England and the win, with Sri Lanka 324/4 after 40.3 overs.',
     ],
   },
 ];

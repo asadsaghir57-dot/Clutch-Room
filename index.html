@@ -721,7 +721,7 @@ const SPORTS = [
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga'], live:false},
   {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES SET: RAYS CLINCH AL PENNANT 4-2 OVER GUARDIANS, FACE BREWERS STARTING FRIDAY', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
-  {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 7: CHIEFS, BILLS, STEELERS WIN · 49ERS HOLD OFF COMMANDERS 23-17, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
+  {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 8 TNF: BEARS BEAT PATRIOTS 30-24 · 49ERS HOLD OFF COMMANDERS 23-17 IN WEEK 7 MNF, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:88, status:'OPENING NIGHT SWEEP: PISTONS STUN CELTICS, 76ERS SPOIL KNICKS\' BANNER NIGHT, THUNDER ROUT SPURS 116-104 AS WEMBANYAMA GOES 1-OF-13', deep:'light', sub:'NBA', live:false},
@@ -792,7 +792,8 @@ const GAMES = {
   boxing:{context:'DUBOIS STOPS WARDLEY · REMATCH FINAL', games:[
     {status:'FINAL', away:{abbr:'WARDLEY'}, home:{abbr:'DUBOIS'}, note:'Dubois stops Wardley in Round 2 of their rematch'},
   ]},
-  nfl:{context:'WEEK 7 · 49ERS BEAT COMMANDERS 23-17 IN MNF, IMPROVE TO 6-0', games:[
+  nfl:{context:'WEEK 8 TNF: BEARS BEAT PATRIOTS 30-24 AT SOLDIER FIELD · WEEK 7 COMPLETE: 49ERS BEAT COMMANDERS 23-17 IN MNF, IMPROVE TO 6-0', games:[
+    {status:'FINAL', away:{abbr:'NE',record:'24'}, home:{abbr:'CHI',record:'30'}, note:'Week 8 · Thursday Night Football · Soldier Field · Williams throws 2 TDs, Burden III goes for 130 yds; Santos\' career-long 58-yd FG and an Odunze onside-kick recovery hold off a Maye-led Patriots rally'},
     {status:'FINAL', away:{abbr:'WSH',record:'17'}, home:{abbr:'SF',record:'23'}, note:'Week 7 · Monday Night Football · McCaffrey scores twice, Mustapha\'s 4th-down pass breakup seals it after Washington rallies from 23-3 down'},
     {status:'FINAL', away:{abbr:'LAC',record:'6'}, home:{abbr:'KC',record:'22'}, note:'Week 7 · Chiefs cruise past Chargers'},
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
@@ -2565,6 +2566,18 @@ const ARTICLES = [
       'The 49ers move to 6-0 to stay the league\'s last unbeaten team; the Commanders fall to 1-4-1.',
     ],
     pull:'Washington erased a 20-point deficit down to six — but Malik Mustapha\'s fourth-down pass breakup kept the 49ers unbeaten.',
+  },
+  {id:'nfl-week8-tnf-recap', sport:'nfl', cat:'recap',
+    headline:'Cairo Santos\' Career-Long 58-Yarder Holds Off Patriots as Bears Win 30-24',
+    dek:'Caleb Williams threw two touchdowns and Luther Burden III caught the go-ahead score, but it took a career-long 58-yard field goal from Cairo Santos and Rome Odunze recovering a late onside kick to put away a Drake Maye rally at Soldier Field.',
+    byline:'Clutch Room NFL Desk', mins:4, time:'Oct 22, 2026',
+    qa:[['What was the final score?','Bears 30, Patriots 24, Thursday Night Football at Soldier Field — Chicago improves to 5-2, New England falls to 4-3.'],
+        ['How did the Bears seal it?','Cairo Santos hit a career-long 58-yard field goal late to make it 30-21, and after New England scored and recovered an onside kick attempt, Rome Odunze came up with the recovery to end it.']],
+    body:[
+      'Caleb Williams threw for 308 yards and two touchdowns — a 24-yarder to Luther Burden III and a 12-yarder to Colston Loveland — as the Bears held off a late push from New England to win 30-24 at Soldier Field. Burden finished as the game\'s leading receiver with 130 yards on four catches.',
+      'Drake Maye kept the Patriots in it all night, throwing for 253 yards with a touchdown to Eli Raridon and a 48-yard touchdown catch-and-run to Rhamondre Stevenson right before halftime, plus a rushing score. But a red-zone interception by D\'Marco Jackson set up a Chicago score, and Cairo Santos — who had missed a 53-yard try earlier — answered with a career-long 58-yarder to push the lead to 30-21.',
+      'New England cut it back to 30-24 but couldn\'t complete the comeback: Chicago\'s Rome Odunze recovered the Patriots\' last-gasp onside kick to run out the clock. The Bears move to 5-2; New England falls to 4-3.',
+    ],
   },
   {id:'pak-sl-2nd-t20i-recap', sport:'cricket', cat:'recap',
     headline:'Sadaqat\'s 96 Powers Pakistan to 215, Sri Lanka Crushed by 82 Runs',

@@ -720,7 +720,7 @@ const SPORTS = [
   {id:'football', name:'Football', accent:'court', heat:88, status:'UCL MD3 FINAL: BAYERN MUNICH 2-2 ARSENAL (RICE EQUALIZES LATE), REAL MADRID ROUT RB LEIPZIG 4-1', deep:'full',
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga'], live:false},
-  {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES SET: RAYS CLINCH AL PENNANT 4-2 OVER GUARDIANS, FACE BREWERS STARTING FRIDAY', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch'},
+  {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES GM1 LIVE: BREWERS LEAD RAYS 2-1 IN THE 5TH AT AMERICAN FAMILY FIELD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:true},
   {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 8 TNF: BEARS BEAT PATRIOTS 30-24 · 49ERS HOLD OFF COMMANDERS 23-17 IN WEEK 7 MNF, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
@@ -743,7 +743,8 @@ const CAT = {
 
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
-  mlb:{context:'RAYS CLINCH AL PENNANT · WORLD SERIES: RAYS vs. BREWERS STARTS FRIDAY', games:[
+  mlb:{context:'WORLD SERIES GM1 LIVE: BREWERS LEAD RAYS 2-1 IN THE 5TH · AMERICAN FAMILY FIELD', games:[
+    {status:'LIVE - 5TH', away:{abbr:'TB',record:'1'}, home:{abbr:'MIL',record:'2'}, note:'World Series Gm1 · American Family Field · Misiorowski vs. Martinez; Brewers lead 2-1 in the 5th'},
     {status:'FINAL', away:{abbr:'CLE',record:'3'}, home:{abbr:'TB',record:'7'}, note:'ALCS Gm6 · Tropicana Field · Rays clinch AL pennant 4-2, advance to World Series vs. Brewers'},
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
     {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},

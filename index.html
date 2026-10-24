@@ -720,7 +720,7 @@ const SPORTS = [
   {id:'football', name:'Football', accent:'court', heat:88, status:'UCL MD3 FINAL: BAYERN MUNICH 2-2 ARSENAL (RICE EQUALIZES LATE), REAL MADRID ROUT RB LEIPZIG 4-1', deep:'full',
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga'], live:false},
-  {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES GM1 LIVE: BREWERS LEAD RAYS 2-1 IN THE 5TH AT AMERICAN FAMILY FIELD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:true},
+  {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES GM1 FINAL: BREWERS BEAT RAYS 3-2, LEAD SERIES 1-0 · GAME 2 SATURDAY AT AMERICAN FAMILY FIELD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:false},
   {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 8 TNF: BEARS BEAT PATRIOTS 30-24 · 49ERS HOLD OFF COMMANDERS 23-17 IN WEEK 7 MNF, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
@@ -743,8 +743,8 @@ const CAT = {
 
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
-  mlb:{context:'WORLD SERIES GM1 LIVE: BREWERS LEAD RAYS 2-1 IN THE 5TH · AMERICAN FAMILY FIELD', games:[
-    {status:'LIVE - 5TH', away:{abbr:'TB',record:'1'}, home:{abbr:'MIL',record:'2'}, note:'World Series Gm1 · American Family Field · Misiorowski vs. Martinez; Brewers lead 2-1 in the 5th'},
+  mlb:{context:'WORLD SERIES GM1 FINAL: BREWERS BEAT RAYS 3-2 · AMERICAN FAMILY FIELD · GAME 2 SATURDAY', games:[
+    {status:'FINAL', away:{abbr:'TB',record:'2'}, home:{abbr:'MIL',record:'3'}, note:'World Series Gm1 · American Family Field · Christian Yelich tripled and scored, William Contreras\' RBI single made it 2-0 in the 1st; Jacob Misiorowski worked 5 IP (1 ER, 3 K) and hit 103.5 mph, a World Series velocity record; Jackson Chourio\'s RBI single in the 7th made it 3-1 before Trevor Megill survived a 9th-inning run to close it out, Brewers win 3-2 and lead the series 1-0'},
     {status:'FINAL', away:{abbr:'CLE',record:'3'}, home:{abbr:'TB',record:'7'}, note:'ALCS Gm6 · Tropicana Field · Rays clinch AL pennant 4-2, advance to World Series vs. Brewers'},
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
     {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},
@@ -1956,6 +1956,32 @@ const ARTICLES = [
       'Milwaukee\'s edge on paper is the better regular-season résumé, which hands the Brewers home-field advantage and means a potential Game 7 would be played at American Family Field. For a Rays team making just its third World Series appearance in franchise history, and a Brewers team trying to win the first title in a city that hasn\'t celebrated one since 1982, Game 1 on Friday starts a series between two teams that have already proven they can win games that don\'t go the easy way.',
     ],
     related:'rays-clinch-pennant-recap',
+  },
+  {id:'world-series-game1-recap', sport:'mlb', cat:'recap',
+    headline:'Brewers Beat Rays 3-2 in World Series Game 1, Take Early Series Lead',
+    dek:'Christian Yelich and William Contreras staked Milwaukee to a quick 2-0 lead, Jacob Misiorowski set a World Series velocity record at 103.5 mph, and Trevor Megill survived a shaky ninth to close out a 3-2 win at American Family Field.',
+    byline:'Clutch Room MLB Desk', mins:6, time:'Oct 24, 2026',
+    qa:[['What was the final score?','Brewers 3, Rays 2, at American Family Field in Game 1 of the World Series — Milwaukee leads the series 1-0.'],
+        ['Who were the key performers?','Jacob Misiorowski got the win (5 IP, 1 ER, 3 K) and set a World Series record with a 103.5 mph fastball; Christian Yelich (triple) and William Contreras (RBI single) built the early lead; Trevor Megill picked up the save.']],
+    body:[
+      'Christian Yelich tripled to center in the first inning and scored on William Contreras\' RBI single, and that quick 2-0 cushion was all Jacob Misiorowski needed early. The Brewers\' rookie right-hander worked five innings, allowing just one run on four hits while striking out three, and in the process hit 103.5 mph on the radar gun — a new World Series velocity record.',
+      'Tampa Bay chipped away. Hicks\' groundout in the fourth scored Aranda to make it 2-1, and Nick Martinez matched Misiorowski pitch for pitch across five innings of his own before Jackson Chourio\'s RBI single in the seventh, driving in Pratt, pushed the Brewers\' lead back to two at 3-1.',
+      'The Rays made it tense in the ninth. A Hicks groundout scored Mateo after a replay review overturned the call on the field, cutting it to 3-2 with runners in scoring position, but closer Trevor Megill got out of it to secure the win. Milwaukee, playing in its first World Series since 1982, takes a 1-0 series lead into Game 2 Saturday night, again at American Family Field.',
+    ],
+    pull:'Misiorowski\'s 103.5 mph heater set a World Series record — and by the time the Rays found their footing late, Milwaukee already had the cushion it needed.',
+    related:'world-series-game1-breakdown',
+  },
+  {id:'world-series-game1-breakdown', sport:'mlb', cat:'analysis',
+    headline:'Misiorowski\'s Game 1 Gem Shows Why He\'s the Brewers\' Biggest Edge in This World Series',
+    dek:'A 1.63 ERA and 195 strikeouts in his first full season made him the NL Cy Young favorite. A five-inning, one-run World Series debut — punctuated by a record 103.5 mph fastball — showed exactly how he got there.',
+    byline:'Clutch Room MLB Desk', mins:7, time:'Oct 24, 2026',
+    qa:[['How dominant was Misiorowski\'s regular season?','He finished around 11-5 with a 1.63 ERA and 195 strikeouts, numbers that made him the clear favorite in MLB.com\'s Cy Young poll.'],
+        ['What makes his fastball unique?','He already held the record for fastest pitch thrown by a starter in the Statcast era (103.7 mph, set in June against Colorado); his 103.5 mph pitch in Game 1 was a World Series record.']],
+    body:[
+      'Milwaukee\'s path to a championship always ran through its rotation, and Game 1 was the clearest evidence yet of why. Jacob Misiorowski finished his first full big-league season at roughly 11-5 with a 1.63 ERA and 195 strikeouts — the kind of line that made him the clear favorite in MLB.com\'s Cy Young poll — and his World Series debut looked exactly like that regular season: five innings, four hits, one earned run, three strikeouts, and a two-run cushion from Christian Yelich and William Contreras that he never let slip away.',
+      'The headline number was the fastball. Misiorowski already owned the Statcast-era record for the fastest pitch thrown by a starter — 103.7 mph, set in June against Colorado — and his 103.5 mph heater in the fifth inning Friday was fast enough to stand as a new World Series record, even if it fell just short of his own season-best. For a Tampa Bay lineup that had seen plenty of hard stuff all October, facing a starter who can still touch triple digits in his fifth inning of work is a different problem entirely.',
+      'It also set the tone for how Milwaukee wants to win this series: get a shutdown start, get just enough offense, and hand a lead to a bullpen anchored by closer Trevor Megill. The Rays did manage to make Megill work in the ninth — Hicks\' groundout, aided by a replay reversal, put the tying run at third base — but the Brewers\' pitching staff allowed only two runs on seven hits across the full game. With Game 2 back at American Family Field on Saturday, Milwaukee\'s formula needs just three more wins to deliver the city\'s first title since 1982.',
+    ],
   },
   {id:'mlb-injury-watch', sport:'mlb', cat:'debate',
     headline:'First Take: Can the Dodgers Really Three-Peat?',

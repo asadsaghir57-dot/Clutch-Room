@@ -728,7 +728,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN: ANTONELLI TAKES POLE (7TH OF 2026), AHEAD OF BOTH RED BULLS · RACE SUNDAY, CAN CLINCH TITLE WITH A WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:90, status:'PAKISTAN vs ENGLAND, 4TH ODI LIVE AT GADDAFI STADIUM, LAHORE: ENG ALL OUT 241 IN 46.4 OVERS, DUCKETT 105, SHAHEEN 4 WICKETS, PAKISTAN 154/9 (35.1 OV) CHASING 242, NEED 88 FROM 89 BALLS WITH ONE WICKET LEFT · SRI LANKA STUNNED ENGLAND, CHASING DOWN A RECORD 430, TO WIN THE 3RD ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:90, status:'PAKISTAN vs ENGLAND, 4TH ODI LIVE AT GADDAFI STADIUM, LAHORE: SHADAB KHAN\'S LAST-WICKET STAND DRAGS PAKISTAN BACK FROM 154/9 TO 200/9 (41 OV) CHASING 242, SHADAB UNBEATEN ON 76, NEED 42 FROM 54 BALLS · SRI LANKA STUNNED ENGLAND, CHASING DOWN A RECORD 430, TO WIN THE 3RD ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -801,8 +801,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'PAKISTAN vs ENGLAND, 4TH ODI LIVE AT GADDAFI STADIUM, LAHORE: ENG 241 ALL OUT (46.4 OV), DUCKETT 105, SHAHEEN 4/46, PAKISTAN 154/9 (35.1 OV) CHASING 242, NEED 88 FROM 89 BALLS · SRI LANKA WIN THRILLER, CHASE DOWN 430 TO BEAT ENGLAND BY 2 WKTS WITH 1 BALL LEFT · BROOK\'S RECORD 202 IN VAIN · 3RD ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG',record:'241 (46.4)'}, home:{abbr:'PAK',record:'154/9 (35.1)'}, note:'ODI Tri-Series 4th Match · Gaddafi Stadium, Lahore · Pakistan won the toss and elected to field; England slipped to 52/4 inside 10 overs before Ben Duckett and Sam Curran steadied the innings, Curran falling for 42 to Shaheen Shah Afridi; Duckett went on to 105 before falling, Gus Atkinson hit an unbeaten 36 off 28 late on and Shaheen Shah Afridi finished with 4/46 as England were bowled out for 241 in 46.4 overs; Pakistan\'s chase slipped to 31/3 inside 7 overs as Gus Atkinson bowled Fakhar Zaman and Babar Azam either side of a Henry Crocombe strike, before Saad Baig\'s brisk 32 off 22 lifted the total and Salman Agha and Hasan Nawaz steadied things to 101/4 after 22 overs; then the chase falls apart — Nawaz skies a leading edge off Liam Dawson straight to Harry Brook at mid-off for 15 (102/5), and two balls into the next over Arafat Minhas glances Jamie Overton straight to a short fine leg Brook had just stationed there, out for 1 (103/6); Salman Agha fights on to 26 before he too goes, dancing down the track and miscuing Dawson straight to long-off, Pakistan 122/7 in the 29th over, and the tail goes on to slump to 154/9 after 35.1 overs, Shadab Khan unbeaten on 32 (41) alongside Haris Rauf, Pakistan needing 88 more from 89 balls with one wicket left'},
+  cricket:{context:'PAKISTAN vs ENGLAND, 4TH ODI LIVE AT GADDAFI STADIUM, LAHORE: ENG 241 ALL OUT (46.4 OV), DUCKETT 105, SHAHEEN 4/46, PAKISTAN FIGHT BACK FROM 154/9 TO 200/9 (41 OV) CHASING 242, SHADAB KHAN UNBEATEN ON 76, NEED 42 FROM 54 BALLS · SRI LANKA WIN THRILLER, CHASE DOWN 430 TO BEAT ENGLAND BY 2 WKTS WITH 1 BALL LEFT · BROOK\'S RECORD 202 IN VAIN · 3RD ODI AT RAWALPINDI', games:[
+    {status:'LIVE', away:{abbr:'ENG',record:'241 (46.4)'}, home:{abbr:'PAK',record:'200/9 (41)'}, note:'ODI Tri-Series 4th Match · Gaddafi Stadium, Lahore · Pakistan won the toss and elected to field; England slipped to 52/4 inside 10 overs before Ben Duckett and Sam Curran steadied the innings, Curran falling for 42 to Shaheen Shah Afridi; Duckett went on to 105 before falling, Gus Atkinson hit an unbeaten 36 off 28 late on and Shaheen Shah Afridi finished with 4/46 as England were bowled out for 241 in 46.4 overs; Pakistan\'s chase slipped to 31/3 inside 7 overs as Gus Atkinson bowled Fakhar Zaman and Babar Azam either side of a Henry Crocombe strike, before Saad Baig\'s brisk 32 off 22 lifted the total and Salman Agha and Hasan Nawaz steadied things to 101/4 after 22 overs; then the chase falls apart — Nawaz skies a leading edge off Liam Dawson straight to Harry Brook at mid-off for 15 (102/5), and two balls into the next over Arafat Minhas glances Jamie Overton straight to a short fine leg Brook had just stationed there, out for 1 (103/6); Salman Agha fights on to 26 before he too goes, dancing down the track and miscuing Dawson straight to long-off, Pakistan 122/7 in the 29th over, and the tail slumps to 154/9 after 35.1 overs with one wicket left; but Shadab Khan refuses to let the chase die, farming the strike alongside Haris Rauf and racing from 32* to an unbeaten 76 off 66 balls as the last-wicket pair drags Pakistan from 154/9 to 200/9 after 41 overs, needing 42 more from 54 balls'},
     {status:'FINAL', away:{abbr:'ENG',record:'429/4 (50)'}, home:{abbr:'SL',record:'430/8 (49.5)'}, note:'ODI Tri-Series 3rd Match · Sri Lanka win by 2 wickets with 1 ball remaining, chasing down 430 after Harry Brook\'s record 202 off 116 balls — the fastest double century in ODI history; Pavan Rathnayake (130) and Dasun Shanaka (97) led the chase before Janith Liyanage (61*) finished it off'},
     {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Pakistan win by 87 runs, Arafat Minhas Player of the Match (59 & 6/40)'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
@@ -899,9 +899,9 @@ const CRICKET_LIVE_MATCH = {
   status:'live',
   teams:{
     away:{abbr:'ENG', name:'England', score:241, wkts:10, overs:'46.4'},
-    home:{abbr:'PAK', name:'Pakistan', score:154, wkts:9, overs:'35.1'},
+    home:{abbr:'PAK', name:'Pakistan', score:200, wkts:9, overs:'41'},
   },
-  toss:'Pakistan won the toss and elected to field', resultLine:'Pakistan sit top of the table at 2-0 after wins over Sri Lanka and England; England, beaten by Pakistan and then stunned by Sri Lanka\'s record 430-run chase, need a win at Gaddafi Stadium to stay alive in the race for the Oct 31 final. Pakistan\'s chase has collapsed to 154/9 after 35.1 overs, needing 88 more off 89 balls with Shadab Khan (32 off 41) and Haris Rauf at the crease and one wicket left.',
+  toss:'Pakistan won the toss and elected to field', resultLine:'Pakistan sit top of the table at 2-0 after wins over Sri Lanka and England; England, beaten by Pakistan and then stunned by Sri Lanka\'s record 430-run chase, need a win at Gaddafi Stadium to stay alive in the race for the Oct 31 final. Pakistan\'s chase looked dead at 154/9, but Shadab Khan has dragged them back into it with a last-wicket stand alongside Haris Rauf — Pakistan 200/9 after 41 overs, needing 42 more off 54 balls, Shadab unbeaten on 76 (66) and Rauf on 1 (11).',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -2806,6 +2806,19 @@ const ARTICLES = [
       'The tri-series table now reads Pakistan 4 points from two wins, Sri Lanka 2 points from a 1-1 record, and England 0 from two defeats. With Pakistan already through to the October 31 final on current form, Sunday\'s 4th Match between Pakistan and England at Gaddafi Stadium in Lahore is effectively knockout cricket for England\'s hopes of reaching it.',
     ],
     related:'eng-sl-3rd-odi-recap',
+  },
+  {id:'pak-eng-4th-odi-live', sport:'cricket', cat:'recap',
+    headline:'LIVE: Shadab Khan Drags Pakistan Back From the Dead — 42 Needed With One Wicket Left',
+    dek:'Pakistan\'s chase of England\'s 241 was dead at 154/9 — then Shadab Khan found a gear nobody expected from the No. 9. He\'s unbeaten on 76 with Haris Rauf still there, Pakistan 200/9 after 41 overs, needing 42 more off 54 balls to keep their unbeaten tri-series run alive.',
+    byline:'Clutch Room Cricket Desk', mins:4, time:'Oct 25, 2026',
+    qa:[['What is the score right now?','Pakistan are 200/9 after 41 overs, chasing England\'s 241, with Shadab Khan unbeaten on 76 (66 balls) and Haris Rauf on 1 (11 balls) — last-wicket pair, 42 needed off 54 balls.'],
+        ['How bad did it get before this?','Pakistan collapsed from 101/4 to 154/9 inside 13 overs, losing four wickets for 21 runs, before Shadab Khan and Haris Rauf came together as the last pair.']],
+    body:[
+      'Pakistan are nine down and still 88 short when Shadab Khan walks out to join Haris Rauf. On paper, this is already over — England just need one more ball to go right.',
+      'It doesn\'t. Shadab starts finding gaps nobody else in this innings has found, working the ball into the space between fielders and refusing the hero shot. Haris Rauf\'s job is simpler and he knows it: survive, nudge a single when it\'s there, get out of the way.',
+      'Over after over, the required rate that looked academic starts to matter again. Shadab keeps the score ticking almost entirely off his own bat, racing from 32 not out to an unbeaten 76 while Rauf faces barely a third of the deliveries in the stand.',
+      'By the end of the 41st over, Pakistan are 200/9. Forty-six runs have come from the last-wicket pair alone — a stand that was supposed to be a formality for England and has instead turned into the story of the match. Pakistan need 42 more from 54 balls, one wicket in hand, Shadab Khan still there.',
+    ],
   },
 ];
 

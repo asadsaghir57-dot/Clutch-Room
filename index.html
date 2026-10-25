@@ -801,6 +801,7 @@ const GAMES = {
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
   cricket:{context:'SRI LANKA WIN THRILLER, CHASE DOWN 430 TO BEAT ENGLAND BY 2 WKTS WITH 1 BALL LEFT · BROOK\'S RECORD 202 IN VAIN · 3RD ODI AT RAWALPINDI', games:[
+    {status:'LIVE', away:{abbr:'ENG',record:'52/4 (9.1)'}, home:{abbr:'PAK',record:'—'}, note:'ODI Tri-Series 4th Match · Gaddafi Stadium, Lahore · Pakistan won the toss and elected to field; Shaheen Afridi 2 wickets, Haris Rauf 1 (Cox c Babar)'},
     {status:'FINAL', away:{abbr:'ENG',record:'429/4 (50)'}, home:{abbr:'SL',record:'430/8 (49.5)'}, note:'ODI Tri-Series 3rd Match · Sri Lanka win by 2 wickets with 1 ball remaining, chasing down 430 after Harry Brook\'s record 202 off 116 balls — the fastest double century in ODI history; Pavan Rathnayake (130) and Dasun Shanaka (97) led the chase before Janith Liyanage (61*) finished it off'},
     {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Pakistan win by 87 runs, Arafat Minhas Player of the Match (59 & 6/40)'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
@@ -894,12 +895,12 @@ const FIXTURES = {
 const CRICKET_LIVE_MATCH = {
   series:'Pakistan ODI Tri-Series 2026', matchLabel:'4th Match (D/N)',
   venue:'Gaddafi Stadium, Lahore', date:'Oct 25, 2026',
-  status:'upcoming',
+  status:'live',
   teams:{
-    away:{abbr:'ENG', name:'England', score:null, wkts:null, overs:null},
+    away:{abbr:'ENG', name:'England', score:52, wkts:4, overs:'9.1'},
     home:{abbr:'PAK', name:'Pakistan', score:null, wkts:null, overs:null},
   },
-  toss:'', resultLine:'Pakistan sit top of the table at 2-0 after wins over Sri Lanka and England; England, beaten by Pakistan and then stunned by Sri Lanka\'s record 430-run chase, need a win at Gaddafi Stadium to stay alive in the race for the Oct 31 final.',
+  toss:'Pakistan won the toss and elected to field', resultLine:'Pakistan sit top of the table at 2-0 after wins over Sri Lanka and England; England, beaten by Pakistan and then stunned by Sri Lanka\'s record 430-run chase, need a win at Gaddafi Stadium to stay alive in the race for the Oct 31 final.',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{

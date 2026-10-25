@@ -728,7 +728,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN: ANTONELLI TAKES POLE (7TH OF 2026), AHEAD OF BOTH RED BULLS · RACE SUNDAY, CAN CLINCH TITLE WITH A WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:90, status:'PAKISTAN vs ENGLAND, 4TH ODI LIVE AT GADDAFI STADIUM, LAHORE: SHADAB KHAN\'S LAST-WICKET STAND DRAGS PAKISTAN BACK FROM 154/9 TO 233/9 (46.3 OV) CHASING 242, SHADAB UNBEATEN ON 107, NEED 9 FROM 21 BALLS · SRI LANKA STUNNED ENGLAND, CHASING DOWN A RECORD 430, TO WIN THE 3RD ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:90, status:'PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI AT LAHORE: SHADAB KHAN\'S UNBEATEN 113 RESCUES CHASE FROM 154/9, PAKISTAN LEAD TRI-SERIES 3-0 · SRI LANKA STUNNED ENGLAND, CHASING DOWN A RECORD 430, TO WIN THE 3RD ODI AT RAWALPINDI · NEXT: PAK vs SL, 5TH ODI, LAHORE, OCT 27', deep:'light', sub:'International & league cricket', live:false},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;

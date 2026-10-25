@@ -720,15 +720,15 @@ const SPORTS = [
   {id:'football', name:'Football', accent:'court', heat:88, status:'UCL MD3 FINAL: BAYERN MUNICH 2-2 ARSENAL (RICE EQUALIZES LATE), REAL MADRID ROUT RB LEIPZIG 4-1', deep:'full',
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga'], live:false},
-  {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES GM1 FINAL: BREWERS BEAT RAYS 3-2, LEAD SERIES 1-0 · GAME 2 SATURDAY AT AMERICAN FAMILY FIELD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:false},
+  {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES GM2 FINAL: BREWERS ERASE 4-0 HOLE, BEAT RAYS 5-4, LEAD SERIES 2-0 · GAME 3 MONDAY AT TROPICANA FIELD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:false},
   {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 8 TNF: BEARS BEAT PATRIOTS 30-24 · 49ERS HOLD OFF COMMANDERS 23-17 IN WEEK 7 MNF, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:88, status:'OPENING NIGHT SWEEP: PISTONS STUN CELTICS, 76ERS SPOIL KNICKS\' BANNER NIGHT, THUNDER ROUT SPURS 116-104 AS WEMBANYAMA GOES 1-OF-13', deep:'light', sub:'NBA', live:false},
-  {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN: LECLERC TOPS BOTH FRIDAY PRACTICE SESSIONS IN UPGRADED FERRARI · QUALIFYING SATURDAY', deep:'none', sub:'Formula 1'},
+  {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN: ANTONELLI TAKES POLE (7TH OF 2026), AHEAD OF BOTH RED BULLS · RACE SUNDAY, CAN CLINCH TITLE WITH A WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:90, status:'SRI LANKA STUN ENGLAND, CHASE DOWN RECORD 430 WITH 1 BALL LEFT · BROOK\'S HISTORIC 202 IN VAIN · 3RD ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:false},
+  {id:'cricket', name:'Cricket', accent:'away', heat:90, status:'PAKISTAN vs ENGLAND, 4TH ODI LIVE AT GADDAFI STADIUM, LAHORE: ENG 86/4 AFTER DUCKETT, CURRAN STEADY THE SHIP · SRI LANKA STUNNED ENGLAND, CHASING DOWN A RECORD 430, TO WIN THE 3RD ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -743,7 +743,8 @@ const CAT = {
 
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
-  mlb:{context:'WORLD SERIES GM1 FINAL: BREWERS BEAT RAYS 3-2 · AMERICAN FAMILY FIELD · GAME 2 SATURDAY', games:[
+  mlb:{context:'WORLD SERIES GM2 FINAL: BREWERS ERASE 4-0 HOLE, BEAT RAYS 5-4 · AMERICAN FAMILY FIELD · LEAD SERIES 2-0 · GAME 3 MONDAY AT TROPICANA FIELD', games:[
+    {status:'FINAL', away:{abbr:'TB',record:'4'}, home:{abbr:'MIL',record:'5'}, note:'World Series Gm2 · American Family Field · Chandler Simpson, Junior Caminero and Liam Hicks\' two-run homer staked the Rays to a 4-0 first-inning lead off Logan Henderson; William Contreras and Garrett Mitchell\'s RBI singles answered for 4-2, David Hamilton reached on a fielding error to score Cooper Pratt and make it 4-3 in the 4th, Sal Frelick\'s solo homer tied it 4-4 in the 6th, and Pratt\'s go-ahead single scored Brice Turang in the 7th; Abner Uribe (W) and Aaron Ashby (3 K, SV) closed it out, Brewers win 5-4 and lead the series 2-0'},
     {status:'FINAL', away:{abbr:'TB',record:'2'}, home:{abbr:'MIL',record:'3'}, note:'World Series Gm1 · American Family Field · Christian Yelich tripled and scored, William Contreras\' RBI single made it 2-0 in the 1st; Jacob Misiorowski worked 5 IP (1 ER, 3 K) and hit 103.5 mph, a World Series velocity record; Jackson Chourio\'s RBI single in the 7th made it 3-1 before Trevor Megill survived a 9th-inning run to close it out, Brewers win 3-2 and lead the series 1-0'},
     {status:'FINAL', away:{abbr:'CLE',record:'3'}, home:{abbr:'TB',record:'7'}, note:'ALCS Gm6 · Tropicana Field · Rays clinch AL pennant 4-2, advance to World Series vs. Brewers'},
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
@@ -800,8 +801,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'SRI LANKA WIN THRILLER, CHASE DOWN 430 TO BEAT ENGLAND BY 2 WKTS WITH 1 BALL LEFT · BROOK\'S RECORD 202 IN VAIN · 3RD ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG',record:'52/4 (9.1)'}, home:{abbr:'PAK',record:'—'}, note:'ODI Tri-Series 4th Match · Gaddafi Stadium, Lahore · Pakistan won the toss and elected to field; Shaheen Afridi 2 wickets, Haris Rauf 1 (Cox c Babar)'},
+  cricket:{context:'PAKISTAN vs ENGLAND, 4TH ODI LIVE AT GADDAFI STADIUM, LAHORE · SRI LANKA WIN THRILLER, CHASE DOWN 430 TO BEAT ENGLAND BY 2 WKTS WITH 1 BALL LEFT · BROOK\'S RECORD 202 IN VAIN · 3RD ODI AT RAWALPINDI', games:[
+    {status:'LIVE', away:{abbr:'ENG',record:'86/4 (15.5)'}, home:{abbr:'PAK',record:'—'}, note:'ODI Tri-Series 4th Match · Gaddafi Stadium, Lahore · Pakistan won the toss and elected to field; England slipped to 52/4 inside 10 overs before Ben Duckett (46*) and Sam Curran (21*) steadied the innings with an unbeaten stand, England 86/4 after 15.5 overs; last wicket Jordan Cox c Babar Azam b Haris Rauf'},
     {status:'FINAL', away:{abbr:'ENG',record:'429/4 (50)'}, home:{abbr:'SL',record:'430/8 (49.5)'}, note:'ODI Tri-Series 3rd Match · Sri Lanka win by 2 wickets with 1 ball remaining, chasing down 430 after Harry Brook\'s record 202 off 116 balls — the fastest double century in ODI history; Pavan Rathnayake (130) and Dasun Shanaka (97) led the chase before Janith Liyanage (61*) finished it off'},
     {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Pakistan win by 87 runs, Arafat Minhas Player of the Match (59 & 6/40)'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
@@ -897,7 +898,7 @@ const CRICKET_LIVE_MATCH = {
   venue:'Gaddafi Stadium, Lahore', date:'Oct 25, 2026',
   status:'live',
   teams:{
-    away:{abbr:'ENG', name:'England', score:52, wkts:4, overs:'9.1'},
+    away:{abbr:'ENG', name:'England', score:86, wkts:4, overs:'15.5'},
     home:{abbr:'PAK', name:'Pakistan', score:null, wkts:null, overs:null},
   },
   toss:'Pakistan won the toss and elected to field', resultLine:'Pakistan sit top of the table at 2-0 after wins over Sri Lanka and England; England, beaten by Pakistan and then stunned by Sri Lanka\'s record 430-run chase, need a win at Gaddafi Stadium to stay alive in the race for the Oct 31 final.',
@@ -1984,6 +1985,33 @@ const ARTICLES = [
       'It also set the tone for how Milwaukee wants to win this series: get a shutdown start, get just enough offense, and hand a lead to a bullpen anchored by closer Trevor Megill. The Rays did manage to make Megill work in the ninth — Hicks\' groundout, aided by a replay reversal, put the tying run at third base — but the Brewers\' pitching staff allowed only two runs on seven hits across the full game. With Game 2 back at American Family Field on Saturday, Milwaukee\'s formula needs just three more wins to deliver the city\'s first title since 1982.',
     ],
   },
+  {id:'world-series-game2-recap', sport:'mlb', cat:'recap',
+    headline:'Brewers Erase 4-0 Hole, Beat Rays 5-4 to Take 2-0 World Series Lead',
+    dek:'Liam Hicks\' two-run homer staked Tampa Bay to an early lead, but Sal Frelick\'s game-tying blast and Cooper Pratt\'s go-ahead single in the seventh sent Milwaukee to a comeback win and a 2-0 series lead.',
+    byline:'Clutch Room MLB Desk', mins:6, time:'Oct 25, 2026',
+    qa:[['What was the final score?','Brewers 5, Rays 4, at American Family Field in Game 2 — Milwaukee leads the World Series 2-0.'],
+        ['Who were the key performers?','Liam Hicks hit a first-inning, two-run homer for Tampa Bay; Sal Frelick\'s solo homer in the sixth tied it for Milwaukee, and Cooper Pratt\'s RBI single in the seventh, scoring Brice Turang, put the Brewers ahead for good. Abner Uribe got the win and Aaron Ashby struck out three to close it out for the save.']],
+    body:[
+      'Tampa Bay jumped on Milwaukee starter Logan Henderson immediately. Chandler Simpson singled home Yandy Diaz, Junior Caminero singled home Simpson, and Liam Hicks followed with a two-run homer to right-center that made it 4-0 before the Brewers had even batted.',
+      'Milwaukee answered right back in the bottom of the first — William Contreras\' RBI single scored Jackson Chourio, and Garrett Mitchell\'s RBI single brought in Jake Bauers to cut the deficit to 4-2 before the inning was out. David Hamilton reached on a fielding error by Rays first baseman Jonathan Aranda in the fourth, with Cooper Pratt scoring on the play to make it 4-3, and Sal Frelick\'s solo homer to center in the sixth tied the game at 4-4.',
+      'The go-ahead run came in the seventh: Pratt lined a single into right field to score Brice Turang and put the Brewers in front for the first time all night, 5-4. The bullpen made it hold up — Abner Uribe worked 1.1 scoreless innings for the win, and Aaron Ashby struck out three over the final two innings, stranding the potential tying run at third when Yandy Diaz was rung up on a checked swing to end it, his third save of the postseason. Rays starter Drew Rasmussen allowed three runs in 3.2 innings, and reliever Tyler Wells took the loss after letting an inherited run score in the fourth. Milwaukee, which won Game 1 3-2, now takes a 2-0 series lead to Tropicana Field for Game 3 on Monday.',
+    ],
+    related:'world-series-game2-breakdown',
+  },
+  {id:'world-series-game2-breakdown', sport:'mlb', cat:'analysis',
+    headline:'How Milwaukee\'s Bullpen Buried a 4-0 Hole in Game 2',
+    dek:'Logan Henderson didn\'t survive the third inning, but six scoreless innings from the Brewers\' bullpen — and a run chipped away almost every inning on offense — turned a laugher into a 2-0 World Series lead.',
+    byline:'Clutch Room MLB Desk', mins:7, time:'Oct 25, 2026',
+    qa:[['How bad was the start for Milwaukee?','Logan Henderson allowed four runs on three hits in three innings, including Liam Hicks\' two-run homer, and didn\'t pitch a fourth.'],
+        ['What changed after that?','Five Brewers relievers combined for six scoreless innings on four hits allowed, with Abner Uribe getting the win and Aaron Ashby closing it out with three strikeouts for the save.']],
+    body:[
+      'Game 2 looked like a laugher early. Logan Henderson lasted exactly three innings, and the first of them was a disaster — Chandler Simpson, Junior Caminero and Liam Hicks strung together three straight hits, Hicks\' two-run shot to right-center making it 4-0 before Milwaukee had come to bat. Henderson settled in after that, but by the time he was done he\'d allowed four runs on three hits, and the Brewers needed six more innings of pitching just to keep the game within reach.',
+      'They got exactly that. Three relievers bridged the gap after Henderson without letting the Rays add to the lead, and then Abner Uribe and Aaron Ashby finished it off: five Milwaukee relievers combined to throw six scoreless innings, allowing just four hits and no runs the rest of the way. Ashby, fresh off closing out Game 4 of the NLCS, worked the final 1.2 innings and struck out three, stranding the tying run at third when Yandy Diaz was rung up on a checked swing to end the game.',
+      'The offense did its part too, chipping away an inning or two at a time rather than in one swing: William Contreras and Garrett Mitchell\'s RBI singles made it 4-2 in the first, a fielding error by Rays first baseman Jonathan Aranda brought another run home in the fourth, Sal Frelick\'s solo homer tied it in the sixth, and Cooper Pratt\'s go-ahead single in the seventh — his second RBI hit of the night — scored Brice Turang for the eventual winning margin.',
+      'It\'s the second time in two games Milwaukee has needed its bullpen to protect a lead late — Trevor Megill survived a shaky ninth in Game 1 — and the pattern now looks like a real asset rather than a worry: the Brewers have outscored the Rays 8-6 through two games without ever trailing for long, and they take a 2-0 lead on the road to Tropicana Field, needing two wins in three games at Tampa Bay for the franchise\'s first title since 1982.',
+    ],
+    related:'world-series-game2-recap',
+  },
   {id:'mlb-injury-watch', sport:'mlb', cat:'debate',
     headline:'First Take: Can the Dodgers Really Three-Peat?',
     dek:'Los Angeles trails the NLCS 0-1 after a tight Game 1 loss to Milwaukee. Two Clutch Room writers argue whether history still says the Dodgers finish the job.',
@@ -2541,6 +2569,18 @@ const ARTICLES = [
       'Both Ferraris finishing inside the top four across the day, on the new aero package introduced for this weekend, gives the team real data to carry into Saturday\'s FP3 and qualifying as the season heads into its closing rounds.',
     ],
     related:'f1-austin-fp1-recap',
+  },
+  {id:'f1-austin-qualifying-recap', sport:'f1', cat:'recap',
+    headline:'Antonelli Grabs Pole in Austin, One Win From the Title',
+    dek:'Kimi Antonelli out-qualified both Red Bulls to take his seventh pole of the season at the Circuit of the Americas, with Max Verstappen and Isack Hadjar completing the front three and Lando Norris\' final lap deleted for track limits.',
+    byline:'Clutch Room F1 Desk', mins:5, time:'Oct 24, 2026',
+    qa:[['What was the qualifying result?','Kimi Antonelli took pole at 1:34.035, with Max Verstappen second (+0.179s) and Red Bull teammate Isack Hadjar third (+0.215s); Charles Leclerc and Lewis Hamilton completed the top five for Ferrari.'],
+        ['Any grid penalties to watch for Sunday?','Arvid Lindblad (9th) drops five places for exceeding his engine-component allocation, and Franco Colapinto (14th) drops ten for a new control electronics unit; Gabriel Bortoleto also picked up a power-unit penalty, which promotes both Sergio Perez and Valtteri Bottas a position.']],
+    body:[
+      'Kimi Antonelli out-qualified both Red Bulls at the Circuit of the Americas, setting a 1:34.035 in Q3 that stood up as pole position even though the Mercedes driver abandoned his final lap. Max Verstappen was second, 0.179 seconds back, with Red Bull teammate Isack Hadjar third at +0.215; Charles Leclerc and Lewis Hamilton completed the top five for Ferrari. It\'s Antonelli\'s seventh pole of the season and his first since Belgium, on a weekend where a win Sunday would be enough to clinch the championship.',
+      'The order flipped repeatedly across the hour. Lando Norris had topped Q1 by nearly two tenths over Charles Leclerc, and Max Verstappen led Q2 at 1:34.471. But Norris\' provisional Q3 benchmark was deleted for track limits, dropping him to eighth and promoting McLaren teammate Oscar Piastri to seventh. George Russell, who went first in the Q3 shootout with a 1:34.476, ultimately settled for sixth. "We got pole so we\'ll try to win tomorrow," Antonelli said afterward. "Max has been very quick, and also Isack did an incredible job in qualifying... I\'m happy that we stuck it on pole."',
+      'There are grid changes to track before Sunday\'s race. Arvid Lindblad qualified ninth but drops five places for exceeding his permitted internal combustion engine allocation, and Franco Colapinto\'s 14th-place lap is wiped out by a 10-place penalty for a new control electronics unit; Gabriel Bortoleto\'s own power-unit penalty promotes Sergio Perez and Valtteri Bottas a position each at the back of the grid. None of it touches the sharp end, where Antonelli leads the championship by 97 points over Russell heading into a race he can win outright to clinch it.',
+    ],
   },
 
   {id:'nfl-tnf-bucs-cowboys-recap', sport:'nfl', cat:'recap',

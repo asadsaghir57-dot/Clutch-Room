@@ -717,12 +717,12 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
 
 <script>
 const SPORTS = [
-  {id:'football', name:'Football', accent:'court', heat:88, status:'UCL MD3 FINAL: BAYERN MUNICH 2-2 ARSENAL (RICE EQUALIZES LATE), REAL MADRID ROUT RB LEIPZIG 4-1', deep:'full',
+  {id:'football', name:'Football', accent:'court', heat:88, status:'EL CLÁSICO LIVE NOW: BARCELONA VS REAL MADRID AT CAMP NOU · UCL MD3 FINAL: BAYERN MUNICH 2-2 ARSENAL (RICE EQUALIZES LATE), REAL MADRID ROUT RB LEIPZIG 4-1', deep:'full',
     sub:'Premier League · Champions League · La Liga',
-    leagues:['All','Champions League','Premier League','La Liga'], live:false},
+    leagues:['All','Champions League','Premier League','La Liga'], live:true},
   {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES GM2 FINAL: BREWERS ERASE 4-0 HOLE, BEAT RAYS 5-4, LEAD SERIES 2-0 · GAME 3 MONDAY AT TROPICANA FIELD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:false},
   {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 8 TNF: BEARS BEAT PATRIOTS 30-24 · 49ERS HOLD OFF COMMANDERS 23-17 IN WEEK 7 MNF, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
-  {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
+  {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'MUSETTI WINS LYON FOR FIRST TITLE SINCE 2022 (BT. FRITZ) · RYBAKINA DEFENDS NINGBO TITLE OVER FERNANDEZ · SINIAKOVA WINS OSAKA · BRUSSELS FINAL STILL TO COME', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:88, status:'OPENING NIGHT SWEEP: PISTONS STUN CELTICS, 76ERS SPOIL KNICKS\' BANNER NIGHT, THUNDER ROUT SPURS 116-104 AS WEMBANYAMA GOES 1-OF-13', deep:'light', sub:'NBA', live:false},
   {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN: ANTONELLI TAKES POLE (7TH OF 2026), AHEAD OF BOTH RED BULLS · RACE SUNDAY, CAN CLINCH TITLE WITH A WIN', deep:'none', sub:'Formula 1'},
@@ -773,10 +773,13 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'RAC',record:'0'}, home:{abbr:'OSA',record:'2'}, note:'La Liga · Osasuna beat Racing Santander at El Sadar'},
     {status:'FINAL', away:{abbr:'SOC',record:'5'}, home:{abbr:'MAL',record:'2'}, note:'La Liga · Oyarzabal brace as Real Sociedad win 5-2 at Málaga'},
   ]},
-  tennis:{context:'SHANGHAI MASTERS COMPLETE · DAVIDOVICH FOKINA WINS FIRST MASTERS 1000', games:[
-    {status:'FINAL', away:{abbr:'DAVIDOVICH FOKINA'}, home:{abbr:'ZVEREV'}, note:'QF · Davidovich Fokina rallies from a set down to beat the No. 1 seed'},
-    {status:'FINAL', away:{abbr:'DAVIDOVICH FOKINA'}, home:{abbr:'HURKACZ'}, note:'SF · Davidovich Fokina reaches his first Masters 1000 final'},
-    {status:'FINAL', away:{abbr:'JODAR'}, home:{abbr:'DAVIDOVICH FOKINA'}, note:'Final · Davidovich Fokina wins 1-6, 7-6(5), 6-4 for his first ATP Masters 1000 title'},
+  tennis:{context:'LYON, NINGBO & OSAKA FINALS COMPLETE: MUSETTI, RYBAKINA & SINIAKOVA WIN TITLES · BRUSSELS FINAL STILL TO COME', games:[
+    {status:'FINAL', away:{abbr:'FRITZ'}, home:{abbr:'MUSETTI'}, note:'ATP Lyon Open Final · Lorenzo Musetti beats Taylor Fritz 6-3, 6-4 in 80 minutes for his first title since 2022 and third career ATP Tour trophy'},
+    {status:'FINAL', away:{abbr:'FERNANDEZ'}, home:{abbr:'RYBAKINA'}, note:'WTA Ningbo Open Final · Elena Rybakina beats Leylah Fernandez 6-2, 6-2 to defend her title, her first since reaching world No. 1'},
+    {status:'FINAL', away:{abbr:'KRUEGER'}, home:{abbr:'SINIAKOVA'}, note:'WTA Kinoshita Group Japan Open Final (Osaka) · Katerina Siniakova beats Ashlyn Krueger 6-1, 6-0 in 68 minutes, her sixth career title and the first by a Czech player in Osaka'},
+    {status:'FINAL', away:{abbr:'DAVIDOVICH FOKINA'}, home:{abbr:'ZVEREV'}, note:'Shanghai QF · Davidovich Fokina rallies from a set down to beat the No. 1 seed'},
+    {status:'FINAL', away:{abbr:'DAVIDOVICH FOKINA'}, home:{abbr:'HURKACZ'}, note:'Shanghai SF · Davidovich Fokina reaches his first Masters 1000 final'},
+    {status:'FINAL', away:{abbr:'JODAR'}, home:{abbr:'DAVIDOVICH FOKINA'}, note:'Shanghai Final · Davidovich Fokina wins 1-6, 7-6(5), 6-4 for his first ATP Masters 1000 title'},
   ]},
   padel:{context:'MILANO P1 COMPLETE · TAPIA/COELLO WIN AGAIN', games:[
     {status:'FINAL', away:{abbr:'LEBRÓN/AUGSBURGER'}, home:{abbr:'TAPIA/COELLO'}, note:'Milano P1 Final · Tapia/Coello win 4-6, 6-3, 6-2 for back-to-back P1 titles'},
@@ -2140,6 +2143,19 @@ const ARTICLES = [
       'It settles, in the most direct way possible, the question this week\'s draw raised before a ball was struck: this wasn\'t a fifth title for an established champion repeating in familiar territory — it\'s a new name on the trophy, won the hard way, through three separate comeback wins against three different kinds of opponents.',
     ],
     pull:'He saved a match point just to reach the third round. By the final, he\'d beaten the No. 1 seed and a fellow first-time finalist to win his first Masters 1000.',
+  },
+  {id:'lyon-ningbo-osaka-finals-recap', sport:'tennis', cat:'recap',
+    headline:'Musetti Ends a Four-Year Title Drought in Lyon as Rybakina and Siniakova Also Win Tour Finals',
+    dek:'Lorenzo Musetti beat Taylor Fritz 6-3, 6-4 to win the ATP Lyon Open, his first title since 2022, while Elena Rybakina defended her Ningbo crown and Katerina Siniakova won the Kinoshita Group Japan Open in Osaka.',
+    byline:'Clutch Room Tennis Desk', mins:5, time:'Oct 25, 2026',
+    qa:[['What happened in Lyon?','Lorenzo Musetti beat Taylor Fritz 6-3, 6-4 in 80 minutes to win the ATP Lyon Open — his first tour-level title since 2022 and third of his career.'],
+        ['What happened on the WTA side?','Elena Rybakina beat Leylah Fernandez 6-2, 6-2 to defend her Ningbo Open title, and Katerina Siniakova beat Ashlyn Krueger 6-1, 6-0 to win the Kinoshita Group Japan Open in Osaka.']],
+    body:[
+      'Lorenzo Musetti closed out a four-year wait for a title on Sunday, beating Taylor Fritz 6-3, 6-4 in straight sets to win the ATP Lyon Open. It\'s Musetti\'s third career tour-level title and his first since 2022, ending a run of final losses that had stretched his drought out well beyond what his ranking and results suggested it should have.',
+      'In Ningbo, Elena Rybakina needed just 6-2, 6-2 to see off Leylah Fernandez and defend the title she won there a year ago — her first trophy since climbing to world No. 1, and a reminder that the ranking hasn\'t dulled her ball-striking at this level.',
+      'The week\'s most lopsided final belonged to Katerina Siniakova, who routed Ashlyn Krueger 6-1, 6-0 in just 68 minutes to win the Kinoshita Group Japan Open in Osaka. It\'s Siniakova\'s sixth career singles title and the first by a Czech player at the Osaka event, ten years after she lost in that same final.',
+      'The ATP\'s Brussels final — the BNP Paribas Fortis European Open — was still to be completed as of Sunday evening; Clutch Room will have that result as soon as it\'s confirmed.',
+    ],
   },
 
   {id:'ucl-recap', sport:'football', league:'Champions League', cat:'recap',

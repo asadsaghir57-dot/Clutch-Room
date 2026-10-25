@@ -717,16 +717,16 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
 
 <script>
 const SPORTS = [
-  {id:'football', name:'Football', accent:'court', heat:88, status:'UCL MD3 FINAL: BAYERN MUNICH 2-2 ARSENAL (RICE EQUALIZES LATE), REAL MADRID ROUT RB LEIPZIG 4-1', deep:'full',
+  {id:'football', name:'Football', accent:'court', heat:90, status:'EL CLÁSICO SUNDAY: UNBEATEN BARCELONA (9 FROM 9) HOST REAL MADRID · ARSENAL BEAT EVERTON 2-0, VILLA STUN CITY 2-1 TO LEVEL TOP OF THE PL ON 21', deep:'full',
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga'], live:false},
-  {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES GM1 FINAL: BREWERS BEAT RAYS 3-2, LEAD SERIES 1-0 · GAME 2 SATURDAY AT AMERICAN FAMILY FIELD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:false},
+  {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES GM2 FINAL: BREWERS RALLY FROM 4-0 DOWN TO BEAT RAYS 5-4, LEAD SERIES 2-0 · GAME 3 MONDAY AT TROPICANA FIELD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:false},
   {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 8 TNF: BEARS BEAT PATRIOTS 30-24 · 49ERS HOLD OFF COMMANDERS 23-17 IN WEEK 7 MNF, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
-  {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'TOUR MOVES TO NINGBO, OSAKA, LYON & BRUSSELS · SWIATEK CHASES WTA FINALS SPOT', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
+  {id:'tennis', name:'Tennis', accent:'court', heat:55, status:'BASEL & VIENNA OPEN MONDAY · ALCARAZ, ZVEREV, MEDVEDEV IN VIENNA; SHELTON TOP SEED, DJOKOVIC IN BASEL · SINIAKOVA SENDS BOULTER OUT OF OSAKA SF', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:88, status:'OPENING NIGHT SWEEP: PISTONS STUN CELTICS, 76ERS SPOIL KNICKS\' BANNER NIGHT, THUNDER ROUT SPURS 116-104 AS WEMBANYAMA GOES 1-OF-13', deep:'light', sub:'NBA', live:false},
-  {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN: LECLERC TOPS BOTH FRIDAY PRACTICE SESSIONS IN UPGRADED FERRARI · QUALIFYING SATURDAY', deep:'none', sub:'Formula 1'},
-  {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
+  {id:'f1', name:'F1', accent:'away', heat:88, status:'AUSTIN: ANTONELLI TAKES POLE, VERSTAPPEN 2ND · MERCEDES TEEN CAN CLINCH FIRST TITLE SUNDAY, LEADS RUSSELL BY 102', deep:'none', sub:'Formula 1'},
+  {id:'ufc', name:'UFC', accent:'away', heat:68, status:'UFC 333 ABU DHABI: VOLKANOVSKI STOPS EVLOEV IN RD 2 · YAN RETAINS BANTAM TITLE OVER DVALISHVILI', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
   {id:'cricket', name:'Cricket', accent:'away', heat:90, status:'SRI LANKA STUN ENGLAND, CHASE DOWN RECORD 430 WITH 1 BALL LEFT · BROOK\'S HISTORIC 202 IN VAIN · 3RD ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:false},
 ];
@@ -743,13 +743,19 @@ const CAT = {
 
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
-  mlb:{context:'WORLD SERIES GM1 FINAL: BREWERS BEAT RAYS 3-2 · AMERICAN FAMILY FIELD · GAME 2 SATURDAY', games:[
+  mlb:{context:'WORLD SERIES GM2 FINAL: BREWERS COME BACK TO BEAT RAYS 5-4, LEAD SERIES 2-0 · GAME 3 MONDAY AT TROPICANA FIELD', games:[
+    {status:'FINAL', away:{abbr:'TB',record:'4'}, home:{abbr:'MIL',record:'5'}, note:'World Series Gm2 · American Family Field · Rays led 4-0 after a first inning highlighted by Liam Hicks\' two-run homer; Brewers answered with two in the bottom of the 1st, Jonathan Aranda\'s fourth-inning error cut it to 4-3, Sal Frelick\'s 408-ft homer tied it in the 6th and Cooper Pratt\'s RBI single in the 7th put Milwaukee ahead; Aaron Ashby struck out Yandy Díaz on a check swing with the tying run on third to end it, Brewers lead the series 2-0'},
+    {status:'MON OCT 26', away:{abbr:'MIL'}, home:{abbr:'TB'}, note:'World Series Gm3 · Tropicana Field · Brewers lead series 2-0'},
     {status:'FINAL', away:{abbr:'TB',record:'2'}, home:{abbr:'MIL',record:'3'}, note:'World Series Gm1 · American Family Field · Christian Yelich tripled and scored, William Contreras\' RBI single made it 2-0 in the 1st; Jacob Misiorowski worked 5 IP (1 ER, 3 K) and hit 103.5 mph, a World Series velocity record; Jackson Chourio\'s RBI single in the 7th made it 3-1 before Trevor Megill survived a 9th-inning run to close it out, Brewers win 3-2 and lead the series 1-0'},
     {status:'FINAL', away:{abbr:'CLE',record:'3'}, home:{abbr:'TB',record:'7'}, note:'ALCS Gm6 · Tropicana Field · Rays clinch AL pennant 4-2, advance to World Series vs. Brewers'},
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
     {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},
   ]},
-  football:{context:'UCL MD3 COMPLETE: BAYERN 2-2 ARSENAL, REAL MADRID 4-1 RB LEIPZIG · TUESDAY: PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL', games:[
+  football:{context:'EL CLÁSICO SUNDAY: BARCELONA (9 FROM 9) HOST REAL MADRID · SATURDAY: ARSENAL 2-0 EVERTON, ASTON VILLA 2-1 MAN CITY, COVENTRY 0-1 FULHAM', games:[
+    {status:'SUN OCT 25', away:{abbr:'RMA'}, home:{abbr:'BAR'}, note:'La Liga · El Clásico · Spotify Camp Nou · Barcelona lead the table with 27 points from nine wins in nine; Real Madrid (7W-2L, 21 points) sit third behind Atlético Madrid on 25'},
+    {status:'FINAL', away:{abbr:'EVE',record:'0'}, home:{abbr:'ARS',record:'2'}, note:'Premier League · Emirates Stadium · Konsa scored his first Arsenal goal from a 7th-minute corner, Gabriel headed in a second on his 200th league appearance; Arsenal level with Man City on 21 points, City ahead on goal difference; Saka sidelined with a quad injury picked up in Munich'},
+    {status:'FINAL', away:{abbr:'MCI',record:'1'}, home:{abbr:'AVL',record:'2'}, note:'Premier League · Villa Park · Aston Villa hand Man City their first league defeat of the season'},
+    {status:'FINAL', away:{abbr:'FUL',record:'1'}, home:{abbr:'COV',record:'0'}, note:'Premier League · Fulham win at Coventry'},
     {status:'FINAL', away:{abbr:'ARS',record:'2'}, home:{abbr:'BAY',record:'2'}, note:'UCL MD3 · Allianz Arena · Eze 25\' puts Arsenal ahead, Davies 35\' levels for Bayern, Kane converts a penalty 61\' to put Bayern back in front, Rice equalizes 82\' for a 2-2 draw; Saka off injured in the first half'},
     {status:'FINAL', away:{abbr:'RBL',record:'1'}, home:{abbr:'RMA',record:'4'}, note:'UCL MD3 · Santiago Bernabéu · Bernardo Silva 43\', Arda Güler 52\', Mbappé 83\' and Diomandé 87\' for Real Madrid; Gomis 85\' for Leipzig in a 4-1 win'},
     {status:'FINAL', away:{abbr:'BAR',record:'2'}, home:{abbr:'PSG',record:'4'}, note:'UCL MD3 · Parc des Princes · Doué 38\', L. Hernández 72\', Vitinha 81\', F. Ruiz 86\' for PSG; Espart 55\', Yamal 79\' for Barcelona'},
@@ -787,11 +793,17 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'PHI',record:'106'}, home:{abbr:'NYK',record:'100'}, note:'Opening Night · Banner night at MSG · Maxey 28 pts; Jaylen Brown (Sixers debut) 19 pts/8 reb/6 ast, caps a 29-18 3rd quarter with a buzzer-beating 3 off a LeBron inbound; LeBron James (Sixers debut) 14 pts/9 reb/7 ast; Brunson 21 pts, Towns 19 pts/12 reb for New York'},
     {status:'FINAL', away:{abbr:'OKC',record:'116'}, home:{abbr:'SAS',record:'104'}, note:'Opening Night · WCF rematch at Frost Bank Center · Gilgeous-Alexander 32 pts/6 reb/4 ast, Jared McCain 20 pts off the bench for OKC; Stephon Castle 24 pts/7 reb for San Antonio, Victor Wembanyama held to 12 on 1-of-13 shooting in his season debut'},
   ]},
-  ufc:{context:'FIGHT NIGHT EDMONTON · FINAL', games:[
+  ufc:{context:'UFC 333 ABU DHABI · VOLKANOVSKI TKOs EVLOEV, YAN OUTPOINTS DVALISHVILI TO RETAIN BANTAMWEIGHT TITLE', games:[
+    {status:'FINAL', away:{abbr:'EVLOEV'}, home:{abbr:'VOLKANOVSKI'}, note:'UFC 333 Main Event · Etihad Arena, Abu Dhabi · Volkanovski retains the featherweight title with a TKO at 4:54 of Round 2, handing the previously undefeated Evloev his first loss and passing Jose Aldo for the most featherweight title-fight wins'},
+    {status:'FINAL', away:{abbr:'DVALISHVILI'}, home:{abbr:'YAN'}, note:'UFC 333 Co-Main · Petr Yan retains the bantamweight title by unanimous decision (48-47 on all three cards) over Merab Dvalishvili'},
     {status:'FINAL', away:{abbr:'BUCKLEY'}, home:{abbr:'MALOTT'}, note:'Malott KOs Buckley at 2:32 of Round 2 · Edmonton'},
   ]},
   boxing:{context:'DUBOIS STOPS WARDLEY · REMATCH FINAL', games:[
     {status:'FINAL', away:{abbr:'WARDLEY'}, home:{abbr:'DUBOIS'}, note:'Dubois stops Wardley in Round 2 of their rematch'},
+  ]},
+  f1:{context:'UNITED STATES GP · ANTONELLI ON POLE, VERSTAPPEN 2ND · RACE SUNDAY AT COTA', games:[
+    {status:'SUN OCT 25', away:{abbr:'VERSTAPPEN'}, home:{abbr:'ANTONELLI'}, note:'US Grand Prix · Circuit of the Americas · Antonelli needs the win plus Russell outside the top eight and Hamilton outside the top four to clinch the title in Austin; he leads Russell by 102 points and needs a 125-point gap'},
+    {status:'FINAL', away:{abbr:'VERSTAPPEN'}, home:{abbr:'ANTONELLI'}, note:'US GP Qualifying · Antonelli takes his 7th pole of the season with a 1:34.035, almost two-tenths clear of Verstappen; Hadjar 3rd, Leclerc 4th, Hamilton 5th, Russell 6th'},
   ]},
   nfl:{context:'WEEK 8 TNF: BEARS BEAT PATRIOTS 30-24 AT SOLDIER FIELD · WEEK 7 COMPLETE: 49ERS BEAT COMMANDERS 23-17 IN MNF, IMPROVE TO 6-0', games:[
     {status:'FINAL', away:{abbr:'NE',record:'24'}, home:{abbr:'CHI',record:'30'}, note:'Week 8 · Thursday Night Football · Soldier Field · Williams throws 2 TDs, Burden III goes for 130 yds; Santos\' career-long 58-yd FG and an Odunze onside-kick recovery hold off a Maye-led Patriots rally'},
@@ -1982,6 +1994,33 @@ const ARTICLES = [
       'The headline number was the fastball. Misiorowski already owned the Statcast-era record for the fastest pitch thrown by a starter — 103.7 mph, set in June against Colorado — and his 103.5 mph heater in the fifth inning Friday was fast enough to stand as a new World Series record, even if it fell just short of his own season-best. For a Tampa Bay lineup that had seen plenty of hard stuff all October, facing a starter who can still touch triple digits in his fifth inning of work is a different problem entirely.',
       'It also set the tone for how Milwaukee wants to win this series: get a shutdown start, get just enough offense, and hand a lead to a bullpen anchored by closer Trevor Megill. The Rays did manage to make Megill work in the ninth — Hicks\' groundout, aided by a replay reversal, put the tying run at third base — but the Brewers\' pitching staff allowed only two runs on seven hits across the full game. With Game 2 back at American Family Field on Saturday, Milwaukee\'s formula needs just three more wins to deliver the city\'s first title since 1982.',
     ],
+  },
+  {id:'world-series-game2-recap', sport:'mlb', cat:'recap',
+    headline:'Brewers Erase 4-0 Deficit, Beat Rays 5-4 to Take 2-0 World Series Lead',
+    dek:'Tampa Bay jumped on Logan Henderson in the first, but Sal Frelick\'s game-tying homer, Cooper Pratt\'s go-ahead single and Aaron Ashby\'s check-swing strikeout sent Milwaukee to Tropicana Field two wins from its first title.',
+    byline:'Clutch Room MLB Desk', mins:6, time:'Oct 25, 2026',
+    qa:[['What was the final score?','Brewers 5, Rays 4, at American Family Field in Game 2 of the World Series — Milwaukee leads the series 2-0.'],
+        ['Who made the difference?','Sal Frelick hit a 408-foot homer in the sixth to tie it, Cooper Pratt singled in the go-ahead run in the seventh, and Aaron Ashby closed it out by striking out Yandy Díaz with the tying run on third.']],
+    body:[
+      'The Rays opened Game 2 with a four-run first inning, highlighted by a two-run homer from Liam Hicks, off Milwaukee rookie Logan Henderson. The Brewers answered with two in the bottom of the first, and after both starters settled in, Jonathan Aranda\'s fielding error at first base in the fourth helped trim the deficit to one.',
+      'Sal Frelick tied it at 4-4 in the sixth with a 408-foot solo shot to center off reliever Tyler Wells — his first homer of the postseason. In the seventh, Brice Turang doubled, Garrett Mitchell\'s sacrifice fly moved him to third and Pratt, who had committed an error in the first, drove him in with the go-ahead single. The Rays did not score after the first inning.',
+      'Tampa Bay still made it tense. Jonny DeLuca led off the ninth with a double against Aaron Ashby, but Ashby struck out Victor Mesa Jr., got a groundout from pinch hitter Ben Williamson and finished Yandy Díaz on a full-count curveball the first-base umpire ruled a swing. Díaz had to be guided off the field afterward. Game 3 is Monday at Tropicana Field.',
+    ],
+    pull:'The Rays have left the tying run on base in both games — and gone 3-for-20 with runners in scoring position through two.',
+    related:'world-series-game2-breakdown',
+  },
+  {id:'world-series-game2-breakdown', sport:'mlb', cat:'analysis',
+    headline:'Why Milwaukee Never Feels Out of It: Comebacks, a Bullpen and Tampa Bay\'s Missing Hits',
+    dek:'The Brewers were 41-37 this season, including the postseason, when allowing the first run. Game 2 showed how — and the Rays\' 3-for-20 with runners in scoring position shows how close this series has been to a different score.',
+    byline:'Clutch Room MLB Desk', mins:7, time:'Oct 25, 2026',
+    qa:[['How often do the Brewers win after falling behind?','They improved to 41-37 this season, including the postseason, when allowing the first run.'],
+        ['How have the Rays hit with runners in scoring position?','Tampa Bay is 3-for-20 in that situation through the first two games of the series.']],
+    body:[
+      'A four-run first inning is supposed to put a game away. Milwaukee has made a habit of showing otherwise: the Brewers\' 41-37 mark when allowing the first run, postseason included, is a better-than-.500 record after falling behind, and Game 2 added to it. They got two back immediately in the bottom of the first, then let the bullpen take over once Henderson was out in the fourth, with JoJo Romero, Dustin May, Abner Uribe and Aaron Ashby holding Tampa Bay without a run after the first.',
+      'The other side of the ledger is Tampa Bay\'s offense. The Rays have gone 3-for-20 with runners in scoring position through two games, and in Game 2 they put Taylor Walls on third in the seventh, sent Liam Hicks home on a ball to Jackson Chourio in the sixth only to see him thrown out at the plate, and ended the night with Jonny DeLuca stranded at third after his leadoff double in the ninth. Both games have ended with the tying run on base.',
+      'Milwaukee did not get everything right — Chourio was also thrown out at the plate in the eighth on a play that was challenged and upheld — and Cooper Pratt\'s first-inning error helped start the Rays\' big inning. But the shortstop\'s go-ahead single in the seventh and Frelick\'s 408-foot homer were the kind of unexpected contributions that make this lineup hard to pitch around. The series moves to Tropicana Field on Monday with the Brewers two wins from the franchise\'s first championship.',
+    ],
+    related:'world-series-game2-recap',
   },
   {id:'mlb-injury-watch', sport:'mlb', cat:'debate',
     headline:'First Take: Can the Dodgers Really Three-Peat?',

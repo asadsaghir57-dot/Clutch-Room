@@ -728,7 +728,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN: ANTONELLI TAKES POLE (7TH OF 2026), AHEAD OF BOTH RED BULLS · RACE SUNDAY, CAN CLINCH TITLE WITH A WIN', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:90, status:'PAKISTAN vs ENGLAND, 4TH ODI LIVE AT GADDAFI STADIUM, LAHORE: ENG ALL OUT 241 IN 46.4 OVERS, DUCKETT 105, SHAHEEN 4 WICKETS, PAKISTAN CHASING · SRI LANKA STUNNED ENGLAND, CHASING DOWN A RECORD 430, TO WIN THE 3RD ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
+  {id:'cricket', name:'Cricket', accent:'away', heat:90, status:'PAKISTAN vs ENGLAND, 4TH ODI LIVE AT GADDAFI STADIUM, LAHORE: ENG ALL OUT 241 IN 46.4 OVERS, DUCKETT 105, SHAHEEN 4 WICKETS, PAKISTAN 18/0 (4.2 OV) CHASING 242 · SRI LANKA STUNNED ENGLAND, CHASING DOWN A RECORD 430, TO WIN THE 3RD ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -801,8 +801,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'PAKISTAN vs ENGLAND, 4TH ODI LIVE AT GADDAFI STADIUM, LAHORE: ENG 241 ALL OUT (46.4 OV), DUCKETT 105, SHAHEEN 4/46, PAKISTAN CHASING · SRI LANKA WIN THRILLER, CHASE DOWN 430 TO BEAT ENGLAND BY 2 WKTS WITH 1 BALL LEFT · BROOK\'S RECORD 202 IN VAIN · 3RD ODI AT RAWALPINDI', games:[
-    {status:'LIVE', away:{abbr:'ENG',record:'241 (46.4)'}, home:{abbr:'PAK',record:'—'}, note:'ODI Tri-Series 4th Match · Gaddafi Stadium, Lahore · Pakistan won the toss and elected to field; England slipped to 52/4 inside 10 overs before Ben Duckett and Sam Curran steadied the innings, Curran falling for 42 to Shaheen Shah Afridi; Duckett went on to 105 before falling, Gus Atkinson hit an unbeaten 36 off 28 late on and Shaheen Shah Afridi finished with 4/46 as England were bowled out for 241 in 46.4 overs; Pakistan\'s chase is underway'},
+  cricket:{context:'PAKISTAN vs ENGLAND, 4TH ODI LIVE AT GADDAFI STADIUM, LAHORE: ENG 241 ALL OUT (46.4 OV), DUCKETT 105, SHAHEEN 4/46, PAKISTAN 18/0 (4.2 OV) CHASING 242 · SRI LANKA WIN THRILLER, CHASE DOWN 430 TO BEAT ENGLAND BY 2 WKTS WITH 1 BALL LEFT · BROOK\'S RECORD 202 IN VAIN · 3RD ODI AT RAWALPINDI', games:[
+    {status:'LIVE', away:{abbr:'ENG',record:'241 (46.4)'}, home:{abbr:'PAK',record:'18/0 (4.2)'}, note:'ODI Tri-Series 4th Match · Gaddafi Stadium, Lahore · Pakistan won the toss and elected to field; England slipped to 52/4 inside 10 overs before Ben Duckett and Sam Curran steadied the innings, Curran falling for 42 to Shaheen Shah Afridi; Duckett went on to 105 before falling, Gus Atkinson hit an unbeaten 36 off 28 late on and Shaheen Shah Afridi finished with 4/46 as England were bowled out for 241 in 46.4 overs; Pakistan\'s chase is underway, Fakhar Zaman (10*) and Saim Ayub (6*) seeing off the new ball'},
     {status:'FINAL', away:{abbr:'ENG',record:'429/4 (50)'}, home:{abbr:'SL',record:'430/8 (49.5)'}, note:'ODI Tri-Series 3rd Match · Sri Lanka win by 2 wickets with 1 ball remaining, chasing down 430 after Harry Brook\'s record 202 off 116 balls — the fastest double century in ODI history; Pavan Rathnayake (130) and Dasun Shanaka (97) led the chase before Janith Liyanage (61*) finished it off'},
     {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Pakistan win by 87 runs, Arafat Minhas Player of the Match (59 & 6/40)'},
     {status:'FINAL', away:{abbr:'SL',record:'268'}, home:{abbr:'PAK',record:'305'}, note:'ODI Tri-Series 1st Match · Pakistan win by 37 runs, Salman Ali Agha Player of the Match'},
@@ -899,9 +899,9 @@ const CRICKET_LIVE_MATCH = {
   status:'live',
   teams:{
     away:{abbr:'ENG', name:'England', score:241, wkts:10, overs:'46.4'},
-    home:{abbr:'PAK', name:'Pakistan', score:null, wkts:null, overs:null},
+    home:{abbr:'PAK', name:'Pakistan', score:18, wkts:0, overs:'4.2'},
   },
-  toss:'Pakistan won the toss and elected to field', resultLine:'Pakistan sit top of the table at 2-0 after wins over Sri Lanka and England; England, beaten by Pakistan and then stunned by Sri Lanka\'s record 430-run chase, need a win at Gaddafi Stadium to stay alive in the race for the Oct 31 final.',
+  toss:'Pakistan won the toss and elected to field', resultLine:'Pakistan sit top of the table at 2-0 after wins over Sri Lanka and England; England, beaten by Pakistan and then stunned by Sri Lanka\'s record 430-run chase, need a win at Gaddafi Stadium to stay alive in the race for the Oct 31 final. Pakistan need 224 off 274 balls, Fakhar Zaman and Saim Ayub unbeaten in the chase so far.',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{

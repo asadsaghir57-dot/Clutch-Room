@@ -717,12 +717,12 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
 
 <script>
 const SPORTS = [
-  {id:'football', name:'Football', accent:'court', heat:88, status:'EL CLÁSICO LIVE NOW: BARCELONA VS REAL MADRID AT CAMP NOU · UCL MD3 FINAL: BAYERN MUNICH 2-2 ARSENAL (RICE EQUALIZES LATE), REAL MADRID ROUT RB LEIPZIG 4-1', deep:'full',
+  {id:'football', name:'Football', accent:'court', heat:88, status:'EL CLÁSICO LIVE: BARCELONA 1-1 REAL MADRID AT CAMP NOU (63\') — MBAPPÉ 41\', RAPHINHA 61\' · UCL MD3 FINAL: BAYERN MUNICH 2-2 ARSENAL (RICE EQUALIZES LATE), REAL MADRID ROUT RB LEIPZIG 4-1', deep:'full',
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga'], live:true},
   {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES GM2 FINAL: BREWERS ERASE 4-0 HOLE, BEAT RAYS 5-4, LEAD SERIES 2-0 · GAME 3 MONDAY AT TROPICANA FIELD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:false},
   {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 8 TNF: BEARS BEAT PATRIOTS 30-24 · 49ERS HOLD OFF COMMANDERS 23-17 IN WEEK 7 MNF, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
-  {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'MUSETTI WINS LYON FOR FIRST TITLE SINCE 2022 (BT. FRITZ) · RYBAKINA DEFENDS NINGBO TITLE OVER FERNANDEZ · SINIAKOVA WINS OSAKA · BRUSSELS FINAL STILL TO COME', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
+  {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'MUSETTI WINS LYON FOR FIRST TITLE SINCE 2022 (BT. FRITZ) · RYBAKINA DEFENDS NINGBO TITLE OVER FERNANDEZ · SINIAKOVA WINS OSAKA · GRIEKSPOOR RALLIES PAST STRUFF TO WIN BRUSSELS', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:88, status:'OPENING NIGHT SWEEP: PISTONS STUN CELTICS, 76ERS SPOIL KNICKS\' BANNER NIGHT, THUNDER ROUT SPURS 116-104 AS WEMBANYAMA GOES 1-OF-13', deep:'light', sub:'NBA', live:false},
   {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN: ANTONELLI TAKES POLE (7TH OF 2026), AHEAD OF BOTH RED BULLS · RACE SUNDAY, CAN CLINCH TITLE WITH A WIN', deep:'none', sub:'Formula 1'},
@@ -750,7 +750,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
     {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},
   ]},
-  football:{context:'UCL MD3 COMPLETE: BAYERN 2-2 ARSENAL, REAL MADRID 4-1 RB LEIPZIG · TUESDAY: PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL', games:[
+  football:{context:'EL CLÁSICO LIVE: BARCELONA 1-1 REAL MADRID AT CAMP NOU (63\') · UCL MD3 COMPLETE: BAYERN 2-2 ARSENAL, REAL MADRID 4-1 RB LEIPZIG · TUESDAY: PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL', games:[
+    {status:'LIVE', away:{abbr:'RMA',record:'1'}, home:{abbr:'BAR',record:'1'}, note:'La Liga Matchday 10 · Spotify Camp Nou · 63\' · Kylian Mbappé 41\' puts Real Madrid ahead; Raphinha equalizes 61\' from a corner, assisted by Pedri'},
     {status:'FINAL', away:{abbr:'ARS',record:'2'}, home:{abbr:'BAY',record:'2'}, note:'UCL MD3 · Allianz Arena · Eze 25\' puts Arsenal ahead, Davies 35\' levels for Bayern, Kane converts a penalty 61\' to put Bayern back in front, Rice equalizes 82\' for a 2-2 draw; Saka off injured in the first half'},
     {status:'FINAL', away:{abbr:'RBL',record:'1'}, home:{abbr:'RMA',record:'4'}, note:'UCL MD3 · Santiago Bernabéu · Bernardo Silva 43\', Arda Güler 52\', Mbappé 83\' and Diomandé 87\' for Real Madrid; Gomis 85\' for Leipzig in a 4-1 win'},
     {status:'FINAL', away:{abbr:'BAR',record:'2'}, home:{abbr:'PSG',record:'4'}, note:'UCL MD3 · Parc des Princes · Doué 38\', L. Hernández 72\', Vitinha 81\', F. Ruiz 86\' for PSG; Espart 55\', Yamal 79\' for Barcelona'},
@@ -773,7 +774,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'RAC',record:'0'}, home:{abbr:'OSA',record:'2'}, note:'La Liga · Osasuna beat Racing Santander at El Sadar'},
     {status:'FINAL', away:{abbr:'SOC',record:'5'}, home:{abbr:'MAL',record:'2'}, note:'La Liga · Oyarzabal brace as Real Sociedad win 5-2 at Málaga'},
   ]},
-  tennis:{context:'LYON, NINGBO & OSAKA FINALS COMPLETE: MUSETTI, RYBAKINA & SINIAKOVA WIN TITLES · BRUSSELS FINAL STILL TO COME', games:[
+  tennis:{context:'LYON, NINGBO, OSAKA & BRUSSELS FINALS COMPLETE: MUSETTI, RYBAKINA, SINIAKOVA & GRIEKSPOOR WIN TITLES', games:[
+    {status:'FINAL', away:{abbr:'STRUFF'}, home:{abbr:'GRIEKSPOOR'}, note:'BNP Paribas Fortis European Open Final (Brussels) · Tallon Griekspoor beats Jan-Lennard Struff 4-6, 6-3, 6-4, rallying from a set down for the third straight match to win his fourth ATP Tour title and first since Mallorca last June'},
     {status:'FINAL', away:{abbr:'FRITZ'}, home:{abbr:'MUSETTI'}, note:'ATP Lyon Open Final · Lorenzo Musetti beats Taylor Fritz 6-3, 6-4 in 80 minutes for his first title since 2022 and third career ATP Tour trophy'},
     {status:'FINAL', away:{abbr:'FERNANDEZ'}, home:{abbr:'RYBAKINA'}, note:'WTA Ningbo Open Final · Elena Rybakina beats Leylah Fernandez 6-2, 6-2 to defend her title, her first since reaching world No. 1'},
     {status:'FINAL', away:{abbr:'KRUEGER'}, home:{abbr:'SINIAKOVA'}, note:'WTA Kinoshita Group Japan Open Final (Osaka) · Katerina Siniakova beats Ashlyn Krueger 6-1, 6-0 in 68 minutes, her sixth career title and the first by a Czech player in Osaka'},
@@ -2145,16 +2147,17 @@ const ARTICLES = [
     pull:'He saved a match point just to reach the third round. By the final, he\'d beaten the No. 1 seed and a fellow first-time finalist to win his first Masters 1000.',
   },
   {id:'lyon-ningbo-osaka-finals-recap', sport:'tennis', cat:'recap',
-    headline:'Musetti Ends a Four-Year Title Drought in Lyon as Rybakina and Siniakova Also Win Tour Finals',
-    dek:'Lorenzo Musetti beat Taylor Fritz 6-3, 6-4 to win the ATP Lyon Open, his first title since 2022, while Elena Rybakina defended her Ningbo crown and Katerina Siniakova won the Kinoshita Group Japan Open in Osaka.',
+    headline:'Musetti Ends a Four-Year Title Drought in Lyon as Rybakina, Siniakova and Griekspoor Also Win Tour Finals',
+    dek:'Lorenzo Musetti beat Taylor Fritz 6-3, 6-4 to win the ATP Lyon Open, his first title since 2022, Elena Rybakina defended her Ningbo crown and Katerina Siniakova won in Osaka, while Tallon Griekspoor rallied past Jan-Lennard Struff to win Brussels.',
     byline:'Clutch Room Tennis Desk', mins:5, time:'Oct 25, 2026',
     qa:[['What happened in Lyon?','Lorenzo Musetti beat Taylor Fritz 6-3, 6-4 in 80 minutes to win the ATP Lyon Open — his first tour-level title since 2022 and third of his career.'],
-        ['What happened on the WTA side?','Elena Rybakina beat Leylah Fernandez 6-2, 6-2 to defend her Ningbo Open title, and Katerina Siniakova beat Ashlyn Krueger 6-1, 6-0 to win the Kinoshita Group Japan Open in Osaka.']],
+        ['What happened on the WTA side?','Elena Rybakina beat Leylah Fernandez 6-2, 6-2 to defend her Ningbo Open title, and Katerina Siniakova beat Ashlyn Krueger 6-1, 6-0 to win the Kinoshita Group Japan Open in Osaka.'],
+        ['Who won in Brussels?','Tallon Griekspoor beat Jan-Lennard Struff 4-6, 6-3, 6-4 to win the BNP Paribas Fortis European Open, his fourth career ATP Tour title and first since Mallorca last June.']],
     body:[
       'Lorenzo Musetti closed out a four-year wait for a title on Sunday, beating Taylor Fritz 6-3, 6-4 in straight sets to win the ATP Lyon Open. It\'s Musetti\'s third career tour-level title and his first since 2022, ending a run of final losses that had stretched his drought out well beyond what his ranking and results suggested it should have.',
       'In Ningbo, Elena Rybakina needed just 6-2, 6-2 to see off Leylah Fernandez and defend the title she won there a year ago — her first trophy since climbing to world No. 1, and a reminder that the ranking hasn\'t dulled her ball-striking at this level.',
       'The week\'s most lopsided final belonged to Katerina Siniakova, who routed Ashlyn Krueger 6-1, 6-0 in just 68 minutes to win the Kinoshita Group Japan Open in Osaka. It\'s Siniakova\'s sixth career singles title and the first by a Czech player at the Osaka event, ten years after she lost in that same final.',
-      'The ATP\'s Brussels final — the BNP Paribas Fortis European Open — was still to be completed as of Sunday evening; Clutch Room will have that result as soon as it\'s confirmed.',
+      'In Brussels, Tallon Griekspoor completed the week\'s most dramatic run, rallying from a set down for the third consecutive match to beat Jan-Lennard Struff 4-6, 6-3, 6-4 and win the BNP Paribas Fortis European Open. The 30-year-old, ranked No. 60, had already upset second seed Jiří Lehečka in the quarter-finals and third seed Francisco Cerundolo in the semis before closing out Struff in two hours and two minutes, winning 84% of points on his first serve and striking 19 aces. It\'s his fourth ATP Tour title and first since Mallorca last June. "Another big fight, very, very challenging match again," Griekspoor said afterward. "I don\'t know how it went my way — I just tried to stay in there." Struff, 36, had beaten sixth seed Zizou Bergs and top seed Arthur Fils en route to the final.',
     ],
   },
 

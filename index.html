@@ -717,15 +717,15 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
 
 <script>
 const SPORTS = [
-  {id:'football', name:'Football', accent:'court', heat:88, status:'EL CLÁSICO LIVE: BARCELONA 1-1 REAL MADRID AT CAMP NOU (63\') — MBAPPÉ 41\', RAPHINHA 61\' · UCL MD3 FINAL: BAYERN MUNICH 2-2 ARSENAL (RICE EQUALIZES LATE), REAL MADRID ROUT RB LEIPZIG 4-1', deep:'full',
+  {id:'football', name:'Football', accent:'court', heat:90, status:'EL CLÁSICO FINAL: REAL MADRID BEAT BARCELONA 2-1 AT CAMP NOU — MBAPPÉ SCORES TWICE (41\', 87\'), HIS 100TH FOR THE CLUB, BARÇA\'S FIRST DOMESTIC LOSS OF THE SEASON, GAP NOW 3 POINTS · UCL MD3 FINAL: BAYERN MUNICH 2-2 ARSENAL (RICE EQUALIZES LATE), REAL MADRID ROUT RB LEIPZIG 4-1', deep:'full',
     sub:'Premier League · Champions League · La Liga',
-    leagues:['All','Champions League','Premier League','La Liga'], live:true},
+    leagues:['All','Champions League','Premier League','La Liga'], live:false},
   {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES GM2 FINAL: BREWERS ERASE 4-0 HOLE, BEAT RAYS 5-4, LEAD SERIES 2-0 · GAME 3 MONDAY AT TROPICANA FIELD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:false},
   {id:'nfl', name:'NFL', accent:'away', heat:77, status:'WEEK 8 TNF: BEARS BEAT PATRIOTS 30-24 · 49ERS HOLD OFF COMMANDERS 23-17 IN WEEK 7 MNF, IMPROVE TO 6-0', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'MUSETTI WINS LYON FOR FIRST TITLE SINCE 2022 (BT. FRITZ) · RYBAKINA DEFENDS NINGBO TITLE OVER FERNANDEZ · SINIAKOVA WINS OSAKA · GRIEKSPOOR RALLIES PAST STRUFF TO WIN BRUSSELS', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:88, status:'OPENING NIGHT SWEEP: PISTONS STUN CELTICS, 76ERS SPOIL KNICKS\' BANNER NIGHT, THUNDER ROUT SPURS 116-104 AS WEMBANYAMA GOES 1-OF-13', deep:'light', sub:'NBA', live:false},
-  {id:'f1', name:'F1', accent:'away', heat:50, status:'AUSTIN: ANTONELLI TAKES POLE (7TH OF 2026), AHEAD OF BOTH RED BULLS · RACE SUNDAY, CAN CLINCH TITLE WITH A WIN', deep:'none', sub:'Formula 1'},
+  {id:'f1', name:'F1', accent:'away', heat:58, status:'ANTONELLI WINS U.S. GRAND PRIX FROM POLE, BEATS LECLERC BY 13S · TITLE NOT YET CLINCHED (RUSSELL 8TH, HAMILTON 4TH) · LEADS RUSSELL BY 123 PTS HEADING TO MEXICO CITY, NOV 1', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
   {id:'cricket', name:'Cricket', accent:'away', heat:90, status:'PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI AT LAHORE: SHADAB KHAN\'S UNBEATEN 113 RESCUES CHASE FROM 154/9, PAKISTAN LEAD TRI-SERIES 3-0 · SRI LANKA STUNNED ENGLAND, CHASING DOWN A RECORD 430, TO WIN THE 3RD ODI AT RAWALPINDI · NEXT: PAK vs SL, 5TH ODI, LAHORE, OCT 27', deep:'light', sub:'International & league cricket', live:false},
@@ -750,8 +750,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
     {status:'FINAL', away:{abbr:'CLE',record:'1'}, home:{abbr:'TB',record:'3'}, note:'ALCS Gm5 · Rays lead series 3-2, one win from the pennant'},
   ]},
-  football:{context:'EL CLÁSICO LIVE: BARCELONA 1-1 REAL MADRID AT CAMP NOU (63\') · UCL MD3 COMPLETE: BAYERN 2-2 ARSENAL, REAL MADRID 4-1 RB LEIPZIG · TUESDAY: PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL', games:[
-    {status:'LIVE', away:{abbr:'RMA',record:'1'}, home:{abbr:'BAR',record:'1'}, note:'La Liga Matchday 10 · Spotify Camp Nou · 63\' · Kylian Mbappé 41\' puts Real Madrid ahead; Raphinha equalizes 61\' from a corner, assisted by Pedri'},
+  football:{context:'EL CLÁSICO FINAL: REAL MADRID BEAT BARCELONA 2-1 AT CAMP NOU, MBAPPÉ SCORES TWICE (41\', 87\') · UCL MD3 COMPLETE: BAYERN 2-2 ARSENAL, REAL MADRID 4-1 RB LEIPZIG · TUESDAY: PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL', games:[
+    {status:'FINAL', away:{abbr:'RMA',record:'2'}, home:{abbr:'BAR',record:'1'}, note:'La Liga Matchday 10 · Spotify Camp Nou · Kylian Mbappé opens the scoring 41\' after Gerard Martín\'s clearance cannons off him and beats Joan García; Raphinha levels 61\', his shot squeezing through Jude Bellingham\'s legs and past Andriy Lunin; Mbappé wins it 87\', tapping in from an Eduardo Camavinga lay-off for his 100th goal for Real Madrid — Barcelona\'s first domestic defeat of the season, Madrid now 3 points back in La Liga'},
     {status:'FINAL', away:{abbr:'ARS',record:'2'}, home:{abbr:'BAY',record:'2'}, note:'UCL MD3 · Allianz Arena · Eze 25\' puts Arsenal ahead, Davies 35\' levels for Bayern, Kane converts a penalty 61\' to put Bayern back in front, Rice equalizes 82\' for a 2-2 draw; Saka off injured in the first half'},
     {status:'FINAL', away:{abbr:'RBL',record:'1'}, home:{abbr:'RMA',record:'4'}, note:'UCL MD3 · Santiago Bernabéu · Bernardo Silva 43\', Arda Güler 52\', Mbappé 83\' and Diomandé 87\' for Real Madrid; Gomis 85\' for Leipzig in a 4-1 win'},
     {status:'FINAL', away:{abbr:'BAR',record:'2'}, home:{abbr:'PSG',record:'4'}, note:'UCL MD3 · Parc des Princes · Doué 38\', L. Hernández 72\', Vitinha 81\', F. Ruiz 86\' for PSG; Espart 55\', Yamal 79\' for Barcelona'},
@@ -2914,6 +2914,50 @@ const ARTICLES = [
     ],
     related:'pak-eng-4th-odi-recap',
   },
+
+  {id:'clasico-recap', sport:'football', league:'La Liga', cat:'recap',
+    headline:'Mbappé\'s Late Double Sinks Barcelona as Real Madrid Win El Clásico 2-1',
+    dek:'Kylian Mbappé\'s 87th-minute winner — his 100th goal for the club — answered a Raphinha equalizer and handed Barcelona their first domestic defeat of the season, cutting Real Madrid\'s La Liga deficit to three points.',
+    byline:'Clutch Room Football Desk', mins:6, time:'Oct 25, 2026',
+    qa:[['What was the final score?','Real Madrid won 2-1 at Camp Nou — Kylian Mbappé scored both Madrid goals (41\', 87\'), with Raphinha\'s 61st-minute strike the only reply for Barcelona.'],
+        ['What does the result mean for the title race?','It\'s Barcelona\'s first domestic defeat of the season and pulls Real Madrid to within three points of the La Liga lead, with Atlético Madrid also still in the mix.']],
+    body:[
+      'Kylian Mbappé opened the scoring in the 41st minute in slightly fortuitous fashion — Gerard Martín\'s attempted clearance for Barcelona cannoned straight off the Frenchman and beat Joan García from close range. Raphinha leveled for the hosts in the 61st, his low shot squeezing through Jude Bellingham\'s legs and beating Andriy Lunin, who got a hand to it but couldn\'t keep it out.',
+      'With the game heading for a draw, Mbappé struck again in the 87th minute: Eduardo Camavinga laid the ball off to him inside the box, and Mbappé tucked it into an empty net for his second of the night — and the 100th goal of his Real Madrid career. "The star of the game was the team, the group," Mbappé said afterward. "We had difficult moments in the game, and moments where we dominated. Winning and being in the title race is important. We have to keep going. It\'s a great game but it\'s only three points."',
+      'The win is Barcelona\'s first domestic defeat of the season and cuts their La Liga lead over José Mourinho\'s Real Madrid to three points, setting up a tighter finish to the title race than either side would have wanted heading into the international break.',
+    ],
+    related:'clasico-mbappe-century-analysis',
+    pull:'Mbappé\'s night: a fortuitous 41st-minute opener, then a 100th-goal finish for Real Madrid in the 87th that beat Barcelona and the clock.',
+  },
+  {id:'clasico-mbappe-century-analysis', sport:'football', league:'La Liga', cat:'analysis',
+    headline:'Mbappé\'s 100th Goal for Real Madrid Arrives at the Perfect Moment — El Clásico',
+    dek:'The Frenchman\'s Clásico winner made him the fourth-fastest player to reach a century of goals for Real Madrid, a milestone that landed the night before the Ballon d\'Or ceremony and with the club still trophyless since he arrived.',
+    byline:'Clutch Room Football Desk', mins:7, time:'Oct 25, 2026',
+    qa:[['How significant is Mbappé\'s 100-goal milestone?','He\'s the 24th player to reach 100 goals for Real Madrid and the fourth-fastest to do it, behind only Cristiano Ronaldo, Raúl and Alfredo Di Stéfano.'],
+        ['Has Mbappé won anything with Real Madrid yet?','Not a major trophy — despite being La Liga\'s top scorer in both of his full seasons at the club, he lost the title to Barcelona in both 2024-25 and 2025-26.']],
+    body:[
+      'Kylian Mbappé\'s 87th-minute winner at Camp Nou was his 100th goal for Real Madrid, reached across a run that started with a free transfer from Paris Saint-Germain in June 2024, where he\'d scored 256 goals in 308 appearances, after 27 in 60 for Monaco before that. He arrived at the Bernabéu already France\'s record scorer and, since this past summer, the all-time leading scorer in World Cup history.',
+      'The century makes him the 24th player to reach three figures for Real Madrid and the fourth-fastest to do it — behind only Cristiano Ronaldo, whose 450 goals in 438 matches remain the club\'s all-time record, Raúl and Alfredo Di Stéfano. Reaching that mark in a Clásico, with the winning goal itself, is the kind of moment Real Madrid\'s history is built on repeating.',
+      'What the milestone hasn\'t brought yet is team silverware. Mbappé has been La Liga\'s top scorer in both of his full seasons in Madrid, and in both of them Real Madrid finished runners-up to Barcelona. That history is exactly why his own words after Sunday\'s win leaned away from the individual achievement: "Everyone knows I like to score goals, to help the team. But today, the most important thing was the team\'s win," he said. "If we want to do things this year, we have to be a group."',
+      'The timing adds another layer — the goal and the win arrive the day before the 2026 Ballon d\'Or ceremony, where Mbappé is among the contenders. But for Real Madrid, the more immediate number is the three points now separating them from a Barcelona side that had been unbeaten domestically all season, with Atlético Madrid also still in touch at the top — a three-way La Liga fight that a trophyless Mbappé, for all his individual numbers, still needs his team to win.',
+    ],
+    related:'clasico-recap',
+  },
+
+  {id:'f1-austin-race-recap', sport:'f1', cat:'recap',
+    headline:'Antonelli Wins Austin From Pole, But the Title Fight Rolls On to Mexico City',
+    dek:'Kimi Antonelli converted pole into a comfortable United States Grand Prix win, beating Charles Leclerc by 13 seconds, but results behind him from George Russell and Lewis Hamilton mean the championship still isn\'t clinched.',
+    byline:'Clutch Room F1 Desk', mins:5, time:'Oct 25, 2026',
+    qa:[['What was the race result?','Kimi Antonelli won from pole in 1:35:16.650, 13.078s clear of Charles Leclerc, with Max Verstappen third (+17.485s) and Lewis Hamilton fourth (+18.515s).'],
+        ['Why didn\'t Antonelli clinch the title in Austin?','He needed the win plus George Russell finishing ninth or lower to be champion. Russell finished eighth, and Hamilton\'s fourth also kept the title mathematically alive, so the championship heads to Mexico City still open.']],
+    body:[
+      'Kimi Antonelli got a clean launch from pole and led comfortably into Turn 1, with Charles Leclerc muscling past Max Verstappen at the start to take second. Antonelli was never seriously troubled from there, crossing the line 13.078 seconds clear of Leclerc\'s Ferrari, with Verstappen third (+17.485s) and Lewis Hamilton fourth (+18.515s) in the sister Ferrari. Lando Norris was fifth for McLaren.',
+      'It was the win Antonelli needed to have any chance of becoming champion in Austin — but not the whole equation. He also needed title rival and Mercedes teammate George Russell to finish ninth or lower, and Lewis Hamilton fifth or lower. Russell finished eighth (+54.303s) and Hamilton fourth, so both conditions that would have handed Antonelli the title were missed, and the championship stays mathematically open heading into the season\'s final rounds.',
+      'The standings now read Antonelli 365, Russell 242, Hamilton 241, Verstappen 236, Leclerc 233 and Norris 211 — a gap big enough that Verstappen, Leclerc and Norris are already mathematically eliminated from the title fight regardless of how they finish from here. Only Russell and Hamilton remain alive, both well over 100 points back, as F1 heads to the Autódromo Hermanos Rodríguez for the Mexico City Grand Prix on November 1.',
+    ],
+    related:'f1-austin-qualifying-recap',
+    pull:'Antonelli needed a win and Russell ninth-or-lower to be champion in Austin. He got the win. Russell finished eighth.',
+  },
 ];
 
 /* ---------------- insider wire (illustrative — credits real outlets, not fabricated individual quotes) ---------------- */
@@ -2963,7 +3007,7 @@ const TRACK_LAYOUTS = {
   austin: `<path d="M206,261 L190,210 L196,188 L220,178 L208,159 L231,140 L260,115 L291,104 L312,92 L345,77 L372,10 L113,134 L113,148 L96,162 L166,177 L187,165 L146,191 L125,213 L62,216 L16,261 Z" stroke="url(#trackGrad)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
   mexico: `<path d="M40 60 L300 60 Q330 60 330 90 L330 130 Q330 150 310 150 L270 150 Q250 150 250 130 L250 110 Q250 95 235 95 L200 95 Q185 95 185 110 L185 150 Q185 170 165 170 L70 170 Q40 170 40 140 Z" stroke="url(#trackGrad)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
 };
-const CURRENT_TRACK = 'austin';
+const CURRENT_TRACK = 'mexico';
 function f1TrackSvg(){
   const layout = TRACK_LAYOUTS[CURRENT_TRACK] || TRACK_LAYOUTS.singapore;
   return `<svg width="400" height="280" viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3386,18 +3430,44 @@ const F1_SEASON_RESULTS = [
       {pos:21, driver:'F. Colapinto', team:'Alpine', gap:'DNF'},
       {pos:22, driver:'G. Bortoleto', team:'Audi', gap:'DNF'},
     ]},
+  {round:18, gp:'Austin, United States', winner:'K. Antonelli', team:'Mercedes', note:'Pole to flag — win extends his title lead, but the championship stays unclinched',
+    podium:[{driver:'K. Antonelli',team:'Mercedes'},{driver:'C. Leclerc',team:'Ferrari'},{driver:'M. Verstappen',team:'Red Bull'}],
+    results:[
+      {pos:1, driver:'K. Antonelli', team:'Mercedes', gap:'Winner'},
+      {pos:2, driver:'C. Leclerc', team:'Ferrari', gap:'+13.078s'},
+      {pos:3, driver:'M. Verstappen', team:'Red Bull', gap:'+17.485s'},
+      {pos:4, driver:'L. Hamilton', team:'Ferrari', gap:'+18.515s'},
+      {pos:5, driver:'L. Norris', team:'McLaren', gap:'+30.521s'},
+      {pos:6, driver:'I. Hadjar', team:'Red Bull', gap:'+34.373s'},
+      {pos:7, driver:'O. Piastri', team:'McLaren', gap:'+52.674s'},
+      {pos:8, driver:'G. Russell', team:'Mercedes', gap:'+54.303s'},
+      {pos:9, driver:'L. Lawson', team:'Racing Bulls', gap:'+79.183s'},
+      {pos:10, driver:'P. Gasly', team:'Alpine', gap:'+87.516s'},
+      {pos:11, driver:'N. Hulkenberg', team:'Audi', gap:'+94.945s'},
+      {pos:12, driver:'A. Lindblad', team:'Racing Bulls', gap:'+1 lap'},
+      {pos:13, driver:'G. Bortoleto', team:'Audi', gap:'+1 lap'},
+      {pos:14, driver:'E. Ocon', team:'Haas', gap:'+1 lap'},
+      {pos:15, driver:'L. Stroll', team:'Aston Martin', gap:'+1 lap'},
+      {pos:16, driver:'F. Alonso', team:'Aston Martin', gap:'+1 lap'},
+      {pos:17, driver:'A. Albon', team:'Williams', gap:'+1 lap'},
+      {pos:18, driver:'C. Sainz', team:'Williams', gap:'+1 lap'},
+      {pos:19, driver:'S. Perez', team:'Cadillac', gap:'+1 lap'},
+      {pos:20, driver:'V. Bottas', team:'Cadillac', gap:'DNF'},
+      {pos:21, driver:'F. Colapinto', team:'Alpine', gap:'DNF'},
+      {pos:22, driver:'O. Bearman', team:'Haas', gap:'DNF'},
+    ]},
 ];
 const F1_STANDINGS = [
-  {pos:1, driver:'K. Antonelli', team:'Mercedes', pts:335},
-  {pos:2, driver:'G. Russell', team:'Mercedes', pts:238},
-  {pos:3, driver:'L. Hamilton', team:'Ferrari', pts:222},
-  {pos:4, driver:'M. Verstappen', team:'Red Bull', pts:213},
-  {pos:5, driver:'C. Leclerc', team:'Ferrari', pts:209},
-  {pos:6, driver:'L. Norris', team:'McLaren', pts:200},
-  {pos:7, driver:'O. Piastri', team:'McLaren', pts:138},
-  {pos:8, driver:'I. Hadjar', team:'Red Bull', pts:97},
-  {pos:9, driver:'L. Lawson', team:'Racing Bulls', pts:71},
-  {pos:10, driver:'P. Gasly', team:'Alpine', pts:41},
+  {pos:1, driver:'K. Antonelli', team:'Mercedes', pts:365},
+  {pos:2, driver:'G. Russell', team:'Mercedes', pts:242},
+  {pos:3, driver:'L. Hamilton', team:'Ferrari', pts:241},
+  {pos:4, driver:'M. Verstappen', team:'Red Bull', pts:236},
+  {pos:5, driver:'C. Leclerc', team:'Ferrari', pts:233},
+  {pos:6, driver:'L. Norris', team:'McLaren', pts:211},
+  {pos:7, driver:'O. Piastri', team:'McLaren', pts:144},
+  {pos:8, driver:'I. Hadjar', team:'Red Bull', pts:105},
+  {pos:9, driver:'L. Lawson', team:'Racing Bulls', pts:77},
+  {pos:10, driver:'P. Gasly', team:'Alpine', pts:42},
 ];
 function renderF1Results(){
   return F1_SEASON_RESULTS.map(r=>{
@@ -3893,14 +3963,14 @@ function renderF1Hub(){
     <div class="f1-track-wrap">${f1TrackSvg()}</div>
     <div class="f1-next">
       <span class="eyebrow">Next Race</span>
-      <h1>United States Grand Prix</h1>
+      <h1>Mexico City Grand Prix</h1>
       <div class="f1-countdown" id="f1-countdown">
         <div class="unit"><div class="num" id="f1-d">00</div><div class="lbl">Days</div></div>
         <div class="unit"><div class="num" id="f1-h">00</div><div class="lbl">Hours</div></div>
         <div class="unit"><div class="num" id="f1-m">00</div><div class="lbl">Minutes</div></div>
         <div class="unit"><div class="num" id="f1-sec">00</div><div class="lbl">Seconds</div></div>
       </div>
-      <p>F1 heads to the Circuit of the Americas in Austin off the back of Max Verstappen's second straight win in Singapore. Practice and qualifying run Friday and Saturday, with the Grand Prix itself Sunday, October 25 at 3:00 PM local.</p>
+      <p>F1 heads to the Autódromo Hermanos Rodríguez off the back of Kimi Antonelli's win at the United States Grand Prix — pole to flag, beating Charles Leclerc by 13 seconds — which extends his points lead but doesn't yet clinch the title. Practice and qualifying run Friday and Saturday, with the Grand Prix itself Sunday, November 1 at 2:00 PM local.</p>
       <a class="f1-pill-btn" href="#/">← Back to All Sports</a>
     </div>
 
@@ -3909,36 +3979,36 @@ function renderF1Hub(){
       <div class="f1-helmet-section">
         <div class="f1-helmet-grid">
           <div class="f1-helmet-stats">
-            <div><div class="n" style="font-size:24px;">Verstappen</div><div class="l">Two straight wins — Malaysia, then a lights-to-flag Singapore</div></div>
-            <div><div class="n" style="font-size:24px;">Mercedes</div><div class="l">Russell's long-delayed engine upgrade is finally expected to arrive in Austin</div></div>
+            <div><div class="n" style="font-size:24px;">Antonelli</div><div class="l">Pole to flag in Austin, his fourth win of the season, but still short of the title</div></div>
+            <div><div class="n" style="font-size:24px;">Verstappen</div><div class="l">Third in Austin, but already mathematically out of the championship fight</div></div>
           </div>
           <div id="f1-helmet-wrap">${F1_HELMET_SVG}</div>
           <div class="f1-helmet-stats right">
-            <div><div class="n" style="font-size:24px;">Antonelli</div><div class="l">Still leads the championship at 335 points, but the gap to Verstappen is 122 and shrinking</div></div>
-            <div><div class="n" style="font-size:24px;">Leclerc</div><div class="l">Two straight runner-up finishes behind Verstappen's Red Bull</div></div>
+            <div><div class="n" style="font-size:24px;">365</div><div class="l">Antonelli's points total after Austin — 123 clear of Russell with the season's final rounds to run</div></div>
+            <div><div class="n" style="font-size:24px;">Russell</div><div class="l">His own teammate is the closest thing left to a title rival, 8th in Austin and 123 points back</div></div>
           </div>
         </div>
       </div>
-      <p class="f1-quote">Two wins in a row for Verstappen and Red Bull — <b>the title race just got a lot more interesting.</b></p>
+      <p class="f1-quote">Kimi Antonelli wins at Austin and still can't be crowned champion — <b>Mexico City gets the next shot.</b></p>
       <div style="height:70px;"></div>
     </div>
 
     <div class="f1-schedule">
       <div class="f1-schedule-head"><h2>Race Weekend Schedule</h2><div class="f1-tabs"><span class="on">My Time (ET)</span><span>Austin Time</span></div></div>
-      <div class="f1-row"><span class="s">Practice 1</span><span class="t">Fri · 1:30 PM ET (12:30 PM CDT)</span></div>
-      <div class="f1-row"><span class="s">Practice 2</span><span class="t">Fri · 5:00 PM ET (4:00 PM CDT)</span></div>
-      <div class="f1-row"><span class="s">Practice 3</span><span class="t">Sat · 1:30 PM ET (12:30 PM CDT)</span></div>
-      <div class="f1-row"><span class="s">Qualifying</span><span class="t">Sat · 5:00 PM ET (4:00 PM CDT)</span></div>
-      <div class="f1-row"><span class="s">Race</span><span class="t">Sun · 4:00 PM ET (3:00 PM CDT)</span></div>
+      <div class="f1-row"><span class="s">Practice 1</span><span class="t">Fri · 2:30 PM ET (12:30 PM CST)</span></div>
+      <div class="f1-row"><span class="s">Practice 2</span><span class="t">Fri · 6:00 PM ET (4:00 PM CST)</span></div>
+      <div class="f1-row"><span class="s">Practice 3</span><span class="t">Sat · 1:30 PM ET (11:30 AM CST)</span></div>
+      <div class="f1-row"><span class="s">Qualifying</span><span class="t">Sat · 5:00 PM ET (3:00 PM CST)</span></div>
+      <div class="f1-row"><span class="s">Race</span><span class="t">Sun · 3:00 PM ET (2:00 PM CST)</span></div>
     </div>
 
     <div class="f1-schedule" style="padding-top:0;">
-      <div class="f1-schedule-head"><h2>Season So Far</h2><span class="eyebrow">17 of 23 rounds · R14 cancelled</span></div>
+      <div class="f1-schedule-head"><h2>Season So Far</h2><span class="eyebrow">18 of 23 rounds · R14 cancelled</span></div>
       ${renderF1Results()}
     </div>
 
     <div class="f1-schedule" style="padding-top:0;">
-      <div class="f1-schedule-head"><h2>Drivers' Championship</h2><span class="eyebrow">Entering Singapore</span></div>
+      <div class="f1-schedule-head"><h2>Drivers' Championship</h2><span class="eyebrow">Entering Mexico City</span></div>
       ${renderF1Standings()}
     </div>
 
@@ -4234,7 +4304,7 @@ setInterval(function(){
 }, 1000);
 
 /* ---------------- F1 scroll-driven helmet + MLB scroll progress ---------------- */
-const F1_RACE_TARGET = new Date('2026-10-25T20:00:00Z').getTime();
+const F1_RACE_TARGET = new Date('2026-11-01T20:00:00Z').getTime();
 let scrollTicking = false;
 function onScrollEffects(){
   const helmet = document.getElementById('f1-helmet');

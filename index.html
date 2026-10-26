@@ -734,11 +734,11 @@ const SPORTS = [
   {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES GM2 FINAL: BREWERS ERASE 4-0 HOLE, BEAT RAYS 5-4, LEAD SERIES 2-0 · GAME 3 MONDAY AT TROPICANA FIELD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:false},
   {id:'nfl', name:'NFL', accent:'away', heat:80, status:'WEEK 8: SEAHAWKS HAND CHIEFS THEIR FIRST LOSS OF THE SEASON 20-3 · GIANTS WIN OT THRILLER AT HOUSTON 27-21 · BUCCANEERS ROUT PANTHERS 43-13 · BENGALS ROUT RAVENS 35-13 · BEARS BEAT PATRIOTS 30-24 IN TNF · MONDAY: COWBOYS AT EAGLES', deep:'none', sub:'National Football League'},
   {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'MUSETTI WINS LYON FOR FIRST TITLE SINCE 2022 (BT. FRITZ) · RYBAKINA DEFENDS NINGBO TITLE OVER FERNANDEZ · SINIAKOVA WINS OSAKA · GRIEKSPOOR RALLIES PAST STRUFF TO WIN BRUSSELS', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
-  {id:'padel', name:'Padel', accent:'away', heat:40, status:'TAPIA/COELLO WIN MILANO P1 · BACK-TO-BACK TITLES', deep:'light', sub:'Premier Padel tour'},
-  {id:'basketball', name:'Basketball', accent:'away', heat:88, status:'OPENING NIGHT SWEEP: PISTONS STUN CELTICS, 76ERS SPOIL KNICKS\' BANNER NIGHT, THUNDER ROUT SPURS 116-104 AS WEMBANYAMA GOES 1-OF-13', deep:'light', sub:'NBA', live:false},
+  {id:'padel', name:'Padel', accent:'away', heat:36, status:'TAPIA/COELLO WIN MILANO P1, BACK-TO-BACK TITLES · KUWAIT MAJOR UNDERWAY THROUGH OCT 31', deep:'light', sub:'Premier Padel tour'},
+  {id:'basketball', name:'Basketball', accent:'away', heat:62, status:'WEEK ONE PERFECT: TIMBERWOLVES, THUNDER, LAKERS, ROCKETS, GRIZZLIES AND PISTONS ALL 3-0 TO OPEN THE SEASON · KNICKS, NETS, BUCKS, HEAT, WARRIORS, KINGS AND PELICANS ALL WINLESS AT 0-3', deep:'light', sub:'NBA', live:false},
   {id:'f1', name:'F1', accent:'away', heat:58, status:'ANTONELLI WINS U.S. GRAND PRIX FROM POLE, BEATS LECLERC BY 13S · TITLE NOT YET CLINCHED (RUSSELL 8TH, HAMILTON 4TH) · LEADS RUSSELL BY 123 PTS HEADING TO MEXICO CITY, NOV 1', deep:'none', sub:'Formula 1'},
-  {id:'ufc', name:'UFC', accent:'away', heat:38, status:'MALOTT KOs BUCKLEY IN RD 2 · FIGHT NIGHT EDMONTON', deep:'light', sub:'Mixed martial arts'},
-  {id:'boxing', name:'Boxing', accent:'away', heat:42, status:'DUBOIS STOPS WARDLEY IN RD 2 OF HEAVYWEIGHT REMATCH', deep:'light', sub:'Professional boxing'},
+  {id:'ufc', name:'UFC', accent:'away', heat:52, status:'UFC 333: VOLKANOVSKI KOs EVLOEV IN RD 2 TO RETAIN FEATHERWEIGHT TITLE · YAN EDGES DVALISHVILI BY UNANIMOUS DECISION FOR BANTAMWEIGHT BELT, FIGHT OF THE NIGHT', deep:'light', sub:'Mixed martial arts'},
+  {id:'boxing', name:'Boxing', accent:'away', heat:46, status:'O\'SHAQUIE FOSTER DROPS NAVARRETE TWICE, UNIFIES WBC/WBO/IBF SUPER FEATHERWEIGHT TITLES BY UNANIMOUS DECISION IN SAN ANTONIO', deep:'light', sub:'Professional boxing'},
   {id:'cricket', name:'Cricket', accent:'away', heat:90, status:'PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI AT LAHORE: SHADAB KHAN\'S UNBEATEN 113 RESCUES CHASE FROM 154/9, PAKISTAN LEAD TRI-SERIES 3-0 · SRI LANKA STUNNED ENGLAND, CHASING DOWN A RECORD 430, TO WIN THE 3RD ODI AT RAWALPINDI · NEXT: PAK vs SL, 5TH ODI, LAHORE, OCT 27', deep:'light', sub:'International & league cricket', live:false},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
@@ -797,18 +797,22 @@ const GAMES = {
   padel:{context:'MILANO P1 COMPLETE · TAPIA/COELLO WIN AGAIN', games:[
     {status:'FINAL', away:{abbr:'LEBRÓN/AUGSBURGER'}, home:{abbr:'TAPIA/COELLO'}, note:'Milano P1 Final · Tapia/Coello win 4-6, 6-3, 6-2 for back-to-back P1 titles'},
   ]},
-  basketball:{context:'OPENING NIGHT COMPLETE: PISTONS STUN CELTICS 121-113 · 76ERS SPOIL KNICKS\' BANNER NIGHT 106-100 · THUNDER ROUT SPURS 116-104, WEMBANYAMA 1-OF-13', games:[
-    {status:'FINAL', away:{abbr:'HOU',record:'135'}, home:{abbr:'DAL',record:'117'}, note:'NBA China Gm1 · Macao · Rockets romp, Flagg scores 19'},
-    {status:'FINAL', away:{abbr:'DAL',record:'132'}, home:{abbr:'HOU',record:'115'}, note:'NBA China Gm2 · Macao · Mavericks even series 1-1'},
-    {status:'FINAL', away:{abbr:'BOS',record:'113'}, home:{abbr:'DET',record:'121'}, note:'Opening Night · Little Caesars Arena · Pistons erase a 22-pt deficit with a 23-0 fourth-quarter run; Cunningham 22 pts/8 ast, Duren 22 pts/9 reb, Green 5 threes off the bench; Paul George sets Celtics debut record with 38 pts, Tatum 13 on 6-of-23'},
-    {status:'FINAL', away:{abbr:'PHI',record:'106'}, home:{abbr:'NYK',record:'100'}, note:'Opening Night · Banner night at MSG · Maxey 28 pts; Jaylen Brown (Sixers debut) 19 pts/8 reb/6 ast, caps a 29-18 3rd quarter with a buzzer-beating 3 off a LeBron inbound; LeBron James (Sixers debut) 14 pts/9 reb/7 ast; Brunson 21 pts, Towns 19 pts/12 reb for New York'},
-    {status:'FINAL', away:{abbr:'OKC',record:'116'}, home:{abbr:'SAS',record:'104'}, note:'Opening Night · WCF rematch at Frost Bank Center · Gilgeous-Alexander 32 pts/6 reb/4 ast, Jared McCain 20 pts off the bench for OKC; Stephon Castle 24 pts/7 reb for San Antonio, Victor Wembanyama held to 12 on 1-of-13 shooting in his season debut'},
+  basketball:{context:'WEEK ONE: TIMBERWOLVES, THUNDER, LAKERS, ROCKETS, GRIZZLIES, PISTONS ALL 3-0 · KNICKS, NETS, BUCKS, HEAT, WARRIORS, KINGS, PELICANS ALL 0-3', games:[
+    {status:'FINAL', away:{abbr:'DAL',record:'123'}, home:{abbr:'LAL',record:'132'}, note:'Oct 25 · Lakers improve to 3-0'},
+    {status:'FINAL', away:{abbr:'LAC',record:'101'}, home:{abbr:'OKC',record:'108'}, note:'Oct 25 · Thunder improve to 3-0'},
+    {status:'FINAL', away:{abbr:'TOR',record:'94'}, home:{abbr:'MIN',record:'117'}, note:'Oct 25 · Timberwolves improve to 3-0'},
+    {status:'FINAL', away:{abbr:'BKN',record:'109'}, home:{abbr:'IND',record:'136'}, note:'Oct 25 · Pacers improve to 2-1'},
+    {status:'FINAL', away:{abbr:'SAC',record:'112'}, home:{abbr:'MEM',record:'123'}, note:'Oct 25 · Grizzlies improve to 3-0'},
+    {status:'FINAL', away:{abbr:'DET',record:'106'}, home:{abbr:'PHI',record:'93'}, note:'Oct 25 · 76ers\' first loss, fall to 3-1'},
   ]},
-  ufc:{context:'FIGHT NIGHT EDMONTON · FINAL', games:[
-    {status:'FINAL', away:{abbr:'BUCKLEY'}, home:{abbr:'MALOTT'}, note:'Malott KOs Buckley at 2:32 of Round 2 · Edmonton'},
+  ufc:{context:'UFC 333: VOLKANOVSKI KOs EVLOEV FOR FEATHERWEIGHT TITLE · YAN WINS BANTAMWEIGHT BELT', games:[
+    {status:'FINAL', away:{abbr:'EVLOEV'}, home:{abbr:'VOLKANOVSKI'}, note:'Volkanovski KOs Evloev at 4:54 of Round 2 to retain the featherweight title · Etihad Arena, Abu Dhabi · Performance of the Night'},
+    {status:'FINAL', away:{abbr:'DVALISHVILI'}, home:{abbr:'YAN'}, note:'Yan beats Dvalishvili by unanimous decision (5 rounds) for the bantamweight title · Fight of the Night'},
+    {status:'FINAL', away:{abbr:'BUCKLEY'}, home:{abbr:'MALOTT'}, note:'Malott KOs Buckley at 2:32 of Round 2 · Fight Night Edmonton, Oct 17'},
   ]},
-  boxing:{context:'DUBOIS STOPS WARDLEY · REMATCH FINAL', games:[
-    {status:'FINAL', away:{abbr:'WARDLEY'}, home:{abbr:'DUBOIS'}, note:'Dubois stops Wardley in Round 2 of their rematch'},
+  boxing:{context:'O\'SHAQUIE FOSTER UNIFIES WBC/WBO/IBF SUPER FEATHERWEIGHT TITLES, DROPS NAVARRETE TWICE', games:[
+    {status:'FINAL', away:{abbr:'NAVARRETE'}, home:{abbr:'FOSTER'}, note:'Foster wins by unanimous decision (118-108, 118-108, 115-111), drops Navarrete twice in Round 12 · Frost Bank Center, San Antonio'},
+    {status:'FINAL', away:{abbr:'WARDLEY'}, home:{abbr:'DUBOIS'}, note:'Dubois stops Wardley in Round 2 of their rematch, Oct 17'},
   ]},
   nfl:{context:'WEEK 8 SUNDAY: SEAHAWKS HAND CHIEFS THEIR FIRST LOSS OF THE SEASON, 20-3 · GIANTS WIN OT THRILLER AT HOUSTON 27-21 · BUCCANEERS ROUT PANTHERS 43-13, BENGALS ROUT RAVENS 35-13 · BEARS BEAT PATRIOTS 30-24 IN TNF · MONDAY: COWBOYS AT EAGLES', games:[
     {status:'FINAL', away:{abbr:'KC',record:'3'}, home:{abbr:'SEA',record:'20'}, note:'Week 8 · Seahawks hand Kansas City its first loss of the season; Sam Darnold throws for 257 yds and a TD, Jaxon Smith-Njigba catches 9 for 150 yds and a score'},
@@ -1572,46 +1576,46 @@ function renderNFLStandings(){
 }
 const BASKETBALL_STANDINGS = [
   {name:'Atlantic', teams:[
-    {abbr:'PHI', name:'Philadelphia 76ers', w:1, l:0, pct:'1.000'},
-    {abbr:'BOS', name:'Boston Celtics', w:0, l:1, pct:'.000'},
-    {abbr:'NYK', name:'New York Knicks', w:0, l:1, pct:'.000'},
-    {abbr:'BKN', name:'Brooklyn Nets', w:0, l:0, pct:'.000'},
-    {abbr:'TOR', name:'Toronto Raptors', w:0, l:0, pct:'.000'},
+    {abbr:'PHI', name:'Philadelphia 76ers', w:3, l:1, pct:'.750'},
+    {abbr:'TOR', name:'Toronto Raptors', w:2, l:1, pct:'.667'},
+    {abbr:'BOS', name:'Boston Celtics', w:1, l:1, pct:'.500'},
+    {abbr:'NYK', name:'New York Knicks', w:0, l:3, pct:'.000'},
+    {abbr:'BKN', name:'Brooklyn Nets', w:0, l:3, pct:'.000'},
   ]},
   {name:'Central', teams:[
-    {abbr:'DET', name:'Detroit Pistons', w:1, l:0, pct:'1.000'},
-    {abbr:'CHI', name:'Chicago Bulls', w:0, l:0, pct:'.000'},
-    {abbr:'CLE', name:'Cleveland Cavaliers', w:0, l:0, pct:'.000'},
-    {abbr:'IND', name:'Indiana Pacers', w:0, l:0, pct:'.000'},
-    {abbr:'MIL', name:'Milwaukee Bucks', w:0, l:0, pct:'.000'},
+    {abbr:'DET', name:'Detroit Pistons', w:3, l:0, pct:'1.000'},
+    {abbr:'IND', name:'Indiana Pacers', w:2, l:1, pct:'.667'},
+    {abbr:'CLE', name:'Cleveland Cavaliers', w:1, l:1, pct:'.500'},
+    {abbr:'CHI', name:'Chicago Bulls', w:1, l:2, pct:'.333'},
+    {abbr:'MIL', name:'Milwaukee Bucks', w:0, l:3, pct:'.000'},
   ]},
   {name:'Southeast', teams:[
-    {abbr:'ATL', name:'Atlanta Hawks', w:0, l:0, pct:'.000'},
-    {abbr:'CHA', name:'Charlotte Hornets', w:0, l:0, pct:'.000'},
-    {abbr:'MIA', name:'Miami Heat', w:0, l:0, pct:'.000'},
-    {abbr:'ORL', name:'Orlando Magic', w:0, l:0, pct:'.000'},
-    {abbr:'WAS', name:'Washington Wizards', w:0, l:0, pct:'.000'},
+    {abbr:'ATL', name:'Atlanta Hawks', w:2, l:1, pct:'.667'},
+    {abbr:'CHA', name:'Charlotte Hornets', w:2, l:1, pct:'.667'},
+    {abbr:'WAS', name:'Washington Wizards', w:2, l:1, pct:'.667'},
+    {abbr:'ORL', name:'Orlando Magic', w:1, l:2, pct:'.333'},
+    {abbr:'MIA', name:'Miami Heat', w:0, l:3, pct:'.000'},
   ]},
   {name:'Northwest', teams:[
-    {abbr:'OKC', name:'Oklahoma City Thunder', w:1, l:0, pct:'1.000'},
-    {abbr:'DEN', name:'Denver Nuggets', w:0, l:0, pct:'.000'},
-    {abbr:'MIN', name:'Minnesota Timberwolves', w:0, l:0, pct:'.000'},
-    {abbr:'POR', name:'Portland Trail Blazers', w:0, l:0, pct:'.000'},
-    {abbr:'UTA', name:'Utah Jazz', w:0, l:0, pct:'.000'},
+    {abbr:'MIN', name:'Minnesota Timberwolves', w:3, l:0, pct:'1.000'},
+    {abbr:'OKC', name:'Oklahoma City Thunder', w:3, l:0, pct:'1.000'},
+    {abbr:'POR', name:'Portland Trail Blazers', w:2, l:0, pct:'1.000'},
+    {abbr:'DEN', name:'Denver Nuggets', w:1, l:1, pct:'.500'},
+    {abbr:'UTA', name:'Utah Jazz', w:1, l:2, pct:'.333'},
   ]},
   {name:'Pacific', teams:[
-    {abbr:'GSW', name:'Golden State Warriors', w:0, l:0, pct:'.000'},
-    {abbr:'LAC', name:'LA Clippers', w:0, l:0, pct:'.000'},
-    {abbr:'LAL', name:'Los Angeles Lakers', w:0, l:0, pct:'.000'},
-    {abbr:'PHX', name:'Phoenix Suns', w:0, l:0, pct:'.000'},
-    {abbr:'SAC', name:'Sacramento Kings', w:0, l:0, pct:'.000'},
+    {abbr:'LAL', name:'Los Angeles Lakers', w:3, l:0, pct:'1.000'},
+    {abbr:'PHX', name:'Phoenix Suns', w:1, l:1, pct:'.500'},
+    {abbr:'LAC', name:'LA Clippers', w:1, l:2, pct:'.333'},
+    {abbr:'GSW', name:'Golden State Warriors', w:0, l:3, pct:'.000'},
+    {abbr:'SAC', name:'Sacramento Kings', w:0, l:3, pct:'.000'},
   ]},
   {name:'Southwest', teams:[
-    {abbr:'DAL', name:'Dallas Mavericks', w:0, l:0, pct:'.000'},
-    {abbr:'HOU', name:'Houston Rockets', w:0, l:0, pct:'.000'},
-    {abbr:'MEM', name:'Memphis Grizzlies', w:0, l:0, pct:'.000'},
-    {abbr:'NOP', name:'New Orleans Pelicans', w:0, l:0, pct:'.000'},
-    {abbr:'SAS', name:'San Antonio Spurs', w:0, l:1, pct:'.000'},
+    {abbr:'HOU', name:'Houston Rockets', w:3, l:0, pct:'1.000'},
+    {abbr:'MEM', name:'Memphis Grizzlies', w:3, l:0, pct:'1.000'},
+    {abbr:'DAL', name:'Dallas Mavericks', w:1, l:2, pct:'.333'},
+    {abbr:'SAS', name:'San Antonio Spurs', w:1, l:2, pct:'.333'},
+    {abbr:'NOP', name:'New Orleans Pelicans', w:0, l:3, pct:'.000'},
   ]},
 ];
 function renderNBAStandings(){
@@ -2100,14 +2104,14 @@ const ARTICLES = [
     related:'world-series-game2-recap',
   },
   {id:'mlb-injury-watch', sport:'mlb', cat:'debate',
-    headline:'First Take: Can the Dodgers Really Three-Peat?',
-    dek:'Los Angeles trails the NLCS 0-1 after a tight Game 1 loss to Milwaukee. Two Clutch Room writers argue whether history still says the Dodgers finish the job.',
-    byline:'Clutch Room Debate Desk', mins:5, time:'Oct 12, 2026',
+    headline:'First Take: Can the Rays Come Back From 0-2?',
+    dek:'Milwaukee has outscored Tampa Bay 8-6 through two World Series games without ever trailing for long. Two Clutch Room writers argue whether the Rays can still turn this around at home.',
+    byline:'Clutch Room Debate Desk', mins:5, time:'Oct 25, 2026',
     takes:[
-      {side:'for', who:'Take: One loss changes nothing', text:'This group has already done the hardest part twice — winning in October, in pressure games, against good teams. A tight Game 1 road loss with a strong Skubal start is not a crisis. Until someone actually beats them four times, the default has to be the two-time champs get through again.'},
-      {side:'against', who:'Take: Repeats are rare for a reason', text:'Back-to-back titles are hard enough; nobody has three-peated in a generation. Milwaukee has home field this time, has already pushed this exact roster to a Game 1 win, and the Dodgers\' bats went quiet when it mattered. Bet against history at your own risk.'},
+      {side:'for', who:'Take: It\'s a three-game set now, and they\'re home', text:'Teams have come back from 0-2 in the World Series before, and this one isn\'t even lopsided — both games were one-run, late-inning affairs that Tampa Bay led or tied deep into. Get back to Tropicana Field in front of their own crowd, hand the ball to a healthy rotation for three straight games, and a series that\'s really been a coin flip so far starts to look very winnable.'},
+      {side:'against', who:'Take: Milwaukee\'s bullpen is the real problem', text:'Both Tampa Bay losses came after the Rays had the lead — 4-0 in Game 2 alone. A team that keeps surrendering games it\'s ahead in has a bullpen or finishing problem that home field doesn\'t fix. Milwaukee has already shown it can claw back from anything; the Rays need to prove they can hold a lead before anyone should back a comeback.'},
     ],
-    body:['Two titles in, the conversation around the Dodgers has shifted from "can they win" to "how many times." Fair question with the Brewers standing in the way again, in the same round — and this time, Milwaukee has already drawn first blood.'],
+    body:['Down 2-0 after blowing an early lead in Game 2, Tampa Bay heads home needing to win at least two of the next three just to force a Game 6 — and three straight to avoid stepping onto their own field, elimination number painted on the wall, for the first time all series.'],
   },
 
   {id:'china-open-recap', sport:'tennis', cat:'recap',
@@ -3028,7 +3032,10 @@ const ICON_SEARCH = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"
 const TRACK_LAYOUTS = {
   singapore: `<path d="M383,15 L354,29 L343,7 L330,49 L363,126 L235,113 L140,69 L115,113 L64,84 L7,186 L29,210 L18,230 L73,268 L115,142 L168,157 L308,166 L315,186 L381,188 L390,173 Z" stroke="url(#trackGrad)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
   austin: `<path d="M206,261 L190,210 L196,188 L220,178 L208,159 L231,140 L260,115 L291,104 L312,92 L345,77 L372,10 L113,134 L113,148 L96,162 L166,177 L187,165 L146,191 L125,213 L62,216 L16,261 Z" stroke="url(#trackGrad)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
-  mexico: `<path d="M40 60 L300 60 Q330 60 330 90 L330 130 Q330 150 310 150 L270 150 Q250 150 250 130 L250 110 Q250 95 235 95 L200 95 Q185 95 185 110 L185 150 Q185 170 165 170 L70 170 Q40 170 40 140 Z" stroke="url(#trackGrad)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
+  /* traced from the official Autódromo Hermanos Rodríguez Grand Prix Circuit (2015–present)
+     layout, Wikimedia Commons (File:Autódromo Hermanos Rodríguez 2015.svg), scaled/centered
+     into this component's 400x280 box */
+  mexico: `<g transform="translate(-13.86,-17.87) scale(0.8)"><path d="M 183.64 61.90 C 289.76 78.26 346.39 83.90 381.75 89.64 C 405.33 93.47 447.05 100.24 457.82 102.99 C 467.64 105.50 467.84 105.24 466.89 112.57 C 466.08 118.72 465.59 121.60 464.53 127.79 C 464.05 130.63 466.30 131.85 470.13 135.52 C 472.43 137.73 474.55 139.25 474.16 141.25 C 470.27 161.23 468.21 164.27 463.25 174.94 C 460.92 179.97 458.73 182.51 456.04 187.35 C 439.70 213.60 423.35 239.85 407.00 266.10 C 398.34 280.01 388.34 293.12 378.89 306.42 C 377.94 307.75 376.69 309.52 376.86 311.15 C 377.15 313.83 386.36 318.16 389.07 319.91 C 391.80 321.68 392.57 322.81 392.20 325.66 C 391.94 327.72 389.57 329.03 387.97 330.15 C 380.15 335.62 372.64 340.77 364.83 346.23 C 363.77 346.97 362.43 347.44 361.23 346.96 C 359.92 346.44 358.16 345.14 356.63 344.24 C 355.07 343.31 355.31 341.56 355.57 339.76 C 359.51 312.78 363.50 284.92 367.43 257.95 C 367.91 254.70 366.49 251.22 363.70 249.48 C 358.46 246.24 354.87 243.69 349.76 240.57 C 344.57 237.40 340.65 229.82 338.81 224.02 C 336.55 216.87 330.70 209.97 323.55 208.59 C 312.72 206.49 301.89 204.86 291.07 202.94 C 284.72 201.81 278.42 199.05 275.60 191.32 C 273.94 186.80 272.70 182.69 271.13 178.13 C 269.98 174.81 266.17 172.75 263.08 171.07 C 252.91 165.52 242.32 159.90 232.14 154.35 C 224.98 150.45 216.63 148.29 208.57 146.99 C 180.73 142.47 153.11 137.99 125.27 133.48 C 120.41 132.69 115.47 130.95 114.66 123.47 C 113.37 111.48 112.51 99.54 111.36 87.58 C 111.15 85.33 111.05 82.50 108.31 81.42 C 106.54 80.72 104.44 81.03 103.30 82.55 C 101.57 84.83 99.73 86.86 98.01 89.15 C 96.47 91.19 92.49 91.14 90.16 90.08 C 87.54 88.88 85.16 86.62 82.31 86.23 C 76.49 85.45 71.05 85.18 65.23 84.39 C 62.68 84.05 60.10 80.93 60.37 78.37 C 60.64 75.76 60.90 75.02 61.58 73.19 C 64.37 65.71 69.91 57.39 76.86 53.30 C 83.24 49.53 90.69 47.24 99.22 48.81 Z" stroke="url(#trackGrad)" stroke-width="12.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>`,
 };
 const CURRENT_TRACK = 'mexico';
 function f1TrackSvg(){

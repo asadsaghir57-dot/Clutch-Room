@@ -424,11 +424,15 @@ a.board-row{display:grid;}
 .mlb-hero-content .eyebrow{font-family:'JetBrains Mono',monospace;color:#D1A851;font-size:12px;font-weight:700;letter-spacing:0.12em;}
 .mlb-hero-content h1{font-family:'Anton',sans-serif;font-size:clamp(32px,5vw,54px);color:#EDEDE8;margin:14px 0;text-transform:uppercase;line-height:1.05;}
 .mlb-hero-content p{font-size:16px;color:#AEB3A8;line-height:1.6;max-width:56ch;}
-.mlb-pins{position:relative;max-width:1180px;margin:0 auto;height:120px;}
-.mlb-pin{position:absolute;display:flex;flex-direction:column;align-items:center;gap:0;}
-.mlb-pin .circle{width:92px;height:92px;border-radius:50%;border:1px solid #D1A851;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:#D1A851;letter-spacing:0.03em;padding:6px;background:#0A0C0B;}
-.mlb-pin .leader{width:1px;height:38px;background:#2A2D26;margin-top:0;}
-.mlb-stat-line{font-family:'Anton',sans-serif;font-size:clamp(20px,3vw,34px);text-transform:uppercase;color:#EDEDE8;text-align:center;max-width:820px;margin:10px auto 50px;line-height:1.3;}
+.mlb-path{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;max-width:1180px;margin:0 auto;padding:0 20px 10px;}
+.mlb-path-stage{display:flex;flex-direction:column;align-items:center;gap:5px;padding:14px 22px;border:1px solid #2A2D26;border-radius:8px;background:#0A0C0B;min-width:112px;}
+.mlb-path-stage.is-current{border-color:#D1A851;background:rgba(209,168,81,0.08);}
+.mlb-path-stage .rnd{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.08em;color:#8A8F86;text-transform:uppercase;}
+.mlb-path-stage.is-current .rnd{color:#D1A851;}
+.mlb-path-stage .res{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:#EDEDE8;letter-spacing:0.02em;}
+.mlb-path-arrow{color:#4A4E47;font-size:15px;flex:none;}
+@media (max-width:640px){.mlb-path{gap:8px;}.mlb-path-stage{padding:10px 14px;min-width:0;flex:1;}.mlb-path-arrow{display:none;}}
+.mlb-stat-line{font-family:'Anton',sans-serif;font-size:clamp(20px,3vw,34px);text-transform:uppercase;color:#EDEDE8;text-align:center;max-width:820px;margin:30px auto 50px;line-height:1.3;}
 .mlb-stat-line b{color:#D1A851;}
 .mlb-section{max-width:1180px;margin:0 auto;padding:10px 0 50px;position:relative;z-index:1;}
 .mlb-section .rail-head h3,.mlb-section .board-head h2{color:#EDEDE8;}
@@ -3902,7 +3906,7 @@ function renderHome(){
 function renderHub(sport){
   const s = sportById(sport);
   const arts = ARTICLES.filter(a=>a.sport===sport);
-  const byCat = c => arts.filter(a=>a.cat===c);
+  const byCat = c => [...arts.filter(a=>a.cat===c)].reverse();
   const rails = ['recap','preview','injury','debate'].map(c=>({c, items:byCat(c)})).filter(r=>r.items.length);
   return `
   ${masthead({sport:sport})}
@@ -3936,13 +3940,18 @@ function renderHub(sport){
   ${footer()}`;
 }
 
+const MLB_POSTSEASON_PATH = [
+  {rnd:'NLDS', res:'WON 4-1'},
+  {rnd:'NLCS', res:'WON 4-0'},
+  {rnd:'World Series', res:'LEAD 2-0', current:true},
+];
 function renderMLBHub(){
   const s = sportById('mlb');
   const arts = ARTICLES.filter(a=>a.sport==='mlb');
-  const byCat = c => arts.filter(a=>a.cat===c);
+  const byCat = c => [...arts.filter(a=>a.cat===c)].reverse();
   const rails = ['recap','preview','injury','debate'].map(c=>({c, items:byCat(c)})).filter(r=>r.items.length);
-  const hero = articleById('brewers-sweep-nlcs-recap');
-  const statLine = hero.pull.replace(/sweep/i, '<b>sweep</b>');
+  const hero = byCat('recap')[0] || arts[arts.length-1];
+  const statLine = hero.pull || hero.dek;
   return `
   ${masthead({sport:'mlb'})}
   <div class="mlb-progress" id="mlb-progress"></div>
@@ -3956,10 +3965,8 @@ function renderMLBHub(){
         <p>${hero.dek}</p>
       </div>
     </div>
-    <div class="mlb-pins">
-      <div class="mlb-pin" style="left:8%;top:0;"><div class="circle">NLDS<br>WON 4-1</div><div class="leader"></div></div>
-      <div class="mlb-pin" style="left:46%;top:14px;"><div class="circle">NLCS<br>WON 4-0</div><div class="leader"></div></div>
-      <div class="mlb-pin" style="right:6%;left:auto;top:0;"><div class="circle">ALCS GM6<br>TB LEADS 3-2</div><div class="leader"></div></div>
+    <div class="mlb-path">
+      ${MLB_POSTSEASON_PATH.map((p,i)=>`${i>0?'<span class="mlb-path-arrow">→</span>':''}<div class="mlb-path-stage${p.current?' is-current':''}"><span class="rnd">${p.rnd}</span><span class="res">${p.res}</span></div>`).join('')}
     </div>
     <p class="mlb-stat-line">${statLine}</p>
     <div class="mlb-section">
@@ -4057,7 +4064,7 @@ function renderLightHub(sport){
     ${sport==='cricket' ? renderCricketWidgets() : ''}
     <div id="rail-preview">
       <div class="rail-head"><h3 class="disp">Latest</h3></div>
-      <div class="rail">${arts.map(articleCard).join('')}</div>
+      <div class="rail">${[...arts].reverse().map(articleCard).join('')}</div>
     </div>
     <div class="ph-skel" style="margin-top:30px;">
       <div class="disp" style="font-size:20px;">FULL DESK LAUNCHING NEXT</div>
@@ -4079,7 +4086,7 @@ function renderNFLHub(){
       <div class="sport-sub mono">${s.sub}</div>
       <div class="hub-status">${heatMeter(s.heat)}<span class="mono" style="font-size:11px;color:var(--ink-muted);">${s.status}</span></div>
     </div>
-    ${['recap','preview','injury','debate'].map(c=>({c, items:ARTICLES.filter(a=>a.sport==='nfl' && a.cat===c)})).filter(r=>r.items.length).map(r=>`
+    ${['recap','preview','injury','debate'].map(c=>({c, items:[...ARTICLES.filter(a=>a.sport==='nfl' && a.cat===c)].reverse()})).filter(r=>r.items.length).map(r=>`
       <div id="rail-${r.c}">
         <div class="rail-head">${catPill(r.c)}<h3 class="disp">${CAT[r.c].label}</h3></div>
         <div class="rail">${r.items.map(articleCard).join('')}</div>

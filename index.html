@@ -522,6 +522,7 @@ a.board-row{display:grid;}
 .fx-group{margin-bottom:22px;}
 .fx-group h4{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent,var(--ink-muted));margin:0 0 6px;}
 .fx-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:13px;}
+.fx-note{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-muted);padding-top:8px;}
 .fx-row:last-child{border-bottom:none;}
 .fx-teams{display:flex;align-items:center;gap:9px;font-weight:600;min-width:0;}
 .fx-teams .vs{color:var(--ink-muted);font-weight:400;font-size:11px;flex:none;}
@@ -890,6 +891,23 @@ const FIXTURES = {
       {away:'KC', home:'SEA', status:'FINAL', score:'3-20'},
       {away:'DAL', home:'PHI', status:'FINAL', score:'38-21'},
     ]},
+    {week:'Week 9 · Nov 5-9', games:[
+      {away:'JAX', home:'BAL', status:'THU · 8:15 PM ET'},
+      {away:'CIN', home:'ATL', status:'SUN · 9:30 AM ET (Madrid)'},
+      {away:'DEN', home:'CAR', status:'SUN · 1:00 PM ET'},
+      {away:'DAL', home:'IND', status:'SUN · 1:00 PM ET'},
+      {away:'NYJ', home:'KC', status:'SUN · 1:00 PM ET'},
+      {away:'DET', home:'MIA', status:'SUN · 1:00 PM ET'},
+      {away:'CLE', home:'NO', status:'SUN · 1:00 PM ET'},
+      {away:'NYG', home:'PHI', status:'SUN · 1:00 PM ET'},
+      {away:'LAR', home:'WSH', status:'SUN · 1:00 PM ET'},
+      {away:'HOU', home:'LAC', status:'SUN · 4:05 PM ET'},
+      {away:'LV', home:'SF', status:'SUN · 4:25 PM ET'},
+      {away:'GB', home:'NE', status:'SUN · 4:25 PM ET'},
+      {away:'ARI', home:'SEA', status:'SUN · 4:25 PM ET'},
+      {away:'TB', home:'CHI', status:'SUN · 8:20 PM ET'},
+      {away:'BUF', home:'MIN', status:'MON · 8:15 PM ET'},
+    ], note:'Bye: Steelers, Titans'},
   ]},
   ucl: {label:'UEFA Champions League — League Phase', weeks:[
     {week:'Matchday 2 · Tue Oct 13', games:[
@@ -1443,6 +1461,7 @@ function renderFixtures(key){
           ${g.score ? `<span class="fx-score tnum">${g.score}</span>` : '<span></span>'}
           <span class="fx-status">${g.status}</span>
         </div>`).join('')}
+        ${w.note ? `<div class="fx-note">${w.note}</div>` : ''}
       </div>
     `).join('')}
   </div>`;
@@ -1536,51 +1555,51 @@ const FOOTBALL_STANDINGS = {
 const NFL_STANDINGS = [
   {name:'AFC East', teams:[
     {abbr:'BUF', name:'Buffalo Bills', w:5, l:1, t:0, pct:'.833'},
-    {abbr:'NE', name:'New England Patriots', w:4, l:2, t:0, pct:'.667'},
-    {abbr:'NYJ', name:'New York Jets', w:2, l:4, t:0, pct:'.333'},
-    {abbr:'MIA', name:'Miami Dolphins', w:0, l:5, t:0, pct:'.000'},
+    {abbr:'NE', name:'New England Patriots', w:4, l:3, t:0, pct:'.571'},
+    {abbr:'NYJ', name:'New York Jets', w:2, l:5, t:0, pct:'.286'},
+    {abbr:'MIA', name:'Miami Dolphins', w:1, l:5, t:0, pct:'.167'},
   ]},
   {name:'AFC North', teams:[
-    {abbr:'CLE', name:'Cleveland Browns', w:4, l:2, t:0, pct:'.667'},
-    {abbr:'PIT', name:'Pittsburgh Steelers', w:4, l:2, t:0, pct:'.667'},
-    {abbr:'BAL', name:'Baltimore Ravens', w:4, l:2, t:0, pct:'.667'},
-    {abbr:'CIN', name:'Cincinnati Bengals', w:3, l:2, t:0, pct:'.600'},
+    {abbr:'CLE', name:'Cleveland Browns', w:5, l:2, t:0, pct:'.714'},
+    {abbr:'PIT', name:'Pittsburgh Steelers', w:5, l:2, t:0, pct:'.714'},
+    {abbr:'CIN', name:'Cincinnati Bengals', w:4, l:2, t:0, pct:'.667'},
+    {abbr:'BAL', name:'Baltimore Ravens', w:4, l:3, t:0, pct:'.571'},
   ]},
   {name:'AFC South', teams:[
     {abbr:'JAX', name:'Jacksonville Jaguars', w:4, l:2, t:0, pct:'.667'},
-    {abbr:'IND', name:'Indianapolis Colts', w:2, l:4, t:0, pct:'.333'},
-    {abbr:'HOU', name:'Houston Texans', w:2, l:4, t:0, pct:'.333'},
-    {abbr:'TEN', name:'Tennessee Titans', w:1, l:5, t:0, pct:'.167'},
+    {abbr:'IND', name:'Indianapolis Colts', w:2, l:5, t:0, pct:'.286'},
+    {abbr:'HOU', name:'Houston Texans', w:2, l:5, t:0, pct:'.286'},
+    {abbr:'TEN', name:'Tennessee Titans', w:1, l:6, t:0, pct:'.143'},
   ]},
   {name:'AFC West', teams:[
-    {abbr:'KC', name:'Kansas City Chiefs', w:5, l:0, t:0, pct:'1.000'},
-    {abbr:'DEN', name:'Denver Broncos', w:4, l:2, t:0, pct:'.667'},
-    {abbr:'LV', name:'Las Vegas Raiders', w:3, l:3, t:0, pct:'.500'},
+    {abbr:'KC', name:'Kansas City Chiefs', w:5, l:1, t:0, pct:'.833'},
+    {abbr:'DEN', name:'Denver Broncos', w:5, l:2, t:0, pct:'.714'},
+    {abbr:'LV', name:'Las Vegas Raiders', w:3, l:4, t:0, pct:'.429'},
     {abbr:'LAC', name:'Los Angeles Chargers', w:0, l:6, t:0, pct:'.000'},
   ]},
   {name:'NFC East', teams:[
-    {abbr:'NYG', name:'New York Giants', w:3, l:2, t:1, pct:'.583'},
-    {abbr:'PHI', name:'Philadelphia Eagles', w:2, l:4, t:0, pct:'.333'},
-    {abbr:'DAL', name:'Dallas Cowboys', w:2, l:4, t:0, pct:'.333'},
+    {abbr:'NYG', name:'New York Giants', w:4, l:2, t:1, pct:'.643'},
+    {abbr:'DAL', name:'Dallas Cowboys', w:3, l:4, t:0, pct:'.429'},
+    {abbr:'PHI', name:'Philadelphia Eagles', w:2, l:5, t:0, pct:'.286'},
     {abbr:'WSH', name:'Washington Commanders', w:1, l:4, t:1, pct:'.250'},
   ]},
   {name:'NFC North', teams:[
-    {abbr:'MIN', name:'Minnesota Vikings', w:5, l:0, t:0, pct:'1.000'},
-    {abbr:'GB', name:'Green Bay Packers', w:4, l:2, t:0, pct:'.667'},
-    {abbr:'CHI', name:'Chicago Bears', w:4, l:2, t:0, pct:'.667'},
-    {abbr:'DET', name:'Detroit Lions', w:3, l:2, t:0, pct:'.600'},
+    {abbr:'MIN', name:'Minnesota Vikings', w:6, l:0, t:0, pct:'1.000'},
+    {abbr:'CHI', name:'Chicago Bears', w:5, l:2, t:0, pct:'.714'},
+    {abbr:'DET', name:'Detroit Lions', w:4, l:2, t:0, pct:'.667'},
+    {abbr:'GB', name:'Green Bay Packers', w:4, l:3, t:0, pct:'.571'},
   ]},
   {name:'NFC South', teams:[
-    {abbr:'CAR', name:'Carolina Panthers', w:3, l:2, t:0, pct:'.600'},
-    {abbr:'ATL', name:'Atlanta Falcons', w:2, l:4, t:0, pct:'.333'},
-    {abbr:'NO', name:'New Orleans Saints', w:2, l:4, t:0, pct:'.333'},
-    {abbr:'TB', name:'Tampa Bay Buccaneers', w:1, l:5, t:0, pct:'.167'},
+    {abbr:'CAR', name:'Carolina Panthers', w:3, l:3, t:0, pct:'.500'},
+    {abbr:'ATL', name:'Atlanta Falcons', w:3, l:4, t:0, pct:'.429'},
+    {abbr:'TB', name:'Tampa Bay Buccaneers', w:2, l:5, t:0, pct:'.286'},
+    {abbr:'NO', name:'New Orleans Saints', w:2, l:5, t:0, pct:'.286'},
   ]},
   {name:'NFC West', teams:[
-    {abbr:'SF', name:'San Francisco 49ers', w:6, l:0, t:0, pct:'1.000'},
-    {abbr:'SEA', name:'Seattle Seahawks', w:3, l:3, t:0, pct:'.500'},
-    {abbr:'ARI', name:'Arizona Cardinals', w:2, l:4, t:0, pct:'.333'},
-    {abbr:'LAR', name:'Los Angeles Rams', w:2, l:4, t:0, pct:'.333'},
+    {abbr:'SF', name:'San Francisco 49ers', w:6, l:1, t:0, pct:'.857'},
+    {abbr:'SEA', name:'Seattle Seahawks', w:4, l:3, t:0, pct:'.571'},
+    {abbr:'LAR', name:'Los Angeles Rams', w:3, l:4, t:0, pct:'.429'},
+    {abbr:'ARI', name:'Arizona Cardinals', w:2, l:5, t:0, pct:'.286'},
   ]},
 ];
 const STD_DARK_BACKDROP = new Set(['NZ']);
@@ -1623,7 +1642,7 @@ function renderStandingsTable(key){
 }
 function renderNFLStandings(){
   return `<div class="div-section">
-    <div class="div-section-head"><h3 class="disp">Standings</h3><span class="sub">AFC &amp; NFC · Week 7</span></div>
+    <div class="div-section-head"><h3 class="disp">Standings</h3><span class="sub">AFC &amp; NFC · Week 8</span></div>
     <div class="div-grid">
       ${NFL_STANDINGS.map(div=>`<div class="div-col">
         <h4>${div.name}</h4>
@@ -3181,6 +3200,20 @@ const ARTICLES = [
       'The timing adds another layer — the goal and the win arrive the day before the 2026 Ballon d\'Or ceremony, where Mbappé is among the contenders. But for Real Madrid, the more immediate number is the three points now separating them from a Barcelona side that had been unbeaten domestically all season, with Atlético Madrid also still in touch at the top — a three-way La Liga fight that a trophyless Mbappé, for all his individual numbers, still needs his team to win.',
     ],
     related:'clasico-recap',
+  },
+  {id:'harry-kane-ballon-dor', sport:'football', league:'Champions League', cat:'analysis',
+    headline:'Harry Kane Wins the 2026 Ballon d\'Or, First Englishman to Win It in 25 Years',
+    dek:'The Bayern Munich striker beat out Lamine Yamal, Kylian Mbappé and Lionel Messi for the award, capping a 73-goal season that delivered the Bundesliga, the DFB-Pokal and a World Cup semifinal with England — England\'s first winner since Michael Owen in 2001.',
+    byline:'Clutch Room Football Desk', mins:7, time:'Oct 26, 2026',
+    qa:[['Who did Harry Kane beat to win the award?','Lamine Yamal, Kylian Mbappé and Lionel Messi were the other leading contenders — Yamal had won the World Cup and La Liga, Mbappé was the World Cup\'s all-time top scorer, and Messi was still producing at the highest level, but Kane\'s season carried the field.'],
+        ['When was the last time an Englishman won the Ballon d\'Or?','Michael Owen in 2001 — 25 years before Kane\'s win.']],
+    body:[
+      'Harry Kane was crowned the 2026 Men\'s Ballon d\'Or winner at a ceremony in London, becoming the first Englishman to win football\'s most prestigious individual award since Michael Owen in 2001. The 33-year-old beat out a field that included Lamine Yamal, Kylian Mbappé and Lionel Messi.',
+      'The numbers behind the win are extraordinary even by Kane\'s standards: 73 goals in 65 appearances across the 2025-26 season for Bayern Munich and England, a haul that helped fire Bayern to the Bundesliga title, the DFB-Pokal and the German Supercup. He becomes the fourth Bayern Munich player to win the Ballon d\'Or, following Gerd Müller, Franz Beckenbauer and Karl-Heinz Rummenigge.',
+      'His international season added to the case: Kane scored six goals in seven games at the FIFA World Cup before England were eliminated by Argentina in the semifinals, a run that kept him and England in the conversation deep into the tournament even without the trophy itself. Bayern manager Vincent Kompany\'s staff reportedly "ran out of superlatives" describing his season, according to assistant Thomas Tuchel.',
+      'Kane had been open about the nerves beforehand. "I think my wife would prefer to know and my family, it\'s very stressful for everyone," he said ahead of the ceremony. "From my point of view, of course, I\'d love to know to just kind of see and not have to wait throughout the whole night. But it is their decision, I can\'t control that." In the end, the decision went his way — a quarter-century after Owen\'s win, and in a year that also saw Alexia Putellas take the Women\'s Ballon d\'Or.',
+    ],
+    pull:'73 goals, a Bundesliga title and a World Cup semifinal — enough to make Harry Kane the first Englishman to win the Ballon d\'Or since Michael Owen in 2001.',
   },
 
   {id:'f1-austin-race-recap', sport:'f1', cat:'recap',

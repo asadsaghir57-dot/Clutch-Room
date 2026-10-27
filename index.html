@@ -739,7 +739,7 @@ const SPORTS = [
   {id:'f1', name:'F1', accent:'away', heat:58, status:'ANTONELLI WINS U.S. GRAND PRIX FROM POLE, BEATS LECLERC BY 13S · TITLE NOT YET CLINCHED (RUSSELL 8TH, HAMILTON 4TH) · LEADS RUSSELL BY 123 PTS HEADING TO MEXICO CITY, NOV 1', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:52, status:'UFC 333: VOLKANOVSKI KOs EVLOEV IN RD 2 TO RETAIN FEATHERWEIGHT TITLE · YAN EDGES DVALISHVILI BY UNANIMOUS DECISION FOR BANTAMWEIGHT BELT, FIGHT OF THE NIGHT', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:46, status:'O\'SHAQUIE FOSTER DROPS NAVARRETE TWICE, UNIFIES WBC/WBO/IBF SUPER FEATHERWEIGHT TITLES BY UNANIMOUS DECISION IN SAN ANTONIO', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:90, status:'PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI AT LAHORE: SHADAB KHAN\'S UNBEATEN 113 RESCUES CHASE FROM 154/9, PAKISTAN LEAD TRI-SERIES 3-0 · SRI LANKA STUNNED ENGLAND, CHASING DOWN A RECORD 430, TO WIN THE 3RD ODI AT RAWALPINDI · NEXT: PAK vs SL, 5TH ODI, LAHORE, OCT 27', deep:'light', sub:'International & league cricket', live:false},
+  {id:'cricket', name:'Cricket', accent:'away', heat:90, status:'LIVE: 5TH ODI, PAK vs SL AT LAHORE — SRI LANKA WON THE TOSS, PAKISTAN BATTING, PAK 21/1 (5.1 OV) · PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI AT LAHORE: SHADAB KHAN\'S UNBEATEN 113 RESCUES CHASE FROM 154/9, PAKISTAN LEAD TRI-SERIES 3-0 · SRI LANKA STUNNED ENGLAND, CHASING DOWN A RECORD 430, TO WIN THE 3RD ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -838,7 +838,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI AT LAHORE: ENG 241 ALL OUT (46.4 OV), DUCKETT 105 · PAK 243/9 (47.1 OV), SHADAB KHAN UNBEATEN 113 (96) AFTER 154/9, 89-RUN LAST-WICKET STAND WITH HARIS RAUF · PLAYER OF THE MATCH SHADAB KHAN · SRI LANKA WIN THRILLER, CHASE DOWN 430 TO BEAT ENGLAND BY 2 WKTS WITH 1 BALL LEFT · BROOK\'S RECORD 202 IN VAIN · NEXT: PAK vs SL, 5TH ODI, LAHORE, OCT 27', games:[
+  cricket:{context:'LIVE: 5TH ODI, PAK vs SL AT LAHORE — SRI LANKA WON TOSS, PAKISTAN BATTING, PAK 21/1 (5.1 OV) · PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI AT LAHORE: SHADAB KHAN UNBEATEN 113 (96) AFTER 154/9 · SRI LANKA WIN THRILLER, CHASE DOWN 430 TO BEAT ENGLAND BY 2 WKTS WITH 1 BALL LEFT · BROOK\'S RECORD 202 IN VAIN', games:[
+    {status:'LIVE', away:{abbr:'SL'}, home:{abbr:'PAK',record:'21/1 (5.1)'}, note:'ODI Tri-Series 5th Match · Gaddafi Stadium, Lahore · Sri Lanka won the toss and chose to bowl; Pakistan 21/1 after 5.1 overs, Fakhar Zaman (5) caught by Pavan Rathnayake off Dilshan Madushanka in the 4th over, Babar Azam and Maaz Sadaqat rebuilding at the crease'},
     {status:'FINAL', away:{abbr:'ENG',record:'241 (46.4)'}, home:{abbr:'PAK',record:'243/9 (47.1)'}, note:'ODI Tri-Series 4th Match · Pakistan win by 1 wicket with 17 balls remaining, Shadab Khan Player of the Match (113* off 96); chasing 242, Pakistan were 154/9 after 33.5 overs before Shadab and Haris Rauf (7*) added an unbroken 89 for the last wicket; Ben Duckett made 105 and Shaheen Shah Afridi took 4/46 for Pakistan'},
     {status:'FINAL', away:{abbr:'ENG',record:'429/4 (50)'}, home:{abbr:'SL',record:'430/8 (49.5)'}, note:'ODI Tri-Series 3rd Match · Sri Lanka win by 2 wickets with 1 ball remaining, chasing down 430 after Harry Brook\'s record 202 off 116 balls — the fastest double century in ODI history; Pavan Rathnayake (130) and Dasun Shanaka (97) led the chase before Janith Liyanage (61*) finished it off'},
     {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Pakistan win by 87 runs, Arafat Minhas Player of the Match (59 & 6/40)'},
@@ -933,12 +934,12 @@ const FIXTURES = {
 const CRICKET_LIVE_MATCH = {
   series:'Pakistan ODI Tri-Series 2026', matchLabel:'5th Match (D/N)',
   venue:'Gaddafi Stadium, Lahore', date:'Oct 27, 2026',
-  status:'upcoming',
+  status:'live',
   teams:{
     away:{abbr:'SL', name:'Sri Lanka', score:null, wkts:null, overs:null},
-    home:{abbr:'PAK', name:'Pakistan', score:null, wkts:null, overs:null},
+    home:{abbr:'PAK', name:'Pakistan', score:21, wkts:1, overs:5.1},
   },
-  toss:'', resultLine:'Pakistan are 3-0 after beating England by one wicket in Lahore on Sunday, with Shadab Khan\'s unbeaten 113 rescuing the chase from 154/9; Sri Lanka, beaten by Pakistan in the opener and winners over England in the 430-run chase, are next at Gaddafi Stadium on Tuesday (1:00 PM local).',
+  toss:'Sri Lanka won the toss, elected to bowl', resultLine:'Sri Lanka won the toss and chose to bowl first; Pakistan are 21/1 after 5.1 overs with Babar Azam and Maaz Sadaqat rebuilding after Fakhar Zaman (5) was caught by Pavan Rathnayake off Dilshan Madushanka in the 4th over.',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{

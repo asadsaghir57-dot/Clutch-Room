@@ -253,7 +253,8 @@ h1,h2,h3,.disp{
 .b-icon{width:30px;height:30px;color:var(--accent,var(--ink));flex:none;}
 .b-tile .b-name{font-size:30px;color:var(--accent,var(--ink));}
 .b-tile.b-2 .b-name{font-size:40px;}
-.b-tile .b-status{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--ink-muted);letter-spacing:0.02em;}
+.b-tile .b-headline{font-family:'Anton',sans-serif;font-size:17px;font-weight:400;color:var(--ink);letter-spacing:0.01em;line-height:1.22;text-transform:none;}
+.b-tile .b-status{font-family:'Source Serif 4',Georgia,serif;font-size:12.5px;font-weight:400;color:var(--ink-muted);letter-spacing:0;line-height:1.5;text-transform:none;}
 .b-tile .b-peek{font-size:13.5px;color:var(--ink-muted);margin-top:auto;padding-top:10px;border-top:1px solid color-mix(in srgb, var(--accent,var(--court)) 25%, var(--line));}
 .b-tile .b-go{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.04em;color:var(--accent,var(--court));position:absolute;top:22px;right:22px;}
 .b-tile.b-live{border-color:var(--live);}
@@ -273,7 +274,7 @@ h1,h2,h3,.disp{
 .b-quiet-row .nm-row{display:flex;align-items:center;justify-content:space-between;gap:8px;}
 .b-quiet-row .nm{font-size:14px;font-weight:700;}
 .b-quiet-row .go{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-muted);flex:none;}
-.b-quiet-row .st{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-muted);line-height:1.5;letter-spacing:0.01em;}
+.b-quiet-row .st{font-family:'Anton',sans-serif;font-size:12.5px;font-weight:400;color:var(--ink-muted);line-height:1.4;letter-spacing:0.01em;text-transform:none;}
 @media (max-width:760px){.bento{grid-template-columns:repeat(2,1fr);}.b-tile.b-2{grid-column:span 2;}}
 .bento-secondary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;}
 .bento-secondary .b-tile{min-height:0;padding:18px;}
@@ -313,6 +314,8 @@ a.board-row{display:grid;}
 .wire::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px;}
 .wire-card{flex:0 0 280px;scroll-snap-align:start;border:1px solid var(--line);border-radius:6px;background:var(--paper-raised);padding:14px 16px;display:flex;flex-direction:column;gap:8px;}
 .wire-top{display:flex;align-items:center;justify-content:space-between;}
+.wire-team-wrap{display:flex;align-items:center;gap:7px;min-width:0;}
+.wire-logo{width:18px;height:18px;object-fit:contain;flex:none;}
 .wire-team{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink);}
 .wire-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-muted);}
 .wire-note{font-size:14px;line-height:1.45;}
@@ -728,18 +731,38 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
 
 <script>
 const SPORTS = [
-  {id:'football', name:'Football', accent:'court', heat:90, status:'EL CLÁSICO FINAL: REAL MADRID BEAT BARCELONA 2-1 AT CAMP NOU — MBAPPÉ SCORES TWICE (41\', 87\'), HIS 100TH FOR THE CLUB, BARÇA\'S FIRST DOMESTIC LOSS OF THE SEASON, GAP NOW 3 POINTS · UCL MD3 FINAL: BAYERN MUNICH 2-2 ARSENAL (RICE EQUALIZES LATE), REAL MADRID ROUT RB LEIPZIG 4-1', deep:'full',
+  {id:'football', name:'Football', accent:'court', heat:90,
+    headline:'Real Madrid Beat Barcelona 2-1 at Camp Nou',
+    status:'EL CLÁSICO FINAL: REAL MADRID BEAT BARCELONA 2-1 AT CAMP NOU — MBAPPÉ SCORES TWICE (41\', 87\'), HIS 100TH FOR THE CLUB, BARÇA\'S FIRST DOMESTIC LOSS OF THE SEASON, GAP NOW 3 POINTS · UCL MD3 FINAL: BAYERN MUNICH 2-2 ARSENAL (RICE EQUALIZES LATE), REAL MADRID ROUT RB LEIPZIG 4-1', deep:'full',
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga'], live:false},
-  {id:'mlb', name:'MLB', accent:'court', heat:98, status:'WORLD SERIES GM3: BREWERS ROUT RAYS 10-1, GASSER FACES THE MINIMUM THROUGH 6 IP, CHOURIO GOES 4-FOR-4 ON AN 8-RUN 5TH · MIL UP 3-0, GM4 TONIGHT AT TROPICANA FIELD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:false},
-  {id:'nfl', name:'NFL', accent:'away', heat:80, status:'WEEK 8 MNF: COWBOYS ROUT EAGLES 38-21, DAK PRESCOTT THROWS 3 TDS (2 TO CEEDEE LAMB), JAVONTE WILLIAMS RUNS FOR 155 YDS, EAGLES DROP 5TH STRAIGHT WITHOUT JALEN HURTS · WEEK 8 SUNDAY: SEAHAWKS HAND CHIEFS THEIR FIRST LOSS OF THE SEASON 20-3 · GIANTS WIN OT THRILLER AT HOUSTON 27-21 · BUCCANEERS ROUT PANTHERS 43-13 · BENGALS ROUT RAVENS 35-13 · BEARS BEAT PATRIOTS 30-24 IN TNF', deep:'none', sub:'National Football League', live:false},
-  {id:'tennis', name:'Tennis', accent:'court', heat:50, status:'MUSETTI WINS LYON FOR FIRST TITLE SINCE 2022 (BT. FRITZ) · RYBAKINA DEFENDS NINGBO TITLE OVER FERNANDEZ · SINIAKOVA WINS OSAKA · GRIEKSPOOR RALLIES PAST STRUFF TO WIN BRUSSELS', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
-  {id:'padel', name:'Padel', accent:'away', heat:36, status:'TAPIA/COELLO WIN MILANO P1, BACK-TO-BACK TITLES · KUWAIT MAJOR UNDERWAY THROUGH OCT 31: SINTES/ZAMORA UPSET NO. 8 SEEDS GONZÁLEZ/CAMPAGNOLO TO REACH ROUND OF 16', deep:'light', sub:'Premier Padel tour'},
-  {id:'basketball', name:'Basketball', accent:'away', heat:62, status:'MONDAY: CAVALIERS STUN TIMBERWOLVES 127-125 IN OT (ANTHONY EDWARDS 47 PTS), ENDING MINNESOTA\'S UNBEATEN START AT 3-1 · THUNDER ROUT SUNS 125-114 TO IMPROVE TO 4-0, BOOKER HELD TO A CAREER-LOW 3 PTS · WARRIORS END 0-3 START, ROUT NUGGETS 134-114 AT BALL ARENA', deep:'light', sub:'NBA', live:false},
-  {id:'f1', name:'F1', accent:'away', heat:58, status:'ANTONELLI WINS U.S. GRAND PRIX FROM POLE, BEATS LECLERC BY 13S · TITLE NOT YET CLINCHED (RUSSELL 8TH, HAMILTON 4TH) · LEADS RUSSELL BY 123 PTS HEADING TO MEXICO CITY, NOV 1', deep:'none', sub:'Formula 1'},
-  {id:'ufc', name:'UFC', accent:'away', heat:52, status:'UFC 333: VOLKANOVSKI KOs EVLOEV IN RD 2 TO RETAIN FEATHERWEIGHT TITLE · YAN EDGES DVALISHVILI BY UNANIMOUS DECISION FOR BANTAMWEIGHT BELT, FIGHT OF THE NIGHT', deep:'light', sub:'Mixed martial arts'},
-  {id:'boxing', name:'Boxing', accent:'away', heat:46, status:'O\'SHAQUIE FOSTER DROPS NAVARRETE TWICE, UNIFIES WBC/WBO/IBF SUPER FEATHERWEIGHT TITLES BY UNANIMOUS DECISION IN SAN ANTONIO', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:90, status:'SRI LANKA BEAT PAKISTAN BY 8 WICKETS IN 5TH ODI AT LAHORE: MADUSHANKA\'S CAREER-BEST 5/34 BOWLS OUT PAKISTAN FOR 110, SL CHASE 111 IN 18.1 OVERS — BOTH SIDES THROUGH TO THE OCT 31 FINAL AT GADDAFI STADIUM, ENGLAND MATHEMATICALLY ELIMINATED · PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI AT LAHORE: SHADAB KHAN\'S UNBEATEN 113 RESCUES CHASE FROM 154/9 · SRI LANKA STUNNED ENGLAND, CHASING DOWN A RECORD 430, TO WIN THE 3RD ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:false},
+  {id:'mlb', name:'MLB', accent:'court', heat:98,
+    headline:'Brewers Rout Rays 10-1 in Game 3, Lead Series 3-0',
+    status:'WORLD SERIES GM3: BREWERS ROUT RAYS 10-1, GASSER FACES THE MINIMUM THROUGH 6 IP, CHOURIO GOES 4-FOR-4 ON AN 8-RUN 5TH · MIL UP 3-0, GM4 TONIGHT AT TROPICANA FIELD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:false},
+  {id:'nfl', name:'NFL', accent:'away', heat:80,
+    headline:'Cowboys Rout Eagles 38-21 on Monday Night',
+    status:'WEEK 8 MNF: COWBOYS ROUT EAGLES 38-21, DAK PRESCOTT THROWS 3 TDS (2 TO CEEDEE LAMB), JAVONTE WILLIAMS RUNS FOR 155 YDS, EAGLES DROP 5TH STRAIGHT WITHOUT JALEN HURTS · WEEK 8 SUNDAY: SEAHAWKS HAND CHIEFS THEIR FIRST LOSS OF THE SEASON 20-3 · GIANTS WIN OT THRILLER AT HOUSTON 27-21 · BUCCANEERS ROUT PANTHERS 43-13 · BENGALS ROUT RAVENS 35-13 · BEARS BEAT PATRIOTS 30-24 IN TNF', deep:'none', sub:'National Football League', live:false},
+  {id:'tennis', name:'Tennis', accent:'court', heat:50,
+    headline:'Musetti Wins Lyon for First Title Since 2022',
+    status:'MUSETTI WINS LYON FOR FIRST TITLE SINCE 2022 (BT. FRITZ) · RYBAKINA DEFENDS NINGBO TITLE OVER FERNANDEZ · SINIAKOVA WINS OSAKA · GRIEKSPOOR RALLIES PAST STRUFF TO WIN BRUSSELS', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
+  {id:'padel', name:'Padel', accent:'away', heat:36,
+    headline:'Tapia/Coello Win Milano P1, Back-to-Back Titles',
+    status:'TAPIA/COELLO WIN MILANO P1, BACK-TO-BACK TITLES · KUWAIT MAJOR UNDERWAY THROUGH OCT 31: SINTES/ZAMORA UPSET NO. 8 SEEDS GONZÁLEZ/CAMPAGNOLO TO REACH ROUND OF 16', deep:'light', sub:'Premier Padel tour'},
+  {id:'basketball', name:'Basketball', accent:'away', heat:62,
+    headline:'Cavaliers Stun Timberwolves 127-125 in OT',
+    status:'MONDAY: CAVALIERS STUN TIMBERWOLVES 127-125 IN OT (ANTHONY EDWARDS 47 PTS), ENDING MINNESOTA\'S UNBEATEN START AT 3-1 · THUNDER ROUT SUNS 125-114 TO IMPROVE TO 4-0, BOOKER HELD TO A CAREER-LOW 3 PTS · WARRIORS END 0-3 START, ROUT NUGGETS 134-114 AT BALL ARENA', deep:'light', sub:'NBA', live:false},
+  {id:'f1', name:'F1', accent:'away', heat:58,
+    headline:'Antonelli Can Clinch the Title in Mexico City',
+    status:'MEXICO CITY GP PREVIEW: ANTONELLI CLINCHES THE TITLE WITH A 9TH-PLACE FINISH OR BETTER, NO HELP NEEDED FROM RUSSELL THIS TIME · LEADS RUSSELL BY 123 PTS HEADING INTO NOV 1 RACE AT AUTÓDROMO HERMANOS RODRÍGUEZ', deep:'none', sub:'Formula 1'},
+  {id:'ufc', name:'UFC', accent:'away', heat:52,
+    headline:'Volkanovski KOs Evloev to Retain Featherweight Title',
+    status:'UFC 333: VOLKANOVSKI KOs EVLOEV IN RD 2 TO RETAIN FEATHERWEIGHT TITLE · YAN EDGES DVALISHVILI BY UNANIMOUS DECISION FOR BANTAMWEIGHT BELT, FIGHT OF THE NIGHT', deep:'light', sub:'Mixed martial arts'},
+  {id:'boxing', name:'Boxing', accent:'away', heat:46,
+    headline:'O\'Shaquie Foster Unifies Super Featherweight Titles',
+    status:'O\'SHAQUIE FOSTER DROPS NAVARRETE TWICE, UNIFIES WBC/WBO/IBF SUPER FEATHERWEIGHT TITLES BY UNANIMOUS DECISION IN SAN ANTONIO', deep:'light', sub:'Professional boxing'},
+  {id:'cricket', name:'Cricket', accent:'away', heat:90,
+    headline:'Sri Lanka Beat Pakistan by 8 Wickets in 5th ODI',
+    status:'SRI LANKA BEAT PAKISTAN BY 8 WICKETS IN 5TH ODI AT LAHORE: MADUSHANKA\'S CAREER-BEST 5/34 BOWLS OUT PAKISTAN FOR 110, SL CHASE 111 IN 18.1 OVERS — BOTH SIDES THROUGH TO THE OCT 31 FINAL AT GADDAFI STADIUM, ENGLAND MATHEMATICALLY ELIMINATED · PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI AT LAHORE: SHADAB KHAN\'S UNBEATEN 113 RESCUES CHASE FROM 154/9 · SRI LANKA STUNNED ENGLAND, CHASING DOWN A RECORD 430, TO WIN THE 3RD ODI AT RAWALPINDI', deep:'light', sub:'International & league cricket', live:false},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -1905,12 +1928,10 @@ function showCricInnings(matchId, idx){
   });
 }
 function renderCricketWidgets(){
-  const liveAbbrs = [CRICKET_LIVE_MATCH.teams.away.abbr, CRICKET_LIVE_MATCH.teams.home.abbr].sort().join(',');
-  const matchingId = Object.keys(CRICKET_SCORECARDS).find(id=>{
-    const abbrs = CRICKET_SCORECARDS[id].innings.map(inn=>inn.abbr).sort().join(',');
-    return abbrs === liveAbbrs;
-  });
-  const reportMatchId = matchingId || Object.keys(CRICKET_SCORECARDS).slice(-1)[0];
+  // Always surface the most recently completed match's scorecard (last entry added to
+  // CRICKET_SCORECARDS) rather than one matched to the upcoming live match's teams — a team
+  // match can pick an older result and bury the latest one, which is the whole point of this widget.
+  const reportMatchId = Object.keys(CRICKET_SCORECARDS).slice(-1)[0];
   return `
     ${renderCricketMatchCard(CRICKET_LIVE_MATCH, !!reportMatchId)}
     ${reportMatchId ? `
@@ -2160,15 +2181,15 @@ const ARTICLES = [
     related:'world-series-game2-recap',
   },
   {id:'world-series-game3-recap', sport:'mlb', cat:'recap',
-    headline:'Brewers Rout Rays 10-0 in Game 3, Take Commanding 3-0 World Series Lead',
-    dek:'Robert Gasser allowed just one hit over five innings and an eight-run fifth inning — capped by Jackson Chourio going 4-for-4 — buried Tampa Bay at Tropicana Field.',
+    headline:'Brewers Rout Rays 10-1 in Game 3, Take Commanding 3-0 World Series Lead',
+    dek:'Robert Gasser allowed just one hit over six scoreless innings and an eight-run fifth inning — capped by Jackson Chourio going 4-for-4 — buried Tampa Bay at Tropicana Field.',
     byline:'Clutch Room MLB Desk', mins:6, time:'Oct 26, 2026',
-    qa:[['What was the final score?','Brewers 10, Rays 0, at Tropicana Field in Game 3 — Milwaukee leads the World Series 3-0.'],
+    qa:[['What was the final score?','Brewers 10, Rays 1, at Tropicana Field in Game 3 — Milwaukee leads the World Series 3-0.'],
         ['What happened in the fifth inning?','Milwaukee was already up 2-0 when it sent Freddy Peralta out for the fifth; he was charged with 5 earned runs on 7 hits over 4.2 innings without getting an out in the frame, reliever Cam Booser allowed 4 more runs before Cole Sulser finally recorded the third out of an 8-run inning.']],
     body:[
-      'Milwaukee didn\'t just beat the Rays in Game 3, it buried them. An 8-run fifth inning turned a tight 2-0 game into a laugher, and the Brewers cruised to a 10-0 shutout at Tropicana Field that puts them one win from their first World Series title since 1982.',
-      'Robert Gasser was the story before the fifth inning ever happened, allowing just one hit across five innings of work against a Rays lineup that had given Milwaukee all it could handle in the first two games. Tampa Bay starter Freddy Peralta, the ALCS MVP, couldn\'t get through the fifth: he was charged with five earned runs on seven hits over 4.2 innings, and reliever Cam Booser made things worse by allowing four more runs before Cole Sulser finally got the third out of an inning that saw eight runs cross the plate.',
-      'Jackson Chourio led the onslaught, going 4-for-4, and the Brewers got contributions up and down the order — every player in Milwaukee\'s lineup except Jake Bauers recorded at least one hit and one RBI. It\'s the kind of complete offensive performance that has defined this World Series run: Milwaukee has now outscored Tampa Bay 18-6 across three games.',
+      'Milwaukee didn\'t just beat the Rays in Game 3, it buried them. An 8-run fifth inning turned a tight 2-0 game into a laugher, and the Brewers cruised to a 10-1 win at Tropicana Field that puts them one win from their first World Series title since 1982.',
+      'Robert Gasser was the story before the fifth inning ever happened, pitching one-hit ball through six scoreless innings against a Rays lineup that had given Milwaukee all it could handle in the first two games. Tampa Bay starter Freddy Peralta, the ALCS MVP, couldn\'t get through the fifth: he was charged with five earned runs on seven hits over 4.2 innings, and reliever Cam Booser made things worse by allowing four more runs before Cole Sulser finally got the third out of an inning that saw eight runs cross the plate.',
+      'Jackson Chourio led the onslaught, going 4-for-4, and the Brewers got contributions up and down the order — every player in Milwaukee\'s lineup except Jake Bauers recorded at least one hit and one RBI. It\'s the kind of complete offensive performance that has defined this World Series run: Milwaukee has now outscored Tampa Bay 18-7 across three games.',
       'The Rays, who trailed 2-0 in this series after dropping two one-run games at American Family Field, now face elimination. Game 4 is back at Tropicana Field today, with Milwaukee needing just one more win to close it out.',
     ],
     pull:'An 8-run fifth inning turned a tight pitchers\' duel into a laugher — Milwaukee is one win from the title.',
@@ -2176,27 +2197,27 @@ const ARTICLES = [
   },
   {id:'world-series-game3-breakdown', sport:'mlb', cat:'analysis',
     headline:'How a Five-Batter Stretch in the Fifth Buried Tampa Bay in Game 3',
-    dek:'Robert Gasser\'s one-hit night gets the attention, but the number that matters most is 18-6 — Milwaukee\'s cumulative scoring margin through three games of a series that now looks nothing like the one-run affairs of Games 1 and 2.',
+    dek:'Robert Gasser\'s one-hit night gets the attention, but the number that matters most is 18-7 — Milwaukee\'s cumulative scoring margin through three games of a series that now looks nothing like the one-run affairs of Games 1 and 2.',
     byline:'Clutch Room MLB Desk', mins:7, time:'Oct 26, 2026',
     qa:[['Why did the Rays pull Freddy Peralta mid-inning?','He had already allowed 5 earned runs on 7 hits without recording an out in the fifth, and Tampa Bay turned to reliever Cam Booser to try to stop the bleeding — Booser allowed four more runs before Cole Sulser finally ended the inning.'],
-        ['How does this series compare to Games 1 and 2?','Both of the first two games were decided by a single run late. Game 3 was the opposite: Milwaukee led 2-0 into the fifth and then blew it open, finishing an 18-6 series scoring margin through three games.']],
+        ['How does this series compare to Games 1 and 2?','Both of the first two games were decided by a single run late. Game 3 was the opposite: Milwaukee led 2-0 into the fifth and then blew it open, finishing an 18-7 series scoring margin through three games.']],
     body:[
-      'Games 1 and 2 of this World Series were tense, one-run, bullpen-decided affairs — the kind of series that looked like it could go either way. Game 3 was nothing like that. Milwaukee led 2-0 going to the fifth inning, a manageable margin for a Rays team that had already shown it could claw back from four runs down. Then the inning that decided the World Series happened: eight runs, one out recorded by Freddy Peralta, four more allowed by reliever Cam Booser, and a laugher that ended 10-0.',
-      'The pitching matchup flipped from what anyone would have expected. Peralta, the ALCS MVP, was charged with five earned runs on seven hits over 4.2 innings — he didn\'t survive the fifth. Robert Gasser, on the other side, was the one who looked like a Cy Young contender: five innings, one hit allowed, no runs. For a Brewers pitching staff that has now thrown three straight strong-to-dominant starts in the World Series, it\'s the clearest sign yet that Milwaukee built this roster for exactly this kind of series.',
+      'Games 1 and 2 of this World Series were tense, one-run, bullpen-decided affairs — the kind of series that looked like it could go either way. Game 3 was nothing like that. Milwaukee led 2-0 going to the fifth inning, a manageable margin for a Rays team that had already shown it could claw back from four runs down. Then the inning that decided the World Series happened: eight runs, one out recorded by Freddy Peralta, four more allowed by reliever Cam Booser, and a laugher that ended 10-1.',
+      'The pitching matchup flipped from what anyone would have expected. Peralta, the ALCS MVP, was charged with five earned runs on seven hits over 4.2 innings — he didn\'t survive the fifth. Robert Gasser, on the other side, was the one who looked like a Cy Young contender: six scoreless innings, one hit allowed. For a Brewers pitching staff that has now thrown three straight strong-to-dominant starts in the World Series, it\'s the clearest sign yet that Milwaukee built this roster for exactly this kind of series.',
       'Jackson Chourio\'s 4-for-4 night was the headline offensive performance, but the real story was depth: every Brewer in the lineup except Jake Bauers recorded a hit and an RBI. That\'s not one player carrying a game, it\'s a lineup that made Tampa Bay pay for every mistake once Peralta\'s outing unraveled.',
-      'Zoom out and the series numbers tell the story cleanly. Milwaukee has outscored Tampa Bay 18-6 through three games — 3-2, 5-4 and now 10-0 — a cumulative margin that looks nothing like the game-by-game scores suggested entering Game 3. The Rays, who have already shown they can win close games, now need something they haven\'t had to find yet in this series: a response to a blowout, on the road, facing elimination in Game 4 at Tropicana Field.',
+      'Zoom out and the series numbers tell the story cleanly. Milwaukee has outscored Tampa Bay 18-7 through three games — 3-2, 5-4 and now 10-1 — a cumulative margin that looks nothing like the game-by-game scores suggested entering Game 3. The Rays, who have already shown they can win close games, now need something they haven\'t had to find yet in this series: a response to a blowout, on the road, facing elimination in Game 4 at Tropicana Field.',
     ],
     related:'world-series-game3-recap',
   },
   {id:'mlb-injury-watch', sport:'mlb', cat:'debate',
-    headline:'First Take: Can the Rays Come Back From 0-2?',
-    dek:'Milwaukee has outscored Tampa Bay 8-6 through two World Series games without ever trailing for long. Two Clutch Room writers argue whether the Rays can still turn this around at home.',
-    byline:'Clutch Room Debate Desk', mins:5, time:'Oct 25, 2026',
+    headline:'First Take: Is This World Series Already Over?',
+    dek:'Milwaukee has outscored Tampa Bay 18-7 and never trailed in the ninth inning of any game. Two Clutch Room writers argue whether the Rays have anything left, facing elimination in Game 4.',
+    byline:'Clutch Room Debate Desk', mins:5, time:'Oct 27, 2026',
     takes:[
-      {side:'for', who:'Take: It\'s a three-game set now, and they\'re home', text:'Teams have come back from 0-2 in the World Series before, and this one isn\'t even lopsided — both games were one-run, late-inning affairs that Tampa Bay led or tied deep into. Get back to Tropicana Field in front of their own crowd, hand the ball to a healthy rotation for three straight games, and a series that\'s really been a coin flip so far starts to look very winnable.'},
-      {side:'against', who:'Take: Milwaukee\'s bullpen is the real problem', text:'Both Tampa Bay losses came after the Rays had the lead — 4-0 in Game 2 alone. A team that keeps surrendering games it\'s ahead in has a bullpen or finishing problem that home field doesn\'t fix. Milwaukee has already shown it can claw back from anything; the Rays need to prove they can hold a lead before anyone should back a comeback.'},
+      {side:'for', who:'Take: No team comes back from 0-3 — history says it\'s done', text:'No team has ever rallied from down 0-3 to win a World Series. Add in that Milwaukee just dropped a 10-1 blowout on a Rays team that had been competitive in Games 1 and 2, and the pattern looks like a club pulling away, not one vulnerable to a letdown. Tampa Bay needs to win four straight against a team playing its best baseball of the postseason — that\'s not a live scenario, it\'s a formality waiting to happen.'},
+      {side:'against', who:'Take: Elimination games have a way of changing a series', text:'Tampa Bay has a healthy rotation left and nothing to lose — teams playing with their season on the line have found another gear before. Milwaukee has to win just once more, which means every mistake now carries more weight for the favorite too. Win Game 4 at home and the series heads back to Milwaukee with the Rays suddenly having tasted a response; that\'s a very different story than the one being written right now.'},
     ],
-    body:['Down 2-0 after blowing an early lead in Game 2, Tampa Bay heads home needing to win at least two of the next three just to force a Game 6 — and three straight to avoid stepping onto their own field, elimination number painted on the wall, for the first time all series.'],
+    body:['Facing elimination for the first time all series, Tampa Bay heads into Game 4 at Tropicana Field needing to win four straight just to become the first team in World Series history to come back from 0-3 — while Milwaukee needs one win, anywhere, to close out its first title since 1982.'],
   },
 
   {id:'china-open-recap', sport:'tennis', cat:'recap',
@@ -3114,18 +3135,35 @@ const ARTICLES = [
     related:'f1-austin-qualifying-recap',
     pull:'Antonelli needed a win and Russell ninth-or-lower to be champion in Austin. He got the win. Russell finished eighth.',
   },
+  {id:'f1-mexico-city-preview', sport:'f1', cat:'preview',
+    headline:'Antonelli Can Clinch the Title in Mexico City With Just a Ninth-Place Finish',
+    dek:'The gap is now big enough that Kimi Antonelli doesn\'t need outside help at the Autódromo Hermanos Rodríguez — any finish from P1 to P9 wraps up the championship outright.',
+    byline:'Clutch Room F1 Desk', mins:4, time:'Oct 27, 2026',
+    qa:[['What does Antonelli need to do to win the title in Mexico City?','Finish ninth or better. With a 123-point lead over George Russell and only a handful of rounds left this season, even a single point locks the championship beyond Russell\'s reach — no help from a rival required this time.'],
+        ['Why is this different from Austin, where he needed Russell to finish ninth or lower?','In Austin the math still depended on what Russell and Hamilton did. With fewer rounds left on the calendar now, Antonelli\'s own result is the only variable that matters — he can clinch with his own car, not by watching the group behind him.'],
+        ['Is anything else still undecided in the standings?','Yes — second place. Russell (242), Hamilton (241), Verstappen (236) and Leclerc (233) are separated by just nine points, with Norris (211) not far outside that group either. While Antonelli\'s title fight could be over by Sunday night, the fight for the runner-up spot looks wide open all the way to the season\'s final rounds.']],
+    body:[
+      'Kimi Antonelli arrives at the Autódromo Hermanos Rodríguez with a buffer that no longer requires him to track what George Russell or Lewis Hamilton are doing on the same page. At 365 points to Russell\'s 242 and Hamilton\'s 241, with only a handful of rounds remaining on the calendar, the math has tipped far enough that any finish from P1 down to P9 on Sunday is enough to make Antonelli champion outright.',
+      'That is a meaningfully simpler equation than the one he faced at Austin, where victory alone wasn\'t enough — he also needed Russell to finish ninth or worse. This time Antonelli controls his own outcome. A podium ends it with races still to spare; so, now, does a quiet point-scoring drive to ninth.',
+      'While the championship itself may be a formality by Sunday night, the battle directly behind Antonelli is anything but settled. Russell holds second with 242 points, but Hamilton is right behind him at 241, Verstappen at 236 and Leclerc at 233 — four drivers separated by just nine points, with Norris\'s 211 keeping him within shouting distance too. A single strong or disastrous weekend in Mexico City could reshuffle that entire group, and there are still enough rounds left for it to change hands more than once.',
+      'Mercedes will still race to win — Antonelli has shown no interest in coasting to a title, including the pole-to-flag run in Austin that set this weekend up. But for the first time all season, the team can walk into a Grand Prix knowing a defensive, play-it-safe result is enough to get the job done, even as four other drivers fight it out just behind him for the spot on the podium he\'ll leave vacant.',
+    ],
+    related:'f1-austin-race-recap',
+    pull:'Antonelli doesn\'t need Russell to slip up anymore — but behind him, four drivers within nine points are still fighting for second.',
+  },
 ];
 
 /* ---------------- insider wire (illustrative — credits real outlets, not fabricated individual quotes) ---------------- */
 const INSIDER = [
-  {outlet:'ESPN', team:'Texans · NFL', note:'Beat reporters say Houston\'s head coach is taking over defensive play-calling duties starting this week.', time:'17h ago'},
-  {outlet:'ESPN', team:'Cowboys · NFL', note:'A fine issued earlier this month was rescinded after the player\'s appeal — league cited an inconsistent standard.', time:'21h ago'},
-  {outlet:'The Athletic', team:'Celtics · NBA', note:'Reporters tracking minutes distribution in preseason expect a bench-heavy opening rotation in week one.', time:'6h ago'},
-  {outlet:'The Athletic', team:'Lakers · NBA', note:'A veteran starter is expected to be a game-time call for the opener pending final fitness testing.', time:'3h ago'},
+  {outlet:'ESPN', team:'Texans · NFL', scope:'nfl', abbr:'HOU', note:'Beat reporters say Houston\'s head coach is taking over defensive play-calling duties starting this week.', time:'17h ago'},
+  {outlet:'ESPN', team:'Cowboys · NFL', scope:'nfl', abbr:'DAL', note:'A fine issued earlier this month was rescinded after the player\'s appeal — league cited an inconsistent standard.', time:'21h ago'},
+  {outlet:'The Athletic', team:'Celtics · NBA', scope:'basketball', abbr:'BOS', note:'Reporters tracking minutes distribution in preseason expect a bench-heavy opening rotation in week one.', time:'6h ago'},
+  {outlet:'The Athletic', team:'Lakers · NBA', scope:'basketball', abbr:'LAL', note:'A veteran starter is expected to be a game-time call for the opener pending final fitness testing.', time:'3h ago'},
 ];
 function insiderCard(n){
+  const logo = teamLogo(n.scope, n.abbr);
   return `<div class="wire-card">
-    <div class="wire-top"><span class="wire-team">${n.team}</span><span class="wire-time">${n.time}</span></div>
+    <div class="wire-top"><span class="wire-team-wrap">${logo ? `<img class="wire-logo" src="${logo}" alt="" loading="lazy">` : ''}<span class="wire-team">${n.team}</span></span><span class="wire-time">${n.time}</span></div>
     <p class="wire-note">${n.note}</p>
     <div class="wire-src">According to <b>${n.outlet}</b> <span class="src-link">Source ↗</span></div>
   </div>`;
@@ -3997,6 +4035,7 @@ function renderHome(){
       ${s.live ? `<span class="b-live-badge"><span class="dot"></span>LIVE</span>` : ''}
       <span class="b-icon">${SPORT_ICONS[s.id]||''}</span>
       <span class="b-name disp">${s.name}</span>
+      ${s.headline ? `<span class="b-headline">${s.headline}</span>` : ''}
       <span class="b-status">${s.status}</span>
       ${peek ? `<span class="b-peek">${peek.headline}</span>` : ''}
     </a>`;
@@ -4019,11 +4058,11 @@ function renderHome(){
     <div class="bento-secondary">
       ${secondary.length ? `<div class="b-tile b-quiet">
         <span class="b-quiet-label">Also in Play</span>
-        ${secondary.map(s=>`<a class="b-quiet-row" href="#/sport/${s.id}"><span class="nm-row"><span class="nm">${s.name}</span><span class="go">→</span></span><span class="st">${s.status}</span></a>`).join('')}
+        ${secondary.map(s=>`<a class="b-quiet-row" href="#/sport/${s.id}"><span class="nm-row"><span class="nm">${s.name}</span><span class="go">→</span></span><span class="st">${s.headline||s.status}</span></a>`).join('')}
       </div>` : ''}
       <div class="b-tile b-quiet">
         <span class="b-quiet-label">Quiet This Week</span>
-        ${quiet.map(s=>`<a class="b-quiet-row" href="#/sport/${s.id}"><span class="nm-row"><span class="nm">${s.name}</span><span class="go">→</span></span><span class="st">${s.status}</span></a>`).join('')}
+        ${quiet.map(s=>`<a class="b-quiet-row" href="#/sport/${s.id}"><span class="nm-row"><span class="nm">${s.name}</span><span class="go">→</span></span><span class="st">${s.headline||s.status}</span></a>`).join('')}
       </div>
       <a class="b-tile b-quote" href="#/article/${debate.id}">
         <span class="b-q-label">Today's Debate</span>

@@ -738,8 +738,8 @@ const SPORTS = [
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga'], live:false},
   {id:'mlb', name:'MLB', accent:'court', heat:98,
-    headline:'Brewers Go for the Sweep in World Series Game 4',
-    status:'BREWERS LEAD THE WORLD SERIES 3-0 AND CAN CLINCH THEIR FIRST TITLE SINCE 1982 TONIGHT IN GAME 4 AT TROPICANA FIELD — NO TEAM HAS EVER COME BACK FROM 0-3 IN THE FALL CLASSIC', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:true},
+    headline:'Rays Lead Brewers 2-1 Early as Milwaukee Goes for the Sweep',
+    status:'BREWERS LEAD THE WORLD SERIES 3-0 AND CAN CLINCH THEIR FIRST TITLE SINCE 1982 TONIGHT AT TROPICANA FIELD — RAYS LEAD GAME 4 2-1 THROUGH 4 INNINGS AS THEY TRY TO AVOID BECOMING THE FIRST TEAM EVER SWEPT FROM A 3-0 WORLD SERIES LEAD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:true},
   {id:'nfl', name:'NFL', accent:'away', heat:80,
     headline:'Cowboys Rout Eagles 38-21 on Monday Night',
     status:'DAK PRESCOTT THROWS 3 TDS AS DALLAS ROUTS PHILADELPHIA 38-21, DROPPING THE EAGLES\' 5TH STRAIGHT WITHOUT JALEN HURTS, OUT FOR THE SEASON WITH BLOOD CLOTS', deep:'none', sub:'National Football League', live:false},
@@ -747,8 +747,8 @@ const SPORTS = [
     headline:'Musetti Wins Lyon for First Title Since 2022',
     status:'LORENZO MUSETTI BEAT TAYLOR FRITZ 6-3, 6-4 IN 80 MINUTES AT THE ATP LYON OPEN FOR HIS FIRST TITLE SINCE 2022 AND THIRD CAREER TROPHY', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:48,
-    headline:'Tapia/Coello, Lebrón/Augsburger in Action as Kuwait Major Hits Round of 32',
-    status:'QUALIFIERS ABUD/BELLUATI, WHO UPSET THEIR WAY INTO THE DRAW, NOW FACE NO. 3 SEEDS LEBRÓN/AUGSBURGER IN THE ROUND OF 32 AS THE KUWAIT MAJOR CONTINUES THROUGH OCT 31', deep:'light', sub:'Premier Padel tour'},
+    headline:'Tapia/Coello, Lebrón/Augsburger Advance to Kuwait Major Round of 16',
+    status:'NO. 1 SEEDS TAPIA/COELLO BEAT ABBATE/DAL BIANCO 6-3, 6-2 AND NO. 3 SEEDS LEBRÓN/AUGSBURGER BEAT QUALIFIERS ABUD/BELLUATI 6-4, 6-3 TO REACH THE ROUND OF 16 AS THE KUWAIT MAJOR CONTINUES THROUGH OCT 31', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:62,
     headline:'Cavaliers Stun Timberwolves 127-125 in OT',
     status:'ANTHONY EDWARDS SCORED 47 BUT CLEVELAND RALLIED FROM 15 DOWN TO WIN IN OT 127-125, ENDING MINNESOTA\'S UNBEATEN START AT 3-1 AS THE THUNDER IMPROVE TO 4-0', deep:'light', sub:'NBA', live:false},
@@ -778,8 +778,8 @@ const CAT = {
 
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
-  mlb:{context:'WORLD SERIES GM4 LIVE: BREWERS GO FOR THE SWEEP AT TROPICANA FIELD, UP 3-0 IN THE SERIES · GM3: BREWERS ROUT RAYS 10-1, GASSER FACES THE MINIMUM THROUGH 6 IP, CHOURIO GOES 4-FOR-4', games:[
-    {status:'LIVE', away:{abbr:'MIL',record:'0'}, home:{abbr:'TB',record:'0'}, note:'World Series Gm4 · Tropicana Field · Brewers go for the sweep, leading the series 3-0 — no team has ever come back from 0-3 in the Fall Classic; game just underway'},
+  mlb:{context:'WORLD SERIES GM4 LIVE: RAYS LEAD BREWERS 2-1 THROUGH 4 AT TROPICANA FIELD AS MILWAUKEE GOES FOR THE SWEEP, UP 3-0 IN THE SERIES · GM3: BREWERS ROUT RAYS 10-1, GASSER FACES THE MINIMUM THROUGH 6 IP, CHOURIO GOES 4-FOR-4', games:[
+    {status:'LIVE', away:{abbr:'MIL',record:'1'}, home:{abbr:'TB',record:'2'}, note:'World Series Gm4 · Tropicana Field · Brewers go for the sweep, leading the series 3-0 — no team has ever come back from 0-3 in the Fall Classic; Rays lead 2-1 through 4 — Chandler Simpson\'s RBI double scored Jonny DeLuca in the 2nd, Cooper Pratt\'s RBI double tied it for Milwaukee in the 4th before Tampa Bay retook the lead the same inning when Junior Caminero scored on a throwing error by third baseman David Hamilton'},
     {status:'FINAL', away:{abbr:'MIL',record:'10'}, home:{abbr:'TB',record:'1'}, note:'World Series Gm3 · Tropicana Field · Brewers roll behind rookie Robert Gasser, who allowed just 1 hit and faced the minimum through 6 IP; an 8-run 5th inning (a World Series record for a two-out rally) broke the game open; Jackson Chourio went 4-for-4; Milwaukee leads the series 3-0 with Game 4 tonight at Tropicana Field — no team has ever come back from 0-3 in the Fall Classic'},
     {status:'FINAL', away:{abbr:'TB',record:'4'}, home:{abbr:'MIL',record:'5'}, note:'World Series Gm2 · American Family Field · Chandler Simpson, Junior Caminero and Liam Hicks\' two-run homer staked the Rays to a 4-0 first-inning lead off Logan Henderson; William Contreras and Garrett Mitchell\'s RBI singles answered for 4-2, David Hamilton reached on a fielding error to score Cooper Pratt and make it 4-3 in the 4th, Sal Frelick\'s solo homer tied it 4-4 in the 6th, and Pratt\'s go-ahead single scored Brice Turang in the 7th; Abner Uribe (W) and Aaron Ashby (3 K, SV) closed it out, Brewers win 5-4 and lead the series 2-0'},
     {status:'FINAL', away:{abbr:'TB',record:'2'}, home:{abbr:'MIL',record:'3'}, note:'World Series Gm1 · American Family Field · Christian Yelich tripled and scored, William Contreras\' RBI single made it 2-0 in the 1st; Jacob Misiorowski worked 5 IP (1 ER, 3 K) and hit 103.5 mph, a World Series velocity record; Jackson Chourio\'s RBI single in the 7th made it 3-1 before Trevor Megill survived a 9th-inning run to close it out, Brewers win 3-2 and lead the series 1-0'},
@@ -821,7 +821,9 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'JODAR'}, home:{abbr:'DAVIDOVICH FOKINA'}, note:'Shanghai Final · Davidovich Fokina wins 1-6, 7-6(5), 6-4 for his first ATP Masters 1000 title'},
   ]},
   padel:{context:'KUWAIT MAJOR UNDERWAY THROUGH OCT 31 · MILANO P1 COMPLETE, TAPIA/COELLO WIN AGAIN', games:[
-    {status:'FINAL', away:{abbr:'GONZÁLEZ/CAMPAGNOLO'}, home:{abbr:'SINTES/ZAMORA'}, note:'Kuwait Major Round of 32 · Sintes/Zamora upset 8th seeds González/Campagnolo 6-4, 3-6, 7-5 to reach Wednesday\'s Round of 16'},
+    {status:'FINAL', away:{abbr:'ABBATE/DAL BIANCO'}, home:{abbr:'TAPIA/COELLO'}, note:'Kuwait Major Round of 32 · No. 1 seeds Tapia/Coello beat Abbate/Dal Bianco 6-3, 6-2 to reach the Round of 16'},
+    {status:'FINAL', away:{abbr:'ABUD/BELLUATI'}, home:{abbr:'LEBRÓN/AUGSBURGER'}, note:'Kuwait Major Round of 32 · No. 3 seeds Lebrón/Augsburger beat qualifiers Abud/Belluati, who upset their way into the draw, 6-4, 6-3 to reach the Round of 16'},
+    {status:'FINAL', away:{abbr:'GONZÁLEZ/CAMPAGNOLO'}, home:{abbr:'SINTES/ZAMORA'}, note:'Kuwait Major Round of 32 · Sintes/Zamora upset 8th seeds González/Campagnolo 6-4, 3-6, 7-5 to reach the Round of 16'},
     {status:'FINAL', away:{abbr:'LEBRÓN/AUGSBURGER'}, home:{abbr:'TAPIA/COELLO'}, note:'Milano P1 Final · Tapia/Coello win 4-6, 6-3, 6-2 for back-to-back P1 titles'},
   ]},
   basketball:{context:'MONDAY: CAVALIERS STUN TIMBERWOLVES 127-125 IN OT, ENDING MINNESOTA\'S UNBEATEN START · THUNDER ROUT SUNS 125-114 TO IMPROVE TO 4-0, BOOKER HELD TO A CAREER-LOW 3 PTS · WARRIORS END 0-3 START, ROUT NUGGETS 134-114 AT BALL ARENA', games:[

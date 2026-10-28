@@ -738,8 +738,8 @@ const SPORTS = [
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga'], live:false},
   {id:'mlb', name:'MLB', accent:'court', heat:98,
-    headline:'Brewers Go for the Sweep in World Series Game 4',
-    status:'BREWERS LEAD THE WORLD SERIES 3-0 AND CAN CLINCH THEIR FIRST TITLE SINCE 1982 TONIGHT IN GAME 4 AT TROPICANA FIELD — NO TEAM HAS EVER COME BACK FROM 0-3 IN THE FALL CLASSIC', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:true},
+    headline:'Brewers, Rays Tied 2-2 Late in World Series Game 4',
+    status:'BREWERS LEAD THE WORLD SERIES 3-0 AND CAN CLINCH THEIR FIRST TITLE SINCE 1982 TONIGHT — GAME 4 AT TROPICANA FIELD IS TIED 2-2 IN THE 7TH AS DAVID HAMILTON\'S HOMER ANSWERED A RAYS LEAD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:true},
   {id:'nfl', name:'NFL', accent:'away', heat:80,
     headline:'Cowboys Rout Eagles 38-21 on Monday Night',
     status:'DAK PRESCOTT THROWS 3 TDS AS DALLAS ROUTS PHILADELPHIA 38-21, DROPPING THE EAGLES\' 5TH STRAIGHT WITHOUT JALEN HURTS, OUT FOR THE SEASON WITH BLOOD CLOTS', deep:'none', sub:'National Football League', live:false},
@@ -778,8 +778,8 @@ const CAT = {
 
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
-  mlb:{context:'WORLD SERIES GM4 LIVE: BREWERS GO FOR THE SWEEP AT TROPICANA FIELD, UP 3-0 IN THE SERIES · GM3: BREWERS ROUT RAYS 10-1, GASSER FACES THE MINIMUM THROUGH 6 IP, CHOURIO GOES 4-FOR-4', games:[
-    {status:'LIVE', away:{abbr:'MIL',record:'0'}, home:{abbr:'TB',record:'0'}, note:'World Series Gm4 · Tropicana Field · Brewers go for the sweep, leading the series 3-0 — no team has ever come back from 0-3 in the Fall Classic; game just underway'},
+  mlb:{context:'WORLD SERIES GM4 LIVE: TIED 2-2 IN THE 7TH AT TROPICANA FIELD, BREWERS GO FOR THE SWEEP UP 3-0 IN THE SERIES · GM3: BREWERS ROUT RAYS 10-1, GASSER FACES THE MINIMUM THROUGH 6 IP, CHOURIO GOES 4-FOR-4', games:[
+    {status:'LIVE', away:{abbr:'MIL',record:'2'}, home:{abbr:'TB',record:'2'}, note:'World Series Gm4 · Tropicana Field · 7th inning, tied 2-2 — Chandler Simpson\'s RBI double put Tampa Bay up 1-0 in the 2nd, Cooper Pratt\'s RBI double tied it in the 4th before a fielding error let Junior Caminero score and put the Rays back ahead, and David Hamilton\'s solo homer in the 5th tied it again; Brewers lead the series 3-0 and go for the sweep — no team has ever come back from 0-3 in the Fall Classic'},
     {status:'FINAL', away:{abbr:'MIL',record:'10'}, home:{abbr:'TB',record:'1'}, note:'World Series Gm3 · Tropicana Field · Brewers roll behind rookie Robert Gasser, who allowed just 1 hit and faced the minimum through 6 IP; an 8-run 5th inning (a World Series record for a two-out rally) broke the game open; Jackson Chourio went 4-for-4; Milwaukee leads the series 3-0 with Game 4 tonight at Tropicana Field — no team has ever come back from 0-3 in the Fall Classic'},
     {status:'FINAL', away:{abbr:'TB',record:'4'}, home:{abbr:'MIL',record:'5'}, note:'World Series Gm2 · American Family Field · Chandler Simpson, Junior Caminero and Liam Hicks\' two-run homer staked the Rays to a 4-0 first-inning lead off Logan Henderson; William Contreras and Garrett Mitchell\'s RBI singles answered for 4-2, David Hamilton reached on a fielding error to score Cooper Pratt and make it 4-3 in the 4th, Sal Frelick\'s solo homer tied it 4-4 in the 6th, and Pratt\'s go-ahead single scored Brice Turang in the 7th; Abner Uribe (W) and Aaron Ashby (3 K, SV) closed it out, Brewers win 5-4 and lead the series 2-0'},
     {status:'FINAL', away:{abbr:'TB',record:'2'}, home:{abbr:'MIL',record:'3'}, note:'World Series Gm1 · American Family Field · Christian Yelich tripled and scored, William Contreras\' RBI single made it 2-0 in the 1st; Jacob Misiorowski worked 5 IP (1 ER, 3 K) and hit 103.5 mph, a World Series velocity record; Jackson Chourio\'s RBI single in the 7th made it 3-1 before Trevor Megill survived a 9th-inning run to close it out, Brewers win 3-2 and lead the series 1-0'},

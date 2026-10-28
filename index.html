@@ -4615,14 +4615,14 @@ function renderAbout(){
     </div>
 
     <div class="about-grid">
-      <div class="about-card"><div class="n">10</div><div class="l">Sports tracked</div></div>
-      <div class="about-card"><div class="n">24/7</div><div class="l">Heat re-ranked continuously</div></div>
-      <div class="about-card"><div class="n">3</div><div class="l">Full desks live today</div></div>
+      <div class="about-card"><div class="n">10</div><div class="l">Sports tracked, every one with a live hub</div></div>
+      <div class="about-card"><div class="n">32</div><div class="l">NFL teams with their own season-stats page</div></div>
+      <div class="about-card"><div class="n">5</div><div class="l">Article types per sport — recap, preview, analysis, injury, debate</div></div>
     </div>
 
     <div class="about-section">
       <h2 class="disp" style="font-size:24px;">What we cover</h2>
-      <p>Football (Premier League, Champions League, La Liga, Serie A, Bundesliga, MLS, Saudi Pro League), MLB, Tennis, NFL, NBA, Padel, Cricket, UFC, Boxing and F1 — recaps the morning after, previews and odds before kickoff, injury watches as news breaks, and debate-style takes on the stories worth arguing about.</p>
+      <p>Football (Premier League, Champions League, La Liga, Serie A, Bundesliga, MLS, Saudi Pro League), MLB, Tennis, NFL, NBA, Padel, Cricket, UFC, Boxing and F1 — recaps the morning after, previews and odds before kickoff, injury watches as news breaks, long-form analysis for the stories big enough to earn it, and debate-style takes on the stories worth arguing about. MLB, F1 and NFL get bespoke hubs built around how each sport is actually followed — a World Series path tracker, a race-weekend countdown and track map, a full standings grid with a dedicated stats page for every team; the rest get a lighter hub tuned to how much is in play for that sport right now.</p>
     </div>
 
     <div class="about-section">
@@ -4632,12 +4632,13 @@ function renderAbout(){
         <div class="about-step"><div class="st">02 · Rank</div><div class="sd"><h3>Heat, not habit</h3><p>Every sport is re-scored by what's actually in play right now, which is what decides its size and position on the homepage.</p></div></div>
         <div class="about-step"><div class="st">03 · Draft</div><div class="sd"><h3>First draft, fast</h3><p>A recap or preview draft is generated within minutes of a result or a lineup change, built around a direct, citable Quick-Answers block for search and AI answer engines.</p></div></div>
         <div class="about-step"><div class="st">04 · Edit</div><div class="sd"><h3>Human review</h3><p>A desk editor checks facts, tightens the voice, and signs off before anything publishes — every article is marked with its provenance.</p></div></div>
+        <div class="about-step"><div class="st">05 · Publish</div><div class="sd"><h3>Live and indexed</h3><p>The piece goes live immediately, marked up with Article/SportsEvent schema so search engines and AI answer engines can cite it directly.</p></div></div>
       </div>
     </div>
 
     <div class="about-section" style="border-bottom:1px solid var(--line);padding-bottom:40px;">
       <h2 class="disp" style="font-size:24px;">A note on this build</h2>
-      <p>This site is a working design preview, not a commercial product. Match facts, schedules and storylines are researched from real public sources (ESPN, official league sites, team sites, etc.) and kept current by a scheduled background job — but the "takes" in debate-style pieces are Clutch Room's own invented editorial voice, not real quotes, and any outlet credited in the Insider Wire (ESPN, The Athletic) is cited as a source type, not implying a live partnership.</p>
+      <p>This site is a working design preview, not a commercial product. Match facts, schedules, standings and player stats are researched from real public sources (ESPN, official league sites, team sites, etc.) — never fabricated — and kept current by scheduled automation that runs a full sweep across every sport once a day, with live, play-by-play score tracking available on demand during big games. The "takes" in debate-style pieces are Clutch Room's own invented editorial voice, not real quotes, and any outlet credited in the Insider Wire (ESPN, The Athletic) is cited as a source type, not implying a live partnership.</p>
     </div>
   </main>
   ${footer()}`;

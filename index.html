@@ -565,6 +565,17 @@ a.board-row{display:grid;}
 .nfl-std-row.nfl-std-head{color:var(--ink-muted);font-size:10px;text-transform:uppercase;letter-spacing:0.04em;}
 .nfl-std-row.nfl-std-head .tnum{text-align:right;}
 .nfl-std-team{display:flex;align-items:center;gap:7px;min-width:0;font-weight:600;}
+.team-stat-row{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:16px 4px;border-bottom:1px solid var(--line);}
+.team-stat-row:last-child{border-bottom:none;}
+.team-stat-row .lbl{display:flex;flex-direction:column;gap:3px;}
+.team-stat-row .lbl .k{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.05em;}
+.team-stat-row .lbl .nm{font-size:15.5px;font-weight:600;}
+.team-stat-row .val{font-family:'Anton',sans-serif;font-size:21px;color:var(--ink);white-space:nowrap;}
+.team-stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:4px;}
+.team-stat-strip > div{background:var(--paper-raised);padding:16px 10px;text-align:center;}
+.team-stat-strip .v{font-family:'Anton',sans-serif;font-size:23px;color:var(--ink);}
+.team-stat-strip .k{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.03em;margin-top:6px;line-height:1.3;}
+@media (max-width:640px){.team-stat-strip{grid-template-columns:repeat(2,1fr);}}
 .nfl-std-row .tnum{text-align:right;}
 @media (max-width:640px){
   .std-col-wdl{display:none;}
@@ -1702,11 +1713,10 @@ function nflTeamLookup(abbr){
   }
   return null;
 }
-function statCard(label, value, sub){
-  return `<div class="about-card">
-    <div class="l">${label}</div>
-    <div style="font-weight:700;font-size:17px;margin-top:8px;line-height:1.25;">${value}</div>
-    ${sub ? `<div class="n" style="font-size:26px;margin-top:6px;">${sub}</div>` : ''}
+function teamStatRow(k, name, val){
+  return `<div class="team-stat-row">
+    <span class="lbl"><span class="k">${k}</span><span class="nm">${name}</span></span>
+    <span class="val tnum">${val}</span>
   </div>`;
 }
 function renderNFLTeamPage(abbr){
@@ -1718,6 +1728,8 @@ function renderNFLTeamPage(abbr){
   const {team, divName} = found;
   const logo = teamLogo('nfl', abbr);
   const record = `${team.w}-${team.l}${team.t ? '-'+team.t : ''}`;
+  const gp = stats.defense.gp;
+  const ptsPerG = (stats.defense.pts/gp).toFixed(1);
   return `
   ${masthead({sport:'nfl'})}
   <main class="wrap" style="--accent:var(--court);">
@@ -1734,20 +1746,20 @@ function renderNFLTeamPage(abbr){
 
     <div class="div-section">
       <div class="div-section-head"><h3 class="disp">Season Leaders</h3><span class="sub">Through Week 8 · 2026</span></div>
-      <div class="about-grid">
-        ${statCard('Passing Leader', stats.passing.name, stats.passing.yards.toLocaleString()+' yds')}
-        ${statCard('Rushing Leader', stats.rushing.name, stats.rushing.yards.toLocaleString()+' yds')}
-        ${statCard('Receiving Leader', stats.receiving.name, stats.receiving.yards.toLocaleString()+' yds')}
+      <div>
+        ${teamStatRow('Passing Leader', stats.passing.name, stats.passing.yards.toLocaleString()+' yds')}
+        ${teamStatRow('Rushing Leader', stats.rushing.name, stats.rushing.yards.toLocaleString()+' yds')}
+        ${teamStatRow('Receiving Leader', stats.receiving.name, stats.receiving.yards.toLocaleString()+' yds')}
       </div>
     </div>
 
     <div class="div-section">
-      <div class="div-section-head"><h3 class="disp">Team Defense</h3><span class="sub">${stats.defense.gp} games played</span></div>
-      <div class="about-grid" style="grid-template-columns:repeat(4,1fr);">
-        ${statCard('Total Yards Allowed', stats.defense.totalYds.toLocaleString(), '')}
-        ${statCard('Passing Yards Allowed', stats.defense.passYds.toLocaleString(), '')}
-        ${statCard('Rushing Yards Allowed', stats.defense.rushYds.toLocaleString(), '')}
-        ${statCard('Points Allowed', stats.defense.pts, '')}
+      <div class="div-section-head"><h3 class="disp">Team Defense</h3><span class="sub">${gp} games played · ${ptsPerG} pts/g allowed</span></div>
+      <div class="team-stat-strip">
+        <div><div class="v">${stats.defense.totalYds.toLocaleString()}</div><div class="k">Total Yds Allowed</div></div>
+        <div><div class="v">${stats.defense.passYds.toLocaleString()}</div><div class="k">Pass Yds Allowed</div></div>
+        <div><div class="v">${stats.defense.rushYds.toLocaleString()}</div><div class="k">Rush Yds Allowed</div></div>
+        <div><div class="v">${stats.defense.pts}</div><div class="k">Points Allowed</div></div>
       </div>
     </div>
     <p class="fixtures-fallback" style="margin-top:8px;">Stats sourced from ESPN's 2026 NFL team and player stat pages.</p>

@@ -749,8 +749,8 @@ const SPORTS = [
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga'], live:false},
   {id:'mlb', name:'MLB', accent:'court', heat:98,
-    headline:'Rays Walk Off Brewers in Game 4, Avoid the Sweep',
-    status:'BEN WILLIAMSON\'S PINCH-HIT WALK-OFF SINGLE CAPS A TWO-RUN 12TH-INNING RALLY AS TAMPA BAY BEATS MILWAUKEE 4-3 TO AVOID THE SWEEP — BREWERS STILL LEAD THE WORLD SERIES 3-1 WITH GAME 5 TONIGHT AT TROPICANA FIELD', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:false},
+    headline:'Brewers Go for the Title in World Series Game 5',
+    status:'BREWERS LEAD THE WORLD SERIES 3-1 AND CAN CLINCH THEIR FIRST TITLE SINCE 1982 TONIGHT IN GAME 5 AT TROPICANA FIELD — A RAYS WIN FORCES A GAME 6 BACK IN MILWAUKEE', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:true},
   {id:'nfl', name:'NFL', accent:'away', heat:80,
     headline:'Cowboys Rout Eagles 38-21 on Monday Night',
     status:'DAK PRESCOTT THROWS 3 TDS AS DALLAS ROUTS PHILADELPHIA 38-21, DROPPING THE EAGLES\' 5TH STRAIGHT WITHOUT JALEN HURTS, OUT FOR THE SEASON WITH BLOOD CLOTS', deep:'none', sub:'National Football League', live:false},
@@ -789,7 +789,8 @@ const CAT = {
 
 /* ---------------- live scoreboard strip data (illustrative) ---------------- */
 const GAMES = {
-  mlb:{context:'WORLD SERIES GM4 FINAL: RAYS BEAT BREWERS 4-3 IN 12 INNINGS AT TROPICANA FIELD TO AVOID THE SWEEP, BREWERS LEAD THE SERIES 3-1 — GAME 5 TONIGHT AT TROPICANA FIELD, 8 PM ET · GM3: BREWERS ROUT RAYS 10-1, GASSER FACES THE MINIMUM THROUGH 6 IP, CHOURIO GOES 4-FOR-4', games:[
+  mlb:{context:'WORLD SERIES GM5 LIVE: BREWERS GO FOR THE TITLE AT TROPICANA FIELD, LEAD THE SERIES 3-1 · GM4: RAYS BEAT BREWERS 4-3 IN 12 INNINGS TO AVOID THE SWEEP', games:[
+    {status:'LIVE', away:{abbr:'MIL',record:'0'}, home:{abbr:'TB',record:'0'}, note:'World Series Gm5 · Tropicana Field · Brewers lead the series 3-1 and can clinch their first title since 1982 tonight — a Rays win forces a Game 6 back in Milwaukee; game just underway'},
     {status:'FINAL', away:{abbr:'MIL',record:'3'}, home:{abbr:'TB',record:'4'}, note:'World Series Gm4 (12 innings) · Tropicana Field · David Hamilton\'s solo homer tied it 2-2 for Tampa Bay in the 5th; rookie Cooper Pratt broke the tie with a solo homer off reliever Seymour in the top of the 12th to put Milwaukee up 3-2, but the Rays answered right back in the bottom half — a throwing error by Joey Ortiz put Junior Caminero aboard, Jonny DeLuca\'s single tied it 3-3, and pinch-hitter Ben Williamson, batting for Victor Mesa Jr., walked it off with a single that hopped past first baseman Jake Bauers, 4-3; Tampa Bay\'s bullpen, a 6.17 ERA through the first three games, threw 8 innings and allowed just 1 run; Brewers still lead the series 3-1 and go for the clincher in Game 5 tonight back at Tropicana Field'},
     {status:'FINAL', away:{abbr:'MIL',record:'10'}, home:{abbr:'TB',record:'1'}, note:'World Series Gm3 · Tropicana Field · Brewers roll behind rookie Robert Gasser, who allowed just 1 hit and faced the minimum through 6 IP; an 8-run 5th inning (a World Series record for a two-out rally) broke the game open; Jackson Chourio went 4-for-4; Milwaukee leads the series 3-0 with Game 4 tonight at Tropicana Field — no team has ever come back from 0-3 in the Fall Classic'},
     {status:'FINAL', away:{abbr:'TB',record:'4'}, home:{abbr:'MIL',record:'5'}, note:'World Series Gm2 · American Family Field · Chandler Simpson, Junior Caminero and Liam Hicks\' two-run homer staked the Rays to a 4-0 first-inning lead off Logan Henderson; William Contreras and Garrett Mitchell\'s RBI singles answered for 4-2, David Hamilton reached on a fielding error to score Cooper Pratt and make it 4-3 in the 4th, Sal Frelick\'s solo homer tied it 4-4 in the 6th, and Pratt\'s go-ahead single scored Brice Turang in the 7th; Abner Uribe (W) and Aaron Ashby (3 K, SV) closed it out, Brewers win 5-4 and lead the series 2-0'},

@@ -763,9 +763,9 @@ const SPORTS = [
   {id:'basketball', name:'Basketball', accent:'away', heat:62,
     headline:'Blazers Stay Unbeaten, Outlast Dončić\'s 41 to Beat Lakers 136-129',
     status:'DAMIAN LILLARD\'S CLUTCH TRIPLE HOLDS OFF A 41-POINT NIGHT FROM LUKA DONČIĆ, KEEPING PORTLAND UNBEATEN AT 3-0', deep:'light', sub:'NBA', live:false},
-  {id:'f1', name:'F1', accent:'away', heat:58,
-    headline:'Antonelli Can Clinch the Title in Mexico City',
-    status:'ANTONELLI CAN CLINCH THE TITLE IN MEXICO CITY WITH A NINTH-PLACE FINISH OR BETTER — HE LEADS RUSSELL BY 123 POINTS HEADING INTO THE NOV 1 RACE', deep:'none', sub:'Formula 1'},
+  {id:'f1', name:'F1', accent:'away', heat:92,
+    headline:'Antonelli Clinches the Title at 20 as Verstappen Wins Red-Flagged Mexico City GP',
+    status:'KIMI ANTONELLI FINISHES THIRD BEHIND WINNER MAX VERSTAPPEN AND RUNNER-UP LEWIS HAMILTON IN A MEXICO CITY GRAND PRIX RED-FLAGGED BY VALTTERI BOTTAS\' VIOLENT CRASH — THE RESULT SEALS ANTONELLI\'S FIRST TITLE, MAKING HIM F1\'S YOUNGEST-EVER WORLD CHAMPION AT 20, WITH FOUR ROUNDS LEFT ON THE CALENDAR', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:52,
     headline:'Volkanovski KOs Evloev to Retain Featherweight Title',
     status:'VOLKANOVSKI KOs EVLOEV IN ROUND 2 TO RETAIN THE FEATHERWEIGHT TITLE, WHILE YAN EDGES DVALISHVILI BY UNANIMOUS DECISION FOR THE BANTAMWEIGHT BELT, FIGHT OF THE NIGHT', deep:'light', sub:'Mixed martial arts'},
@@ -3549,6 +3549,37 @@ const ARTICLES = [
     ],
     related:'f1-mexico-city-preview',
   },
+  {id:'f1-mexico-race-recap', sport:'f1', cat:'recap',
+    headline:'Antonelli Clinches the Title at 20 as Verstappen Wins Red-Flagged Mexico City GP',
+    dek:'Max Verstappen held off Lewis Hamilton to win a Mexico City Grand Prix stopped by Valtteri Bottas\' violent crash, but third place was all Kimi Antonelli needed to become Formula 1\'s youngest-ever world champion, with four rounds still to run.',
+    byline:'Clutch Room F1 Desk', mins:5, time:'Nov 1, 2026',
+    qa:[['What was the result of the Mexico City Grand Prix?','Max Verstappen won, with Lewis Hamilton second and Kimi Antonelli third. The race was red-flagged and restarted after Valtteri Bottas crashed heavily on lap 46 of 71.'],
+        ['How did Kimi Antonelli clinch the title?','He only needed a ninth-place finish or better. His third place in Mexico City was comfortably enough, with four rounds of the season still to run.'],
+        ['What record does Antonelli now hold?','At 20 years old, he is the youngest world champion in Formula 1 history.']],
+    body:[
+      'Max Verstappen won a chaotic, red-flagged Mexico City Grand Prix on Sunday, holding off a late charge from Lewis Hamilton to take the checkered flag — but the result that actually mattered was two places further back. Kimi Antonelli crossed the line third, comfortably inside the top-nine finish he needed, and was crowned Formula 1 world champion for the first time at 20 years old, making him the youngest champion in the sport\'s history, with four rounds of the season still to go.',
+      'The race was brought to a halt on lap 46 of 71 after Valtteri Bottas suffered a violent crash, the left-front suspension on his Cadillac failing under braking and sending him hard into the barriers. Bottas gave a thumbs-up to signal he was conscious before being taken to the medical center as a precaution, with the team saying he was responsive over the radio. With the barriers needing repair, race control red-flagged the session and restarted it as a standing start with 25 laps remaining.',
+      'Verstappen controlled the restart from the front, with Hamilton — who had taken his first pole for Ferrari on Saturday — unable to find a way past before the finish. Antonelli, who started the race fourth after a grid reshuffle from a Verstappen penalty in practice, brought his Mercedes home third, exactly the position that sealed the title regardless of what anyone else around him did.',
+      'Antonelli arrived in Mexico City 123 points clear of his own Mercedes teammate, George Russell, needing only a ninth-place finish or better to be mathematically unreachable. He has won eight races this season — but didn\'t need a ninth to be crowned, closing out the title with a controlled podium rather than a victory. Formula 1 heads to São Paulo for the Brazilian Grand Prix on November 8, with four rounds left on the calendar to settle the rest of the order behind him.',
+    ],
+    related:'f1-antonelli-title-analysis',
+    pull:'Third place was all Kimi Antonelli needed — and all he got, becoming, at 20, Formula 1\'s youngest-ever world champion.',
+  },
+  {id:'f1-antonelli-title-analysis', sport:'f1', cat:'analysis',
+    headline:'Eight Wins, No Need for a Ninth: How Kimi Antonelli Walked Away With the 2026 Title',
+    dek:'Antonelli didn\'t even need to win the race that crowned him. A look at the season that made a 20-year-old Formula 1\'s youngest-ever champion — and what\'s left to decide behind him.',
+    byline:'Clutch Room F1 Desk', mins:6, time:'Nov 1, 2026',
+    qa:[['How dominant was Antonelli\'s title-winning season?','He won 8 of the 18 completed rounds before Mexico City and finished on the podium in 14 of 18 — only a Round 7 DNF, a 15th at Silverstone and a fifth at Baku broke up an otherwise relentless run of top-three finishes.'],
+        ['Did he need to win in Mexico City to clinch it?','No. A 123-point lead over George Russell meant anything from first to ninth sealed it. He finished third.'],
+        ['What\'s still unresolved this season?','Second place in the standings and the constructors\' fight. Verstappen, Hamilton, Russell and Leclerc are now separated by less than 30 points with four rounds — Brazil, Las Vegas, Qatar and Abu Dhabi — left to settle it.']],
+    body:[
+      'Kimi Antonelli\'s championship didn\'t arrive with a victory lap. It arrived with a measured, podium-securing drive to third place in a Grand Prix that had just been stopped for a violent crash — the quietest possible ending to the loudest story of the Formula 1 season. That mismatch between the moment and the result is itself the story: by the time Mexico City came around, Antonelli\'s season had already done the work.',
+      'The numbers back that up. Across the 18 rounds completed before Mexico City, Antonelli won eight times — Shanghai, Suzuka, Miami, Montreal, Monaco, Spa, Monza and Austin — and stood on the podium in 14 of 18, with his only real blemishes a retirement at Barcelona, a distant 15th at Silverstone, and fifth at Baku behind a dominant Russell Grand Slam. The Monza win, a drive from 19th on the grid to first, was the single result that best captured the season: a car and driver combination that could absorb a disaster and still come out ahead.',
+      'That margin for error is exactly why Mexico City didn\'t need to be dramatic for Antonelli himself. He arrived 123 points clear of his own teammate, George Russell, with the title math reduced to a single number: ninth or better, anywhere, and it was over. A third-place finish — his 14th podium of the season — buried the suspense before the red flag had even been cleared.',
+      'What the result didn\'t settle is everything else. Verstappen\'s win in Mexico City, coming after Hamilton\'s Saturday pole and with Leclerc and Russell both searching for answers, has squeezed second place in the standings into a genuine four-way fight — Verstappen, Hamilton, Russell and Leclerc now separated by less than 30 points, with Norris not far outside that group either. None of it changes who the champion is. All of it will decide who finishes closest to him, across the four rounds — Brazil, Las Vegas, Qatar and Abu Dhabi — still left to run.',
+    ],
+    related:'f1-mexico-race-recap',
+  },
 ];
 
 /* ---------------- insider wire (illustrative — credits real outlets, not fabricated individual quotes) ---------------- */
@@ -4054,12 +4085,14 @@ const F1_SEASON_RESULTS = [
       {pos:21, driver:'F. Colapinto', team:'Alpine', gap:'DNF'},
       {pos:22, driver:'O. Bearman', team:'Haas', gap:'DNF'},
     ]},
+  {round:19, gp:'Mexico City', winner:'M. Verstappen', team:'Red Bull', note:'Antonelli\'s P3 clinches the title — F1\'s youngest-ever champion at 20 — after a red flag for Valtteri Bottas\' violent crash',
+    podium:[{driver:'M. Verstappen',team:'Red Bull'},{driver:'L. Hamilton',team:'Ferrari'},{driver:'K. Antonelli',team:'Mercedes'}]},
 ];
 const F1_STANDINGS = [
-  {pos:1, driver:'K. Antonelli', team:'Mercedes', pts:365},
-  {pos:2, driver:'G. Russell', team:'Mercedes', pts:242},
-  {pos:3, driver:'L. Hamilton', team:'Ferrari', pts:241},
-  {pos:4, driver:'M. Verstappen', team:'Red Bull', pts:236},
+  {pos:1, driver:'K. Antonelli', team:'Mercedes', pts:380},
+  {pos:2, driver:'M. Verstappen', team:'Red Bull', pts:261},
+  {pos:3, driver:'L. Hamilton', team:'Ferrari', pts:259},
+  {pos:4, driver:'G. Russell', team:'Mercedes', pts:242},
   {pos:5, driver:'C. Leclerc', team:'Ferrari', pts:233},
   {pos:6, driver:'L. Norris', team:'McLaren', pts:211},
   {pos:7, driver:'O. Piastri', team:'McLaren', pts:144},
@@ -4565,14 +4598,14 @@ function renderF1Hub(){
     <div class="f1-track-wrap">${f1TrackSvg()}</div>
     <div class="f1-next">
       <span class="eyebrow">Next Race</span>
-      <h1>Mexico City Grand Prix</h1>
+      <h1>São Paulo Grand Prix</h1>
       <div class="f1-countdown" id="f1-countdown">
         <div class="unit"><div class="num" id="f1-d">00</div><div class="lbl">Days</div></div>
         <div class="unit"><div class="num" id="f1-h">00</div><div class="lbl">Hours</div></div>
         <div class="unit"><div class="num" id="f1-m">00</div><div class="lbl">Minutes</div></div>
         <div class="unit"><div class="num" id="f1-sec">00</div><div class="lbl">Seconds</div></div>
       </div>
-      <p>F1 heads to the Autódromo Hermanos Rodríguez off the back of Kimi Antonelli's win at the United States Grand Prix — pole to flag, beating Charles Leclerc by 13 seconds — which extends his points lead but doesn't yet clinch the title. Practice and qualifying run Friday and Saturday, with the Grand Prix itself Sunday, November 1 at 2:00 PM local.</p>
+      <p>The championship is already decided — Kimi Antonelli clinched his first title with a third-place finish in a red-flagged Mexico City Grand Prix, becoming F1's youngest-ever champion at 20. F1 moves on to Interlagos for the São Paulo Grand Prix, a traditional (non-sprint) weekend with practice Friday, qualifying Saturday, and the 71-lap race itself Sunday, November 8 at 2:00 PM local.</p>
       <a class="f1-pill-btn" href="#/">← Back to All Sports</a>
     </div>
 
@@ -4581,36 +4614,36 @@ function renderF1Hub(){
       <div class="f1-helmet-section">
         <div class="f1-helmet-grid">
           <div class="f1-helmet-stats">
-            <div><div class="n" style="font-size:24px;">Antonelli</div><div class="l">Pole to flag in Austin, his fourth win of the season, but still short of the title</div></div>
-            <div><div class="n" style="font-size:24px;">Verstappen</div><div class="l">Third in Austin, but already mathematically out of the championship fight</div></div>
+            <div><div class="n" style="font-size:24px;">Antonelli</div><div class="l">Third in Mexico City was all he needed — champion with four rounds still to run</div></div>
+            <div><div class="n" style="font-size:24px;">Verstappen</div><div class="l">Won a red-flagged Mexico City GP after Valtteri Bottas' violent crash, but the title was already beyond his reach</div></div>
           </div>
           <div id="f1-helmet-wrap">${F1_HELMET_SVG}</div>
           <div class="f1-helmet-stats right">
-            <div><div class="n" style="font-size:24px;">365</div><div class="l">Antonelli's points total after Austin — 123 clear of Russell with the season's final rounds to run</div></div>
-            <div><div class="n" style="font-size:24px;">Russell</div><div class="l">His own teammate is the closest thing left to a title rival, 8th in Austin and 123 points back</div></div>
+            <div><div class="n" style="font-size:24px;">20</div><div class="l">Antonelli's age when he clinched the title — the youngest world champion in F1 history</div></div>
+            <div><div class="n" style="font-size:24px;">8</div><div class="l">Race wins for Antonelli this season — he didn't need a ninth; a podium in Mexico City was enough</div></div>
           </div>
         </div>
       </div>
-      <p class="f1-quote">Kimi Antonelli wins at Austin and still can't be crowned champion — <b>Mexico City gets the next shot.</b></p>
+      <p class="f1-quote">Kimi Antonelli didn't even need to win the race that crowned him — <b>third place in Mexico City made him champion at 20.</b></p>
       <div style="height:70px;"></div>
     </div>
 
     <div class="f1-schedule">
-      <div class="f1-schedule-head"><h2>Race Weekend Schedule</h2><div class="f1-tabs"><span class="on">My Time (ET)</span><span>Austin Time</span></div></div>
-      <div class="f1-row"><span class="s">Practice 1</span><span class="t">Fri · 2:30 PM ET (12:30 PM CST)</span></div>
-      <div class="f1-row"><span class="s">Practice 2</span><span class="t">Fri · 6:00 PM ET (4:00 PM CST)</span></div>
-      <div class="f1-row"><span class="s">Practice 3</span><span class="t">Sat · 1:30 PM ET (11:30 AM CST)</span></div>
-      <div class="f1-row"><span class="s">Qualifying</span><span class="t">Sat · 5:00 PM ET (3:00 PM CST)</span></div>
-      <div class="f1-row"><span class="s">Race</span><span class="t">Sun · 3:00 PM ET (2:00 PM CST)</span></div>
+      <div class="f1-schedule-head"><h2>Race Weekend Schedule</h2><div class="f1-tabs"><span class="on">My Time (ET)</span><span>São Paulo Time</span></div></div>
+      <div class="f1-row"><span class="s">Practice 1</span><span class="t">Fri · 10:30 AM ET (12:30 PM local)</span></div>
+      <div class="f1-row"><span class="s">Practice 2</span><span class="t">Fri · 2:00 PM ET (4:00 PM local)</span></div>
+      <div class="f1-row"><span class="s">Practice 3</span><span class="t">Sat · 9:30 AM ET (11:30 AM local)</span></div>
+      <div class="f1-row"><span class="s">Qualifying</span><span class="t">Sat · 1:00 PM ET (3:00 PM local)</span></div>
+      <div class="f1-row"><span class="s">Race</span><span class="t">Sun · 12:00 PM ET (2:00 PM local)</span></div>
     </div>
 
     <div class="f1-schedule" style="padding-top:0;">
-      <div class="f1-schedule-head"><h2>Season So Far</h2><span class="eyebrow">18 of 23 rounds · R14 cancelled</span></div>
+      <div class="f1-schedule-head"><h2>Season So Far</h2><span class="eyebrow">19 of 23 rounds · R14 cancelled</span></div>
       ${renderF1Results()}
     </div>
 
     <div class="f1-schedule" style="padding-top:0;">
-      <div class="f1-schedule-head"><h2>Drivers' Championship</h2><span class="eyebrow">Entering Mexico City</span></div>
+      <div class="f1-schedule-head"><h2>Drivers' Championship</h2><span class="eyebrow">Antonelli clinches it in Mexico City</span></div>
       ${renderF1Standings()}
     </div>
 
@@ -4909,7 +4942,7 @@ setInterval(function(){
 }, 1000);
 
 /* ---------------- F1 scroll-driven helmet + MLB scroll progress ---------------- */
-const F1_RACE_TARGET = new Date('2026-11-01T20:00:00Z').getTime();
+const F1_RACE_TARGET = new Date('2026-11-08T17:00:00Z').getTime();
 let scrollTicking = false;
 function onScrollEffects(){
   const helmet = document.getElementById('f1-helmet');

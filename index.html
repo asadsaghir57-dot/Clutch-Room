@@ -764,8 +764,8 @@ const SPORTS = [
     headline:'Blazers Stay Unbeaten, Outlast Dončić\'s 41 to Beat Lakers 136-129',
     status:'DAMIAN LILLARD\'S CLUTCH TRIPLE HOLDS OFF A 41-POINT NIGHT FROM LUKA DONČIĆ, KEEPING PORTLAND UNBEATEN AT 3-0', deep:'light', sub:'NBA', live:false},
   {id:'f1', name:'F1', accent:'away', heat:58,
-    headline:'Antonelli Can Clinch the Title in Mexico City',
-    status:'ANTONELLI CAN CLINCH THE TITLE IN MEXICO CITY WITH A NINTH-PLACE FINISH OR BETTER — HE LEADS RUSSELL BY 123 POINTS HEADING INTO THE NOV 1 RACE', deep:'none', sub:'Formula 1'},
+    headline:'Hamilton Grabs Shock Mexico City Pole, Antonelli Can Clinch Title Sunday',
+    status:'LEWIS HAMILTON TAKES HIS FIRST FERRARI POLE AND FIRST OF ANY KIND SINCE 2023, BEATING RUSSELL BY 0.009S IN MEXICO CITY — ANTONELLI, PROMOTED TO 4TH ON THE GRID AFTER A VERSTAPPEN PENALTY, CAN CLINCH THE TITLE SUNDAY WITH A NINTH-PLACE FINISH OR BETTER', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:52,
     headline:'Volkanovski KOs Evloev to Retain Featherweight Title',
     status:'VOLKANOVSKI KOs EVLOEV IN ROUND 2 TO RETAIN THE FEATHERWEIGHT TITLE, WHILE YAN EDGES DVALISHVILI BY UNANIMOUS DECISION FOR THE BANTAMWEIGHT BELT, FIGHT OF THE NIGHT', deep:'light', sub:'Mixed martial arts'},
@@ -773,8 +773,8 @@ const SPORTS = [
     headline:'O\'Shaquie Foster Unifies Super Featherweight Titles',
     status:'O\'SHAQUIE FOSTER DROPPED NAVARRETE TWICE EN ROUTE TO A UNANIMOUS DECISION IN SAN ANTONIO, UNIFYING THE WBC, WBO AND IBF SUPER FEATHERWEIGHT TITLES', deep:'light', sub:'Professional boxing'},
   {id:'cricket', name:'Cricket', accent:'away', heat:90,
-    headline:'Sri Lanka Beat Pakistan by 8 Wickets in 5th ODI',
-    status:'MADUSHANKA\'S CAREER-BEST 5/34 BOWLS OUT PAKISTAN FOR 110 AS SRI LANKA CHASE 111 IN 18.1 OVERS — BOTH SIDES THROUGH TO THE OCT 31 FINAL, ENGLAND ELIMINATED', deep:'light', sub:'International & league cricket', live:false},
+    headline:'Pakistan Win Tri-Series, Beat Sri Lanka by 3 Wickets in Final',
+    status:'FAKHAR ZAMAN\'S 127 OFF 99 BALLS POWERS PAKISTAN TO A THREE-WICKET CHASE OF 326 AGAINST SRI LANKA IN THE GADDAFI STADIUM FINAL — PAKISTAN\'S FIRST ODI TRI-SERIES TITLE SINCE 2008, ARAFAT MINHAS NAMED PLAYER OF THE SERIES', deep:'light', sub:'International & league cricket', live:false},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -883,8 +883,10 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'SRI LANKA BEAT PAKISTAN BY 8 WICKETS IN 5TH ODI AT LAHORE: MADUSHANKA\'S CAREER-BEST 5/34 BOWLS OUT PAKISTAN FOR 110, SL CHASE 111 IN 18.1 OVERS — BOTH THROUGH TO OCT 31 FINAL, ENGLAND ELIMINATED · PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI AT LAHORE: SHADAB KHAN UNBEATEN 113 (96) AFTER 154/9 · SRI LANKA WIN THRILLER, CHASE DOWN 430 TO BEAT ENGLAND BY 2 WKTS WITH 1 BALL LEFT · BROOK\'S RECORD 202 IN VAIN', games:[
-    {status:'FINAL', away:{abbr:'SL',record:'114/2 (18.1)'}, home:{abbr:'PAK',record:'110 (25.3)'}, note:'ODI Tri-Series 5th Match · Gaddafi Stadium, Lahore · Sri Lanka won the toss and chose to field; Dilshan Madushanka\'s career-best 5/34 — his second ODI five-for, after India at the 2023 World Cup — bowled Pakistan out for 110 (their second-lowest ODI total at home), Babar Azam top-scoring with 29; Sri Lanka ran down 111 in just 18.1 overs for an 8-wicket win, Kamindu Mendis unbeaten on 62; the result sends both Pakistan and Sri Lanka through to the October 31 final at Gaddafi Stadium and mathematically eliminates England, whose dead-rubber finale against Sri Lanka follows on Thursday'},
+  cricket:{context:'PAKISTAN WIN TRI-SERIES: BEAT SRI LANKA BY 3 WICKETS IN THE FINAL AT LAHORE AS FAKHAR ZAMAN HITS 127, ARAFAT MINHAS NAMED PLAYER OF THE SERIES · ENGLAND BEAT SRI LANKA BY 55 RUNS IN DEAD-RUBBER 6TH ODI: DUCKETT 167, FIRST ENGLAND ODI WIN IN PAKISTAN SINCE 2005 · SRI LANKA BEAT PAKISTAN BY 8 WICKETS IN 5TH ODI AT LAHORE: MADUSHANKA\'S CAREER-BEST 5/34 BOWLS OUT PAKISTAN FOR 110 · PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI AT LAHORE: SHADAB KHAN UNBEATEN 113 (96) AFTER 154/9 · SRI LANKA WIN THRILLER, CHASE DOWN 430 TO BEAT ENGLAND BY 2 WKTS WITH 1 BALL LEFT · BROOK\'S RECORD 202 IN VAIN', games:[
+    {status:'FINAL', away:{abbr:'SL',record:'325/8 (50)'}, home:{abbr:'PAK',record:'331/7 (48.3)'}, note:'ODI Tri-Series Final (D/N) · Gaddafi Stadium, Lahore · Sri Lanka posted 325/8, built around Kamindu Mendis\'s maiden ODI century (131 off 128) and a 146-run third-wicket stand with Pavan Rathnayake (77); Salman Agha and Shaheen Shah Afridi took 2 wickets apiece for Pakistan. Chasing 326, Pakistan slipped to 14/2 before Fakhar Zaman (127 off 99, his 12th ODI century) and Saad Baig (74) rebuilt with a 149-run stand; after both fell, Arafat Minhas\'s match-turning 61 off 31 and an unbroken stand between Hasan Nawaz (37*) and captain Shaheen Shah Afridi (6*) — who hit the winning six — sealed it, Pakistan winning by 3 wickets with 9 balls to spare for their first ODI tri-series title since 2008; Minhas named Player of the Series (9 wickets, 149 runs), Fakhar Zaman Player of the Match'},
+    {status:'FINAL', away:{abbr:'ENG',record:'386/5 (50)'}, home:{abbr:'SL',record:'331 (45.1)'}, note:'ODI Tri-Series 6th Match (D/N) · Gaddafi Stadium, Lahore · Sri Lanka won the toss and chose to field; Ben Duckett (167 off 132) and Tom Banton (74) put on 163 for England\'s first wicket, and Duckett added another 107 with captain Harry Brook as England closed on 386/5, their biggest total of the tour. Sri Lanka\'s reply leaned on Pavan Rathnayake\'s 118 off 77 — his third ODI century of the year, all against England — and Kusal Mendis\'s 89, but Liam Dawson\'s 4/49 triggered a collapse of the last five wickets for 16 runs, Sri Lanka all out for 331 in 45.1 overs; the dead-rubber 55-run win is England\'s first ODI victory in Pakistan since December 2005'},
+    {status:'FINAL', away:{abbr:'SL',record:'114/2 (18.1)'}, home:{abbr:'PAK',record:'110 (25.3)'}, note:'ODI Tri-Series 5th Match · Gaddafi Stadium, Lahore · Sri Lanka won the toss and chose to field; Dilshan Madushanka\'s career-best 5/34 — his second ODI five-for, after India at the 2023 World Cup — bowled Pakistan out for 110 (their second-lowest ODI total at home), Babar Azam top-scoring with 29; Sri Lanka ran down 111 in just 18.1 overs for an 8-wicket win, Kamindu Mendis unbeaten on 62; the result sent both Pakistan and Sri Lanka through to the October 31 final at Gaddafi Stadium and mathematically eliminated England'},
     {status:'FINAL', away:{abbr:'ENG',record:'241 (46.4)'}, home:{abbr:'PAK',record:'243/9 (47.1)'}, note:'ODI Tri-Series 4th Match · Pakistan win by 1 wicket with 17 balls remaining, Shadab Khan Player of the Match (113* off 96); chasing 242, Pakistan were 154/9 after 33.5 overs before Shadab and Haris Rauf (7*) added an unbroken 89 for the last wicket; Ben Duckett made 105 and Shaheen Shah Afridi took 4/46 for Pakistan'},
     {status:'FINAL', away:{abbr:'ENG',record:'429/4 (50)'}, home:{abbr:'SL',record:'430/8 (49.5)'}, note:'ODI Tri-Series 3rd Match · Sri Lanka win by 2 wickets with 1 ball remaining, chasing down 430 after Harry Brook\'s record 202 off 116 balls — the fastest double century in ODI history; Pavan Rathnayake (130) and Dasun Shanaka (97) led the chase before Janith Liyanage (61*) finished it off'},
     {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Pakistan win by 87 runs, Arafat Minhas Player of the Match (59 & 6/40)'},
@@ -979,14 +981,14 @@ const FIXTURES = {
 
 /* ---------------- cricket: live match card + full scorecards (real, verified data only) ---------------- */
 const CRICKET_LIVE_MATCH = {
-  series:'Pakistan ODI Tri-Series 2026', matchLabel:'6th Match (D/N)',
-  venue:'Gaddafi Stadium, Lahore', date:'Oct 29, 2026',
+  series:'Sri Lanka tour of Pakistan 2026', matchLabel:'1st Test',
+  venue:'Rawalpindi Cricket Stadium', date:'Nov 9-13, 2026',
   status:'upcoming',
   teams:{
-    away:{abbr:'ENG', name:'England'},
-    home:{abbr:'SL', name:'Sri Lanka'},
+    away:{abbr:'SL', name:'Sri Lanka'},
+    home:{abbr:'PAK', name:'Pakistan'},
   },
-  toss:null, resultLine:'1:30 PM PKT · Dead rubber — both Pakistan and Sri Lanka have already qualified for the October 31 final, eliminating England regardless of this result. Toss not yet in.',
+  toss:null, resultLine:'First of two Tests on Sri Lanka\'s tour, following Pakistan\'s ODI tri-series win. Second Test follows at Gaddafi Stadium, Lahore, Nov 17-21. Toss not yet in.',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -3393,6 +3395,48 @@ const ARTICLES = [
     ],
     related:'pak-sl-5th-odi-recap',
   },
+  {id:'eng-sl-6th-odi-recap', sport:'cricket', cat:'recap',
+    headline:'Duckett\'s 167 Leads England to a Dead-Rubber 55-Run Win Over Sri Lanka',
+    dek:'Ben Duckett\'s 167 off 132 balls built England to 386/5, and Liam Dawson\'s 4/49 triggered a late collapse as Sri Lanka fell 55 runs short — England\'s first ODI win in Pakistan since 2005, in a match with no bearing on Saturday\'s final.',
+    byline:'Clutch Room Cricket Desk', mins:4, time:'Oct 29, 2026',
+    qa:[['What was the result?','England won by 55 runs, posting 386/5 in their 50 overs before bowling Sri Lanka out for 331 in 45.1 overs at Gaddafi Stadium, Lahore.'],
+        ['Did the result affect the tri-series final?','No — both finalists were already decided. Pakistan and Sri Lanka met in Saturday\'s final regardless of this dead-rubber result, which gave already-eliminated England a rare win on the tour.']],
+    body:[
+      'Sri Lanka won the toss at Gaddafi Stadium and chose to field, but found no answer for Ben Duckett and Tom Banton, who put on 163 for England\'s first wicket. Duckett went on to add another 107 with captain Harry Brook before departing for 167 off 132 balls, and England closed their innings on 386/5 — their biggest total of the tour.',
+      'Sri Lanka\'s reply never quite got out of reach early, with Pavan Rathnayake making his third ODI century of the year — all three against England — with 118 off 77 balls, and Kusal Mendis adding 89. But Liam Dawson\'s 4/49 tore through the tail, and Sri Lanka lost their last five wickets for just 16 runs to be bowled out for 331 in the 46th over.',
+      'The 55-run margin means little for the standings — Pakistan and Sri Lanka had already locked up the two final spots before a ball was bowled, with England eliminated days earlier. But for England it is their first ODI win in Pakistan since December 2005, snapping a six-match losing run on this tour and at last year\'s Champions Trophy.',
+      'The tri-series moves straight to Saturday\'s final at Gaddafi Stadium, a rematch of Tuesday\'s Pakistan-Sri Lanka meeting that sent both sides through.',
+    ],
+  },
+  {id:'pak-sl-final-recap', sport:'cricket', cat:'recap',
+    headline:'Fakhar Zaman\'s 127 Powers Pakistan to Tri-Series Title, Beat Sri Lanka by 3 Wickets in Final',
+    dek:'Chasing 326, Pakistan slipped to 14/2 before Fakhar Zaman\'s 127 and a 149-run stand with Saad Baig turned the final around; Arafat Minhas\'s late 61 and captain Shaheen Shah Afridi\'s winning six sealed Pakistan\'s first ODI tri-series title since 2008.',
+    byline:'Clutch Room Cricket Desk', mins:6, time:'Oct 31, 2026',
+    qa:[['What was the final result?','Pakistan won by 3 wickets with 9 balls remaining, chasing down Sri Lanka\'s 325/8 by reaching 331/7 in 48.3 overs at Gaddafi Stadium, Lahore.'],
+        ['Who was named Player of the Match and Player of the Series?','Fakhar Zaman (127 off 99) was Player of the Match for his century in the chase. Arafat Minhas was named Player of the Series for 9 wickets and 149 runs across the tournament, including his 61 off 31 balls in the final.']],
+    body:[
+      'Sri Lanka batted first at Gaddafi Stadium and built the final\'s total around Kamindu Mendis, who reached his maiden ODI century — 131 off 128 balls — anchoring a 146-run third-wicket stand with Pavan Rathnayake (77) after early wickets had fallen cheaply. Salman Agha (2/44) and captain Shaheen Shah Afridi (2/50) shared the wickets as Sri Lanka closed on 325/8 from their 50 overs.',
+      'Pakistan\'s chase started badly, slipping to 14/2 against a target of 326. Fakhar Zaman and Saad Baig steadied things with a 149-run stand, Zaman reaching his 12th ODI century — a knock many likened to his breakout hundred in the 2017 Champions Trophy final against India — before falling for 127 off 99 balls with 11 fours and 6 sixes. Baig made 74 before also departing, and when further wickets fell it was Arafat Minhas who turned the chase decisively, striking a match-turning 61 off just 31 balls.',
+      'Hasan Nawaz (37*) and captain Shaheen Shah Afridi (6*) saw it home from there, Afridi finishing the match with the winning six as Pakistan reached 331/7 in 48.3 overs — a 3-wicket win with 9 balls to spare. Dilshan Madushanka (3/63) and Asitha Fernando (2/72) were the leading wicket-takers for Sri Lanka in a losing cause.',
+      'The win gives Pakistan their first ODI tri-series title since 2008, capping a tournament in which they beat England twice and split results with Sri Lanka before winning the rematch that mattered. Arafat Minhas was named Player of the Series for 9 wickets and 149 runs across the tournament, while Fakhar Zaman\'s century earned him Player of the Match in the final.',
+    ],
+    related:'pak-sl-final-analysis',
+    pull:'Pakistan slipped to 14/2 chasing 326 in the final — then Fakhar Zaman\'s 127, Arafat Minhas\'s 61, and a Shaheen Afridi six won them their first tri-series title since 2008.',
+  },
+  {id:'pak-sl-final-analysis', sport:'cricket', cat:'analysis',
+    headline:'Inside the Numbers: How Pakistan Won the Tri-Series Final From 14/2',
+    dek:'A closer look at the two stands — Fakhar Zaman and Saad Baig\'s 149, then Arafat Minhas\'s late burst — that turned a chase of 326 around, and what Minhas\'s Player of the Series award says about Pakistan\'s campaign.',
+    byline:'Clutch Room Cricket Desk', mins:6, time:'Oct 31, 2026',
+    qa:[['How did Pakistan recover from 14/2?','Fakhar Zaman and Saad Baig added 149 for the third wicket to rebuild the chase, and after both fell, Arafat Minhas\'s 61 off 31 balls kept the required rate down until Hasan Nawaz and Shaheen Shah Afridi finished it off.'],
+        ['Why did Arafat Minhas win Player of the Series over the centurions?','He contributed with both bat and ball all tournament — 9 wickets including a 6/40 against England in the 2nd match, plus 149 runs including the 61 that turned the final, a more complete all-round return than any single-discipline performance in the series.']],
+    body:[
+      'Pakistan\'s chase of 326 was built on just two partnerships. Fakhar Zaman and Saad Baig\'s 149-run third-wicket stand undid the damage of losing both openers inside the first few overs, with Zaman\'s 127 off 99 balls (11 fours, 6 sixes) the standout — his 12th ODI hundred, after scores of just 16, 0 and 5 in his three previous innings this series. Once Baig (74) and Zaman had both fallen, Arafat Minhas\'s 61 off 31 did the rest of the heavy lifting, an innings well clear of the required rate at the point he came to the crease.',
+      'Sri Lanka\'s 325/8 was similarly built on one key stand — Kamindu Mendis\'s maiden ODI century (131 off 128) and his 146-run third-wicket partnership with Pavan Rathnayake (77) — but unlike Pakistan, Sri Lanka got no late finish from the tail to push the total further out of reach once that stand broke up.',
+      'Arafat Minhas\'s Player of the Series award — 9 wickets and 149 runs across the tournament — reflects a campaign with no single dominant performer. He took 6/40 and scored 59 against England in the 2nd match, added useful runs and a wicket against Sri Lanka in the 5th match, and then produced his 61 off 31 when Pakistan needed it most in the final — a more complete contribution across six matches than any one centurion or bowling figure elsewhere in the series.',
+      'The result caps a tournament in which Pakistan beat England twice, split 1-1 with Sri Lanka in the group stage, and then won the rematch when it mattered — their first ODI tri-series title since 2008, and a strong platform heading into November\'s two-Test series against Sri Lanka.',
+    ],
+    related:'pak-sl-final-recap',
+  },
 
   {id:'clasico-recap', sport:'football', league:'La Liga', cat:'recap',
     headline:'Mbappé\'s Late Double Sinks Barcelona as Real Madrid Win El Clásico 2-1',
@@ -3466,6 +3510,20 @@ const ARTICLES = [
     ],
     related:'f1-austin-race-recap',
     pull:'Antonelli doesn\'t need Russell to slip up anymore — but behind him, four drivers within nine points are still fighting for second.',
+  },
+  {id:'f1-mexico-city-qualifying-recap', sport:'f1', cat:'recap',
+    headline:'Hamilton Grabs Surprise Mexico City Pole, First for Ferrari Since He Joined',
+    dek:'Lewis Hamilton out-qualified Mercedes\' George Russell by 0.009 seconds for his first pole since 2023, but Kimi Antonelli — promoted to fourth on the grid after a Verstappen penalty — can still clinch the championship Sunday with a ninth-place finish or better.',
+    byline:'Clutch Room F1 Desk', mins:5, time:'Oct 31, 2026',
+    qa:[['Who took pole for the Mexico City Grand Prix?','Lewis Hamilton, with a 1:16.514 that beat George Russell by just 0.009 seconds — his first pole position for Ferrari and his first of any kind since 2023.'],
+        ['Where does Kimi Antonelli start, and what does he need to clinch the title?','He qualified fifth but starts fourth after Max Verstappen took a one-place grid penalty for a Friday practice collision. Antonelli clinches the championship outright with a finish of ninth or better on Sunday, regardless of what any rival does.']],
+    body:[
+      'Lewis Hamilton produced a late flying lap to take pole position for the Mexico City Grand Prix, stopping the clock at 1:16.514 to edge Mercedes\' George Russell by just 0.009 seconds. It is Hamilton\'s first pole position since joining Ferrari and his first of any kind since 2023 — a result that also made him the oldest driver to start from pole since 1982.',
+      'Charles Leclerc qualified third for a strong session across the Ferrari garage, while Max Verstappen qualified fourth but drops a place on the grid after a one-place penalty for colliding with Liam Lawson during Friday\'s second practice session in the stadium section. That promotes championship leader Kimi Antonelli, who qualified fifth, up to fourth on the starting grid, with Verstappen now starting fifth and Lando Norris sixth.',
+      'The grid shuffle changes nothing about Antonelli\'s title equation heading into Sunday. He arrived in Mexico City with a 123-point lead over Russell and can clinch the championship outright with a finish of ninth or better — no help needed from any rival this time, after his Austin win wasn\'t enough when Russell finished eighth there.',
+      'Mercedes will still be racing to win through Russell, who starts alongside Hamilton on the front row, but for Antonelli and Mercedes the Sunday math is now simply about banking a top-nine finish, not chasing a particular rival up the road.',
+    ],
+    related:'f1-mexico-city-preview',
   },
 ];
 

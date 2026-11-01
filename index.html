@@ -758,8 +758,8 @@ const SPORTS = [
     headline:'Musetti Wins Lyon for First Title Since 2022',
     status:'LORENZO MUSETTI BEAT TAYLOR FRITZ 6-3, 6-4 IN 80 MINUTES AT THE ATP LYON OPEN FOR HIS FIRST TITLE SINCE 2022 AND THIRD CAREER TROPHY', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:48,
-    headline:'Libaak/Alfonso Upset Lebrón/Augsburger at Kuwait Major',
-    status:'TINO LIBAAK AND GONZALO ALFONSO UPSET NO. 3 SEEDS LEBRÓN/AUGSBURGER 4-6, 7-5, 6-1 IN THE KUWAIT MAJOR ROUND OF 16 TO REACH THE QUARTERFINALS, AS TAPIA/COELLO AND SINTES/ZAMORA ALSO ADVANCE AHEAD OF THE OCT 31 FINAL', deep:'light', sub:'Premier Padel tour'},
+    headline:'Coello/Tapia Rout Tello/Arce 6-1, 6-1 to Win Kuwait Major',
+    status:'COELLO/TAPIA WIN THE KUWAIT MAJOR 6-1, 6-1 OVER TELLO/ARCE; TRIAY/BREA COME BACK TO BEAT SÁNCHEZ/USTERO 3-6, 6-1, 6-1 IN THE WOMEN\'S FINAL AND TRIAY BECOMES THE MOST SUCCESSFUL PLAYER IN PADEL HISTORY', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:62,
     headline:'Blazers Stay Unbeaten, Outlast Dončić\'s 41 to Beat Lakers 136-129',
     status:'DAMIAN LILLARD\'S CLUTCH TRIPLE HOLDS OFF A 41-POINT NIGHT FROM LUKA DONČIĆ, KEEPING PORTLAND UNBEATEN AT 3-0', deep:'light', sub:'NBA', live:false},
@@ -773,8 +773,8 @@ const SPORTS = [
     headline:'O\'Shaquie Foster Unifies Super Featherweight Titles',
     status:'O\'SHAQUIE FOSTER DROPPED NAVARRETE TWICE EN ROUTE TO A UNANIMOUS DECISION IN SAN ANTONIO, UNIFYING THE WBC, WBO AND IBF SUPER FEATHERWEIGHT TITLES', deep:'light', sub:'Professional boxing'},
   {id:'cricket', name:'Cricket', accent:'away', heat:90,
-    headline:'Sri Lanka Beat Pakistan by 8 Wickets in 5th ODI',
-    status:'MADUSHANKA\'S CAREER-BEST 5/34 BOWLS OUT PAKISTAN FOR 110 AS SRI LANKA CHASE 111 IN 18.1 OVERS — BOTH SIDES THROUGH TO THE OCT 31 FINAL, ENGLAND ELIMINATED', deep:'light', sub:'International & league cricket', live:false},
+    headline:'Pakistan Win Tri-Series Final, Chase 326 With Fakhar Zaman\'s Century',
+    status:'PAKISTAN BEAT SRI LANKA BY 3 WICKETS IN THE LAHORE FINAL, CHASING 326 WITH NINE BALLS TO SPARE AFTER FAKHAR ZAMAN\'S CENTURY, TO WIN THE ODI TRI-SERIES', deep:'light', sub:'International & league cricket', live:false},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -799,6 +799,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
   ]},
   football:{context:'EL CLÁSICO FINAL: REAL MADRID BEAT BARCELONA 2-1 AT CAMP NOU, MBAPPÉ SCORES TWICE (41\', 87\') · UCL MD3 COMPLETE: BAYERN 2-2 ARSENAL, REAL MADRID 4-1 RB LEIPZIG · TUESDAY: PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL', games:[
+    {status:'FINAL', away:{abbr:'MUN',record:'0'}, home:{abbr:'CHE',record:'2'}, note:'Premier League · Stamford Bridge · Cole Palmer converts a penalty after Lisandro Martínez is sent off for a second yellow; Chelsea win 2-0'},
+    {status:'FINAL', away:{abbr:'CRY',record:'0'}, home:{abbr:'TOT',record:'2'}, note:'Premier League · Tottenham beat 10-man Crystal Palace (Mateta sent off in the 13th minute) for a third straight win; goals from A. Gray and J. van Hecke'},
     {status:'FINAL', away:{abbr:'RMA',record:'2'}, home:{abbr:'BAR',record:'1'}, note:'La Liga Matchday 10 · Spotify Camp Nou · Kylian Mbappé opens the scoring 41\' after Gerard Martín\'s clearance cannons off him and beats Joan García; Raphinha levels 61\', his shot squeezing through Jude Bellingham\'s legs and past Andriy Lunin; Mbappé wins it 87\', tapping in from an Eduardo Camavinga lay-off for his 100th goal for Real Madrid — Barcelona\'s first domestic defeat of the season, Madrid now 3 points back in La Liga'},
     {status:'FINAL', away:{abbr:'ARS',record:'2'}, home:{abbr:'BAY',record:'2'}, note:'UCL MD3 · Allianz Arena · Eze 25\' puts Arsenal ahead, Davies 35\' levels for Bayern, Kane converts a penalty 61\' to put Bayern back in front, Rice equalizes 82\' for a 2-2 draw; Saka off injured in the first half'},
     {status:'FINAL', away:{abbr:'RBL',record:'1'}, home:{abbr:'RMA',record:'4'}, note:'UCL MD3 · Santiago Bernabéu · Bernardo Silva 43\', Arda Güler 52\', Mbappé 83\' and Diomandé 87\' for Real Madrid; Gomis 85\' for Leipzig in a 4-1 win'},
@@ -831,7 +833,11 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'DAVIDOVICH FOKINA'}, home:{abbr:'HURKACZ'}, note:'Shanghai SF · Davidovich Fokina reaches his first Masters 1000 final'},
     {status:'FINAL', away:{abbr:'JODAR'}, home:{abbr:'DAVIDOVICH FOKINA'}, note:'Shanghai Final · Davidovich Fokina wins 1-6, 7-6(5), 6-4 for his first ATP Masters 1000 title'},
   ]},
-  padel:{context:'KUWAIT MAJOR QUARTERFINALS SET: LIBAAK/ALFONSO UPSET LEBRÓN/AUGSBURGER 4-6, 7-5, 6-1 IN THE ROUND OF 16 · TAPIA/COELLO AND SINTES/ZAMORA ALSO THROUGH · MILANO P1 COMPLETE', games:[
+  padel:{context:'KUWAIT MAJOR COMPLETE: COELLO/TAPIA BEAT TELLO/ARCE 6-1, 6-1 IN THE MEN\'S FINAL · TRIAY/BREA BEAT SÁNCHEZ/USTERO 3-6, 6-1, 6-1 · MILANO P1 COMPLETE', games:[
+    {status:'FINAL', away:{abbr:'TELLO/ARCE'}, home:{abbr:'TAPIA/COELLO'}, note:'Kuwait Major Men\'s Final · Tapia/Coello beat Tello/Arce 6-1, 6-1; Tello/Arce were in their first Premier Padel final together'},
+    {status:'FINAL', away:{abbr:'SÁNCHEZ/USTERO'}, home:{abbr:'TRIAY/BREA'}, note:'Kuwait Major Women\'s Final · Triay/Brea recover from a lost first set to win 3-6, 6-1, 6-1, their seventh title of the season'},
+    {status:'FINAL', away:{abbr:'LIBAAK/ALFONSO'}, home:{abbr:'TAPIA/COELLO'}, note:'Kuwait Major Semifinal (men) · Tapia/Coello beat Libaak/Alfonso in 57 minutes to reach the final'},
+    {status:'FINAL', away:{abbr:'ALONSO/GOÑI'}, home:{abbr:'TELLO/ARCE'}, note:'Kuwait Major Semifinal (men) · Tello/Arce beat Alonso/Goñi 6-4, 6-3'},
     {status:'FINAL', away:{abbr:'LEBRÓN/AUGSBURGER'}, home:{abbr:'LIBAAK/ALFONSO'}, note:'Kuwait Major Round of 16 · Tino Libaak/Gonzalo Alfonso upset No. 3 seeds Lebrón/Augsburger 4-6, 7-5, 6-1 to reach the quarterfinals'},
     {status:'FINAL', away:{abbr:'GOENAGA/COLLADO'}, home:{abbr:'TAPIA/COELLO'}, note:'Kuwait Major Round of 16 · Top seeds Tapia/Coello beat Goenaga/Collado 6-2, 6-1 to reach the quarterfinals'},
     {status:'FINAL', away:{abbr:'GARCÍA/RUIZ'}, home:{abbr:'SINTES/ZAMORA'}, note:'Kuwait Major Round of 16 · Sintes/Zamora beat García/Ruiz 6-3, 7-5 to reach the quarterfinals, continuing their run after upsetting 8th seeds González/Campagnolo in the Round of 32'},
@@ -883,7 +889,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'SRI LANKA BEAT PAKISTAN BY 8 WICKETS IN 5TH ODI AT LAHORE: MADUSHANKA\'S CAREER-BEST 5/34 BOWLS OUT PAKISTAN FOR 110, SL CHASE 111 IN 18.1 OVERS — BOTH THROUGH TO OCT 31 FINAL, ENGLAND ELIMINATED · PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI AT LAHORE: SHADAB KHAN UNBEATEN 113 (96) AFTER 154/9 · SRI LANKA WIN THRILLER, CHASE DOWN 430 TO BEAT ENGLAND BY 2 WKTS WITH 1 BALL LEFT · BROOK\'S RECORD 202 IN VAIN', games:[
+  cricket:{context:'PAKISTAN WIN THE ODI TRI-SERIES: BEAT SRI LANKA BY 3 WICKETS IN THE LAHORE FINAL, CHASING 326 AFTER KAMINDU MENDIS\' CENTURY LIFTED SL TO 325/8 · EARLIER: SRI LANKA BEAT PAKISTAN BY 8 WICKETS IN 5TH ODI AT LAHORE: MADUSHANKA\'S CAREER-BEST 5/34 BOWLS OUT PAKISTAN FOR 110, SL CHASE 111 IN 18.1 OVERS — BOTH THROUGH TO OCT 31 FINAL, ENGLAND ELIMINATED · PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI AT LAHORE: SHADAB KHAN UNBEATEN 113 (96) AFTER 154/9 · SRI LANKA WIN THRILLER, CHASE DOWN 430 TO BEAT ENGLAND BY 2 WKTS WITH 1 BALL LEFT · BROOK\'S RECORD 202 IN VAIN', games:[
+    {status:'FINAL', away:{abbr:'SL',record:'325/8 (50)'}, home:{abbr:'PAK',record:'326/7 (49.3)'}, note:'ODI Tri-Series Final · Gaddafi Stadium, Lahore · Pakistan win by 3 wickets with nine balls remaining to lift the trophy; Kamindu Mendis\' century carried Sri Lanka to 325/8, and Fakhar Zaman\'s century (127) anchored the chase, with a 15-run over off Shanaka in the 46-from-30 stage turning it Pakistan\'s way'},
     {status:'FINAL', away:{abbr:'SL',record:'114/2 (18.1)'}, home:{abbr:'PAK',record:'110 (25.3)'}, note:'ODI Tri-Series 5th Match · Gaddafi Stadium, Lahore · Sri Lanka won the toss and chose to field; Dilshan Madushanka\'s career-best 5/34 — his second ODI five-for, after India at the 2023 World Cup — bowled Pakistan out for 110 (their second-lowest ODI total at home), Babar Azam top-scoring with 29; Sri Lanka ran down 111 in just 18.1 overs for an 8-wicket win, Kamindu Mendis unbeaten on 62; the result sends both Pakistan and Sri Lanka through to the October 31 final at Gaddafi Stadium and mathematically eliminates England, whose dead-rubber finale against Sri Lanka follows on Thursday'},
     {status:'FINAL', away:{abbr:'ENG',record:'241 (46.4)'}, home:{abbr:'PAK',record:'243/9 (47.1)'}, note:'ODI Tri-Series 4th Match · Pakistan win by 1 wicket with 17 balls remaining, Shadab Khan Player of the Match (113* off 96); chasing 242, Pakistan were 154/9 after 33.5 overs before Shadab and Haris Rauf (7*) added an unbroken 89 for the last wicket; Ben Duckett made 105 and Shaheen Shah Afridi took 4/46 for Pakistan'},
     {status:'FINAL', away:{abbr:'ENG',record:'429/4 (50)'}, home:{abbr:'SL',record:'430/8 (49.5)'}, note:'ODI Tri-Series 3rd Match · Sri Lanka win by 2 wickets with 1 ball remaining, chasing down 430 after Harry Brook\'s record 202 off 116 balls — the fastest double century in ODI history; Pavan Rathnayake (130) and Dasun Shanaka (97) led the chase before Janith Liyanage (61*) finished it off'},

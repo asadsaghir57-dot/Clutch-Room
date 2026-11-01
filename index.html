@@ -743,9 +743,9 @@ footer p{font-size:12.5px;color:var(--ink-muted);max-width:52ch;line-height:1.6;
 
 <script>
 const SPORTS = [
-  {id:'football', name:'Football', accent:'court', heat:90,
-    headline:'Barcelona Rout Alavés 6-1 to Retake Top Spot in La Liga',
-    status:'RAPHINHA AND LAMINE YAMAL SCORE BRACES AS BARCELONA ROUT ALAVÉS 6-1 AT CAMP NOU TO RETAKE TOP SPOT A WEEK AFTER LOSING EL CLÁSICO; ATLÉTICO MADRID WON A 7TH STRAIGHT TO TOP THE TABLE EARLIER IN THE DAY, WHILE BRIGHTON STUNNED MAN CITY 1-0 AND TOTTENHAM BEAT 10-MAN CRYSTAL PALACE 2-0 IN THE PREMIER LEAGUE', deep:'full',
+  {id:'football', name:'Football', accent:'court', heat:92,
+    headline:'Arsenal End 14-Year Anfield Drought, Beat Liverpool 1-0 to Go 3 Clear in the Premier League',
+    status:'KAI HAVERTZ SCORES THE ONLY GOAL AS ARSENAL BEAT LIVERPOOL 1-0 AT ANFIELD — ARSENAL\'S FIRST LEAGUE WIN THERE SINCE 2012 AND MIKEL ARTETA\'S FIRST AS A MANAGER — MOVING TO 24 POINTS AND 3 CLEAR OF MANCHESTER CITY AT THE TOP; IN LA LIGA, BARCELONA ROUTED ALAVÉS 6-1 TO RETAKE TOP SPOT A WEEK AFTER LOSING EL CLÁSICO', deep:'full',
     sub:'Premier League · Champions League · La Liga',
     leagues:['All','Champions League','Premier League','La Liga'], live:false},
   {id:'mlb', name:'MLB', accent:'court', heat:98,
@@ -763,9 +763,9 @@ const SPORTS = [
   {id:'basketball', name:'Basketball', accent:'away', heat:62,
     headline:'Blazers Stay Unbeaten, Outlast Dončić\'s 41 to Beat Lakers 136-129',
     status:'DAMIAN LILLARD\'S CLUTCH TRIPLE HOLDS OFF A 41-POINT NIGHT FROM LUKA DONČIĆ, KEEPING PORTLAND UNBEATEN AT 3-0', deep:'light', sub:'NBA', live:false},
-  {id:'f1', name:'F1', accent:'away', heat:58,
-    headline:'Antonelli Can Clinch the Title in Mexico City',
-    status:'ANTONELLI CAN CLINCH THE TITLE IN MEXICO CITY WITH A NINTH-PLACE FINISH OR BETTER — HE LEADS RUSSELL BY 123 POINTS HEADING INTO THE NOV 1 RACE', deep:'none', sub:'Formula 1'},
+  {id:'f1', name:'F1', accent:'away', heat:93,
+    headline:'Antonelli Clinches the 2026 F1 Title, Becomes the Sport\'s Youngest-Ever Champion',
+    status:'MAX VERSTAPPEN WINS A RED-FLAGGED MEXICO CITY GRAND PRIX AHEAD OF LEWIS HAMILTON, BUT KIMI ANTONELLI\'S THIRD-PLACE FINISH CLINCHES THE 2026 DRIVERS\' TITLE WITH FOUR ROUNDS TO SPARE — AT 20, HE BECOMES F1\'S YOUNGEST-EVER WORLD CHAMPION AND THE FIRST ITALIAN CHAMPION SINCE ALBERTO ASCARI IN 1953', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:52,
     headline:'Volkanovski KOs Evloev to Retain Featherweight Title',
     status:'VOLKANOVSKI KOs EVLOEV IN ROUND 2 TO RETAIN THE FEATHERWEIGHT TITLE, WHILE YAN EDGES DVALISHVILI BY UNANIMOUS DECISION FOR THE BANTAMWEIGHT BELT, FIGHT OF THE NIGHT', deep:'light', sub:'Mixed martial arts'},
@@ -798,7 +798,8 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'CLE',record:'3'}, home:{abbr:'TB',record:'7'}, note:'ALCS Gm6 · Tropicana Field · Rays clinch AL pennant 4-2, advance to World Series vs. Brewers'},
     {status:'FINAL', away:{abbr:'LAD',record:'4'}, home:{abbr:'MIL',record:'6'}, note:'NLCS Gm4 · Brewers complete 4-0 sweep, reach first World Series since 1982'},
   ]},
-  football:{context:'LA LIGA MD11: BARCELONA ROUT ALAVÉS 6-1 TO RETAKE TOP SPOT (RAPHINHA, YAMAL BRACES) · ATLÉTICO MADRID BEAT LEVANTE 2-0 FOR A 7TH STRAIGHT WIN · BETIS 2-1 MÁLAGA, RAYO 3-0 CELTA, ESPANYOL STUN VILLARREAL 1-0 · PREMIER LEAGUE: BRIGHTON STUN MAN CITY 1-0 AT THE ETIHAD, TOTTENHAM BEAT 10-MAN CRYSTAL PALACE 2-0, VILLA AND FULHAM DRAW 1-1 · EL CLÁSICO FINAL: REAL MADRID BEAT BARCELONA 2-1 AT CAMP NOU, MBAPPÉ SCORES TWICE (41\', 87\') · UCL MD3 COMPLETE: BAYERN 2-2 ARSENAL, REAL MADRID 4-1 RB LEIPZIG · TUESDAY: PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL', games:[
+  football:{context:'PREMIER LEAGUE MW9: ARSENAL END A 14-YEAR ANFIELD DROUGHT, BEAT LIVERPOOL 1-0 (HAVERTZ 16\') TO MOVE 3 CLEAR AT THE TOP, 24 POINTS TO MANCHESTER CITY\'S 21 · LA LIGA MD11: BARCELONA ROUT ALAVÉS 6-1 TO RETAKE TOP SPOT (RAPHINHA, YAMAL BRACES) · ATLÉTICO MADRID BEAT LEVANTE 2-0 FOR A 7TH STRAIGHT WIN · BETIS 2-1 MÁLAGA, RAYO 3-0 CELTA, ESPANYOL STUN VILLARREAL 1-0 · BRIGHTON STUN MAN CITY 1-0 AT THE ETIHAD, TOTTENHAM BEAT 10-MAN CRYSTAL PALACE 2-0, VILLA AND FULHAM DRAW 1-1 · EL CLÁSICO FINAL: REAL MADRID BEAT BARCELONA 2-1 AT CAMP NOU, MBAPPÉ SCORES TWICE (41\', 87\') · UCL MD3 COMPLETE: BAYERN 2-2 ARSENAL, REAL MADRID 4-1 RB LEIPZIG · TUESDAY: PSG 4-2 BARCELONA, MAN CITY 5-1 AEK ATHENS, LIVERPOOL 4-3 VILLARREAL', games:[
+    {status:'FINAL', away:{abbr:'ARS',record:'1'}, home:{abbr:'LIV',record:'0'}, note:'Premier League Matchweek 9 · Anfield · Kai Havertz scores the only goal in the 16th minute, turning in Declan Rice\'s low cross from the right after a mistake by goalkeeper Alisson; Liverpool fail to put a single shot on target from 19 attempts; it\'s Arsenal\'s first league win at Anfield since 2012 and Mikel Arteta\'s first there as a manager, moving the Gunners to 24 points — 3 clear of Manchester City (21) — while the defending champions stay on 15 points and slip to 5th'},
     {status:'FINAL', away:{abbr:'ALA',record:'1'}, home:{abbr:'BAR',record:'6'}, note:'La Liga Matchday 11 · Spotify Camp Nou · Raphinha opens the scoring 8\' and adds a second 41\'; Fermín López makes it 3-0 23\'; Lamine Yamal scores either side of the break, 45+1\' and 64\', for a brace of his own; substitute Anthony Gordon caps the rout 81\'; Mariano Díaz pulls one back for Alavés 84\'; Barcelona bounce back from El Clásico to beat Alavés 6-1 and retake top spot in La Liga'},
     {status:'FINAL', away:{abbr:'CEL',record:'0'}, home:{abbr:'RAY',record:'3'}, note:'La Liga Matchday 11 · Estadio de Vallecas · Jorge de Frutos scores twice (36\', 55\') and Unai López adds a third 73\' as Rayo Vallecano beat Celta Vigo 3-0'},
     {status:'FINAL', away:{abbr:'ATM',record:'2'}, home:{abbr:'LEV',record:'0'}, note:'La Liga Matchday 11 · Estadi Ciutat de València · Alejandro Grimaldo and Giuliano Simeone score either side of the break, both off Álex Baena assists, as Atlético Madrid beat Levante 2-0 for a seventh straight league win and move top of the table'},
@@ -3549,6 +3550,65 @@ const ARTICLES = [
     ],
     related:'f1-mexico-city-preview',
   },
+  {id:'liverpool-arsenal-recap', sport:'football', league:'Premier League', cat:'recap',
+    headline:'Arsenal End 14-Year Anfield Drought, Beat Liverpool 1-0 to Go 3 Clear at the Top',
+    dek:'Kai Havertz\'s 16th-minute strike, set up by Declan Rice after a mistake from Alisson, was the only goal as Arsenal won at Anfield for the first time since 2012 and moved three points clear of Manchester City.',
+    byline:'Clutch Room Football Desk', mins:5, time:'Nov 1, 2026',
+    qa:[['What was the only goal of the game?','Kai Havertz converted Declan Rice\'s low cross from the right in the 16th minute, with a mistake from Liverpool goalkeeper Alisson playing a part, to give Arsenal a 1-0 win at Anfield.'],
+        ['How significant is the result?','It\'s Arsenal\'s first Premier League win at Anfield since 2012 and the first of Mikel Arteta\'s managerial career there. It also moves Arsenal to 24 points, three clear of Manchester City (21), while defending champions Liverpool stay on 15 points and drop to fifth.']],
+    body:[
+      'Arsenal ended one of the Premier League\'s longest-running hoodoos on Sunday, beating Liverpool 1-0 at Anfield for their first league win there since 2012 — and the first of Mikel Arteta\'s career as Arsenal manager at the ground. Kai Havertz scored the only goal of the game in the 16th minute, turning in a low cross from the right by Declan Rice after goalkeeper Alisson failed to deal with the delivery.',
+      'Liverpool pushed for an equalizer for the rest of the afternoon but never found the target, finishing with 19 shot attempts and not one of them on goal. The result extends Arsenal\'s lead at the top of the Premier League: they move to 24 points from a possible 27, three clear of Manchester City on 21, while the defending champions remain on 15 points and slip to fifth in the table.',
+      'For Arsenal, the win closes out a fixture that had become a genuine psychological barrier under Arteta, who had never won at Anfield in charge of the club before Sunday. For Liverpool, it\'s a second straight setback at home against a title rival and another reminder of how far off the pace the champions have fallen just nine matchweeks into the season.',
+    ],
+    related:'arsenal-title-race-analysis',
+    pull:'Arsenal\'s first win at Anfield since 2012 — and the first of Mikel Arteta\'s managerial career there.',
+  },
+  {id:'arsenal-title-race-analysis', sport:'football', league:'Premier League', cat:'analysis',
+    headline:'Arsenal\'s Anfield Breakthrough Is About More Than One Hoodoo',
+    dek:'Beating Liverpool at Anfield for the first time since 2012 ends a personal curse for Mikel Arteta — but the bigger number is the three-point gap it opens at the top of the Premier League, with the defending champions already fading.',
+    byline:'Clutch Room Football Desk', mins:6, time:'Nov 1, 2026',
+    qa:[['Why was this result significant beyond the three points?','Arsenal had not won a Premier League match at Anfield since 2012, and Mikel Arteta had never managed a win there in any competition before Sunday — a personal and historical barrier that had hung over every visit under his management.'],
+        ['Where does this leave the title race?','Arsenal are top on 24 points from nine matches, three clear of Manchester City on 21. Liverpool, the defending champions, sit on 15 points in fifth — already nine points off the pace this early in the season.']],
+    body:[
+      'Kai Havertz\'s 16th-minute finish at Anfield did two jobs at once on Sunday: it ended a specific, 14-year-old hoodoo — Arsenal\'s first Premier League win at the ground since 2012 — and it put real daylight between Arsenal and the rest of the Premier League table. Both matter, but it\'s the second one that will shape the rest of the season.',
+      'The scoreline was tight, but the underlying numbers were not. Liverpool managed 19 shot attempts and put none of them on target, a toothless return for a team at home against the league leaders. Arsenal needed only one moment of quality — Declan Rice\'s low cross, Alisson\'s misjudgment, Havertz arriving to finish it — to leave Merseyside with all three points.',
+      'For Mikel Arteta personally, the result removes a recurring storyline: he had never won at Anfield in any competition across his time as Arsenal manager, a run that had followed him into every build-up to this fixture. That personal breakthrough landed alongside the result Arsenal actually needed — three points that move them to 24 from a possible 27, three clear of Manchester City on 21.',
+      'The gap behind that is the more startling number. Liverpool, the reigning champions, sit on just 15 points and have dropped to fifth place after nine matchweeks — a position that, on points, would have had them fighting relegation worry a season ago rather than defending a title. Arsenal\'s task now is simply to keep doing what beat Liverpool: concede almost nothing, make the one chance that comes count, and let the table take care of the rest.',
+    ],
+    related:'liverpool-arsenal-recap',
+  },
+  {id:'f1-mexico-city-race-recap', sport:'f1', cat:'recap',
+    headline:'Antonelli Clinches the 2026 Title as Verstappen Wins a Red-Flagged Mexico City Grand Prix',
+    dek:'Max Verstappen held off Lewis Hamilton for his third win of the season after a red flag and a standing restart, but it was Kimi Antonelli\'s third-place finish that mattered most — it makes him, at 20, Formula 1\'s youngest-ever world champion.',
+    byline:'Clutch Room F1 Desk', mins:5, time:'Nov 1, 2026',
+    qa:[['How did Kimi Antonelli clinch the title in Mexico City?','He needed only a ninth-place finish or better. He did far better than that, passing Charles Leclerc on lap 48 to take third place, which was enough on its own to put the championship beyond reach for every rival with four rounds still to run.'],
+        ['What happened with the red flag?','Valtteri Bottas crashed heavily at Turn 1 on lap 44, bringing out a safety car and then a red flag; the race restarted from a standing start on lap 47. Oscar Piastri\'s seventh-place finish, after a race-ending collision with Arvid Lindblad, was still under stewards\' investigation after the race.'],
+        ['Who actually won the race?','Max Verstappen, his third win of the season, after Lewis Hamilton and Charles Leclerc tangled at the start. George Russell picked up a 10-second penalty for first-lap contact with Isack Hadjar and was classified sixth.']],
+    body:[
+      'Max Verstappen won a chaotic, red-flagged Mexico City Grand Prix on Sunday, but the result that mattered for the championship came one place behind him: Kimi Antonelli\'s drive to third clinched the 2026 Formula 1 drivers\' title with four rounds still to run, making the 20-year-old the youngest world champion in the sport\'s history.',
+      'Antonelli arrived at the Autódromo Hermanos Rodríguez needing only a ninth-place finish to be champion. He delivered far more than that, passing Charles Leclerc for third place on lap 48 — after the race had already been stopped once — to finish behind only Verstappen and Lewis Hamilton. "I\'m speechless," Antonelli said afterward, crediting Mercedes and his family for the title. His race engineer, Peter Bonnington, put it plainly over team radio in the closing laps: "Champion of the world!"',
+      'The race itself turned on a first-lap clash between the two Ferrari drivers, Hamilton and Leclerc, that handed Verstappen a lead he never gave up. Red Bull\'s man took his third win of the season after a red flag — triggered when Valtteri Bottas crashed heavily at Turn 1 on lap 44 — forced a standing restart on lap 47. Hamilton held on for second, 0.799 seconds back, with Antonelli completing the podium 4.006 seconds behind the winner.',
+      'George Russell was handed a 10-second penalty for first-lap contact with Isack Hadjar and was classified sixth, while Oscar Piastri\'s seventh place was still provisional after the race pending a stewards\' investigation into a collision with Arvid Lindblad that ended the rookie\'s afternoon. Franco Colapinto, Liam Lawson and Pierre Gasly rounded out the top ten.',
+      'At 20 years old, Antonelli becomes Formula 1\'s youngest-ever world champion, surpassing Sebastian Vettel\'s long-standing record, and the first Italian to win the title since Alberto Ascari in 1953. He leaves Mexico City with 380 points, 119 clear of Verstappen, who moved up to second in the standings with the win.',
+    ],
+    related:'f1-antonelli-title-analysis',
+    pull:'At 20, Antonelli is F1\'s youngest-ever world champion — and the first Italian champion since Alberto Ascari in 1953.',
+  },
+  {id:'f1-antonelli-title-analysis', sport:'f1', cat:'analysis',
+    headline:'Inside Kimi Antonelli\'s Title Run: a Record-Breaking Age and a 119-Point Cushion',
+    dek:'Antonelli didn\'t need to win in Mexico City to become champion — he needed to survive it. A look at how a 20-year-old built a championship margin big enough to clinch it four rounds early, even on a day that got away from him at the front.',
+    byline:'Clutch Room F1 Desk', mins:7, time:'Nov 1, 2026',
+    qa:[['What record does Antonelli now hold?','At 20 years old, he\'s the youngest world champion in Formula 1 history, surpassing Sebastian Vettel\'s mark, and the first Italian champion since Alberto Ascari in 1953.'],
+        ['How big was his championship margin in the end?','380 points to Max Verstappen\'s 261 — a 119-point gap, built up over a season that included wins at Shanghai, Suzuka, Miami, Montreal, Monaco, Spa, Monza (from 19th on the grid) and Austin.']],
+    body:[
+      'Kimi Antonelli didn\'t win the Mexico City Grand Prix. He didn\'t even lead a lap. What he did was finish third in a race that briefly threatened to turn into chaos around him — a first-lap Ferrari clash, a red flag, a standing restart — and that was enough, because of the margin he\'d already built before the weekend even started.',
+      'That margin is the real story of the season. Antonelli came to Mexico City with eight wins already banked — Shanghai, Suzuka, Miami, Montreal, Monaco, Spa, a stunning drive from 19th to 1st at Monza, and most recently a pole-to-flag run in Austin — against a Mercedes car that wasn\'t always the fastest on the grid but was, race after race, the one that avoided the big mistakes. By the time the field reached Mexico City, he needed only a ninth-place finish to be champion. He delivered third, passing Charles Leclerc on lap 48 for good measure.',
+      'The age record is the number that will headline this for years: at 20, Antonelli becomes Formula 1\'s youngest world champion, taking the mark away from Sebastian Vettel, and the first Italian champion since Alberto Ascari won in 1953 — a 73-year wait that ended with a Mercedes junior-program graduate finishing behind a chaotic Ferrari pile-up and a red flag, rather than with a dominant victory of his own.',
+      'What should worry his rivals heading into 2027 is how this title was won. Antonelli\'s margin — 380 points to Verstappen\'s 261 at the end, 119 clear with four rounds still unraced — wasn\'t built on a single dominant car, or on Mercedes simply having no bad days. It was built on consistency: podiums and wins piling up even on weekends, like Mexico City itself, where he wasn\'t the fastest man on track. A champion who can win the title without winning the race he clinches it in is exactly the kind of driver who\'s hardest to dislodge.',
+    ],
+    related:'f1-mexico-city-race-recap',
+  },
 ];
 
 /* ---------------- insider wire (illustrative — credits real outlets, not fabricated individual quotes) ---------------- */
@@ -4054,18 +4114,44 @@ const F1_SEASON_RESULTS = [
       {pos:21, driver:'F. Colapinto', team:'Alpine', gap:'DNF'},
       {pos:22, driver:'O. Bearman', team:'Haas', gap:'DNF'},
     ]},
+  {round:19, gp:'Mexico City, Mexico', winner:'M. Verstappen', team:'Red Bull', note:'Antonelli clinches the 2026 title with 3rd — F1\'s youngest-ever champion',
+    podium:[{driver:'M. Verstappen',team:'Red Bull'},{driver:'L. Hamilton',team:'Ferrari'},{driver:'K. Antonelli',team:'Mercedes'}],
+    results:[
+      {pos:1, driver:'M. Verstappen', team:'Red Bull', gap:'Winner'},
+      {pos:2, driver:'L. Hamilton', team:'Ferrari', gap:'+0.799s'},
+      {pos:3, driver:'K. Antonelli', team:'Mercedes', gap:'+4.006s'},
+      {pos:4, driver:'C. Leclerc', team:'Ferrari', gap:'+10.707s'},
+      {pos:5, driver:'L. Norris', team:'McLaren', gap:'+11.778s'},
+      {pos:6, driver:'G. Russell', team:'Mercedes', gap:'+12.263s'},
+      {pos:7, driver:'O. Piastri', team:'McLaren', gap:'+19.475s'},
+      {pos:8, driver:'F. Colapinto', team:'Alpine', gap:'+20.204s'},
+      {pos:9, driver:'L. Lawson', team:'Racing Bulls', gap:'+20.899s'},
+      {pos:10, driver:'P. Gasly', team:'Alpine', gap:'+21.483s'},
+      {pos:11, driver:'G. Bortoleto', team:'Audi', gap:'+22.041s'},
+      {pos:12, driver:'I. Hadjar', team:'Red Bull', gap:'+22.503s'},
+      {pos:13, driver:'R. Hirakawa', team:'Haas', gap:'+25.373s'},
+      {pos:14, driver:'A. Albon', team:'Williams', gap:'+27.562s'},
+      {pos:15, driver:'C. Sainz', team:'Williams', gap:'+28.638s'},
+      {pos:16, driver:'N. Hulkenberg', team:'Audi', gap:'+29.977s'},
+      {pos:17, driver:'S. Perez', team:'Cadillac', gap:'+30.695s'},
+      {pos:18, driver:'A. Lindblad', team:'Racing Bulls', gap:'DNF'},
+      {pos:19, driver:'L. Stroll', team:'Aston Martin', gap:'DNF'},
+      {pos:20, driver:'F. Alonso', team:'Aston Martin', gap:'DNF'},
+      {pos:21, driver:'V. Bottas', team:'Cadillac', gap:'DNF'},
+      {pos:22, driver:'O. Bearman', team:'Haas', gap:'DNF'},
+    ]},
 ];
 const F1_STANDINGS = [
-  {pos:1, driver:'K. Antonelli', team:'Mercedes', pts:365},
-  {pos:2, driver:'G. Russell', team:'Mercedes', pts:242},
-  {pos:3, driver:'L. Hamilton', team:'Ferrari', pts:241},
-  {pos:4, driver:'M. Verstappen', team:'Red Bull', pts:236},
-  {pos:5, driver:'C. Leclerc', team:'Ferrari', pts:233},
-  {pos:6, driver:'L. Norris', team:'McLaren', pts:211},
-  {pos:7, driver:'O. Piastri', team:'McLaren', pts:144},
+  {pos:1, driver:'K. Antonelli', team:'Mercedes', pts:380},
+  {pos:2, driver:'M. Verstappen', team:'Red Bull', pts:261},
+  {pos:3, driver:'L. Hamilton', team:'Ferrari', pts:259},
+  {pos:4, driver:'G. Russell', team:'Mercedes', pts:250},
+  {pos:5, driver:'C. Leclerc', team:'Ferrari', pts:245},
+  {pos:6, driver:'L. Norris', team:'McLaren', pts:221},
+  {pos:7, driver:'O. Piastri', team:'McLaren', pts:150},
   {pos:8, driver:'I. Hadjar', team:'Red Bull', pts:105},
-  {pos:9, driver:'L. Lawson', team:'Racing Bulls', pts:77},
-  {pos:10, driver:'P. Gasly', team:'Alpine', pts:42},
+  {pos:9, driver:'L. Lawson', team:'Racing Bulls', pts:79},
+  {pos:10, driver:'P. Gasly', team:'Alpine', pts:43},
 ];
 function renderF1Results(){
   return F1_SEASON_RESULTS.map(r=>{
@@ -4565,14 +4651,14 @@ function renderF1Hub(){
     <div class="f1-track-wrap">${f1TrackSvg()}</div>
     <div class="f1-next">
       <span class="eyebrow">Next Race</span>
-      <h1>Mexico City Grand Prix</h1>
+      <h1>São Paulo Grand Prix</h1>
       <div class="f1-countdown" id="f1-countdown">
         <div class="unit"><div class="num" id="f1-d">00</div><div class="lbl">Days</div></div>
         <div class="unit"><div class="num" id="f1-h">00</div><div class="lbl">Hours</div></div>
         <div class="unit"><div class="num" id="f1-m">00</div><div class="lbl">Minutes</div></div>
         <div class="unit"><div class="num" id="f1-sec">00</div><div class="lbl">Seconds</div></div>
       </div>
-      <p>F1 heads to the Autódromo Hermanos Rodríguez off the back of Kimi Antonelli's win at the United States Grand Prix — pole to flag, beating Charles Leclerc by 13 seconds — which extends his points lead but doesn't yet clinch the title. Practice and qualifying run Friday and Saturday, with the Grand Prix itself Sunday, November 1 at 2:00 PM local.</p>
+      <p>The title is already decided — Kimi Antonelli sealed the 2026 championship with a third-place finish at a red-flagged Mexico City Grand Prix, becoming F1's youngest-ever champion. The paddock moves on to Interlagos for the São Paulo Grand Prix, a standard race weekend with no sprint this year; practice and qualifying run Friday and Saturday, with the Grand Prix itself Sunday, November 8 at 2:00 PM local.</p>
       <a class="f1-pill-btn" href="#/">← Back to All Sports</a>
     </div>
 
@@ -4581,36 +4667,36 @@ function renderF1Hub(){
       <div class="f1-helmet-section">
         <div class="f1-helmet-grid">
           <div class="f1-helmet-stats">
-            <div><div class="n" style="font-size:24px;">Antonelli</div><div class="l">Pole to flag in Austin, his fourth win of the season, but still short of the title</div></div>
-            <div><div class="n" style="font-size:24px;">Verstappen</div><div class="l">Third in Austin, but already mathematically out of the championship fight</div></div>
+            <div><div class="n" style="font-size:24px;">Antonelli</div><div class="l">Third in a chaotic, red-flagged Mexico City GP — enough to clinch the 2026 title with four rounds still to run</div></div>
+            <div><div class="n" style="font-size:24px;">Verstappen</div><div class="l">Won in Mexico City, his third victory of the season, and moves up to 2nd in the standings</div></div>
           </div>
           <div id="f1-helmet-wrap">${F1_HELMET_SVG}</div>
           <div class="f1-helmet-stats right">
-            <div><div class="n" style="font-size:24px;">365</div><div class="l">Antonelli's points total after Austin — 123 clear of Russell with the season's final rounds to run</div></div>
-            <div><div class="n" style="font-size:24px;">Russell</div><div class="l">His own teammate is the closest thing left to a title rival, 8th in Austin and 123 points back</div></div>
+            <div><div class="n" style="font-size:24px;">380</div><div class="l">Antonelli's points total after Mexico City — 119 clear of Verstappen with four rounds left to run</div></div>
+            <div><div class="n" style="font-size:24px;">20</div><div class="l">Antonelli's age — F1's youngest-ever world champion, and the first Italian champion since Alberto Ascari in 1953</div></div>
           </div>
         </div>
       </div>
-      <p class="f1-quote">Kimi Antonelli wins at Austin and still can't be crowned champion — <b>Mexico City gets the next shot.</b></p>
+      <p class="f1-quote">Kimi Antonelli is "speechless" after clinching the title in Mexico City — <b>São Paulo is up next, with the pressure off.</b></p>
       <div style="height:70px;"></div>
     </div>
 
     <div class="f1-schedule">
-      <div class="f1-schedule-head"><h2>Race Weekend Schedule</h2><div class="f1-tabs"><span class="on">My Time (ET)</span><span>Austin Time</span></div></div>
-      <div class="f1-row"><span class="s">Practice 1</span><span class="t">Fri · 2:30 PM ET (12:30 PM CST)</span></div>
-      <div class="f1-row"><span class="s">Practice 2</span><span class="t">Fri · 6:00 PM ET (4:00 PM CST)</span></div>
-      <div class="f1-row"><span class="s">Practice 3</span><span class="t">Sat · 1:30 PM ET (11:30 AM CST)</span></div>
-      <div class="f1-row"><span class="s">Qualifying</span><span class="t">Sat · 5:00 PM ET (3:00 PM CST)</span></div>
-      <div class="f1-row"><span class="s">Race</span><span class="t">Sun · 3:00 PM ET (2:00 PM CST)</span></div>
+      <div class="f1-schedule-head"><h2>Race Weekend Schedule</h2><div class="f1-tabs"><span class="on">My Time (ET)</span><span>São Paulo Time</span></div></div>
+      <div class="f1-row"><span class="s">Practice 1</span><span class="t">Fri · 10:30 AM ET (12:30 PM BRT)</span></div>
+      <div class="f1-row"><span class="s">Practice 2</span><span class="t">Fri · 2:00 PM ET (4:00 PM BRT)</span></div>
+      <div class="f1-row"><span class="s">Practice 3</span><span class="t">Sat · 9:30 AM ET (11:30 AM BRT)</span></div>
+      <div class="f1-row"><span class="s">Qualifying</span><span class="t">Sat · 1:00 PM ET (3:00 PM BRT)</span></div>
+      <div class="f1-row"><span class="s">Race</span><span class="t">Sun · 12:00 PM ET (2:00 PM BRT)</span></div>
     </div>
 
     <div class="f1-schedule" style="padding-top:0;">
-      <div class="f1-schedule-head"><h2>Season So Far</h2><span class="eyebrow">18 of 23 rounds · R14 cancelled</span></div>
+      <div class="f1-schedule-head"><h2>Season So Far</h2><span class="eyebrow">19 of 23 rounds · R14 cancelled</span></div>
       ${renderF1Results()}
     </div>
 
     <div class="f1-schedule" style="padding-top:0;">
-      <div class="f1-schedule-head"><h2>Drivers' Championship</h2><span class="eyebrow">Entering Mexico City</span></div>
+      <div class="f1-schedule-head"><h2>Drivers' Championship</h2><span class="eyebrow">Entering São Paulo · Antonelli crowned champion</span></div>
       ${renderF1Standings()}
     </div>
 
@@ -4909,7 +4995,7 @@ setInterval(function(){
 }, 1000);
 
 /* ---------------- F1 scroll-driven helmet + MLB scroll progress ---------------- */
-const F1_RACE_TARGET = new Date('2026-11-01T20:00:00Z').getTime();
+const F1_RACE_TARGET = new Date('2026-11-08T17:00:00Z').getTime();
 let scrollTicking = false;
 function onScrollEffects(){
   const helmet = document.getElementById('f1-helmet');

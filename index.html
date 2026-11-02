@@ -527,6 +527,8 @@ a.board-row{display:grid;}
 .fx-teams{display:flex;align-items:center;gap:9px;font-weight:600;min-width:0;}
 .fx-teams .vs{color:var(--ink-muted);font-weight:400;font-size:11px;flex:none;}
 .fx-team{display:inline-flex;align-items:center;gap:9px;min-width:0;}
+a.fx-team{color:inherit;text-decoration:none;}
+a.fx-team-link:hover{color:var(--accent,var(--court));text-decoration:underline;}
 .fx-badge{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-size:9px;font-weight:700;letter-spacing:0;color:#fff;flex:none;}
 .fx-badge.fx-logo{width:30px;height:30px;background:none;object-fit:contain;border-radius:0;}
 .fx-score{font-weight:700;text-align:center;}
@@ -1486,7 +1488,10 @@ function fxTeam(abbr, scope){
   const mark = logo
     ? `<img class="fx-badge fx-logo" src="${logo}" alt="" loading="lazy">`
     : `<span class="fx-badge" style="background:${fxBadgeColor(abbr)}">${abbr.slice(0,3)}</span>`;
-  return `<span class="fx-team">${mark}${abbr}</span>`;
+  const inner = `${mark}${abbr}`;
+  return scope === 'nfl'
+    ? `<a class="fx-team fx-team-link" href="#/nfl-team/${abbr}">${inner}</a>`
+    : `<span class="fx-team">${inner}</span>`;
 }
 const FX_LOGO_SCOPE = {ucl:'football', nfl:'nfl'};
 function renderFixtures(key){
@@ -1748,6 +1753,17 @@ function teamStatRow(k, name, val){
     <span class="val tnum">${val}</span>
   </div>`;
 }
+function nflTeamSchedule(abbr){
+  const fx = FIXTURES.nfl;
+  if(!fx) return [];
+  const rows = [];
+  fx.weeks.forEach(w=>{
+    w.games.forEach(g=>{
+      if(g.away===abbr || g.home===abbr) rows.push({...g, week:w.week});
+    });
+  });
+  return rows;
+}
 function renderNFLTeamPage(abbr){
   const found = nflTeamLookup(abbr);
   const stats = NFL_TEAM_STATS[abbr];
@@ -1791,6 +1807,20 @@ function renderNFLTeamPage(abbr){
         <div><div class="v">${stats.defense.pts}</div><div class="k">Points Allowed</div></div>
       </div>
     </div>
+    ${(() => {
+      const games = nflTeamSchedule(abbr);
+      if(!games.length) return '';
+      return `<div class="div-section">
+        <div class="div-section-head"><h3 class="disp">Schedule</h3><span class="sub">Every ${team.name} game on the fixtures board</span></div>
+        <div class="fx-wrap">
+          ${games.map(g=>`<div class="fx-row">
+            <span class="fx-teams">${fxTeam(g.away, 'nfl')} <span class="vs">at</span> ${fxTeam(g.home, 'nfl')}</span>
+            ${g.score ? `<span class="fx-score tnum">${g.score}</span>` : '<span></span>'}
+            <span class="fx-status">${g.status}</span>
+          </div>`).join('')}
+        </div>
+      </div>`;
+    })()}
     <p class="fixtures-fallback" style="margin-top:8px;">Stats sourced from ESPN's 2026 NFL team and player stat pages.</p>
   </main>
   ${footer()}`;

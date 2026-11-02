@@ -775,8 +775,8 @@ const SPORTS = [
     headline:'O\'Shaquie Foster Unifies Super Featherweight Titles',
     status:'O\'SHAQUIE FOSTER DROPPED NAVARRETE TWICE EN ROUTE TO A UNANIMOUS DECISION IN SAN ANTONIO, UNIFYING THE WBC, WBO AND IBF SUPER FEATHERWEIGHT TITLES', deep:'light', sub:'Professional boxing'},
   {id:'cricket', name:'Cricket', accent:'away', heat:88,
-    headline:'Pakistan Win the ODI Tri-Series, Beat Sri Lanka by 3 Wickets in the Final',
-    status:'FAKHAR ZAMAN\'S 127 AND ARAFAT MINHAS\' MATCH-TURNING 61 CHASE DOWN SRI LANKA\'S 325/8 AT GADDAFI STADIUM — PAKISTAN\'S FIRST HOME TRI-SERIES TITLE AFTER FALLING SHORT IN THE 1994, 2004 AND 2025 FINALS; NEXT UP: A TWO-TEST SERIES AGAINST SRI LANKA, STARTING NOV 9 IN RAWALPINDI', deep:'light', sub:'International & league cricket', live:false},
+    headline:'South Africa Beat Australia 2-1 in the Test Series, Climb to No. 1 in the ICC Rankings',
+    status:'A 176-RUN WIN IN THE NEWLANDS DECIDER (HARMER PLAYER OF THE MATCH, JANSEN PLAYER OF THE SERIES) GIVES SOUTH AFRICA THE SERIES 2-1 AND THE WORLD\'S NO. 1 TEST RANKING FOR THE FIRST TIME IN NEARLY A DECADE; MEANWHILE INDIA AND NEW ZEALAND MOVE INTO A 5-MATCH ODI SERIES (FROM NOV 4, AUCKLAND) AFTER INDIA TOOK THE T20I LEG 3-2', deep:'light', sub:'International & league cricket', live:false},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -903,7 +903,7 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'PAKISTAN WIN ODI TRI-SERIES: FAKHAR ZAMAN\'S 127 AND ARAFAT MINHAS\' MATCH-TURNING 61 CHASE DOWN SRI LANKA\'S 325/8 TO WIN THE FINAL BY 3 WICKETS AT GADDAFI STADIUM — PAKISTAN\'S FIRST HOME TRI-SERIES TITLE AFTER FALLING SHORT IN 1994, 2004 AND 2025 · ENGLAND BEAT SRI LANKA BY 55 RUNS IN DEAD-RUBBER 6TH MATCH: DUCKETT\'S CAREER-BEST 167 · SRI LANKA BEAT PAKISTAN BY 8 WICKETS IN 5TH ODI: MADUSHANKA\'S CAREER-BEST 5/34 · PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI: SHADAB KHAN UNBEATEN 113', games:[
+  cricket:{context:'SOUTH AFRICA BEAT AUSTRALIA 2-1 IN THE TEST SERIES (WIN BY 176 RUNS IN THE NEWLANDS DECIDER), CLIMBING TO NO. 1 IN THE ICC TEST RANKINGS FOR THE FIRST TIME IN NEARLY A DECADE — SOUTH AFRICA ALSO WON THE ODI LEG 2-1 · INDIA TAKE THE IND-NZ T20I SERIES 3-2 AFTER NEW ZEALAND WIN THE LAST TWO (87 RUNS IN AUCKLAND, 7 WICKETS IN HAMILTON); THE 5-MATCH ODI SERIES OPENS NOV 4 AT EDEN PARK · PAKISTAN WIN ODI TRI-SERIES: FAKHAR ZAMAN\'S 127 AND ARAFAT MINHAS\' MATCH-TURNING 61 CHASE DOWN SRI LANKA\'S 325/8 TO WIN THE FINAL BY 3 WICKETS AT GADDAFI STADIUM — PAKISTAN\'S FIRST HOME TRI-SERIES TITLE AFTER FALLING SHORT IN 1994, 2004 AND 2025 · ENGLAND BEAT SRI LANKA BY 55 RUNS IN DEAD-RUBBER 6TH MATCH: DUCKETT\'S CAREER-BEST 167 · SRI LANKA BEAT PAKISTAN BY 8 WICKETS IN 5TH ODI: MADUSHANKA\'S CAREER-BEST 5/34 · PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI: SHADAB KHAN UNBEATEN 113', games:[
     {status:'FINAL', away:{abbr:'SL',record:'325/8 (50)'}, home:{abbr:'PAK',record:'331/7 (48.3)'}, note:'ODI Tri-Series Final · Gaddafi Stadium, Lahore · Kamindu Mendis\' 131 (128) and Pavan Rathnayake\'s 77 took Sri Lanka to 325/8, but a late collapse of five wickets for 28 runs capped the total; Pakistan slipped to 14/2 early in reply before Fakhar Zaman (127 off 99) and Saad Baig (74) added 149 for the third wicket, and after further wickets fell, Arafat Minhas\' match-turning 61 off 31 balls — his third standout innings of the series — sealed a 3-wicket win with 9 balls to spare; Fakhar Zaman was Player of the Match and Minhas Player of the Series as Pakistan won their first home tri-series title after losing the finals in 1994, 2004 and 2025'},
     {status:'FINAL', away:{abbr:'ENG',record:'386/5 (50)'}, home:{abbr:'SL',record:'331 (45.1)'}, note:'ODI Tri-Series 6th Match (dead rubber) · Gaddafi Stadium, Lahore · Ben Duckett\'s career-best 167 off 132 balls and Tom Banton\'s 74 powered England to 386/5; Sri Lanka\'s Pavan Rathnayake (118 off 77) and Kusal Mendis (89) kept pace in the chase before losing their last five wickets for 16 runs, with Liam Dawson taking 4/49, his first four-wicket ODI haul, as England won by 55 runs to end a three-match losing streak in a result with no bearing on the already-settled final'},
     {status:'FINAL', away:{abbr:'SL',record:'114/2 (18.1)'}, home:{abbr:'PAK',record:'110 (25.3)'}, note:'ODI Tri-Series 5th Match · Gaddafi Stadium, Lahore · Sri Lanka won the toss and chose to field; Dilshan Madushanka\'s career-best 5/34 — his second ODI five-for, after India at the 2023 World Cup — bowled Pakistan out for 110 (their second-lowest ODI total at home), Babar Azam top-scoring with 29; Sri Lanka ran down 111 in just 18.1 overs for an 8-wicket win, Kamindu Mendis unbeaten on 62; the result sends both Pakistan and Sri Lanka through to the October 31 final at Gaddafi Stadium and mathematically eliminates England, whose dead-rubber finale against Sri Lanka follows on Thursday'},
@@ -1914,8 +1914,8 @@ const CRICKET_RANKINGS = {
     {abbr:'AFG', team:'Afghanistan', rating:218},
   ]},
   test: {label:'Test', rows:[
-    {abbr:'AUS', team:'Australia', rating:126},
-    {abbr:'SA', team:'South Africa', rating:119},
+    {abbr:'SA', team:'South Africa', rating:124},
+    {abbr:'AUS', team:'Australia', rating:122},
     {abbr:'NZ', team:'New Zealand', rating:106},
     {abbr:'IND', team:'India', rating:105},
     {abbr:'ENG', team:'England', rating:102},
@@ -3642,6 +3642,33 @@ const ARTICLES = [
       'What should worry his rivals heading into 2027 is how this title was won. Antonelli\'s margin — 380 points to Verstappen\'s 261 at the end, 119 clear with four rounds still unraced — wasn\'t built on a single dominant car, or on Mercedes simply having no bad days. It was built on consistency: podiums and wins piling up even on weekends, like Mexico City itself, where he wasn\'t the fastest man on track. A champion who can win the title without winning the race he clinches it in is exactly the kind of driver who\'s hardest to dislodge.',
     ],
     related:'f1-mexico-city-race-recap',
+  },
+  {id:'aus-sa-test-series-recap', sport:'cricket', cat:'recap',
+    headline:'South Africa Beat Australia 2-1 in the Test Series, Become the World\'s No. 1 Ranked Team',
+    dek:'Simon Harmer\'s spin and a Ryan Rickelton-Wiaan Mulder fightback set up a 176-run win in the Newlands decider, handing South Africa the series and the ICC\'s top Test ranking for the first time in nearly a decade.',
+    byline:'Clutch Room Cricket Desk', mins:6, time:'Nov 1, 2026',
+    qa:[['How did the series finish?','South Africa won the decisive third Test at Newlands, Cape Town by 176 runs to take the three-match series 2-1, after Australia had won the first Test in Durban by 214 runs and South Africa leveled it with an innings-and-31-run win in Gqeberha.'],
+        ['What does the result mean for the rankings?','It puts South Africa top of the ICC Men\'s Test Team Rankings for the first time in roughly ten years, overtaking Australia, who had held the No. 1 spot.'],
+        ['Who stood out for South Africa across the series?','All-rounder Marco Jansen, who took 10 wickets in the first two Tests and passed 100 career Test wickets during the Cape Town decider; Simon Harmer was named Player of the Match in the series finale.']],
+    body:[
+      'South Africa have beaten Australia 2-1 in a three-match Test series and, with it, taken over as the world\'s No. 1 ranked Test team for the first time in close to a decade. The decider at Newlands in Cape Town went South Africa\'s way by 176 runs, completing a series that swung with every match: Australia won the opener in Durban by 214 runs, South Africa hit back with an innings-and-31-run win in Gqeberha to level it, and Cape Town settled it.',
+      'The Newlands Test itself was tight into the fourth day. Australia had taken a 100-run first-innings lead — Josh Inglis\'s century, with support from Alex Carey and Matt Renshaw, pushed them to 429 against South Africa\'s 329 — before Ryan Rickelton (101) and Wiaan Mulder (115) put on a 154-run sixth-wicket stand in South Africa\'s second innings to set Australia a target of 288 on a deteriorating, increasingly spin-friendly pitch. Off-spinner Simon Harmer, who had already made inroads with the ball earlier in the match, was named Player of the Match as South Africa bowled Australia out well short to seal the win by 176 runs.',
+      'Marco Jansen was the player of the series. He took ten wickets across the first two Tests and reached 100 Test wickets for his career during the Cape Town match, becoming the 18th South African bowler to the mark — while also pitching in with the bat, including an 85 in the Gqeberha win. Matt Renshaw was Australia\'s leading run-scorer in a losing cause with 369, and Mitchell Starc finished with 15 wickets, the most by either side\'s bowlers.',
+      'South Africa also won the three-match ODI series that preceded the Tests, 2-1 — wins at Durban and Johannesburg either side of an Australian DLS win in Potchefstroom — with spinner Keshav Maharaj named Player of that series. Between the two results, it\'s the most one-sided stretch of the rivalry in years, and it leaves South Africa as the Test championship\'s pace-setters with their position as the global top side confirmed by the ICC rankings update.',
+    ],
+  },
+  {id:'ind-nz-odi-series-preview', sport:'cricket', cat:'preview',
+    headline:'India Head Into a Five-ODI New Zealand Series After New Zealand Rallied to Avoid a T20I Sweep',
+    dek:'India won three of the first three T20Is before New Zealand won the last two to make the final score 3-2 — now the tour shifts to five ODIs, starting Wednesday at Eden Park, Auckland, and two Tests later in the month.',
+    byline:'Clutch Room Cricket Desk', mins:5, time:'Nov 2, 2026',
+    qa:[['How did the T20I series finish?','India won 3-2. India took the first three matches in Christchurch and Wellington before New Zealand won the last two — by 87 runs in Auckland and by 7 wickets in Hamilton — to avoid a clean sweep.'],
+        ['What\'s left on this tour?','Five ODIs — Nov 4 at Eden Park (Auckland), Nov 7 (Wellington), Nov 10 (Hamilton), and Nov 13 and 15 (both at Mount Maunganui) — followed by two Tests, starting Nov 19 in Wellington and Nov 27 in Christchurch.'],
+        ['Where do these teams sit in the ODI rankings?','India are the ICC\'s No. 1 ranked ODI side, with New Zealand at No. 2 — making this the first 50-over cricket between the top two ranked teams since the tour was announced.']],
+    body:[
+      'India\'s tour of New Zealand moves into its one-day leg on Wednesday at Eden Park, Auckland, after New Zealand salvaged some pride at the end of the T20I series that opened the trip. India had won the first three matches — two in Christchurch, one in Wellington — to put the series out of reach, but New Zealand came back to win the last two, an 87-run win in Auckland and a 7-wicket chase in Hamilton, for a final score of 3-2.',
+      'The five-match ODI series is the most substantial part of this tour on paper: it pits the ICC\'s top two ranked one-day sides against each other, with India currently No. 1 and New Zealand No. 2. After Wednesday\'s opener at Eden Park, the series moves to Wellington (Nov 7), Hamilton (Nov 10), and finishes with back-to-back matches at Mount Maunganui on Nov 13 and 15.',
+      'This is also a series with selection stakes beyond the results themselves — it\'s India\'s first men\'s ODI cricket since their January home series against New Zealand, and comes with captaincy questions still being settled for the white-ball squad. Once the one-dayers wrap up, the tour closes with a two-Test series, opening Nov 19 at the Basin Reserve in Wellington and finishing Nov 27 at Hagley Oval in Christchurch — part of a historic 12-match itinerary between the two sides across this New Zealand summer.',
+    ],
   },
 ];
 

@@ -754,8 +754,8 @@ const SPORTS = [
     headline:'Brewers Beat Rays 4-1 in Game 5, Win First World Series Title',
     status:'MISIOROWSKI FIRES 5.2 SCORELESS BEFORE EXITING WITH A CALF CRAMP, MEGILL CLOSES WITH A SIX-OUT SAVE AS MILWAUKEE BEATS TAMPA BAY 4-1 TO WIN THE WORLD SERIES 4 GAMES TO 1 — THE FRANCHISE\'S FIRST TITLE', deep:'full', sub:'Postseason coverage, pitching matchups and roster watch', live:false},
   {id:'nfl', name:'NFL', accent:'away', heat:80,
-    headline:'Cowboys Rout Eagles 38-21 on Monday Night',
-    status:'DAK PRESCOTT THROWS 3 TDS AS DALLAS ROUTS PHILADELPHIA 38-21, DROPPING THE EAGLES\' 5TH STRAIGHT WITHOUT JALEN HURTS, OUT FOR THE SEASON WITH BLOOD CLOTS', deep:'none', sub:'National Football League', live:false},
+    headline:'Lions End Minnesota\'s Unbeaten Season, Beat Vikings 19-15',
+    status:'DETROIT SNAPS MINNESOTA\'S 6-0 START · JAGUARS ROUT COLTS 42-7 · EAGLES FALL TO WASHINGTON FOR A 6TH STRAIGHT LOSS WITHOUT JALEN HURTS · BEARS AT SEAHAWKS CLOSES WEEK 8 MONDAY NIGHT', deep:'none', sub:'National Football League', live:false},
   {id:'tennis', name:'Tennis', accent:'court', heat:50,
     headline:'Musetti Wins Lyon for First Title Since 2022',
     status:'LORENZO MUSETTI BEAT TAYLOR FRITZ 6-3, 6-4 IN 80 MINUTES AT THE ATP LYON OPEN FOR HIS FIRST TITLE SINCE 2022 AND THIRD CAREER TROPHY', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
@@ -883,21 +883,34 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'NAVARRETE'}, home:{abbr:'FOSTER'}, note:'Foster wins by unanimous decision (118-108, 118-108, 115-111), drops Navarrete twice in Round 12 · Frost Bank Center, San Antonio'},
     {status:'FINAL', away:{abbr:'WARDLEY'}, home:{abbr:'DUBOIS'}, note:'Dubois stops Wardley in Round 2 of their rematch, Oct 17'},
   ]},
-  nfl:{context:'WEEK 8 MNF: COWBOYS ROUT EAGLES 38-21 · WEEK 8 SUNDAY: SEAHAWKS HAND CHIEFS THEIR FIRST LOSS OF THE SEASON, 20-3 · GIANTS WIN OT THRILLER AT HOUSTON 27-21 · BUCCANEERS ROUT PANTHERS 43-13, BENGALS ROUT RAVENS 35-13 · BEARS BEAT PATRIOTS 30-24 IN TNF', games:[
-    {status:'FINAL', away:{abbr:'DAL',record:'38'}, home:{abbr:'PHI',record:'21'}, note:'Week 8 · Monday Night Football · Lincoln Financial Field · Eagles without Jalen Hurts, Tanner McKee starting at QB; Dak Prescott throws for 212 yds and 3 TDs, two to CeeDee Lamb; Javonte Williams runs for 155 yds, the first 150-yard rushing game by a Cowboys back since Ezekiel Elliott in 2018; Saquon Barkley scores on the ground for Philadelphia, which drops its fifth straight'},
-    {status:'FINAL', away:{abbr:'KC',record:'3'}, home:{abbr:'SEA',record:'20'}, note:'Week 8 · Seahawks hand Kansas City its first loss of the season; Sam Darnold throws for 257 yds and a TD, Jaxon Smith-Njigba catches 9 for 150 yds and a score'},
-    {status:'FINAL/OT', away:{abbr:'NYG',record:'27'}, home:{abbr:'HOU',record:'21'}, note:'Week 8 · Giants win in overtime at Houston; Cam Skattebo runs for 124 yds and a TD, J.J. McCarthy throws for 252 yds'},
-    {status:'FINAL', away:{abbr:'TB',record:'43'}, home:{abbr:'CAR',record:'13'}, note:'Week 8 · Bucky Irving runs for 106 yds and 2 TDs as Buccaneers rout Panthers'},
-    {status:'FINAL', away:{abbr:'CIN',record:'35'}, home:{abbr:'BAL',record:'13'}, note:'Week 8 · Bengals score 21 unanswered in the second half, Tee Higgins catches 6 for 148 yds and a TD, rout Ravens despite Tyler Huntley\'s 298 passing yds'},
-    {status:'FINAL', away:{abbr:'LAR',record:'35'}, home:{abbr:'LV',record:'21'}, note:'Week 8 · Kyren Williams runs for 99 yds and a TD as Rams rout Raiders; Kirk Cousins throws for 295 yds and 2 TDs in the loss'},
-    {status:'FINAL', away:{abbr:'ATL',record:'29'}, home:{abbr:'SF',record:'20'}, note:'Week 8 · Falcons beat 49ers despite Brock Purdy\'s 288 passing yds and a TD'},
-    {status:'FINAL', away:{abbr:'MIA',record:'28'}, home:{abbr:'NYJ',record:'25'}, note:'Week 8 · Dolphins hold off Jets despite Geno Smith\'s 287 yds and 3 TD passes'},
-    {status:'FINAL', away:{abbr:'CLE',record:'27'}, home:{abbr:'TEN',record:'24'}, note:'Week 8 · Browns win for the second straight week; Deshaun Watson throws for 308 yds, Tony Pollard runs for 129 yds and 3 TDs for Tennessee in the loss'},
-    {status:'FINAL', away:{abbr:'DEN',record:'30'}, home:{abbr:'ARI',record:'16'}, note:'Week 8 · Bo Nix runs for 73 yds and a TD as Broncos beat Cardinals; Trey McBride catches 10 for 111 yds for Arizona'},
-    {status:'FINAL', away:{abbr:'GB',record:'17'}, home:{abbr:'DET',record:'20'}, note:'Week 8 · Jared Goff throws for 303 yds and 2 TDs, Amon-Ra St. Brown catches 9 for 153 yds as Lions edge Packers'},
-    {status:'FINAL', away:{abbr:'IND',record:'10'}, home:{abbr:'MIN',record:'16'}, note:'Week 8 · Kyler Murray throws for 150 yds and a TD as Vikings hold off Colts; Jonathan Taylor runs for 95 yds and a TD for Indianapolis'},
-    {status:'FINAL', away:{abbr:'PIT',record:'16'}, home:{abbr:'NO',record:'10'}, note:'Week 8 · NFL Paris Game · Tyler Shough throws for 278 yds, Jaylen Warren runs for 101 yds as Steelers hold off Saints'},
-    {status:'FINAL', away:{abbr:'NE',record:'24'}, home:{abbr:'CHI',record:'30'}, note:'Week 8 · Thursday Night Football · Soldier Field · Williams throws 2 TDs, Burden III goes for 130 yds; Santos\' career-long 58-yd FG and an Odunze onside-kick recovery hold off a Maye-led Patriots rally'},
+  nfl:{context:'WEEK 8: LIONS END MINNESOTA\'S 6-0 START, BEAT VIKINGS 19-15 · JAGUARS ROUT COLTS 42-7 · EAGLES FALL TO WASHINGTON 27-10 FOR A 6TH STRAIGHT LOSS WITHOUT JALEN HURTS · CARDINALS UPSET COWBOYS 33-30 · BEARS AT SEAHAWKS CLOSES THE WEEK MONDAY NIGHT', games:[
+    {status:'FINAL', away:{abbr:'DET',record:'19'}, home:{abbr:'MIN',record:'15'}, note:'Week 8 · Lions end Minnesota\'s unbeaten start at 6-1, their first loss of the season'},
+    {status:'FINAL', away:{abbr:'IND',record:'7'}, home:{abbr:'JAX',record:'42'}, note:'Week 8 · Jaguars\' 35-point rout is the week\'s biggest margin, improve to 5-2'},
+    {status:'FINAL', away:{abbr:'PHI',record:'10'}, home:{abbr:'WSH',record:'27'}, note:'Week 8 · Eagles fall to 2-6, their 6th straight loss without Jalen Hurts'},
+    {status:'FINAL', away:{abbr:'ARI',record:'33'}, home:{abbr:'DAL',record:'30'}, note:'Week 8 · Cardinals upset Cowboys, who drop to 3-5'},
+    {status:'FINAL', away:{abbr:'BAL',record:'10'}, home:{abbr:'BUF',record:'36'}, note:'Week 8 · Bills blow out Ravens, improve to 6-1'},
+    {status:'FINAL', away:{abbr:'TEN',record:'36'}, home:{abbr:'CIN',record:'43'}, note:'Week 8 · Bengals outlast Titans in a shootout, improve to 5-2'},
+    {status:'FINAL', away:{abbr:'LV',record:'38'}, home:{abbr:'NYJ',record:'33'}, note:'Week 8 · Raiders hold off Jets, improve to 4-4'},
+    {status:'FINAL', away:{abbr:'CLE',record:'6'}, home:{abbr:'PIT',record:'27'}, note:'Week 8 · Steelers improve to 6-2, Browns fall to 5-3'},
+    {status:'FINAL', away:{abbr:'ATL',record:'0'}, home:{abbr:'TB',record:'16'}, note:'Week 8 · Buccaneers shut out Falcons'},
+    {status:'FINAL', away:{abbr:'LAC',record:'9'}, home:{abbr:'LAR',record:'24'}, note:'Week 8 · Rams improve to 4-4, Chargers fall to 0-7'},
+    {status:'FINAL', away:{abbr:'KC',record:'24'}, home:{abbr:'DEN',record:'28'}, note:'Week 8 · Broncos beat Chiefs, improve to 6-2'},
+    {status:'FINAL', away:{abbr:'NE',record:'24'}, home:{abbr:'MIA',record:'19'}, note:'Week 8 · Patriots improve to 5-3, Dolphins fall to 1-6'},
+    {status:'FINAL', away:{abbr:'CAR',record:'19'}, home:{abbr:'GB',record:'27'}, note:'Week 8 · Packers improve to 5-3, Panthers fall to 3-4'},
+    {status:'FINAL', away:{abbr:'DAL',record:'38'}, home:{abbr:'PHI',record:'21'}, note:'Week 7 · Monday Night Football · Lincoln Financial Field · Eagles without Jalen Hurts, Tanner McKee starting at QB; Dak Prescott throws for 212 yds and 3 TDs, two to CeeDee Lamb; Javonte Williams runs for 155 yds, the first 150-yard rushing game by a Cowboys back since Ezekiel Elliott in 2018; Saquon Barkley scores on the ground for Philadelphia, which drops its fifth straight'},
+    {status:'FINAL', away:{abbr:'KC',record:'3'}, home:{abbr:'SEA',record:'20'}, note:'Week 7 · Seahawks hand Kansas City its first loss of the season; Sam Darnold throws for 257 yds and a TD, Jaxon Smith-Njigba catches 9 for 150 yds and a score'},
+    {status:'FINAL/OT', away:{abbr:'NYG',record:'27'}, home:{abbr:'HOU',record:'21'}, note:'Week 7 · Giants win in overtime at Houston; Cam Skattebo runs for 124 yds and a TD, J.J. McCarthy throws for 252 yds'},
+    {status:'FINAL', away:{abbr:'TB',record:'43'}, home:{abbr:'CAR',record:'13'}, note:'Week 7 · Bucky Irving runs for 106 yds and 2 TDs as Buccaneers rout Panthers'},
+    {status:'FINAL', away:{abbr:'CIN',record:'35'}, home:{abbr:'BAL',record:'13'}, note:'Week 7 · Bengals score 21 unanswered in the second half, Tee Higgins catches 6 for 148 yds and a TD, rout Ravens despite Tyler Huntley\'s 298 passing yds'},
+    {status:'FINAL', away:{abbr:'LAR',record:'35'}, home:{abbr:'LV',record:'21'}, note:'Week 7 · Kyren Williams runs for 99 yds and a TD as Rams rout Raiders; Kirk Cousins throws for 295 yds and 2 TDs in the loss'},
+    {status:'FINAL', away:{abbr:'ATL',record:'29'}, home:{abbr:'SF',record:'20'}, note:'Week 7 · Falcons beat 49ers despite Brock Purdy\'s 288 passing yds and a TD'},
+    {status:'FINAL', away:{abbr:'MIA',record:'28'}, home:{abbr:'NYJ',record:'25'}, note:'Week 7 · Dolphins hold off Jets despite Geno Smith\'s 287 yds and 3 TD passes'},
+    {status:'FINAL', away:{abbr:'CLE',record:'27'}, home:{abbr:'TEN',record:'24'}, note:'Week 7 · Browns win for the second straight week; Deshaun Watson throws for 308 yds, Tony Pollard runs for 129 yds and 3 TDs for Tennessee in the loss'},
+    {status:'FINAL', away:{abbr:'DEN',record:'30'}, home:{abbr:'ARI',record:'16'}, note:'Week 7 · Bo Nix runs for 73 yds and a TD as Broncos beat Cardinals; Trey McBride catches 10 for 111 yds for Arizona'},
+    {status:'FINAL', away:{abbr:'GB',record:'17'}, home:{abbr:'DET',record:'20'}, note:'Week 7 · Jared Goff throws for 303 yds and 2 TDs, Amon-Ra St. Brown catches 9 for 153 yds as Lions edge Packers'},
+    {status:'FINAL', away:{abbr:'IND',record:'10'}, home:{abbr:'MIN',record:'16'}, note:'Week 7 · Kyler Murray throws for 150 yds and a TD as Vikings hold off Colts; Jonathan Taylor runs for 95 yds and a TD for Indianapolis'},
+    {status:'FINAL', away:{abbr:'PIT',record:'16'}, home:{abbr:'NO',record:'10'}, note:'Week 7 · NFL Paris Game · Tyler Shough throws for 278 yds, Jaylen Warren runs for 101 yds as Steelers hold off Saints'},
+    {status:'FINAL', away:{abbr:'NE',record:'24'}, home:{abbr:'CHI',record:'30'}, note:'Week 7 · Thursday Night Football · Soldier Field · Williams throws 2 TDs, Burden III goes for 130 yds; Santos\' career-long 58-yd FG and an Odunze onside-kick recovery hold off a Maye-led Patriots rally'},
     {status:'FINAL', away:{abbr:'WSH',record:'17'}, home:{abbr:'SF',record:'23'}, note:'Week 7 · Monday Night Football · McCaffrey scores twice, Mustapha\'s 4th-down pass breakup seals it after Washington rallies from 23-3 down'},
     {status:'FINAL', away:{abbr:'LAC',record:'6'}, home:{abbr:'KC',record:'22'}, note:'Week 7 · Chiefs cruise past Chargers'},
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
@@ -917,7 +930,7 @@ const GAMES = {
 /* ---------------- full fixture lists (illustrative schedule data) ---------------- */
 const FIXTURES = {
   nfl: {label:'NFL — 2026 Season · Week 8', weeks:[
-    {week:'Week 8 · Oct 22-26', games:[
+    {week:'Week 7 · Oct 22-26', games:[
       {away:'NE', home:'CHI', status:'FINAL', score:'24-30'},
       {away:'PIT', home:'NO', status:'FINAL', score:'16-10'},
       {away:'IND', home:'MIN', status:'FINAL', score:'10-16'},
@@ -933,6 +946,22 @@ const FIXTURES = {
       {away:'KC', home:'SEA', status:'FINAL', score:'3-20'},
       {away:'DAL', home:'PHI', status:'FINAL', score:'38-21'},
     ]},
+    {week:'Week 8 · Oct 29-Nov 2', games:[
+      {away:'CAR', home:'GB', status:'FINAL', score:'19-27'},
+      {away:'BAL', home:'BUF', status:'FINAL', score:'10-36'},
+      {away:'TEN', home:'CIN', status:'FINAL', score:'36-43'},
+      {away:'ARI', home:'DAL', status:'FINAL', score:'33-30'},
+      {away:'MIN', home:'DET', status:'FINAL', score:'15-19'},
+      {away:'IND', home:'JAX', status:'FINAL', score:'7-42'},
+      {away:'LV', home:'NYJ', status:'FINAL', score:'38-33'},
+      {away:'CLE', home:'PIT', status:'FINAL', score:'6-27'},
+      {away:'ATL', home:'TB', status:'FINAL', score:'0-16'},
+      {away:'LAC', home:'LAR', status:'FINAL', score:'9-24'},
+      {away:'KC', home:'DEN', status:'FINAL', score:'24-28'},
+      {away:'NE', home:'MIA', status:'FINAL', score:'24-19'},
+      {away:'PHI', home:'WSH', status:'FINAL', score:'10-27'},
+      {away:'CHI', home:'SEA', status:'MON · 8:15 PM ET'},
+    ], note:'Bye: Texans, Saints, Giants, 49ers'},
     {week:'Week 9 · Nov 5-9', games:[
       {away:'JAX', home:'BAL', status:'THU · 8:15 PM ET'},
       {away:'CIN', home:'ATL', status:'SUN · 9:30 AM ET (Madrid)'},
@@ -1599,52 +1628,52 @@ const FOOTBALL_STANDINGS = {
 };
 const NFL_STANDINGS = [
   {name:'AFC East', teams:[
-    {abbr:'BUF', name:'Buffalo Bills', w:5, l:1, t:0, pct:'.833'},
-    {abbr:'NE', name:'New England Patriots', w:4, l:3, t:0, pct:'.571'},
-    {abbr:'NYJ', name:'New York Jets', w:2, l:5, t:0, pct:'.286'},
-    {abbr:'MIA', name:'Miami Dolphins', w:1, l:5, t:0, pct:'.167'},
+    {abbr:'BUF', name:'Buffalo Bills', w:6, l:1, t:0, pct:'.857'},
+    {abbr:'NE', name:'New England Patriots', w:5, l:3, t:0, pct:'.625'},
+    {abbr:'NYJ', name:'New York Jets', w:2, l:6, t:0, pct:'.250'},
+    {abbr:'MIA', name:'Miami Dolphins', w:1, l:6, t:0, pct:'.143'},
   ]},
   {name:'AFC North', teams:[
-    {abbr:'CLE', name:'Cleveland Browns', w:5, l:2, t:0, pct:'.714'},
-    {abbr:'PIT', name:'Pittsburgh Steelers', w:5, l:2, t:0, pct:'.714'},
-    {abbr:'CIN', name:'Cincinnati Bengals', w:4, l:2, t:0, pct:'.667'},
-    {abbr:'BAL', name:'Baltimore Ravens', w:4, l:3, t:0, pct:'.571'},
+    {abbr:'PIT', name:'Pittsburgh Steelers', w:6, l:2, t:0, pct:'.750'},
+    {abbr:'CIN', name:'Cincinnati Bengals', w:5, l:2, t:0, pct:'.714'},
+    {abbr:'CLE', name:'Cleveland Browns', w:5, l:3, t:0, pct:'.625'},
+    {abbr:'BAL', name:'Baltimore Ravens', w:4, l:4, t:0, pct:'.500'},
   ]},
   {name:'AFC South', teams:[
-    {abbr:'JAX', name:'Jacksonville Jaguars', w:4, l:2, t:0, pct:'.667'},
-    {abbr:'IND', name:'Indianapolis Colts', w:2, l:5, t:0, pct:'.286'},
+    {abbr:'JAX', name:'Jacksonville Jaguars', w:5, l:2, t:0, pct:'.714'},
     {abbr:'HOU', name:'Houston Texans', w:2, l:5, t:0, pct:'.286'},
-    {abbr:'TEN', name:'Tennessee Titans', w:1, l:6, t:0, pct:'.143'},
+    {abbr:'IND', name:'Indianapolis Colts', w:2, l:6, t:0, pct:'.250'},
+    {abbr:'TEN', name:'Tennessee Titans', w:1, l:7, t:0, pct:'.125'},
   ]},
   {name:'AFC West', teams:[
-    {abbr:'KC', name:'Kansas City Chiefs', w:5, l:1, t:0, pct:'.833'},
-    {abbr:'DEN', name:'Denver Broncos', w:5, l:2, t:0, pct:'.714'},
-    {abbr:'LV', name:'Las Vegas Raiders', w:3, l:4, t:0, pct:'.429'},
-    {abbr:'LAC', name:'Los Angeles Chargers', w:0, l:6, t:0, pct:'.000'},
+    {abbr:'DEN', name:'Denver Broncos', w:6, l:2, t:0, pct:'.750'},
+    {abbr:'KC', name:'Kansas City Chiefs', w:5, l:2, t:0, pct:'.714'},
+    {abbr:'LV', name:'Las Vegas Raiders', w:4, l:4, t:0, pct:'.500'},
+    {abbr:'LAC', name:'Los Angeles Chargers', w:0, l:7, t:0, pct:'.000'},
   ]},
   {name:'NFC East', teams:[
     {abbr:'NYG', name:'New York Giants', w:4, l:2, t:1, pct:'.643'},
-    {abbr:'DAL', name:'Dallas Cowboys', w:3, l:4, t:0, pct:'.429'},
-    {abbr:'PHI', name:'Philadelphia Eagles', w:2, l:5, t:0, pct:'.286'},
-    {abbr:'WSH', name:'Washington Commanders', w:1, l:4, t:1, pct:'.250'},
+    {abbr:'DAL', name:'Dallas Cowboys', w:3, l:5, t:0, pct:'.375'},
+    {abbr:'WSH', name:'Washington Commanders', w:2, l:4, t:1, pct:'.357'},
+    {abbr:'PHI', name:'Philadelphia Eagles', w:2, l:6, t:0, pct:'.250'},
   ]},
   {name:'NFC North', teams:[
-    {abbr:'MIN', name:'Minnesota Vikings', w:6, l:0, t:0, pct:'1.000'},
+    {abbr:'MIN', name:'Minnesota Vikings', w:6, l:1, t:0, pct:'.857'},
     {abbr:'CHI', name:'Chicago Bears', w:5, l:2, t:0, pct:'.714'},
-    {abbr:'DET', name:'Detroit Lions', w:4, l:2, t:0, pct:'.667'},
-    {abbr:'GB', name:'Green Bay Packers', w:4, l:3, t:0, pct:'.571'},
+    {abbr:'DET', name:'Detroit Lions', w:5, l:2, t:0, pct:'.714'},
+    {abbr:'GB', name:'Green Bay Packers', w:5, l:3, t:0, pct:'.625'},
   ]},
   {name:'NFC South', teams:[
-    {abbr:'CAR', name:'Carolina Panthers', w:3, l:3, t:0, pct:'.500'},
-    {abbr:'ATL', name:'Atlanta Falcons', w:3, l:4, t:0, pct:'.429'},
-    {abbr:'TB', name:'Tampa Bay Buccaneers', w:2, l:5, t:0, pct:'.286'},
+    {abbr:'CAR', name:'Carolina Panthers', w:3, l:4, t:0, pct:'.429'},
+    {abbr:'ATL', name:'Atlanta Falcons', w:3, l:5, t:0, pct:'.375'},
+    {abbr:'TB', name:'Tampa Bay Buccaneers', w:3, l:5, t:0, pct:'.375'},
     {abbr:'NO', name:'New Orleans Saints', w:2, l:5, t:0, pct:'.286'},
   ]},
   {name:'NFC West', teams:[
     {abbr:'SF', name:'San Francisco 49ers', w:6, l:1, t:0, pct:'.857'},
     {abbr:'SEA', name:'Seattle Seahawks', w:4, l:3, t:0, pct:'.571'},
-    {abbr:'LAR', name:'Los Angeles Rams', w:3, l:4, t:0, pct:'.429'},
-    {abbr:'ARI', name:'Arizona Cardinals', w:2, l:5, t:0, pct:'.286'},
+    {abbr:'LAR', name:'Los Angeles Rams', w:4, l:4, t:0, pct:'.500'},
+    {abbr:'ARI', name:'Arizona Cardinals', w:3, l:5, t:0, pct:'.375'},
   ]},
 ];
 const STD_DARK_BACKDROP = new Set(['NZ']);
@@ -1703,7 +1732,7 @@ function renderNFLStandings(){
   </div>`;
 }
 /* ---------------- NFL team stat pages ---------------- */
-// Season-to-date (through Week 8, 2026) stat leaders and team defense numbers.
+// Season-to-date (through Week 7, 2026) stat leaders and team defense numbers.
 // Sourced from ESPN's per-team stats pages (passing/rushing/receiving leaders) and
 // ESPN's league-wide team defense table (https://www.espn.com/nfl/stats/team/_/view/defense).
 const NFL_TEAM_STATS = {
@@ -1790,7 +1819,7 @@ function renderNFLTeamPage(abbr){
     </div>
 
     <div class="div-section">
-      <div class="div-section-head"><h3 class="disp">Season Leaders</h3><span class="sub">Through Week 8 · 2026</span></div>
+      <div class="div-section-head"><h3 class="disp">Season Leaders</h3><span class="sub">Through Week 7 · 2026</span></div>
       <div>
         ${teamStatRow('QB Yards', stats.passing.name, stats.passing.yards.toLocaleString()+' yds')}
         ${teamStatRow('Rushing Yards', stats.rushing.name, stats.rushing.yards.toLocaleString()+' yds')}

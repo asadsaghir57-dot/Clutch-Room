@@ -667,7 +667,8 @@ a.fx-team-link:hover{color:var(--accent,var(--court));text-decoration:underline;
 .h2h-score-num{font-family:'Anton',sans-serif;font-size:44px;line-height:1;color:var(--ink);}
 .h2h-dash{color:var(--ink-muted);padding:0 10px;}
 .h2h-venue{font-size:12px;color:var(--ink-muted);}
-.h2h-stats{border:1px solid var(--line);border-radius:8px;padding:20px 26px;background:var(--paper);}
+.h2h-stats{border:1px solid var(--line);border-radius:8px;padding:20px 26px;background:var(--paper);margin-bottom:16px;}
+.h2h-group-title{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--accent,var(--court));text-transform:uppercase;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line);}
 .h2h-stat-row{padding:12px 0;border-bottom:1px solid var(--line);}
 .h2h-stat-row:last-child{border-bottom:none;}
 .h2h-stat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
@@ -5077,10 +5078,34 @@ const MATCH_STATS = {
     sport:'football', competition:'La Liga · Matchday 10', date:'Oct 25, 2026', venue:'Spotify Camp Nou, Barcelona', status:'FT',
     home:{abbr:'BAR', name:'Barcelona'}, away:{abbr:'RMA', name:'Real Madrid'},
     homeScore:1, awayScore:2,
-    stats:[
-      {label:'Shots', home:18, away:10},
-      {label:'Shots on Target', home:6, away:5},
-      {label:'Possession', home:62, away:38, suffix:'%'},
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:18, away:10},
+        {label:'Shots on Target', home:6, away:5},
+        {label:'Shots Blocked', home:6, away:2},
+        {label:'Shots Inside Box', home:11, away:6},
+        {label:'Shots Outside Box', home:7, away:4},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:62, away:38, suffix:'%'},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:569, away:321},
+        {label:'Total Passes', home:640, away:380},
+      ]},
+      {title:'Attack', items:[
+        {label:'Corners', home:6, away:6},
+        {label:'Free Kicks', home:11, away:14},
+      ]},
+      {title:'Goalkeeping', items:[
+        {label:'Saves', home:3, away:5},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:15, away:11},
+        {label:'Offsides', home:3, away:3},
+        {label:'Yellow Cards', home:3, away:3},
+        {label:'Red Cards', home:0, away:0},
+      ]},
     ],
     timeline:[
       {min:"41'", side:'away', text:"Mbappé opens the scoring — Gerard Martín's clearance cannons off him and beats Joan García"},
@@ -5092,9 +5117,43 @@ const MATCH_STATS = {
     sport:'football', competition:'Premier League · Matchweek 9', date:'Nov 1, 2026', venue:'Anfield, Liverpool', status:'FT',
     home:{abbr:'LIV', name:'Liverpool'}, away:{abbr:'ARS', name:'Arsenal'},
     homeScore:0, awayScore:1,
-    stats:[
-      {label:'Shots', home:17, away:10},
-      {label:'Possession', home:56, away:44, suffix:'%'},
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:17, away:10},
+        {label:'Shots on Target', home:0, away:3},
+        {label:'Shots Blocked', home:9, away:3},
+        {label:'Hit Woodwork', home:1, away:0},
+        {label:'Shots Inside Box', home:14, away:6},
+        {label:'Shots Outside Box', home:3, away:4},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:56, away:44, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:1, away:1},
+        {label:'Touches in Opposition Box', home:48, away:23},
+        {label:'Corners Won', home:7, away:4},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:377, away:269},
+        {label:'Total Passes', home:461, away:370},
+        {label:'Accurate Crosses', home:5, away:4},
+        {label:'Accurate Long Balls', home:14, away:22},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:11, away:16},
+        {label:'Interceptions', home:10, away:6},
+        {label:'Clearances', home:22, away:36},
+        {label:'Duels Won', home:58, away:63},
+        {label:'Aerials Won', home:25, away:17},
+        {label:'Saves', home:2, away:0},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:18, away:10},
+        {label:'Offsides', home:2, away:3},
+        {label:'Yellow Cards', home:4, away:4},
+        {label:'Red Cards', home:0, away:0},
+      ]},
     ],
     timeline:[
       {min:"16'", side:'away', text:"Kai Havertz taps in Declan Rice's low cross from the right after a mistake by goalkeeper Alisson"},
@@ -5104,11 +5163,47 @@ const MATCH_STATS = {
     sport:'football', competition:'Premier League · Matchweek 6', date:'Oct 11, 2026', venue:'Anfield, Liverpool', status:'FT',
     home:{abbr:'LIV', name:'Liverpool'}, away:{abbr:'MCI', name:'Manchester City'},
     homeScore:0, awayScore:3,
-    stats:[
-      {label:'Shots', home:15, away:17},
-      {label:'Shots on Target', home:4, away:7},
-      {label:'Possession', home:46.5, away:53.5, suffix:'%'},
-      {label:'Corners', home:5, away:4},
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:15, away:17},
+        {label:'Shots on Target', home:4, away:7},
+        {label:'Shots Off Target', home:8, away:6},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:1, away:4},
+        {label:'Shots Outside Box', home:6, away:8},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:46.5, away:53.5, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:1, away:2},
+        {label:'Corners', home:5, away:4},
+        {label:'Touches in Opposition Box', home:32, away:25},
+      ]},
+      {title:'Passing', items:[
+        {label:'Total Passes', home:390, away:465},
+        {label:'Long Passes', home:65, away:53},
+        {label:'Through Balls', home:2, away:6},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles Won', home:9, away:8},
+        {label:'Blocks', home:6, away:7},
+        {label:'Interceptions', home:7, away:10},
+        {label:'Clearances', home:20, away:31},
+        {label:'Saves', home:5, away:3},
+      ]},
+      {title:'Physical', items:[
+        {label:'Total Dribbles', home:16, away:12},
+        {label:'Successful Dribbles', home:8, away:3},
+        {label:'Duels Won', home:49, away:51},
+        {label:'Aerial Duels Won', home:8, away:20},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:13, away:16},
+        {label:'Offsides', home:6, away:2},
+        {label:'Yellow Cards', home:2, away:4},
+        {label:'Red Cards', home:1, away:0},
+      ]},
     ],
     timeline:[
       {min:"62'", side:'home', text:'Ryan Gravenberch is sent off for a second bookable offense, reducing Liverpool to ten men'},
@@ -5121,10 +5216,43 @@ const MATCH_STATS = {
     sport:'football', competition:'Champions League · Matchday 3', date:'Oct 21, 2026', venue:'Allianz Arena, Munich', status:'FT',
     home:{abbr:'BAY', name:'Bayern Munich'}, away:{abbr:'ARS', name:'Arsenal'},
     homeScore:2, awayScore:2,
-    stats:[
-      {label:'Shots', home:13, away:14},
-      {label:'Shots on Target', home:5, away:5},
-      {label:'Possession', home:46, away:54, suffix:'%'},
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:13, away:14},
+        {label:'Shots on Target', home:5, away:5},
+        {label:'Shots Blocked', home:5, away:5},
+        {label:'Hit Woodwork', home:0, away:1},
+        {label:'Shots Inside Box', home:10, away:9},
+        {label:'Shots Outside Box', home:3, away:5},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:46, away:54, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:3, away:2},
+        {label:'Touches in Opposition Box', home:29, away:21},
+        {label:'Corners Won', home:3, away:5},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:373, away:436},
+        {label:'Total Passes', home:435, away:502},
+        {label:'Accurate Crosses', home:1, away:4},
+        {label:'Accurate Long Balls', home:18, away:15},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:9, away:6},
+        {label:'Interceptions', home:2, away:11},
+        {label:'Clearances', home:23, away:15},
+        {label:'Duels Won', home:31, away:55},
+        {label:'Aerials Won', home:6, away:13},
+        {label:'Saves', home:3, away:3},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:15, away:6},
+        {label:'Offsides', home:2, away:1},
+        {label:'Yellow Cards', home:0, away:2},
+        {label:'Red Cards', home:0, away:0},
+      ]},
     ],
     timeline:[
       {min:"25'", side:'away', text:'Eberechi Eze opens the scoring for Arsenal, on for the injured Bukayo Saka'},
@@ -5137,10 +5265,43 @@ const MATCH_STATS = {
     sport:'football', competition:'Champions League · Matchday 3', date:'Oct 21, 2026', venue:'Santiago Bernabéu, Madrid', status:'FT',
     home:{abbr:'RMA', name:'Real Madrid'}, away:{abbr:'RBL', name:'RB Leipzig'},
     homeScore:4, awayScore:1,
-    stats:[
-      {label:'Shots', home:18, away:11},
-      {label:'Shots on Target', home:11, away:6},
-      {label:'Possession', home:64, away:36, suffix:'%'},
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:18, away:11},
+        {label:'Shots on Target', home:11, away:6},
+        {label:'Shots Blocked', home:1, away:1},
+        {label:'Hit Woodwork', home:1, away:0},
+        {label:'Shots Inside Box', home:13, away:10},
+        {label:'Shots Outside Box', home:5, away:1},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:64, away:36, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:3, away:3},
+        {label:'Touches in Opposition Box', home:37, away:28},
+        {label:'Corners Won', home:7, away:1},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:679, away:356},
+        {label:'Total Passes', home:742, away:405},
+        {label:'Accurate Crosses', home:2, away:5},
+        {label:'Accurate Long Balls', home:38, away:24},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:11, away:10},
+        {label:'Interceptions', home:11, away:11},
+        {label:'Clearances', home:12, away:26},
+        {label:'Duels Won', home:40, away:36},
+        {label:'Aerials Won', home:6, away:3},
+        {label:'Saves', home:5, away:6},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:13, away:12},
+        {label:'Offsides', home:3, away:2},
+        {label:'Yellow Cards', home:1, away:1},
+        {label:'Red Cards', home:0, away:0},
+      ]},
     ],
     timeline:[
       {min:"43'", side:'home', text:'Bernardo Silva breaks the deadlock after a Vandevoordt save on an earlier Arda Güler effort'},
@@ -5160,6 +5321,7 @@ function renderMatchPage(id){
     return logo ? `<img class="h2h-crest" src="${logo}" alt="" loading="lazy">` : `<span class="h2h-crest h2h-crest-fallback" style="background:${fxBadgeColor(abbr)}">${abbr}</span>`;
   };
   const prefix = `h2h-${id}`;
+  const statGroups = m.statGroups || (m.stats && m.stats.length ? [{title:null, items:m.stats}] : null);
   return `
   ${masthead({sport:m.sport})}
   <main class="wrap">
@@ -5178,15 +5340,17 @@ function renderMatchPage(id){
       </div>
     </div>
 
-    ${m.stats && m.stats.length ? `
+    ${statGroups ? `
     <div class="rank-tabs" data-prefix="${prefix}">
       <span class="chip on" role="button" tabindex="0" aria-pressed="true" onclick="showRankTab('${prefix}',0)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Statistics</span>
       <span class="chip" role="button" tabindex="0" aria-pressed="false" onclick="showRankTab('${prefix}',1)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Timeline</span>
     </div>
 
     <div class="rank-panel" data-prefix="${prefix}" data-idx="0" style="margin-top:16px;">
+      ${statGroups.map(group => `
       <div class="h2h-stats">
-        ${m.stats.map(st=>{
+        ${group.title ? `<div class="h2h-group-title">${group.title}</div>` : ''}
+        ${group.items.map(st=>{
           const total = st.home + st.away;
           const hPct = total ? Math.round((st.home/total)*100) : 50;
           return `<div class="h2h-stat-row">
@@ -5201,7 +5365,7 @@ function renderMatchPage(id){
             </div>
           </div>`;
         }).join('')}
-      </div>
+      </div>`).join('')}
     </div>
     <div class="rank-panel" data-prefix="${prefix}" data-idx="1" style="display:none;margin-top:16px;">
       <div class="h2h-timeline">

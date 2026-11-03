@@ -2676,7 +2676,7 @@ const ARTICLES = [
       'Results here matter beyond the three points on the day — this is the kind of early-season weekend that starts setting the shape of the table before anyone\'s ready to admit it.',
     ],
   },
-  {id:'liverpool-city-recap', sport:'football', league:'Premier League', cat:'recap',
+  {id:'liverpool-city-recap', sport:'football', league:'Premier League', cat:'recap', matchId:'liverpool-city-oct11-2026',
     headline:'Ten-Man Liverpool Routed 3-0 at Anfield as Man City Stay Perfect',
     dek:'Erling Haaland, Jérémy Doku and Rayan Cherki scored inside a 13-minute spell after Ryan Gravenberch\'s second-half red card, as City moved to 6-0-0 and extended their best run at Anfield since 1953.',
     byline:'Clutch Room Football Desk', mins:4, time:'Oct 11, 2026',
@@ -2727,7 +2727,7 @@ const ARTICLES = [
     ],
     related:'ucl-md3-tuesday-recap',
   },
-  {id:'ucl-md3-wednesday-recap', sport:'football', league:'Champions League', cat:'recap',
+  {id:'ucl-md3-wednesday-recap', sport:'football', league:'Champions League', cat:'recap', matchIds:[['bayern-arsenal-oct21-2026','Bayern Munich 2–2 Arsenal'],['real-madrid-leipzig-oct21-2026','Real Madrid 4–1 RB Leipzig']],
     headline:'Rice Rescues Arsenal Draw at Bayern, Real Madrid Rout Leipzig 4-1 to Close Out Matchday 3',
     dek:'Declan Rice\'s 82nd-minute leveler denied Bayern Munich at the Allianz Arena, while Kylian Mbappé and Yan Diomandé struck late to turn a tight game into a rout at the Bernabéu.',
     byline:'Clutch Room Football Desk', mins:6, time:'Oct 21, 2026',
@@ -5053,6 +5053,51 @@ const MATCH_STATS = {
       {min:"16'", side:'away', text:"Kai Havertz taps in Declan Rice's low cross from the right after a mistake by goalkeeper Alisson"},
     ],
   },
+  'liverpool-city-oct11-2026': {
+    sport:'football', competition:'Premier League · Matchweek 7', date:'Oct 11, 2026', venue:'Anfield, Liverpool', status:'FT',
+    home:{abbr:'LIV', name:'Liverpool'}, away:{abbr:'MCI', name:'Manchester City'},
+    homeScore:0, awayScore:3,
+    stats:[],
+    timeline:[
+      {min:"62'", side:'home', text:'Ryan Gravenberch is sent off for a second bookable offense, reducing Liverpool to ten men'},
+      {min:"65'", side:'away', text:'Erling Haaland breaks the deadlock'},
+      {min:"68'", side:'away', text:'Substitute Jérémy Doku curls in a second'},
+      {min:"78'", side:'away', text:'Rayan Cherki adds a third'},
+    ],
+  },
+  'bayern-arsenal-oct21-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 21, 2026', venue:'Allianz Arena, Munich', status:'FT',
+    home:{abbr:'BAY', name:'Bayern Munich'}, away:{abbr:'ARS', name:'Arsenal'},
+    homeScore:2, awayScore:2,
+    stats:[
+      {label:'Shots', home:13, away:14},
+      {label:'Shots on Target', home:5, away:5},
+      {label:'Possession', home:46, away:54, suffix:'%'},
+    ],
+    timeline:[
+      {min:"25'", side:'away', text:'Eberechi Eze opens the scoring for Arsenal, on for the injured Bukayo Saka'},
+      {min:"35'", side:'home', text:'Alphonso Davies levels it off a Harry Kane assist'},
+      {min:"61'", side:'home', text:"Kane converts a penalty, awarded after his shot struck Jurriën Timber's arm"},
+      {min:"82'", side:'away', text:"Declan Rice beats Manuel Neuer from an angle to salvage a point"},
+    ],
+  },
+  'real-madrid-leipzig-oct21-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 21, 2026', venue:'Santiago Bernabéu, Madrid', status:'FT',
+    home:{abbr:'RMA', name:'Real Madrid'}, away:{abbr:'RBL', name:'RB Leipzig'},
+    homeScore:4, awayScore:1,
+    stats:[
+      {label:'Shots', home:18, away:11},
+      {label:'Shots on Target', home:11, away:6},
+      {label:'Possession', home:64, away:36, suffix:'%'},
+    ],
+    timeline:[
+      {min:"43'", side:'home', text:'Bernardo Silva breaks the deadlock after a Vandevoordt save on an earlier Arda Güler effort'},
+      {min:"52'", side:'home', text:'Güler doubles the lead, tapping in a Mbappé header'},
+      {min:"83'", side:'home', text:"Mbappé adds a third"},
+      {min:"85'", side:'away', text:"Tidiam Gomis pulls one back for Leipzig on a quick counter"},
+      {min:"87'", side:'home', text:'Yan Diomandé volleys in a fourth'},
+    ],
+  },
 };
 function renderMatchPage(id){
   const m = MATCH_STATS[id];
@@ -5081,6 +5126,7 @@ function renderMatchPage(id){
       </div>
     </div>
 
+    ${m.stats && m.stats.length ? `
     <div class="rank-tabs" data-prefix="${prefix}">
       <span class="chip on" role="button" tabindex="0" aria-pressed="true" onclick="showRankTab('${prefix}',0)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Statistics</span>
       <span class="chip" role="button" tabindex="0" aria-pressed="false" onclick="showRankTab('${prefix}',1)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">Timeline</span>
@@ -5113,7 +5159,16 @@ function renderMatchPage(id){
           <div class="h2h-ev-side right">${ev.side==='away'?ev.text:''}</div>
         </div>`).join('')}
       </div>
+    </div>` : `
+    <h3 class="disp" style="margin:0 0 14px;">Timeline</h3>
+    <div class="h2h-timeline">
+      ${m.timeline.map(ev=>`<div class="h2h-ev">
+        <div class="h2h-ev-side left">${ev.side==='home'?ev.text:''}</div>
+        <div class="h2h-ev-min">${ev.min}</div>
+        <div class="h2h-ev-side right">${ev.side==='away'?ev.text:''}</div>
+      </div>`).join('')}
     </div>
+    <p style="font-size:12.5px;color:var(--ink-muted);margin-top:16px;">Full shot and possession data for this match wasn't available from a confirmed source.</p>`}
   </main>
   ${footer()}`;
 }
@@ -5135,6 +5190,7 @@ function renderArticle(id){
         <span class="prov">Auto-drafted from live data · edited by desk</span>
       </div>
       ${a.matchId ? `<a href="#/match/${a.matchId}" class="related-callout" style="margin-top:14px;"><span class="rc-label">Full Match Center →</span><span class="rc-headline">Head-to-head stats, timeline and the box score</span></a>` : ''}
+      ${a.matchIds ? a.matchIds.map(([mid,label])=>`<a href="#/match/${mid}" class="related-callout" style="margin-top:10px;"><span class="rc-label">Match Center →</span><span class="rc-headline">${label}</span></a>`).join('') : ''}
     </div>
 
     <div class="article-body" style="--accent:var(--${s.accent})">

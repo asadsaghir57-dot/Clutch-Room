@@ -3671,7 +3671,7 @@ const ARTICLES = [
     ],
     related:'f1-mexico-city-preview',
   },
-  {id:'liverpool-arsenal-recap', sport:'football', league:'Premier League', cat:'recap',
+  {id:'liverpool-arsenal-recap', sport:'football', league:'Premier League', cat:'recap', matchId:'liverpool-arsenal-nov1-2026',
     headline:'Arsenal End 14-Year Anfield Drought, Beat Liverpool 1-0 to Go 3 Clear at the Top',
     dek:'Kai Havertz\'s 16th-minute strike, set up by Declan Rice after a mistake from Alisson, was the only goal as Arsenal won at Anfield for the first time since 2012 and moved three points clear of Manchester City.',
     byline:'Clutch Room Football Desk', mins:5, time:'Nov 1, 2026',
@@ -5039,6 +5039,18 @@ const MATCH_STATS = {
       {min:"41'", side:'away', text:"Mbappé opens the scoring — Gerard Martín's clearance cannons off him and beats Joan García"},
       {min:"61'", side:'home', text:'Raphinha levels, his low shot squeezes through Bellingham and beats Lunin'},
       {min:"87'", side:'away', text:"Mbappé's second — his 100th Real Madrid goal — finishes a Camavinga pass into an empty net"},
+    ],
+  },
+  'liverpool-arsenal-nov1-2026': {
+    sport:'football', competition:'Premier League · Matchweek 9', date:'Nov 1, 2026', venue:'Anfield, Liverpool', status:'FT',
+    home:{abbr:'LIV', name:'Liverpool'}, away:{abbr:'ARS', name:'Arsenal'},
+    homeScore:0, awayScore:1,
+    stats:[
+      {label:'Shots', home:17, away:10},
+      {label:'Possession', home:56, away:44, suffix:'%'},
+    ],
+    timeline:[
+      {min:"16'", side:'away', text:"Kai Havertz taps in Declan Rice's low cross from the right after a mistake by goalkeeper Alisson"},
     ],
   },
 };

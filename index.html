@@ -5057,7 +5057,12 @@ const MATCH_STATS = {
     sport:'football', competition:'Premier League · Matchweek 7', date:'Oct 11, 2026', venue:'Anfield, Liverpool', status:'FT',
     home:{abbr:'LIV', name:'Liverpool'}, away:{abbr:'MCI', name:'Manchester City'},
     homeScore:0, awayScore:3,
-    stats:[],
+    stats:[
+      {label:'Shots', home:15, away:17},
+      {label:'Shots on Target', home:4, away:7},
+      {label:'Possession', home:46.5, away:53.5, suffix:'%'},
+      {label:'Corners', home:5, away:4},
+    ],
     timeline:[
       {min:"62'", side:'home', text:'Ryan Gravenberch is sent off for a second bookable offense, reducing Liverpool to ten men'},
       {min:"65'", side:'away', text:'Erling Haaland breaks the deadlock'},

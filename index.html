@@ -676,8 +676,8 @@ a.fx-team-link:hover{color:var(--accent,var(--court));text-decoration:underline;
 .h2h-stat-head .h2h-stat-val:last-child{text-align:right;}
 .h2h-stat-label{font-size:11.5px;font-weight:600;letter-spacing:.03em;color:var(--ink-muted);text-transform:uppercase;}
 .h2h-stat-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;background:var(--line);}
-.h2h-bar-home{background:var(--accent,var(--court));}
-.h2h-bar-away{background:var(--ink-muted);}
+.h2h-bar-home{background:var(--h2h-home, var(--accent,var(--court)));}
+.h2h-bar-away{background:var(--h2h-away, var(--ink-muted));}
 .h2h-timeline{max-width:560px;margin:4px auto 0;}
 .h2h-ev{display:grid;grid-template-columns:1fr 50px 1fr;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);}
 .h2h-ev:last-child{border-bottom:none;}
@@ -5073,6 +5073,13 @@ function renderPlaceholderHub(sport){
 }
 
 /* ---------------- head-to-head match center (football) ---------------- */
+/* Real primary club colors for Match Center stat bars. Arsenal is set to their navy
+   (rather than red) since several of their opponents here — Liverpool, Bayern — are
+   also predominantly red, and the two need to read apart in a bar chart. */
+const TEAM_COLORS = {
+  BAR:'#A50044', RMA:'#1D4289', LIV:'#C8102E', ARS:'#063672', MCI:'#6CABDD',
+  BAY:'#DC052D', RBL:'#DD0741', VIL:'#D4A017', PSG:'#004170', AEK:'#D9A400',
+};
 const MATCH_STATS = {
   'clasico-oct25-2026': {
     sport:'football', competition:'La Liga · Matchday 10', date:'Oct 25, 2026', venue:'Spotify Camp Nou, Barcelona', status:'FT',
@@ -5322,6 +5329,7 @@ function renderMatchPage(id){
   };
   const prefix = `h2h-${id}`;
   const statGroups = m.statGroups || (m.stats && m.stats.length ? [{title:null, items:m.stats}] : null);
+  const barColorStyle = `--h2h-home:${TEAM_COLORS[m.home.abbr] || 'var(--court)'};--h2h-away:${TEAM_COLORS[m.away.abbr] || 'var(--ink-muted)'};`;
   return `
   ${masthead({sport:m.sport})}
   <main class="wrap">
@@ -5348,7 +5356,7 @@ function renderMatchPage(id){
 
     <div class="rank-panel" data-prefix="${prefix}" data-idx="0" style="margin-top:16px;">
       ${statGroups.map(group => `
-      <div class="h2h-stats">
+      <div class="h2h-stats" style="${barColorStyle}">
         ${group.title ? `<div class="h2h-group-title">${group.title}</div>` : ''}
         ${group.items.map(st=>{
           const total = st.home + st.away;

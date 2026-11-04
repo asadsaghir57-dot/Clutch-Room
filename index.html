@@ -523,10 +523,11 @@ a.board-row{display:grid;}
 .fx-group h4{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent,var(--ink-muted));margin:0 0 6px;}
 .fx-upcoming-head{margin:28px 0 14px;padding-top:18px;border-top:2px solid var(--line);}
 .fx-upcoming-head h4{font-family:'Anton',sans-serif;font-size:15px;letter-spacing:0.02em;color:var(--ink);margin:0;text-transform:none;}
-.fx-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:13px;}
-a.fx-row-link{color:inherit;text-decoration:none;cursor:pointer;transition:background .15s ease;border-radius:4px;}
-a.fx-row-link:hover{background:var(--paper-raised);}
-a.fx-row-link:hover .fx-score{color:var(--accent,var(--court));}
+.fx-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:13px;}
+.fx-score-block{display:flex;align-items:center;gap:14px;justify-content:flex-end;min-width:160px;}
+a.fx-score-link{color:inherit;text-decoration:none;cursor:pointer;transition:background .15s ease;border-radius:4px;padding:4px 8px;margin:-4px -8px;}
+a.fx-score-link:hover{background:var(--paper-raised);}
+a.fx-score-link:hover .fx-score{color:var(--accent,var(--court));}
 .fx-note{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-muted);padding-top:8px;}
 .fx-row:last-child{border-bottom:none;}
 .fx-teams{display:flex;align-items:center;gap:9px;font-weight:600;min-width:0;}
@@ -550,6 +551,8 @@ a.fx-team-link:hover{color:var(--accent,var(--court));text-decoration:underline;
 .std-row.std-head .tnum{text-align:right;}
 .std-pos{color:var(--ink-muted);}
 .std-team{display:flex;align-items:center;gap:9px;min-width:0;font-weight:600;}
+a.std-team-link{color:inherit;text-decoration:none;}
+a.std-team-link:hover .std-name{color:var(--accent,var(--court));text-decoration:underline;}
 .std-badge{width:20px;height:20px;object-fit:contain;flex:none;background:var(--paper-raised);border-radius:5px;}
 .std-badge.std-badge-dark{background:#121212;}
 @media (prefers-color-scheme: dark){
@@ -664,6 +667,9 @@ a.fx-team-link:hover{color:var(--accent,var(--court));text-decoration:underline;
 .h2h-comp{text-align:center;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:var(--ink-muted);text-transform:uppercase;margin-bottom:18px;}
 .h2h-row{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;}
 .h2h-side{display:flex;flex-direction:column;align-items:center;gap:10px;width:140px;}
+a.h2h-side-link{color:inherit;text-decoration:none;transition:transform .15s ease;}
+a.h2h-side-link:hover{transform:translateY(-2px);}
+a.h2h-side-link:hover .h2h-name{color:var(--accent,var(--court));text-decoration:underline;}
 .h2h-crest{width:56px;height:56px;object-fit:contain;}
 .h2h-crest-fallback{border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;font-family:'JetBrains Mono',monospace;}
 .h2h-name{font-weight:600;font-size:14px;text-align:center;color:var(--ink);}
@@ -1611,26 +1617,30 @@ function fxTeam(abbr, scope){
     ? `<img class="fx-badge fx-logo" src="${logo}" alt="" loading="lazy">`
     : `<span class="fx-badge" style="background:${fxBadgeColor(abbr)}">${abbr.slice(0,3)}</span>`;
   const inner = `${mark}${abbr}`;
-  return scope === 'nfl'
-    ? `<a class="fx-team fx-team-link" href="#/nfl-team/${abbr}">${inner}</a>`
-    : `<span class="fx-team">${inner}</span>`;
+  if(scope === 'nfl') return `<a class="fx-team fx-team-link" href="#/nfl-team/${abbr}">${inner}</a>`;
+  if(scope === 'football') return `<a class="fx-team fx-team-link" href="#/football-team/${abbr}">${inner}</a>`;
+  return `<span class="fx-team">${inner}</span>`;
 }
 const FX_LOGO_SCOPE = {ucl:'football', epl:'football', laliga:'football', nfl:'nfl'};
+function fxRowMarkup(g, scope){
+  // Team names/crests link to the team page (via fxTeam); the score/status link to
+  // the Match Center when one exists. Kept as two separate links, never nested,
+  // since a row can't itself be an <a> wrapping other <a> elements.
+  const mid = (typeof MATCH_STATS !== 'undefined') ? Object.keys(MATCH_STATS).find(id => {
+    const m = MATCH_STATS[id];
+    return m.home.abbr===g.home && m.away.abbr===g.away;
+  }) : null;
+  const teams = `<span class="fx-teams">${fxTeam(g.away, scope)} <span class="vs">at</span> ${fxTeam(g.home, scope)}</span>`;
+  const scoreStatus = `${g.score ? `<span class="fx-score tnum">${g.score}</span>` : '<span></span>'}<span class="fx-status">${g.status}</span>`;
+  const scoreBlock = mid
+    ? `<a class="fx-score-block fx-score-link" href="#/match/${mid}">${scoreStatus}</a>`
+    : `<span class="fx-score-block">${scoreStatus}</span>`;
+  return `<div class="fx-row">${teams}${scoreBlock}</div>`;
+}
 function renderFxGroup(w, scope){
   return `<div class="fx-group">
     <h4>${w.week}</h4>
-    ${w.games.map(g=>{
-      const mid = (typeof MATCH_STATS !== 'undefined') ? Object.keys(MATCH_STATS).find(id => {
-        const m = MATCH_STATS[id];
-        return m.home.abbr===g.home && m.away.abbr===g.away;
-      }) : null;
-      const row = `<span class="fx-teams">${fxTeam(g.away, scope)} <span class="vs">at</span> ${fxTeam(g.home, scope)}</span>
-      ${g.score ? `<span class="fx-score tnum">${g.score}</span>` : '<span></span>'}
-      <span class="fx-status">${g.status}</span>`;
-      return mid
-        ? `<a class="fx-row fx-row-link" href="#/match/${mid}">${row}</a>`
-        : `<div class="fx-row">${row}</div>`;
-    }).join('')}
+    ${w.games.map(g=>fxRowMarkup(g, scope)).join('')}
     ${w.note ? `<div class="fx-note">${w.note}</div>` : ''}
   </div>`;
 }
@@ -1813,7 +1823,7 @@ function renderStandingsTable(key){
         const zone = stdZoneClass(t.zones, i+1);
         return `<div class="std-row ${zone.cls}" title="${zone.label}">
           <span class="std-pos">${i+1}</span>
-          <span class="std-team">${stdTeamCell(r.abbr, r.team, 'football')}</span>
+          <a class="std-team std-team-link" href="#/football-team/${r.abbr}">${stdTeamCell(r.abbr, r.team, 'football')}</a>
           <span class="tnum std-col-gp">${r.gp}</span><span class="tnum std-col-wdl">${r.w}</span><span class="tnum std-col-wdl">${r.d}</span><span class="tnum std-col-wdl">${r.l}</span>
           <span class="tnum std-col-wdl">${gd>0?'+':''}${gd}</span><span class="tnum std-pts">${r.pts}</span>
         </div>`;
@@ -1901,6 +1911,86 @@ function nflTeamSchedule(abbr){
   });
   return rows;
 }
+function footballTeamLookup(abbr){
+  const results = [];
+  ['ucl','epl','laliga'].forEach(key=>{
+    const comp = FOOTBALL_STANDINGS[key];
+    if(!comp) return;
+    const idx = comp.rows.findIndex(r=>r.abbr===abbr);
+    if(idx !== -1) results.push({competition: comp.label, row: comp.rows[idx], position: idx+1});
+  });
+  return results;
+}
+function footballTeamName(abbr){
+  const standings = footballTeamLookup(abbr);
+  if(standings.length) return standings[0].row.team;
+  const midEntry = Object.values(MATCH_STATS).find(m => m.home.abbr === abbr || m.away.abbr === abbr);
+  if(midEntry) return midEntry.home.abbr === abbr ? midEntry.home.name : midEntry.away.name;
+  return abbr;
+}
+function footballTeamSchedule(abbr){
+  const rows = [];
+  ['ucl','epl','laliga'].forEach(key=>{
+    const fx = FIXTURES[key];
+    if(!fx) return;
+    fx.weeks.forEach(w=>{
+      w.games.forEach(g=>{
+        if(g.away===abbr || g.home===abbr) rows.push({...g, week:w.week, scope:key, compLabel: fx.label});
+      });
+    });
+  });
+  return rows;
+}
+function renderFootballTeamPage(abbr){
+  const standings = footballTeamLookup(abbr);
+  const schedule = footballTeamSchedule(abbr);
+  if(!standings.length && !schedule.length){
+    return `${masthead({sport:'football'})}<main class="wrap"><p style="padding:60px 0;">Team not found.</p></main>${footer()}`;
+  }
+  const name = footballTeamName(abbr);
+  const logo = teamLogo('football', abbr);
+  const results = schedule.filter(g => g.status.indexOf('FINAL') === 0).reverse();
+  const upcoming = schedule.filter(g => g.status.indexOf('FINAL') !== 0);
+  const scheduleRow = g => fxRowMarkup(g, 'football');
+  return `
+  ${masthead({sport:'football'})}
+  <main class="wrap" style="--accent:var(--court);">
+    <div class="breadcrumb"><a href="#/">Clutch Room</a> / <a href="#/sport/football">Football</a> / ${name}</div>
+    <div class="hub-head">
+      <div style="display:flex;align-items:center;gap:16px;">
+        ${logo ? `<img src="${logo}" alt="" loading="lazy" style="width:56px;height:56px;object-fit:contain;flex:none;">` : ''}
+        <div>
+          <h1 class="disp" style="font-size:38px;">${name}</h1>
+          <div class="sport-sub mono">${standings.map(s=>`${s.competition} · #${s.position} · ${s.row.w}-${s.row.d}-${s.row.l}`).join(' · ')}</div>
+        </div>
+      </div>
+    </div>
+
+    ${standings.length ? `<div class="div-section">
+      <div class="div-section-head"><h3 class="disp">Standings</h3></div>
+      <div class="std-table">
+        <div class="std-row std-head"><span class="std-pos"></span><span class="std-team">Competition</span><span class="tnum std-col-gp">GP</span><span class="tnum std-col-wdl">W</span><span class="tnum std-col-wdl">D</span><span class="tnum std-col-wdl">L</span><span class="tnum std-col-wdl">GD</span><span class="tnum std-pts">Pts</span></div>
+        ${standings.map(s=>`<div class="std-row">
+          <span class="std-pos">${s.position}</span>
+          <span class="std-team">${s.competition}</span>
+          <span class="tnum std-col-gp">${s.row.gp}</span><span class="tnum std-col-wdl">${s.row.w}</span><span class="tnum std-col-wdl">${s.row.d}</span><span class="tnum std-col-wdl">${s.row.l}</span>
+          <span class="tnum std-col-wdl">${(s.row.gf-s.row.ga)>0?'+':''}${s.row.gf-s.row.ga}</span><span class="tnum std-pts">${s.row.pts}</span>
+        </div>`).join('')}
+      </div>
+    </div>` : ''}
+
+    ${results.length ? `<div class="div-section">
+      <div class="div-section-head"><h3 class="disp">Results</h3><span class="sub">Most recent first</span></div>
+      <div class="fx-wrap">${results.map(scheduleRow).join('')}</div>
+    </div>` : ''}
+
+    ${upcoming.length ? `<div class="div-section">
+      <div class="div-section-head"><h3 class="disp">Upcoming</h3></div>
+      <div class="fx-wrap">${upcoming.map(scheduleRow).join('')}</div>
+    </div>` : ''}
+  </main>
+  ${footer()}`;
+}
 function renderNFLTeamPage(abbr){
   const found = nflTeamLookup(abbr);
   const stats = NFL_TEAM_STATS[abbr];
@@ -1950,11 +2040,7 @@ function renderNFLTeamPage(abbr){
       return `<div class="div-section">
         <div class="div-section-head"><h3 class="disp">Schedule</h3><span class="sub">Every ${team.name} game on the fixtures board</span></div>
         <div class="fx-wrap">
-          ${games.map(g=>`<div class="fx-row">
-            <span class="fx-teams">${fxTeam(g.away, 'nfl')} <span class="vs">at</span> ${fxTeam(g.home, 'nfl')}</span>
-            ${g.score ? `<span class="fx-score tnum">${g.score}</span>` : '<span></span>'}
-            <span class="fx-status">${g.status}</span>
-          </div>`).join('')}
+          ${games.map(g=>fxRowMarkup(g, 'nfl')).join('')}
         </div>
       </div>`;
     })()}
@@ -5151,12 +5237,12 @@ function renderPlaceholderHub(sport){
    also predominantly red, and the two need to read apart in a bar chart. */
 const TEAM_COLORS = {
   BAR:'#A50044', RMA:'#1D4289', LIV:'#C8102E', ARS:'#063672', MCI:'#6CABDD',
-  BAY:'#DC052D', RBL:'#DD0741', VIL:'#D4A017', PSG:'#004170', AEK:'#D9A400',
-  SCP:'#006432', LEN:'#D4A700', SAB:'#2E7D32', SLA:'#CC0000', ATM:'#CB3524',
+  BAY:'#DC052D', RBL:'#7A1F3D', VIL:'#D4A017', PSG:'#004170', AEK:'#D9A400',
+  SCP:'#006432', LEN:'#D4A700', SAB:'#2E7D32', SLA:'#CC0000', ATM:'#1A3668',
   MUN:'#DA291C', INT:'#010E80', BRU:'#0066B3', POR:'#004F9E', VIK:'#1C3A5E',
-  GS:'#A90432', FEY:'#ED1C24', COM:'#003DA5', LASK:'#102B4E', ROM:'#8E1F2F',
-  SLB:'#1C4E9E', STU:'#E32219', VFB:'#E32219', DOR:'#F5C400', BVB:'#F5C400', NAP:'#12A0D7', BOD:'#C9A400',
-  SHK:'#D9590A', FEN:'#1C3A6E', LIL:'#C8102E', PSV:'#ED1B2F', BET:'#00954C',
+  GS:'#FFCD00', FEY:'#ED1C24', COM:'#003DA5', LASK:'#102B4E', ROM:'#8E1F2F',
+  SLB:'#1C4E9E', STU:'#E32219', VFB:'#E32219', DOR:'#F5C400', BVB:'#F5C400', NAP:'#12A0D7', BOD:'#7A5C00',
+  SHK:'#D9590A', FEN:'#1C3A6E', LIL:'#C8102E', PSV:'#ED1B2F', BET:'#00954C', AVL:'#670E36',
 };
 const MATCH_STATS = {
   'clasico-oct25-2026': {
@@ -7366,13 +7452,13 @@ function renderMatchPage(id){
     <div class="h2h-hero" style="--accent:var(--${s.accent})">
       <div class="h2h-comp">${m.competition} · ${m.date}</div>
       <div class="h2h-row">
-        <div class="h2h-side">${crest(m.home.abbr)}<span class="h2h-name">${m.home.name}</span></div>
+        ${m.sport==='football' ? `<a class="h2h-side h2h-side-link" href="#/football-team/${m.home.abbr}">${crest(m.home.abbr)}<span class="h2h-name">${m.home.name}</span></a>` : `<div class="h2h-side">${crest(m.home.abbr)}<span class="h2h-name">${m.home.name}</span></div>`}
         <div class="h2h-score">
           <span class="h2h-status">${m.status}</span>
           <div class="h2h-score-num">${m.homeScore}<span class="h2h-dash">–</span>${m.awayScore}</div>
           <span class="h2h-venue">${m.venue}</span>
         </div>
-        <div class="h2h-side">${crest(m.away.abbr)}<span class="h2h-name">${m.away.name}</span></div>
+        ${m.sport==='football' ? `<a class="h2h-side h2h-side-link" href="#/football-team/${m.away.abbr}">${crest(m.away.abbr)}<span class="h2h-name">${m.away.name}</span></a>` : `<div class="h2h-side">${crest(m.away.abbr)}<span class="h2h-name">${m.away.name}</span></div>`}
       </div>
     </div>
 
@@ -7488,6 +7574,8 @@ function route(){
     app.innerHTML = renderMatchPage(hash.split('/')[1]);
   } else if(hash.startsWith('nfl-team/')){
     app.innerHTML = renderNFLTeamPage(hash.split('/')[1]);
+  } else if(hash.startsWith('football-team/')){
+    app.innerHTML = renderFootballTeamPage(hash.split('/')[1]);
   } else if(hash === 'about'){
     app.innerHTML = renderAbout();
   } else if(hash === 'sports-news'){

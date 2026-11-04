@@ -1983,7 +1983,7 @@ function renderFootballTeamPage(abbr){
   /* BAR uses the exact navy/blue gradient sampled from fcbarcelona.com's own panel
      chrome (rgb(21,66,132) -> rgb(24,23,51)); other teams fall back to their own
      TEAM_COLORS pair, or a generic dark navy when no secondary color is set. */
-  const TEAM_HERO_OVERRIDE = { BAR: ['#154284', '#154284'] };
+  const TEAM_HERO_OVERRIDE = { BAR: ['#0018B4', '#0018B4'] };
   const [heroC1, heroC2] = TEAM_HERO_OVERRIDE[abbr] || [TEAM_COLORS[abbr] || '#0B1C3D', TEAM_COLORS_SECONDARY[abbr] || '#050B1A'];
   return `
   ${masthead({sport:'football'})}

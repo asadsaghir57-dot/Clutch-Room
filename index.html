@@ -332,6 +332,10 @@ a.board-row{display:grid;}
 .hub-head h1.team-hero-name{color:#fff;}
 .team-hero-sub{color:rgba(255,255,255,0.75);}
 .std-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:6px 14px;}
+.team-page-dark{padding-bottom:40px;}
+.team-page-dark .div-section{border-top-color:rgba(255,255,255,0.14);}
+.team-page-dark .div-section-head h3{color:#fff;}
+.team-page-dark .div-section-head .sub{color:rgba(255,255,255,0.55);}
 .hub-head .hub-status{display:flex;align-items:center;gap:10px;margin-top:10px;}
 .hub-head h1{font-size:50px;color:var(--accent,var(--ink));}
 .league-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
@@ -1997,6 +2001,7 @@ function renderFootballTeamPage(abbr){
       </div>
     </div>
   </div>
+  ${TEAM_HERO_OVERRIDE[abbr] ? `<div class="team-page-dark" style="background:${heroC2};">` : ''}
   <main class="wrap" style="--accent:var(--court);">
 
     ${standings.length ? `<div class="div-section">
@@ -2026,6 +2031,7 @@ function renderFootballTeamPage(abbr){
       <div class="std-card"><div class="fx-wrap">${upcoming.map(scheduleRow).join('')}</div></div>
     </div>` : ''}
   </main>
+  ${TEAM_HERO_OVERRIDE[abbr] ? `</div>` : ''}
   ${footer()}`;
 }
 function renderNFLTeamPage(abbr){

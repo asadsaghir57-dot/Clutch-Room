@@ -332,7 +332,7 @@ a.board-row{display:grid;}
 .hub-head h1.team-hero-name{color:#fff;}
 .team-hero-sub{color:rgba(255,255,255,0.75);}
 .std-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:6px 14px;}
-.team-page-dark{padding-bottom:40px;}
+.team-page-dark{padding-bottom:40px;overflow:hidden;}
 .team-page-dark .div-section{border-top-color:rgba(255,255,255,0.14);}
 .team-page-dark .div-section-head h3{color:#fff;}
 .team-page-dark .div-section-head .sub{color:rgba(255,255,255,0.55);}
@@ -1983,7 +1983,7 @@ function renderFootballTeamPage(abbr){
   /* BAR uses the exact navy/blue gradient sampled from fcbarcelona.com's own panel
      chrome (rgb(21,66,132) -> rgb(24,23,51)); other teams fall back to their own
      TEAM_COLORS pair, or a generic dark navy when no secondary color is set. */
-  const TEAM_HERO_OVERRIDE = { BAR: ['#154284', '#181733'] };
+  const TEAM_HERO_OVERRIDE = { BAR: ['#154284', '#154284'] };
   const [heroC1, heroC2] = TEAM_HERO_OVERRIDE[abbr] || [TEAM_COLORS[abbr] || '#0B1C3D', TEAM_COLORS_SECONDARY[abbr] || '#050B1A'];
   return `
   ${masthead({sport:'football'})}

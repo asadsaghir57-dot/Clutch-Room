@@ -541,6 +541,24 @@ a.fx-team-link:hover{color:var(--accent,var(--court));text-decoration:underline;
 .fx-status{color:var(--ink-muted);font-size:11.5px;text-align:right;white-space:nowrap;}
 
 /* ---------- standings / leaderboard tables ---------- */
+.inj-table{margin-top:4px;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+.inj-accent{display:flex;height:4px;}
+.inj-accent span{flex:1;}
+.inj-row{display:grid;grid-template-columns:2fr 0.5fr 1.4fr 1fr 1.2fr 0.7fr;align-items:center;column-gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13px;}
+.inj-row:last-child{border-bottom:none;}
+.inj-row.inj-head{font-family:'JetBrains Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-muted);padding:10px 14px 8px;}
+.inj-player{display:flex;align-items:center;gap:10px;min-width:0;}
+.inj-player img{width:32px;height:32px;border-radius:50%;object-fit:cover;flex:none;background:var(--line);}
+.inj-player>span{display:flex;flex-direction:column;min-width:0;}
+.inj-name{font-weight:600;}
+.inj-pos{font-size:11.5px;color:var(--ink-muted);}
+.inj-date{font-family:'JetBrains Mono',monospace;color:var(--ink-muted);font-size:12px;}
+.inj-reason{font-weight:600;}
+.inj-missed{font-family:'JetBrains Mono',monospace;color:var(--accent,var(--court));font-weight:600;}
+@media (max-width:640px){
+  .inj-row{grid-template-columns:1.8fr 1fr 0.6fr;}
+  .inj-row span:nth-child(2),.inj-row span:nth-child(4),.inj-row span:nth-child(5){display:none;}
+}
 .std-table{margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:12.5px;}
 .std-row{display:grid;grid-template-columns:22px 1fr repeat(6,32px);align-items:center;column-gap:10px;padding:8px 10px;border-bottom:1px solid var(--line);border-left:4px solid transparent;}
 .std-row:last-child{border-bottom:none;}
@@ -1978,6 +1996,8 @@ function renderFootballTeamPage(abbr){
         </div>`).join('')}
       </div>
     </div>` : ''}
+
+    ${renderTeamInjuries(abbr)}
 
     ${results.length ? `<div class="div-section">
       <div class="div-section-head"><h3 class="disp">Results</h3><span class="sub">Most recent first</span></div>
@@ -3981,6 +4001,18 @@ const ARTICLES = [
     ],
     related:'ucl-md4-cunha-analysis',
   },
+  {id:'rodri-hamstring-injury', sport:'football', league:'La Liga', cat:'news',
+    headline:'Rodri Sidelined With Hamstring Injury, Set to Miss Barcelona Through Early December',
+    dek:'The midfielder picked up the injury on Tuesday night and is expected to be out roughly a month, with Barcelona set to be without him for around five matches across competitions.',
+    byline:'Clutch Room Football Desk', mins:3, time:'Nov 4, 2026',
+    qa:[['When did Rodri get injured?','He sustained the hamstring injury on Tuesday night, November 3, 2026.'],
+        ['How long is he expected to be out?','Barcelona\'s initial timeline points to an early-December return, which projects to around five missed matches across competitions.']],
+    body:[
+      'Barcelona\'s midfield took a hit on Tuesday night, with Rodri coming off with what the club has since confirmed as a hamstring injury. The 30-year-old is expected to be sidelined for roughly a month, with an early-December return targeted.',
+      'On the current fixture list, that timeline projects to around five missed matches across competitions — a real blow to Barcelona\'s midfield depth heading into a congested December schedule. His recovery is listed alongside five other first-team players already out injured, adding to the squad\'s workload concerns.',
+      'Clutch Room will track Barcelona\'s results and Rodri\'s recovery timeline as the club works through the games he\'s set to miss.',
+    ],
+  },
 ];
 
 /* ---------------- insider wire (illustrative — credits real outlets, not fabricated individual quotes) ---------------- */
@@ -5258,6 +5290,58 @@ const TEAM_COLORS = {
   SLB:'#1C4E9E', STU:'#E32219', VFB:'#E32219', DOR:'#F5C400', BVB:'#F5C400', NAP:'#12A0D7', BOD:'#7A5C00',
   SHK:'#D9590A', FEN:'#1C3A6E', LIL:'#C8102E', PSV:'#ED1B2F', BET:'#00954C', AVL:'#670E36',
 };
+/* Secondary club color, used only for the split accent bar on the team injury table.
+   Only populated for teams we've built the injury feature for — falls back to a solid
+   single-color bar (just TEAM_COLORS[abbr]) when a team has no secondary set. */
+const TEAM_COLORS_SECONDARY = {
+  BAR:'#004D98',
+};
+/* Real injury data, sourced from Transfermarkt's team injury table (confirmed against
+   a live screenshot). 'since'/'expectedReturn' are dd/mm/yyyy strings as published;
+   'missed' is the matches-missed count at time of research, not live-recalculated. */
+const TEAM_INJURIES = {
+  BAR: [
+    {name:'Roony Bardghji', position:'Right winger', age:20, reason:'Cruciate ligament tear', since:'10/08/2026', expectedReturn:'10/05/2027', missed:43,
+      photo:'https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Roony_Bardghji%2C_Vejle_Boldklub_-_FC_K%C3%B8benhavn%2C_29._July_2023_-_opvarmning_%28cropped%29.jpg/250px-Roony_Bardghji%2C_Vejle_Boldklub_-_FC_K%C3%B8benhavn%2C_29._July_2023_-_opvarmning_%28cropped%29.jpg'},
+    {name:'Andreas Christensen', position:'Centre-back', age:30, reason:'Muscle injury', since:'19/09/2026', expectedReturn:'16/11/2026', missed:9,
+      photo:'https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Andreas_Christensen_2019.jpg/250px-Andreas_Christensen_2019.jpg'},
+    {name:'Xavi Espart', position:'Right-back', age:19, reason:'Injury to the ankle', since:'26/10/2026', expectedReturn:'12/12/2026', missed:8,
+      photo:'assets/players/xavi-espart.jpg'},
+    {name:'Eric García', position:'Centre-back', age:25, reason:'Hamstring injury', since:'17/10/2026', expectedReturn:'16/11/2026', missed:6,
+      photo:'https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Eric_Garcia_Argentina_v_Spain_19_July_2026-313_%28cropped%29.jpg/250px-Eric_Garcia_Argentina_v_Spain_19_July_2026-313_%28cropped%29.jpg'},
+    {name:'Jules Koundé', position:'Right-back', age:27, reason:'Ankle sprain', since:'18/10/2026', expectedReturn:'16/11/2026', missed:5,
+      photo:'https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Jules_Kounde_France_v_Senegal_16_June_2026-449_%28cropped%29.jpg/250px-Jules_Kounde_France_v_Senegal_16_June_2026-449_%28cropped%29.jpg'},
+    {name:'Rodri', position:'Defensive midfield', age:30, reason:'Hamstring injury', since:'03/11/2026', expectedReturn:'01/12/2026', missed:5,
+      photo:'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Rodri_Argentina_v_Spain_19_July_2026-187_%28cropped%29.jpg/250px-Rodri_Argentina_v_Spain_19_July_2026-187_%28cropped%29.jpg'},
+    {name:'Dani Olmo', position:'Attacking midfield', age:28, reason:'Adductor tear', since:'21/10/2026', expectedReturn:'16/11/2026', missed:4,
+      photo:'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Dani_Olmo_France_v_Spain_7.24.26-176_%28cropped%29.jpg/250px-Dani_Olmo_France_v_Spain_7.24.26-176_%28cropped%29.jpg'},
+  ],
+};
+function renderTeamInjuries(abbr){
+  const list = TEAM_INJURIES[abbr];
+  if(!list || !list.length) return '';
+  const c1 = TEAM_COLORS[abbr] || 'var(--court)';
+  const c2 = TEAM_COLORS_SECONDARY[abbr] || c1;
+  return `<div class="div-section">
+    <div class="div-section-head"><h3 class="disp">Injuries</h3></div>
+    <div class="inj-table">
+      <div class="inj-accent"><span style="background:${c1}"></span><span style="background:${c2}"></span></div>
+      <div class="inj-row inj-head">
+        <span>Player</span><span>Age</span><span>Reason</span><span>Since</span><span>Expected return</span><span>Missed</span>
+      </div>
+      ${list.map(p => `<div class="inj-row">
+        <span class="inj-player"><img src="${p.photo}" alt="" loading="lazy">
+          <span><span class="inj-name">${p.name}</span><span class="inj-pos">${p.position}</span></span>
+        </span>
+        <span>${p.age}</span>
+        <span class="inj-reason">${p.reason}</span>
+        <span class="inj-date">${p.since}</span>
+        <span class="inj-date">${p.expectedReturn}</span>
+        <span class="inj-missed">${p.missed}</span>
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
 const MATCH_STATS = {
   'clasico-oct25-2026': {
     sport:'football', competition:'La Liga · Matchday 10', date:'Oct 25, 2026', venue:'Spotify Camp Nou, Barcelona', status:'FT',

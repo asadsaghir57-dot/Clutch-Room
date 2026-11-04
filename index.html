@@ -521,7 +521,12 @@ a.board-row{display:grid;}
 .fx-wrap{margin-top:8px;}
 .fx-group{margin-bottom:22px;}
 .fx-group h4{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent,var(--ink-muted));margin:0 0 6px;}
+.fx-upcoming-head{margin:28px 0 14px;padding-top:18px;border-top:2px solid var(--line);}
+.fx-upcoming-head h4{font-family:'Anton',sans-serif;font-size:15px;letter-spacing:0.02em;color:var(--ink);margin:0;text-transform:none;}
 .fx-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:13px;}
+a.fx-row-link{color:inherit;text-decoration:none;cursor:pointer;transition:background .15s ease;border-radius:4px;}
+a.fx-row-link:hover{background:var(--paper-raised);}
+a.fx-row-link:hover .fx-score{color:var(--accent,var(--court));}
 .fx-note{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-muted);padding-top:8px;}
 .fx-row:last-child{border-bottom:none;}
 .fx-teams{display:flex;align-items:center;gap:9px;font-weight:600;min-width:0;}
@@ -1060,9 +1065,15 @@ const FIXTURES = {
       {away:'LASK', home:'SCP', status:'FINAL', score:'3-2'},
     ]},
     {week:'Matchday 4 · Tue Nov 3', games:[
-      {away:'BAY', home:'ATM', status:'3:00 PM ET'},
-      {away:'AVL', home:'BAR', status:'3:00 PM ET'},
-      {away:'ROM', home:'MUN', status:'3:00 PM ET'},
+      {away:'BAY', home:'ATM', status:'FINAL', score:'2-0'},
+      {away:'AVL', home:'BAR', status:'FINAL', score:'0-3'},
+      {away:'ROM', home:'MUN', status:'FINAL', score:'2-3'},
+      {away:'STU', home:'GS', status:'FINAL', score:'0-2'},
+      {away:'SCP', home:'SHK', status:'FINAL', score:'1-0'},
+      {away:'LIL', home:'BOD', status:'FINAL', score:'0-0'},
+      {away:'INT', home:'FEY', status:'FINAL', score:'3-0'},
+      {away:'LASK', home:'SLB', status:'FINAL', score:'4-0'},
+      {away:'PSG', home:'VIL', status:'FINAL', score:'6-0'},
     ]},
     {week:'Matchday 4 · Wed Nov 4', games:[
       {away:'ARS', home:'SLA', status:'3:00 PM ET'},
@@ -1604,21 +1615,35 @@ function fxTeam(abbr, scope){
     : `<span class="fx-team">${inner}</span>`;
 }
 const FX_LOGO_SCOPE = {ucl:'football', epl:'football', laliga:'football', nfl:'nfl'};
+function renderFxGroup(w, scope){
+  return `<div class="fx-group">
+    <h4>${w.week}</h4>
+    ${w.games.map(g=>{
+      const mid = (typeof MATCH_STATS !== 'undefined') ? Object.keys(MATCH_STATS).find(id => {
+        const m = MATCH_STATS[id];
+        return m.home.abbr===g.home && m.away.abbr===g.away;
+      }) : null;
+      const row = `<span class="fx-teams">${fxTeam(g.away, scope)} <span class="vs">at</span> ${fxTeam(g.home, scope)}</span>
+      ${g.score ? `<span class="fx-score tnum">${g.score}</span>` : '<span></span>'}
+      <span class="fx-status">${g.status}</span>`;
+      return mid
+        ? `<a class="fx-row fx-row-link" href="#/match/${mid}">${row}</a>`
+        : `<div class="fx-row">${row}</div>`;
+    }).join('')}
+    ${w.note ? `<div class="fx-note">${w.note}</div>` : ''}
+  </div>`;
+}
 function renderFixtures(key){
   const fx = FIXTURES[key];
   const scope = FX_LOGO_SCOPE[key];
+  // Completed weeks (every game FINAL) show newest-first; any week with a game still
+  // to be played is treated as upcoming and pinned to the bottom in chronological order.
+  const completed = fx.weeks.filter(w => w.games.every(g => g.status.indexOf('FINAL') === 0));
+  const upcoming = fx.weeks.filter(w => !w.games.every(g => g.status.indexOf('FINAL') === 0));
+  const completedNewestFirst = [...completed].reverse();
   return `<div class="fx-wrap">
-    ${fx.weeks.map(w=>`
-      <div class="fx-group">
-        <h4>${w.week}</h4>
-        ${w.games.map(g=>`<div class="fx-row">
-          <span class="fx-teams">${fxTeam(g.away, scope)} <span class="vs">at</span> ${fxTeam(g.home, scope)}</span>
-          ${g.score ? `<span class="fx-score tnum">${g.score}</span>` : '<span></span>'}
-          <span class="fx-status">${g.status}</span>
-        </div>`).join('')}
-        ${w.note ? `<div class="fx-note">${w.note}</div>` : ''}
-      </div>
-    `).join('')}
+    ${completedNewestFirst.map(w => renderFxGroup(w, scope)).join('')}
+    ${upcoming.length ? `<div class="fx-upcoming-head"><h4>Next Fixtures</h4></div>${upcoming.map(w => renderFxGroup(w, scope)).join('')}` : ''}
   </div>`;
 }
 
@@ -5079,6 +5104,11 @@ function renderPlaceholderHub(sport){
 const TEAM_COLORS = {
   BAR:'#A50044', RMA:'#1D4289', LIV:'#C8102E', ARS:'#063672', MCI:'#6CABDD',
   BAY:'#DC052D', RBL:'#DD0741', VIL:'#D4A017', PSG:'#004170', AEK:'#D9A400',
+  SCP:'#006432', LEN:'#D4A700', SAB:'#2E7D32', SLA:'#CC0000', ATM:'#CB3524',
+  MUN:'#DA291C', INT:'#010E80', BRU:'#0066B3', POR:'#004F9E', VIK:'#1C3A5E',
+  GS:'#A90432', FEY:'#ED1C24', COM:'#003DA5', LASK:'#102B4E', ROM:'#8E1F2F',
+  SLB:'#1C4E9E', STU:'#E32219', VFB:'#E32219', DOR:'#F5C400', BVB:'#F5C400', NAP:'#12A0D7', BOD:'#C9A400',
+  SHK:'#D9590A', FEN:'#1C3A6E', LIL:'#C8102E', PSV:'#ED1B2F', BET:'#00954C',
 };
 const MATCH_STATS = {
   'clasico-oct25-2026': {
@@ -5470,6 +5500,1802 @@ const MATCH_STATS = {
       {min:"65'", side:'home', text:"Mac Allister's second puts Liverpool ahead"},
       {min:"68'", side:'home', text:'Florian Wirtz extends the lead'},
       {min:"87'", side:'away', text:'Tani Oluwaseyi pulls one back late for Villarreal'},
+    ],
+  },
+  'lens-sporting-oct13-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 13, 2026', venue:'Estádio José Alvalade, Lisbon', status:'FT',
+    home:{abbr:'SCP', name:'Sporting CP'}, away:{abbr:'LEN', name:'Lens'},
+    homeScore:2, awayScore:0,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:11, away:21},
+        {label:'Shots on Target', home:5, away:6},
+        {label:'Shots Blocked', home:3, away:5},
+        {label:'Hit Woodwork', home:0, away:1},
+        {label:'Shots Inside Box', home:8, away:11},
+        {label:'Shots Outside Box', home:3, away:10},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:44, away:56, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:3, away:1},
+        {label:'Touches in Opposition Box', home:26, away:30},
+        {label:'Corners Won', home:3, away:6},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:367, away:482},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:13, away:10},
+        {label:'Interceptions', home:5, away:6},
+        {label:'Clearances', home:35, away:19},
+        {label:'Duels Won', home:50, away:45},
+        {label:'Aerials Won', home:6, away:4},
+        {label:'Saves', home:6, away:3},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:12, away:8},
+        {label:'Offsides', home:0, away:1},
+        {label:'Yellow Cards', home:0, away:2},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"22'", side:'home', text:'Luis Suárez opens the scoring for Sporting'},
+      {min:"74'", side:'home', text:'Issa Doumbia doubles Sporting\'s lead'},
+    ],
+  },
+  'sabah-slavia-oct13-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 13, 2026', venue:'Fortuna Arena, Prague', status:'FT',
+    home:{abbr:'SLA', name:'Slavia Prague'}, away:{abbr:'SAB', name:'Sabah'},
+    homeScore:0, awayScore:2,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:18, away:13},
+        {label:'Shots on Target', home:8, away:6},
+        {label:'Shots Blocked', home:5, away:3},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:13, away:9},
+        {label:'Shots Outside Box', home:5, away:4},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:55, away:45, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:3, away:1},
+        {label:'Touches in Opposition Box', home:32, away:17},
+        {label:'Corners Won', home:6, away:4},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:315, away:252},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:8, away:13},
+        {label:'Interceptions', home:3, away:10},
+        {label:'Clearances', home:21, away:28},
+        {label:'Duels Won', home:51, away:51},
+        {label:'Aerials Won', home:20, away:16},
+        {label:'Saves', home:4, away:6},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:14, away:15},
+        {label:'Offsides', home:4, away:2},
+        {label:'Yellow Cards', home:2, away:3},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"49'", side:'away', text:'Kaheem Parris puts Sabah ahead'},
+      {min:"88'", side:'away', text:'Joy-Lance Mickels seals a historic first Champions League win for Sabah'},
+    ],
+  },
+  'arsenal-lille-oct13-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 13, 2026', venue:'Stade Pierre-Mauroy, Lille', status:'FT',
+    home:{abbr:'LIL', name:'Lille'}, away:{abbr:'ARS', name:'Arsenal'},
+    homeScore:0, awayScore:3,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:4, away:16},
+        {label:'Shots on Target', home:0, away:8},
+        {label:'Shots Blocked', home:3, away:5},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:1, away:12},
+        {label:'Shots Outside Box', home:3, away:4},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:42, away:58, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:0, away:2},
+        {label:'Touches in Opposition Box', home:3, away:50},
+        {label:'Corners Won', home:0, away:7},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:344, away:488},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:9, away:8},
+        {label:'Interceptions', home:8, away:6},
+        {label:'Clearances', home:38, away:8},
+        {label:'Duels Won', home:47, away:46},
+        {label:'Aerials Won', home:14, away:11},
+        {label:'Saves', home:5, away:0},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:9, away:13},
+        {label:'Offsides', home:3, away:4},
+        {label:'Yellow Cards', home:1, away:2},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"61'", side:'away', text:'Eberechi Eze opens the scoring'},
+      {min:"64'", side:'away', text:'Jurriën Timber doubles the lead'},
+      {min:"70'", side:'away', text:'Eze adds his second'},
+    ],
+  },
+  'atletico-manutd-oct13-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 13, 2026', venue:'Old Trafford, Manchester', status:'FT',
+    home:{abbr:'MUN', name:'Manchester United'}, away:{abbr:'ATM', name:'Atlético Madrid'},
+    homeScore:0, awayScore:2,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:9, away:11},
+        {label:'Shots on Target', home:4, away:5},
+        {label:'Shots Blocked', home:2, away:1},
+        {label:'Hit Woodwork', home:1, away:2},
+        {label:'Shots Inside Box', home:6, away:6},
+        {label:'Shots Outside Box', home:3, away:5},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:42, away:58, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:4, away:1},
+        {label:'Touches in Opposition Box', home:12, away:17},
+        {label:'Corners Won', home:5, away:2},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:398, away:578},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:10, away:3},
+        {label:'Interceptions', home:6, away:12},
+        {label:'Clearances', home:13, away:11},
+        {label:'Duels Won', home:45, away:25},
+        {label:'Aerials Won', home:5, away:4},
+        {label:'Saves', home:3, away:4},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:13, away:11},
+        {label:'Offsides', home:2, away:1},
+        {label:'Yellow Cards', home:1, away:1},
+        {label:'Red Cards', home:1, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"1'", side:'away', text:'Pablo Barrios opens the scoring inside the first minute'},
+      {min:"79'", side:'away', text:'A second late on seals it for Atlético'},
+    ],
+  },
+  'galatasaray-barcelona-oct13-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 13, 2026', venue:'Spotify Camp Nou, Barcelona', status:'FT',
+    home:{abbr:'BAR', name:'Barcelona'}, away:{abbr:'GS', name:'Galatasaray'},
+    homeScore:4, awayScore:1,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:22, away:5},
+        {label:'Shots on Target', home:11, away:3},
+        {label:'Shots Blocked', home:4, away:1},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:16, away:3},
+        {label:'Shots Outside Box', home:6, away:2},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:71, away:29, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:5, away:0},
+        {label:'Touches in Opposition Box', home:35, away:9},
+        {label:'Corners Won', home:6, away:1},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:625, away:202},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:9, away:8},
+        {label:'Interceptions', home:10, away:12},
+        {label:'Clearances', home:14, away:20},
+        {label:'Duels Won', home:45, away:34},
+        {label:'Aerials Won', home:10, away:7},
+        {label:'Saves', home:2, away:6},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:10, away:12},
+        {label:'Offsides', home:7, away:8},
+        {label:'Yellow Cards', home:0, away:2},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"25'", side:'home', text:'Lamine Yamal opens the scoring for Barcelona'},
+      {min:"37'", side:'away', text:'Yunus Akgün levels for Galatasaray'},
+      {min:"47'", side:'home', text:'Anthony Gordon restores Barcelona\'s lead'},
+      {min:"52'", side:'home', text:'Yamal\'s second'},
+      {min:"63'", side:'home', text:'Yamal completes his hat-trick'},
+    ],
+  },
+  'inter-brugge-oct13-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 13, 2026', venue:'Jan Breydel Stadium, Bruges', status:'FT',
+    home:{abbr:'BRU', name:'Club Brugge'}, away:{abbr:'INT', name:'Inter Milan'},
+    homeScore:4, awayScore:3,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Shots on Target', home:8, away:12},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:47, away:53, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:2, away:4},
+        {label:'Corners Won', home:4, away:4},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:411, away:464},
+      ]},
+      {title:'Defense', items:[
+        {label:'Duels Won', home:35, away:42},
+        {label:'Saves', home:9, away:4},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:13, away:6},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"30'", side:'home', text:'Nicolò Tresoldi opens the scoring from the penalty spot'},
+      {min:"44'", side:'away', text:'Lautaro Martínez levels it'},
+      {min:"63'", side:'home', text:'Tresoldi\'s second'},
+      {min:"74'", side:'home', text:'Tresoldi completes his hat-trick'},
+      {min:"81'", side:'away', text:'Martínez\'s second'},
+      {min:"87'", side:'home', text:'Romeo Vermant restores Brugge\'s two-goal cushion'},
+      {min:"90+3'", side:'away', text:'Ange-Yoan Bonny pulls one back late'},
+    ],
+  },
+  'psv-leipzig-oct13-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 13, 2026', venue:'Philips Stadion, Eindhoven', status:'FT',
+    home:{abbr:'PSV', name:'PSV Eindhoven'}, away:{abbr:'RBL', name:'RB Leipzig'},
+    homeScore:0, awayScore:1,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:11, away:19},
+        {label:'Shots on Target', home:5, away:7},
+        {label:'Shots Blocked', home:2, away:4},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:8, away:15},
+        {label:'Shots Outside Box', home:3, away:4},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:57, away:43, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:1, away:1},
+        {label:'Touches in Opposition Box', home:23, away:33},
+        {label:'Corners Won', home:13, away:6},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:389, away:289},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:12, away:5},
+        {label:'Interceptions', home:9, away:8},
+        {label:'Clearances', home:32, away:26},
+        {label:'Duels Won', home:63, away:39},
+        {label:'Aerials Won', home:23, away:9},
+        {label:'Saves', home:6, away:5},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:12, away:13},
+        {label:'Offsides', home:6, away:0},
+        {label:'Yellow Cards', home:2, away:1},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"75'", side:'away', text:'Brajan Gruda scores the only goal'},
+    ],
+  },
+  'viking-bayern-oct13-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 13, 2026', venue:'Allianz Arena, Munich', status:'FT',
+    home:{abbr:'BAY', name:'Bayern Munich'}, away:{abbr:'VIK', name:'Viking FK'},
+    homeScore:3, awayScore:3,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:25, away:8},
+        {label:'Shots on Target', home:8, away:5},
+        {label:'Shots Blocked', home:13, away:0},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:17, away:6},
+        {label:'Shots Outside Box', home:8, away:2},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:66, away:34, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:2, away:2},
+        {label:'Touches in Opposition Box', home:50, away:14},
+        {label:'Corners Won', home:15, away:7},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:498, away:210},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:7, away:20},
+        {label:'Interceptions', home:8, away:10},
+        {label:'Clearances', home:20, away:39},
+        {label:'Duels Won', home:39, away:48},
+        {label:'Aerials Won', home:11, away:8},
+        {label:'Saves', home:2, away:5},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:8, away:12},
+        {label:'Offsides', home:2, away:0},
+        {label:'Yellow Cards', home:2, away:2},
+        {label:'Red Cards', home:1, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"2'", side:'away', text:'Gianni Stensness opens the scoring'},
+      {min:"38'", side:'away', text:'Peter Christiansen doubles Viking\'s lead'},
+      {min:"54'", side:'home', text:'Harry Kane pulls one back from the spot'},
+      {min:"60'", side:'home', text:'Kane levels it'},
+      {min:"71'", side:'home', text:'Luis Díaz puts Bayern ahead'},
+      {min:"73'", side:'home', text:'Michael Olise extends the lead'},
+      {min:"90'", side:'away', text:'Herman Haugen snatches a point back for Viking'},
+    ],
+  },
+  'napoli-villarreal-oct13-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 13, 2026', venue:'Stadio Diego Armando Maradona, Naples', status:'FT',
+    home:{abbr:'NAP', name:'Napoli'}, away:{abbr:'VIL', name:'Villarreal'},
+    homeScore:1, awayScore:3,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:11, away:17},
+        {label:'Shots on Target', home:3, away:4},
+        {label:'Shots Blocked', home:2, away:6},
+        {label:'Hit Woodwork', home:2, away:0},
+        {label:'Shots Inside Box', home:10, away:8},
+        {label:'Shots Outside Box', home:1, away:9},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:48, away:52, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:2, away:1},
+        {label:'Touches in Opposition Box', home:28, away:26},
+        {label:'Corners Won', home:4, away:4},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:368, away:417},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:11, away:11},
+        {label:'Interceptions', home:6, away:9},
+        {label:'Clearances', home:20, away:29},
+        {label:'Duels Won', home:37, away:43},
+        {label:'Aerials Won', home:9, away:8},
+        {label:'Saves', home:1, away:2},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:15, away:8},
+        {label:'Offsides', home:3, away:3},
+        {label:'Yellow Cards', home:3, away:2},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"8'", side:'home', text:'Amir Rrahmani opens the scoring for Napoli'},
+      {min:"23'", side:'away', text:'Georges Mikautadze levels it'},
+      {min:"26'", side:'away', text:'Santiago Mouriño puts Villarreal ahead'},
+      {min:"86'", side:'away', text:'Tani Oluwaseyi seals the win'},
+    ],
+  },
+  'feyenoord-como-oct14-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 14, 2026', venue:'Stadio Giuseppe Sinigaglia, Como', status:'FT',
+    home:{abbr:'COM', name:'Como'}, away:{abbr:'FEY', name:'Feyenoord'},
+    homeScore:2, awayScore:3,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:11, away:13},
+        {label:'Shots on Target', home:5, away:5},
+        {label:'Shots Blocked', home:3, away:4},
+        {label:'Hit Woodwork', home:0, away:2},
+        {label:'Shots Inside Box', home:5, away:7},
+        {label:'Shots Outside Box', home:6, away:6},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:52, away:48, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:2, away:0},
+        {label:'Touches in Opposition Box', home:9, away:20},
+        {label:'Corners Won', home:1, away:5},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:512, away:450},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:15, away:11},
+        {label:'Interceptions', home:10, away:9},
+        {label:'Clearances', home:22, away:12},
+        {label:'Duels Won', home:50, away:48},
+        {label:'Aerials Won', home:4, away:6},
+        {label:'Saves', home:3, away:3},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:18, away:19},
+        {label:'Offsides', home:0, away:2},
+        {label:'Yellow Cards', home:3, away:2},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"18'", side:'home', text:'Assane Diao opens the scoring for Como'},
+      {min:"20'", side:'away', text:'Gjivai Zechiël levels it'},
+      {min:"52'", side:'away', text:'Anis Hadj Moussa puts Feyenoord ahead'},
+      {min:"81'", side:'away', text:'Robert Sánchez own goal makes it 3-1'},
+      {min:"90+3'", side:'home', text:'Anastasios Douvikas pulls one back'},
+    ],
+  },
+  'lask-liverpool-oct14-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 14, 2026', venue:'Anfield, Liverpool', status:'FT',
+    home:{abbr:'LIV', name:'Liverpool'}, away:{abbr:'LASK', name:'LASK Linz'},
+    homeScore:6, awayScore:3,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:26, away:12},
+        {label:'Shots on Target', home:9, away:4},
+        {label:'Shots Blocked', home:5, away:1},
+        {label:'Hit Woodwork', home:1, away:0},
+        {label:'Shots Inside Box', home:20, away:10},
+        {label:'Shots Outside Box', home:6, away:2},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:64, away:36, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:5, away:4},
+        {label:'Touches in Opposition Box', home:51, away:23},
+        {label:'Corners Won', home:11, away:3},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:524, away:251},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:5, away:10},
+        {label:'Interceptions', home:12, away:6},
+        {label:'Clearances', home:21, away:30},
+        {label:'Duels Won', home:36, away:30},
+        {label:'Aerials Won', home:8, away:5},
+        {label:'Saves', home:1, away:2},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:4, away:7},
+        {label:'Offsides', home:6, away:3},
+        {label:'Yellow Cards', home:0, away:1},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"22'", side:'home', text:'Ronald Araújo opens the scoring'},
+      {min:"24'", side:'home', text:'Bradley Barcola doubles it'},
+      {min:"37'", side:'home', text:'Barcola\'s second'},
+      {min:"51'", side:'home', text:'Jeremie Frimpong makes it four'},
+      {min:"63'", side:'away', text:'Robert Ljubicic pulls one back'},
+      {min:"66'", side:'home', text:'Barcola completes his hat-trick'},
+      {min:"72'", side:'home', text:'Lewis Koumas adds a sixth'},
+      {min:"74'", side:'away', text:'Florian Flecker'},
+      {min:"77'", side:'away', text:'Flecker\'s second'},
+    ],
+  },
+  'roma-realmadrid-oct14-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 14, 2026', venue:'Santiago Bernabéu, Madrid', status:'FT',
+    home:{abbr:'RMA', name:'Real Madrid'}, away:{abbr:'ROM', name:'AS Roma'},
+    homeScore:4, awayScore:3,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:16, away:14},
+        {label:'Shots on Target', home:8, away:7},
+        {label:'Shots Blocked', home:0, away:3},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:11, away:9},
+        {label:'Shots Outside Box', home:5, away:5},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:46, away:54, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:2, away:3},
+        {label:'Touches in Opposition Box', home:35, away:24},
+        {label:'Corners Won', home:9, away:5},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:385, away:471},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:8, away:9},
+        {label:'Interceptions', home:13, away:14},
+        {label:'Clearances', home:22, away:23},
+        {label:'Duels Won', home:47, away:34},
+        {label:'Aerials Won', home:7, away:8},
+        {label:'Saves', home:4, away:4},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:8, away:15},
+        {label:'Offsides', home:1, away:1},
+        {label:'Yellow Cards', home:1, away:3},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"20'", side:'away', text:'Marten de Roon opens the scoring'},
+      {min:"25'", side:'home', text:'Kylian Mbappé levels it'},
+      {min:"51'", side:'away', text:'Donyell Malen puts Roma back ahead'},
+      {min:"57'", side:'away', text:'Malen\'s second'},
+      {min:"83'", side:'home', text:'Carlos Espí pulls one back'},
+      {min:"85'", side:'home', text:'Endrick levels it'},
+      {min:"90'", side:'home', text:'Antonio Rüdiger completes the comeback'},
+    ],
+  },
+  'astonvilla-fenerbahce-oct14-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 14, 2026', venue:'Şükrü Saracoğlu Stadium, Istanbul', status:'FT',
+    home:{abbr:'FEN', name:'Fenerbahçe'}, away:{abbr:'AVL', name:'Aston Villa'},
+    homeScore:0, awayScore:6,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Shots on Target', home:4, away:11},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:55, away:45, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:3, away:2},
+        {label:'Corners Won', home:7, away:9},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:424, away:350},
+      ]},
+      {title:'Defense', items:[
+        {label:'Duels Won', home:34, away:42},
+        {label:'Saves', home:5, away:4},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:6, away:12},
+      ]},
+    ],
+    timeline:[
+      {min:"12'", side:'away', text:'Johan Manzambi opens the scoring'},
+      {min:"31'", side:'away', text:'Nicolas Jackson doubles it'},
+      {min:"39'", side:'away', text:'Jackson\'s second'},
+      {min:"68'", side:'away', text:'Ross Barkley converts a penalty'},
+      {min:"72'", side:'away', text:'Barkley\'s second'},
+      {min:"90'", side:'away', text:'Tammy Abraham completes the rout'},
+    ],
+  },
+  'bodo-dortmund-oct14-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 14, 2026', venue:'Signal Iduna Park, Dortmund', status:'FT',
+    home:{abbr:'BVB', name:'Borussia Dortmund'}, away:{abbr:'BOD', name:'Bodø/Glimt'},
+    homeScore:0, awayScore:1,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:9, away:11},
+        {label:'Shots on Target', home:4, away:3},
+        {label:'Shots Blocked', home:2, away:3},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:5, away:7},
+        {label:'Shots Outside Box', home:4, away:4},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:52, away:48, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:1, away:3},
+        {label:'Touches in Opposition Box', home:24, away:22},
+        {label:'Corners Won', home:10, away:4},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:504, away:467},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:9, away:14},
+        {label:'Interceptions', home:10, away:8},
+        {label:'Clearances', home:17, away:33},
+        {label:'Duels Won', home:41, away:56},
+        {label:'Aerials Won', home:10, away:19},
+        {label:'Saves', home:2, away:4},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:8, away:7},
+        {label:'Offsides', home:3, away:1},
+        {label:'Yellow Cards', home:2, away:0},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"52'", side:'away', text:'Fredrik Sjøvold scores the only goal, one of the night\'s bigger surprises'},
+    ],
+  },
+  'mancity-psg-oct14-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 14, 2026', venue:'Parc des Princes, Paris', status:'FT',
+    home:{abbr:'PSG', name:'Paris Saint-Germain'}, away:{abbr:'MCI', name:'Manchester City'},
+    homeScore:4, awayScore:2,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Shots on Target', home:10, away:9},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:46, away:54, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:3, away:6},
+        {label:'Corners Won', home:2, away:11},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:374, away:423},
+      ]},
+      {title:'Defense', items:[
+        {label:'Duels Won', home:43, away:58},
+        {label:'Saves', home:6, away:6},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:11, away:10},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"13'", side:'home', text:'Désiré Doué opens the scoring'},
+      {min:"15'", side:'home', text:'Ousmane Dembélé doubles it'},
+      {min:"32'", side:'home', text:'Vitinha makes it three'},
+      {min:"53'", side:'away', text:'Erling Haaland pulls one back'},
+      {min:"62'", side:'home', text:'Maghnes Akliouche restores PSG\'s three-goal cushion'},
+      {min:"75'", side:'away', text:'Haaland\'s second'},
+    ],
+  },
+  'betis-porto-oct14-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 14, 2026', venue:'Estádio do Dragão, Porto', status:'FT',
+    home:{abbr:'POR', name:'FC Porto'}, away:{abbr:'BET', name:'Real Betis'},
+    homeScore:2, awayScore:3,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:11, away:17},
+        {label:'Shots on Target', home:5, away:7},
+        {label:'Shots Blocked', home:2, away:2},
+        {label:'Hit Woodwork', home:1, away:1},
+        {label:'Shots Inside Box', home:10, away:12},
+        {label:'Shots Outside Box', home:1, away:5},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:44, away:56, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:2, away:1},
+        {label:'Touches in Opposition Box', home:23, away:30},
+        {label:'Corners Won', home:1, away:5},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:321, away:438},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:9, away:9},
+        {label:'Interceptions', home:13, away:10},
+        {label:'Clearances', home:19, away:20},
+        {label:'Duels Won', home:46, away:51},
+        {label:'Aerials Won', home:11, away:12},
+        {label:'Saves', home:4, away:3},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:15, away:14},
+        {label:'Offsides', home:0, away:0},
+        {label:'Yellow Cards', home:3, away:4},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"47'", side:'away', text:'Abde Ezzalzouli opens the scoring'},
+      {min:"54'", side:'home', text:'Gabri Veiga levels it'},
+      {min:"61'", side:'home', text:'Samu Aghehowa puts Porto ahead'},
+      {min:"74'", side:'away', text:'Cucho Hernández levels it'},
+      {min:"84'", side:'away', text:'Isco converts a penalty to win it'},
+    ],
+  },
+  'shakhtar-aek-oct14-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 14, 2026', venue:'Agia Sofia Stadium, Athens', status:'FT',
+    home:{abbr:'AEK', name:'AEK Athens'}, away:{abbr:'SHK', name:'Shakhtar Donetsk'},
+    homeScore:1, awayScore:3,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:13, away:12},
+        {label:'Shots on Target', home:3, away:4},
+        {label:'Shots Blocked', home:3, away:5},
+        {label:'Hit Woodwork', home:1, away:1},
+        {label:'Shots Inside Box', home:8, away:6},
+        {label:'Shots Outside Box', home:5, away:6},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:46, away:54, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:5, away:1},
+        {label:'Touches in Opposition Box', home:18, away:12},
+        {label:'Corners Won', home:2, away:5},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:314, away:403},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:11, away:13},
+        {label:'Interceptions', home:6, away:12},
+        {label:'Clearances', home:9, away:10},
+        {label:'Duels Won', home:54, away:44},
+        {label:'Aerials Won', home:8, away:4},
+        {label:'Saves', home:1, away:2},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:17, away:16},
+        {label:'Offsides', home:2, away:4},
+        {label:'Yellow Cards', home:4, away:1},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"28'", side:'home', text:'Lovro Majer opens the scoring for AEK'},
+      {min:"34'", side:'away', text:'Pedrinho levels from the penalty spot'},
+      {min:"80'", side:'away', text:'Vinícius Tobias puts Shakhtar ahead'},
+      {min:"86'", side:'away', text:'Gleiker Mendoza seals it'},
+    ],
+  },
+  'slovan-stuttgart-oct14-2026': {
+    sport:'football', competition:'Champions League · Matchday 2', date:'Oct 14, 2026', venue:'MHPArena, Stuttgart', status:'FT',
+    home:{abbr:'VFB', name:'VfB Stuttgart'}, away:{abbr:'SLB', name:'Slovan Bratislava'},
+    homeScore:3, awayScore:0,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:16, away:15},
+        {label:'Shots on Target', home:8, away:1},
+        {label:'Shots Blocked', home:2, away:6},
+        {label:'Hit Woodwork', home:1, away:1},
+        {label:'Shots Inside Box', home:12, away:8},
+        {label:'Shots Outside Box', home:4, away:7},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:64, away:36, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:5, away:1},
+        {label:'Touches in Opposition Box', home:34, away:20},
+        {label:'Corners Won', home:8, away:1},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:560, away:291},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:9, away:4},
+        {label:'Interceptions', home:5, away:12},
+        {label:'Clearances', home:22, away:26},
+        {label:'Duels Won', home:40, away:41},
+        {label:'Aerials Won', home:11, away:8},
+        {label:'Saves', home:1, away:6},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:15, away:11},
+        {label:'Offsides', home:2, away:1},
+        {label:'Yellow Cards', home:3, away:1},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"29'", side:'home', text:'Deniz Undav opens the scoring'},
+      {min:"64'", side:'away', text:'Sandro Cruz own goal doubles Stuttgart\'s lead'},
+      {min:"90'", side:'home', text:'Ermedin Demirović completes the rout'},
+    ],
+  },
+  'fenerbahce-slavia-oct20-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 20, 2026', venue:'Şükrü Saracoğlu Stadium, Istanbul', status:'FT',
+    home:{abbr:'FEN', name:'Fenerbahçe'}, away:{abbr:'SLA', name:'Slavia Prague'},
+    homeScore:2, awayScore:2,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:15, away:15},
+        {label:'Shots on Target', home:4, away:4},
+        {label:'Shots Blocked', home:2, away:6},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:9, away:9},
+        {label:'Shots Outside Box', home:6, away:6},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:49, away:51, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:1, away:1},
+        {label:'Touches in Opposition Box', home:28, away:26},
+        {label:'Corners Won', home:3, away:5},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:342, away:354},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:11, away:13},
+        {label:'Interceptions', home:20, away:14},
+        {label:'Clearances', home:20, away:20},
+        {label:'Duels Won', home:61, away:41},
+        {label:'Aerials Won', home:13, away:8},
+        {label:'Saves', home:2, away:2},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:12, away:15},
+        {label:'Offsides', home:0, away:2},
+        {label:'Yellow Cards', home:3, away:1},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"4'", side:'home', text:'Oguz Aydın opens the scoring'},
+      {min:"11'", side:'home', text:'Mason Greenwood doubles it'},
+      {min:"15'", side:'away', text:'Lukáš Provod pulls one back'},
+      {min:"90'", side:'away', text:'Pavel Kačor completes the comeback'},
+    ],
+  },
+  'sabah-dortmund-oct20-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 20, 2026', venue:'Bakcell Arena, Baku', status:'FT',
+    home:{abbr:'SAB', name:'Sabah'}, away:{abbr:'DOR', name:'Borussia Dortmund'},
+    homeScore:1, awayScore:2,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:13, away:22},
+        {label:'Shots on Target', home:4, away:9},
+        {label:'Shots Blocked', home:2, away:0},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:8, away:16},
+        {label:'Shots Outside Box', home:5, away:6},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:45, away:55, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:2, away:5},
+        {label:'Touches in Opposition Box', home:24, away:38},
+        {label:'Corners Won', home:4, away:9},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:332, away:417},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:7, away:9},
+        {label:'Interceptions', home:9, away:13},
+        {label:'Clearances', home:24, away:22},
+        {label:'Duels Won', home:35, away:37},
+        {label:'Aerials Won', home:8, away:14},
+        {label:'Saves', home:6, away:3},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:8, away:12},
+        {label:'Offsides', home:6, away:2},
+        {label:'Yellow Cards', home:4, away:0},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"10'", side:'away', text:'Serhou Guirassy opens the scoring'},
+      {min:"39'", side:'home', text:'Aden McCarthy levels it'},
+      {min:"53'", side:'away', text:'Guirassy\'s second wins it for Dortmund'},
+    ],
+  },
+  'slovan-roma-oct20-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 20, 2026', venue:'Stadio Olimpico, Rome', status:'FT',
+    home:{abbr:'ROM', name:'AS Roma'}, away:{abbr:'SLB', name:'Slovan Bratislava'},
+    homeScore:4, awayScore:0,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:26, away:1},
+        {label:'Shots on Target', home:10, away:0},
+        {label:'Shots Blocked', home:6, away:0},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:21, away:1},
+        {label:'Shots Outside Box', home:5, away:0},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:73, away:27, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:2, away:0},
+        {label:'Touches in Opposition Box', home:70, away:4},
+        {label:'Corners Won', home:8, away:1},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:599, away:176},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:6, away:7},
+        {label:'Interceptions', home:10, away:10},
+        {label:'Clearances', home:12, away:30},
+        {label:'Duels Won', home:43, away:38},
+        {label:'Aerials Won', home:13, away:8},
+        {label:'Saves', home:0, away:6},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:10, away:10},
+        {label:'Offsides', home:4, away:1},
+        {label:'Yellow Cards', home:0, away:3},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"21'", side:'home', text:'Mario Hermoso opens the scoring'},
+      {min:"39'", side:'home', text:'Nahuel Molina doubles it'},
+      {min:"52'", side:'home', text:'Niccolò Pisilli makes it three'},
+      {min:"58'", side:'home', text:'Donyell Malen converts a penalty to complete the rout'},
+    ],
+  },
+  'psv-porto-oct20-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 20, 2026', venue:'Estádio do Dragão, Porto', status:'FT',
+    home:{abbr:'POR', name:'FC Porto'}, away:{abbr:'PSV', name:'PSV Eindhoven'},
+    homeScore:0, awayScore:1,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:14, away:18},
+        {label:'Shots on Target', home:4, away:3},
+        {label:'Shots Blocked', home:1, away:4},
+        {label:'Hit Woodwork', home:0, away:2},
+        {label:'Shots Inside Box', home:8, away:12},
+        {label:'Shots Outside Box', home:6, away:6},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:40, away:60, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:1, away:4},
+        {label:'Touches in Opposition Box', home:18, away:19},
+        {label:'Corners Won', home:2, away:3},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:342, away:529},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:5, away:9},
+        {label:'Interceptions', home:5, away:11},
+        {label:'Clearances', home:28, away:17},
+        {label:'Duels Won', home:35, away:39},
+        {label:'Aerials Won', home:11, away:13},
+        {label:'Saves', home:2, away:3},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:7, away:9},
+        {label:'Offsides', home:5, away:3},
+        {label:'Yellow Cards', home:0, away:2},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"57'", side:'away', text:'Guus Til scores the only goal'},
+    ],
+  },
+  'bodo-napoli-oct20-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 20, 2026', venue:'Stadio Diego Armando Maradona, Naples', status:'FT',
+    home:{abbr:'NAP', name:'Napoli'}, away:{abbr:'BOD', name:'Bodø/Glimt'},
+    homeScore:4, awayScore:3,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:17, away:15},
+        {label:'Shots on Target', home:8, away:6},
+        {label:'Shots Blocked', home:6, away:4},
+        {label:'Hit Woodwork', home:1, away:1},
+        {label:'Shots Inside Box', home:13, away:11},
+        {label:'Shots Outside Box', home:4, away:4},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:43, away:57, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:3, away:3},
+        {label:'Touches in Opposition Box', home:29, away:29},
+        {label:'Corners Won', home:2, away:5},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:440, away:601},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:9, away:4},
+        {label:'Interceptions', home:6, away:4},
+        {label:'Clearances', home:25, away:14},
+        {label:'Duels Won', home:40, away:29},
+        {label:'Aerials Won', home:17, away:8},
+        {label:'Saves', home:3, away:5},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:7, away:5},
+        {label:'Offsides', home:1, away:0},
+        {label:'Yellow Cards', home:3, away:0},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"1'", side:'home', text:'Matteo Politano opens the scoring'},
+      {min:"27'", side:'away', text:'Jens Petter Hauge levels it'},
+      {min:"41'", side:'home', text:'Scott McTominay puts Napoli ahead'},
+      {min:"62'", side:'away', text:'Andreas Helmersen levels it again'},
+      {min:"75'", side:'home', text:'McTominay\'s second'},
+      {min:"88'", side:'home', text:'Odin Bjørtuft own goal makes it 4-2'},
+      {min:"90+4'", side:'away', text:'Sondre Brunstad Fet pulls one back'},
+    ],
+  },
+  'atletico-stuttgart-oct20-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 20, 2026', venue:'MHPArena, Stuttgart', status:'FT',
+    home:{abbr:'STU', name:'VfB Stuttgart'}, away:{abbr:'ATM', name:'Atlético Madrid'},
+    homeScore:1, awayScore:1,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:18, away:10},
+        {label:'Shots on Target', home:5, away:3},
+        {label:'Shots Blocked', home:4, away:3},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:12, away:9},
+        {label:'Shots Outside Box', home:6, away:1},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:54, away:46, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:2, away:0},
+        {label:'Touches in Opposition Box', home:39, away:21},
+        {label:'Corners Won', home:9, away:4},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:457, away:379},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:6, away:7},
+        {label:'Interceptions', home:8, away:6},
+        {label:'Clearances', home:17, away:24},
+        {label:'Duels Won', home:43, away:50},
+        {label:'Aerials Won', home:18, away:21},
+        {label:'Saves', home:2, away:4},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:15, away:7},
+        {label:'Offsides', home:2, away:0},
+        {label:'Yellow Cards', home:1, away:0},
+        {label:'Red Cards', home:0, away:1},
+      ]},
+    ],
+    timeline:[
+      {min:"36'", side:'home', text:'Jamie Leweling opens the scoring for Stuttgart'},
+      {min:"47'", side:'away', text:'Julián Álvarez levels it'},
+    ],
+  },
+  'como-manutd-oct21-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 21, 2026', venue:'Stadio Giuseppe Sinigaglia, Como', status:'FT',
+    home:{abbr:'COM', name:'Como'}, away:{abbr:'MUN', name:'Manchester United'},
+    homeScore:4, awayScore:1,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:11, away:13},
+        {label:'Shots on Target', home:8, away:4},
+        {label:'Shots Blocked', home:0, away:3},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:8, away:5},
+        {label:'Shots Outside Box', home:3, away:8},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:55, away:45, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:3, away:1},
+        {label:'Touches in Opposition Box', home:19, away:16},
+        {label:'Corners Won', home:1, away:4},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:597, away:474},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:11, away:14},
+        {label:'Interceptions', home:14, away:8},
+        {label:'Clearances', home:9, away:11},
+        {label:'Duels Won', home:41, away:48},
+        {label:'Aerials Won', home:5, away:10},
+        {label:'Saves', home:3, away:4},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:10, away:11},
+        {label:'Offsides', home:2, away:1},
+        {label:'Yellow Cards', home:1, away:3},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"2'", side:'home', text:'Nico Paz opens the scoring'},
+      {min:"49'", side:'home', text:'Anastasios Douvikas doubles it'},
+      {min:"57'", side:'home', text:'Paz\'s second'},
+      {min:"76'", side:'home', text:'Jacobo Ramón makes it four'},
+      {min:"90+1'", side:'away', text:'Joshua Zirkzee pulls one back'},
+    ],
+  },
+  'lille-galatasaray-oct21-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 21, 2026', venue:'Stade Pierre-Mauroy, Lille', status:'FT',
+    home:{abbr:'LIL', name:'Lille'}, away:{abbr:'GS', name:'Galatasaray'},
+    homeScore:2, awayScore:4,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:15, away:10},
+        {label:'Shots on Target', home:5, away:4},
+        {label:'Shots Blocked', home:5, away:2},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:10, away:8},
+        {label:'Shots Outside Box', home:5, away:2},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:56, away:44, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:2, away:3},
+        {label:'Touches in Opposition Box', home:22, away:27},
+        {label:'Corners Won', home:3, away:3},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:449, away:330},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:12, away:8},
+        {label:'Interceptions', home:11, away:10},
+        {label:'Clearances', home:20, away:23},
+        {label:'Duels Won', home:50, away:54},
+        {label:'Aerials Won', home:11, away:22},
+        {label:'Saves', home:1, away:4},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:9, away:10},
+        {label:'Offsides', home:6, away:2},
+        {label:'Yellow Cards', home:3, away:1},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"2'", side:'away', text:'Yunus Akgün opens the scoring for Galatasaray'},
+      {min:"7'", side:'home', text:'Soriba Diaouné levels it'},
+      {min:"39'", side:'home', text:'Diaouné\'s second puts Lille ahead'},
+      {min:"44'", side:'away', text:'Alexey Batrakov levels it'},
+      {min:"52'", side:'away', text:'Berke Özer own goal puts Galatasaray ahead'},
+      {min:"61'", side:'away', text:'Victor Osimhen completes the comeback'},
+    ],
+  },
+  'astonvilla-viking-oct21-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 21, 2026', venue:'Villa Park, Birmingham', status:'FT',
+    home:{abbr:'AVL', name:'Aston Villa'}, away:{abbr:'VIK', name:'Viking FK'},
+    homeScore:3, awayScore:1,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:21, away:10},
+        {label:'Shots on Target', home:10, away:3},
+        {label:'Shots Blocked', home:4, away:7},
+        {label:'Hit Woodwork', home:1, away:0},
+        {label:'Shots Inside Box', home:17, away:4},
+        {label:'Shots Outside Box', home:4, away:6},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:54, away:46, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:7, away:1},
+        {label:'Touches in Opposition Box', home:39, away:13},
+        {label:'Corners Won', home:8, away:6},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:469, away:377},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:4, away:7},
+        {label:'Interceptions', home:5, away:7},
+        {label:'Clearances', home:24, away:15},
+        {label:'Duels Won', home:37, away:35},
+        {label:'Aerials Won', home:8, away:5},
+        {label:'Saves', home:2, away:8},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:7, away:14},
+        {label:'Offsides', home:2, away:3},
+        {label:'Yellow Cards', home:0, away:0},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"23'", side:'home', text:'Ross Barkley opens the scoring'},
+      {min:"37'", side:'home', text:'Emiliano Buendía converts a penalty'},
+      {min:"62'", side:'home', text:'Henrik Heggheim own goal makes it three'},
+      {min:"84'", side:'away', text:'Peter Christiansen pulls one back'},
+    ],
+  },
+  'brugge-lens-oct21-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 21, 2026', venue:'Jan Breydel Stadium, Bruges', status:'FT',
+    home:{abbr:'BRU', name:'Club Brugge'}, away:{abbr:'LEN', name:'Lens'},
+    homeScore:3, awayScore:0,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:11, away:19},
+        {label:'Shots on Target', home:5, away:7},
+        {label:'Shots Blocked', home:2, away:4},
+        {label:'Hit Woodwork', home:0, away:1},
+        {label:'Shots Inside Box', home:8, away:13},
+        {label:'Shots Outside Box', home:3, away:6},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:57, away:43, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:2, away:5},
+        {label:'Touches in Opposition Box', home:20, away:32},
+        {label:'Corners Won', home:1, away:5},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:603, away:425},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:13, away:18},
+        {label:'Interceptions', home:11, away:14},
+        {label:'Clearances', home:22, away:13},
+        {label:'Duels Won', home:53, away:47},
+        {label:'Aerials Won', home:11, away:5},
+        {label:'Saves', home:6, away:2},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:6, away:10},
+        {label:'Offsides', home:2, away:0},
+        {label:'Yellow Cards', home:2, away:2},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"45+3'", side:'home', text:'Hans Vanaken opens the scoring'},
+      {min:"50'", side:'home', text:'Joaquin Seys doubles it'},
+      {min:"72'", side:'home', text:'Carlos Forbs completes the win'},
+    ],
+  },
+  'inter-shakhtar-oct21-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 21, 2026', venue:'San Siro, Milan', status:'FT',
+    home:{abbr:'INT', name:'Inter Milan'}, away:{abbr:'SHK', name:'Shakhtar Donetsk'},
+    homeScore:1, awayScore:0,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:13, away:12},
+        {label:'Shots on Target', home:5, away:4},
+        {label:'Shots Blocked', home:2, away:5},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:8, away:6},
+        {label:'Shots Outside Box', home:5, away:6},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:45, away:55, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:1, away:0},
+        {label:'Touches in Opposition Box', home:28, away:15},
+        {label:'Corners Won', home:5, away:4},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:369, away:484},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:11, away:5},
+        {label:'Interceptions', home:8, away:8},
+        {label:'Clearances', home:16, away:23},
+        {label:'Duels Won', home:47, away:44},
+        {label:'Aerials Won', home:10, away:7},
+        {label:'Saves', home:4, away:4},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:9, away:10},
+        {label:'Offsides', home:2, away:2},
+        {label:'Yellow Cards', home:2, away:2},
+        {label:'Red Cards', home:1, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"68'", side:'home', text:'Inter break the deadlock on the night\'s only goal'},
+    ],
+  },
+  'betis-feyenoord-oct21-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 21, 2026', venue:'Estadio Benito Villamarín, Seville', status:'FT',
+    home:{abbr:'BET', name:'Real Betis'}, away:{abbr:'FEY', name:'Feyenoord'},
+    homeScore:1, awayScore:0,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:23, away:12},
+        {label:'Shots on Target', home:10, away:2},
+        {label:'Shots Blocked', home:9, away:5},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:14, away:7},
+        {label:'Shots Outside Box', home:9, away:5},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:47, away:53, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:1, away:1},
+        {label:'Touches in Opposition Box', home:37, away:26},
+        {label:'Corners Won', home:4, away:4},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:448, away:496},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:9, away:7},
+        {label:'Interceptions', home:19, away:9},
+        {label:'Clearances', home:23, away:16},
+        {label:'Duels Won', home:37, away:44},
+        {label:'Aerials Won', home:9, away:11},
+        {label:'Saves', home:2, away:9},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:8, away:10},
+        {label:'Offsides', home:2, away:1},
+        {label:'Yellow Cards', home:1, away:2},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"59'", side:'home', text:'Isco converts a penalty for the only goal'},
+    ],
+  },
+  'sporting-lask-oct21-2026': {
+    sport:'football', competition:'Champions League · Matchday 3', date:'Oct 21, 2026', venue:'Estádio José Alvalade, Lisbon', status:'FT',
+    home:{abbr:'SCP', name:'Sporting CP'}, away:{abbr:'LASK', name:'LASK Linz'},
+    homeScore:2, awayScore:3,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:16, away:11},
+        {label:'Shots on Target', home:4, away:7},
+        {label:'Shots Blocked', home:5, away:2},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:10, away:9},
+        {label:'Shots Outside Box', home:6, away:2},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:62, away:38, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:1, away:1},
+        {label:'Touches in Opposition Box', home:31, away:20},
+        {label:'Corners Won', home:7, away:4},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:506, away:293},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:7, away:12},
+        {label:'Interceptions', home:7, away:8},
+        {label:'Clearances', home:9, away:20},
+        {label:'Duels Won', home:62, away:44},
+        {label:'Aerials Won', home:13, away:14},
+        {label:'Saves', home:4, away:2},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:10, away:22},
+        {label:'Offsides', home:3, away:3},
+        {label:'Yellow Cards', home:2, away:5},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"5'", side:'home', text:'Luis Suárez converts a penalty'},
+      {min:"15'", side:'away', text:'Christoph Lang levels it'},
+      {min:"63'", side:'away', text:'Sasa Kalajdzić puts LASK ahead'},
+      {min:"68'", side:'away', text:'Krystof Danek doubles LASK\'s lead'},
+      {min:"89'", side:'home', text:'Suárez\'s second pulls one back'},
+    ],
+  },
+  'atletico-bayern-nov3-2026': {
+    sport:'football', competition:'Champions League · Matchday 4', date:'Nov 3, 2026', venue:'Civitas Metropolitano, Madrid', status:'FT',
+    home:{abbr:'ATM', name:'Atlético Madrid'}, away:{abbr:'BAY', name:'Bayern Munich'},
+    homeScore:0, awayScore:2,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:9, away:19},
+        {label:'Shots on Target', home:3, away:5},
+        {label:'Shots Blocked', home:2, away:4},
+        {label:'Hit Woodwork', home:0, away:1},
+        {label:'Shots Inside Box', home:6, away:9},
+        {label:'Shots Outside Box', home:3, away:10},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:42, away:58, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:2, away:3},
+        {label:'Touches in Opposition Box', home:28, away:38},
+        {label:'Corners Won', home:4, away:4},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:363, away:570},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:17, away:25},
+        {label:'Interceptions', home:4, away:12},
+        {label:'Clearances', home:25, away:20},
+        {label:'Duels Won', home:48, away:61},
+        {label:'Aerials Won', home:12, away:8},
+        {label:'Saves', home:3, away:3},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:13, away:3},
+        {label:'Offsides', home:0, away:4},
+        {label:'Yellow Cards', home:1, away:2},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"54'", side:'away', text:'Lennart Karl opens the scoring for Bayern'},
+      {min:"74'", side:'away', text:'Konrad Laimer doubles the lead'},
+    ],
+  },
+  'barcelona-astonvilla-nov3-2026': {
+    sport:'football', competition:'Champions League · Matchday 4', date:'Nov 3, 2026', venue:'Spotify Camp Nou, Barcelona', status:'FT',
+    home:{abbr:'BAR', name:'Barcelona'}, away:{abbr:'AVL', name:'Aston Villa'},
+    homeScore:3, awayScore:0,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:16, away:9},
+        {label:'Shots on Target', home:8, away:1},
+        {label:'Shots Blocked', home:2, away:2},
+        {label:'Hit Woodwork', home:0, away:1},
+        {label:'Shots Inside Box', home:14, away:9},
+        {label:'Shots Outside Box', home:2, away:0},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:65, away:35, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:3, away:1},
+        {label:'Touches in Opposition Box', home:36, away:26},
+        {label:'Corners Won', home:4, away:8},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:552, away:258},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:9, away:11},
+        {label:'Interceptions', home:8, away:9},
+        {label:'Clearances', home:23, away:12},
+        {label:'Duels Won', home:47, away:48},
+        {label:'Aerials Won', home:7, away:5},
+        {label:'Saves', home:1, away:5},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:14, away:9},
+        {label:'Offsides', home:1, away:3},
+        {label:'Yellow Cards', home:1, away:3},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"7'", side:'home', text:'Lamine Yamal opens the scoring'},
+      {min:"52'", side:'home', text:'Raphinha doubles the lead'},
+      {min:"64'", side:'home', text:'Raphinha\'s second completes the win'},
+    ],
+  },
+  'manutd-roma-nov3-2026': {
+    sport:'football', competition:'Champions League · Matchday 4', date:'Nov 3, 2026', venue:'Old Trafford, Manchester', status:'FT',
+    home:{abbr:'MUN', name:'Manchester United'}, away:{abbr:'ROM', name:'AS Roma'},
+    homeScore:3, awayScore:2,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:15, away:7},
+        {label:'Shots on Target', home:6, away:4},
+        {label:'Shots Blocked', home:4, away:1},
+        {label:'Hit Woodwork', home:1, away:1},
+        {label:'Shots Inside Box', home:7, away:4},
+        {label:'Shots Outside Box', home:8, away:3},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:52, away:48, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:1, away:1},
+        {label:'Touches in Opposition Box', home:30, away:8},
+        {label:'Corners Won', home:3, away:1},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:415, away:373},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:10, away:13},
+        {label:'Interceptions', home:13, away:18},
+        {label:'Clearances', home:15, away:24},
+        {label:'Duels Won', home:65, away:46},
+        {label:'Aerials Won', home:17, away:12},
+        {label:'Saves', home:2, away:2},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:11, away:14},
+        {label:'Offsides', home:1, away:2},
+        {label:'Yellow Cards', home:3, away:3},
+        {label:'Red Cards', home:1, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"11'", side:'away', text:'Matías Soulé opens the scoring for Roma'},
+      {min:"17'", side:'away', text:'Donyell Malen converts a penalty to double it'},
+      {min:"58'", side:'home', text:'Bruno Fernandes pulls one back from the spot'},
+      {min:"83'", side:'home', text:'Matheus Cunha levels it'},
+      {min:"86'", side:'home', text:'Cunha completes the comeback'},
+      {min:"90+1'", side:'home', text:'Cunha\'s third seals it'},
+    ],
+  },
+  'galatasaray-stuttgart-nov3-2026': {
+    sport:'football', competition:'Champions League · Matchday 4', date:'Nov 3, 2026', venue:'RAMS Park, Istanbul', status:'FT',
+    home:{abbr:'GS', name:'Galatasaray'}, away:{abbr:'STU', name:'VfB Stuttgart'},
+    homeScore:2, awayScore:0,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:13, away:13},
+        {label:'Shots on Target', home:4, away:5},
+        {label:'Shots Blocked', home:4, away:2},
+        {label:'Hit Woodwork', home:0, away:1},
+        {label:'Shots Inside Box', home:11, away:9},
+        {label:'Shots Outside Box', home:2, away:4},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:52, away:48, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:2, away:4},
+        {label:'Touches in Opposition Box', home:24, away:24},
+        {label:'Corners Won', home:6, away:4},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:285, away:265},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:9, away:9},
+        {label:'Interceptions', home:12, away:15},
+        {label:'Clearances', home:26, away:25},
+        {label:'Duels Won', home:52, away:41},
+        {label:'Aerials Won', home:14, away:16},
+        {label:'Saves', home:5, away:2},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:13, away:16},
+        {label:'Offsides', home:2, away:3},
+        {label:'Yellow Cards', home:3, away:5},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"12'", side:'home', text:'Alexey Batrakov opens the scoring'},
+      {min:"15'", side:'home', text:'Batrakov\'s second'},
+    ],
+  },
+  'shakhtar-sporting-nov3-2026': {
+    sport:'football', competition:'Champions League · Matchday 4', date:'Nov 3, 2026', venue:'Arena Lviv, Lviv', status:'FT',
+    home:{abbr:'SHK', name:'Shakhtar Donetsk'}, away:{abbr:'SCP', name:'Sporting CP'},
+    homeScore:0, awayScore:1,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:14, away:11},
+        {label:'Shots on Target', home:4, away:3},
+        {label:'Shots Blocked', home:2, away:1},
+        {label:'Hit Woodwork', home:1, away:0},
+        {label:'Shots Inside Box', home:8, away:8},
+        {label:'Shots Outside Box', home:6, away:3},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:54, away:46, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:3, away:2},
+        {label:'Touches in Opposition Box', home:27, away:18},
+        {label:'Corners Won', home:7, away:2},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:379, away:317},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:13, away:12},
+        {label:'Interceptions', home:10, away:8},
+        {label:'Clearances', home:9, away:25},
+        {label:'Duels Won', home:50, away:51},
+        {label:'Aerials Won', home:5, away:9},
+        {label:'Saves', home:1, away:3},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:10, away:18},
+        {label:'Offsides', home:1, away:0},
+        {label:'Yellow Cards', home:1, away:1},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"59'", side:'away', text:'Issa Doumbia scores the only goal'},
+    ],
+  },
+  'bodo-lille-nov3-2026': {
+    sport:'football', competition:'Champions League · Matchday 4', date:'Nov 3, 2026', venue:'Aspmyra Stadion, Bodø', status:'FT',
+    home:{abbr:'BOD', name:'Bodø/Glimt'}, away:{abbr:'LIL', name:'Lille'},
+    homeScore:0, awayScore:0,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:4, away:9},
+        {label:'Shots on Target', home:4, away:2},
+        {label:'Shots Blocked', home:0, away:2},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:4, away:7},
+        {label:'Shots Outside Box', home:0, away:2},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:51, away:49, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:2, away:0},
+        {label:'Touches in Opposition Box', home:17, away:18},
+        {label:'Corners Won', home:3, away:4},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:492, away:471},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:5, away:15},
+        {label:'Interceptions', home:9, away:2},
+        {label:'Clearances', home:12, away:18},
+        {label:'Duels Won', home:33, away:50},
+        {label:'Aerials Won', home:6, away:6},
+        {label:'Saves', home:2, away:4},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:12, away:8},
+        {label:'Offsides', home:3, away:0},
+        {label:'Yellow Cards', home:0, away:1},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"90'", side:'home', text:'A goalless draw at Aspmyra Stadion'},
+    ],
+  },
+  'feyenoord-inter-nov3-2026': {
+    sport:'football', competition:'Champions League · Matchday 4', date:'Nov 3, 2026', venue:'De Kuip, Rotterdam', status:'FT',
+    home:{abbr:'FEY', name:'Feyenoord'}, away:{abbr:'INT', name:'Inter Milan'},
+    homeScore:0, awayScore:3,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:11, away:11},
+        {label:'Shots on Target', home:2, away:6},
+        {label:'Shots Blocked', home:4, away:3},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:6, away:8},
+        {label:'Shots Outside Box', home:5, away:3},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:53, away:47, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:1, away:0},
+        {label:'Touches in Opposition Box', home:23, away:29},
+        {label:'Corners Won', home:5, away:4},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:531, away:458},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:11, away:9},
+        {label:'Interceptions', home:11, away:14},
+        {label:'Clearances', home:21, away:27},
+        {label:'Duels Won', home:43, away:38},
+        {label:'Aerials Won', home:4, away:11},
+        {label:'Saves', home:3, away:2},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:7, away:13},
+        {label:'Offsides', home:0, away:2},
+        {label:'Yellow Cards', home:1, away:2},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"8'", side:'away', text:'Yann Bisseck opens the scoring'},
+      {min:"34'", side:'away', text:'Pio Esposito doubles the lead'},
+      {min:"54'", side:'away', text:'Piotr Zieliński completes the win'},
+    ],
+  },
+  'slovan-lask-nov3-2026': {
+    sport:'football', competition:'Champions League · Matchday 4', date:'Nov 3, 2026', venue:'Tehelné pole, Bratislava', status:'FT',
+    home:{abbr:'SLB', name:'Slovan Bratislava'}, away:{abbr:'LASK', name:'LASK Linz'},
+    homeScore:0, awayScore:4,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:7, away:29},
+        {label:'Shots on Target', home:5, away:10},
+        {label:'Shots Blocked', home:0, away:10},
+        {label:'Hit Woodwork', home:0, away:2},
+        {label:'Shots Inside Box', home:5, away:21},
+        {label:'Shots Outside Box', home:2, away:8},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:40, away:60, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:1, away:4},
+        {label:'Touches in Opposition Box', home:12, away:44},
+        {label:'Corners Won', home:2, away:8},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:290, away:471},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:12, away:18},
+        {label:'Interceptions', home:12, away:14},
+        {label:'Clearances', home:31, away:7},
+        {label:'Duels Won', home:35, away:45},
+        {label:'Aerials Won', home:3, away:8},
+        {label:'Saves', home:5, away:5},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:9, away:5},
+        {label:'Offsides', home:1, away:5},
+        {label:'Yellow Cards', home:2, away:0},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"19'", side:'away', text:'Kasper Jørgensen opens the scoring'},
+      {min:"37'", side:'away', text:'Jørgensen\'s second'},
+      {min:"44'", side:'away', text:'Robert Ljubicic makes it three'},
+      {min:"48'", side:'away', text:'Samuel Adeniran completes the rout'},
+    ],
+  },
+  'villarreal-psg-nov3-2026': {
+    sport:'football', competition:'Champions League · Matchday 4', date:'Nov 3, 2026', venue:'Estadio de la Cerámica, Villarreal', status:'FT',
+    home:{abbr:'VIL', name:'Villarreal'}, away:{abbr:'PSG', name:'Paris Saint-Germain'},
+    homeScore:0, awayScore:6,
+    statGroups:[
+      {title:'Shots', items:[
+        {label:'Total Shots', home:14, away:22},
+        {label:'Shots on Target', home:2, away:12},
+        {label:'Shots Blocked', home:5, away:7},
+        {label:'Hit Woodwork', home:0, away:0},
+        {label:'Shots Inside Box', home:5, away:18},
+        {label:'Shots Outside Box', home:9, away:4},
+      ]},
+      {title:'Possession', items:[
+        {label:'Possession', home:29, away:71, suffix:'%'},
+      ]},
+      {title:'Attack', items:[
+        {label:'Big Chances Created', home:0, away:2},
+        {label:'Touches in Opposition Box', home:10, away:43},
+        {label:'Corners Won', home:4, away:8},
+      ]},
+      {title:'Passing', items:[
+        {label:'Accurate Passes', home:237, away:677},
+      ]},
+      {title:'Defense', items:[
+        {label:'Tackles', home:13, away:8},
+        {label:'Interceptions', home:13, away:5},
+        {label:'Clearances', home:16, away:13},
+        {label:'Duels Won', home:31, away:44},
+        {label:'Aerials Won', home:8, away:7},
+        {label:'Saves', home:6, away:2},
+      ]},
+      {title:'Discipline', items:[
+        {label:'Fouls', home:19, away:4},
+        {label:'Offsides', home:1, away:1},
+        {label:'Yellow Cards', home:4, away:1},
+        {label:'Red Cards', home:0, away:0},
+      ]},
+    ],
+    timeline:[
+      {min:"9'", side:'away', text:'João Neves opens the scoring'},
+      {min:"12'", side:'away', text:'Désiré Doué doubles it'},
+      {min:"13'", side:'away', text:'Senny Mayulu makes it three'},
+      {min:"17'", side:'away', text:'Fabián Ruiz adds a fourth'},
+      {min:"50'", side:'away', text:'Ruiz\'s second'},
+      {min:"78'", side:'away', text:'David Boly completes the rout'},
     ],
   },
 };

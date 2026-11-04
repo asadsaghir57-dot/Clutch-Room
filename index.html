@@ -827,8 +827,8 @@ const SPORTS = [
     headline:'Lions End Minnesota\'s Unbeaten Season, Beat Vikings 19-15',
     status:'BEARS BEAT SEAHAWKS 34-17 ON MONDAY NIGHT TO CLOSE WEEK 8, D\'ANDRE SWIFT SCORES 3 TDS, CHICAGO IMPROVES TO 6-2 · DETROIT SNAPPED MINNESOTA\'S 6-0 START · JAGUARS ROUT COLTS 42-7 · EAGLES FALL TO WASHINGTON FOR A 6TH STRAIGHT LOSS WITHOUT JALEN HURTS', deep:'none', sub:'National Football League', live:false},
   {id:'tennis', name:'Tennis', accent:'court', heat:58,
-    headline:'Lorenzo Musetti Stuns New World No. 1 Alexander Zverev at the Paris Masters',
-    status:'MUSETTI BEATS ZVEREV 7-6(5), 6-2 IN THE ROUND OF 16 — ZVEREV BECOMES THE FIRST PLAYER TO LOSE HIS OPENING MATCH AS WORLD NO. 1 SINCE 2022 · DEFENDING CHAMPION JANNIK SINNER IS OUT WITH A KNEE INJURY · CARLOS ALCARAZ SEEDED 2ND OFF A TITLE IN VIENNA', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
+    headline:'Qualifier Rinky Hijikata Stuns Novak Djokovic at the Paris Masters, Effectively Ending His ATP Finals Hopes',
+    status:'HIJIKATA UPSETS DJOKOVIC 2-6, 6-3, 6-3 IN THE SECOND ROUND, HIS FIRST-EVER WIN OVER THE SERB AND HIS BIGGEST CAREER WIN — DJOKOVIC: "I SHOULD HAVE WON THIS MATCH, I KNOW" · MUSETTI BEATS NEW WORLD NO. 1 ZVEREV 7-6(5), 6-2 — ZVEREV BECOMES THE FIRST PLAYER TO LOSE HIS OPENING MATCH AS WORLD NO. 1 SINCE 2022 · ALCARAZ BEATS MICHELSEN 7-6(4), 6-3 · DEFENDING CHAMPION JANNIK SINNER IS OUT WITH A KNEE INJURY', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
   {id:'padel', name:'Padel', accent:'away', heat:48,
     headline:'Coello/Tapia Win Kuwait Major, Clinch Year-End No. 1 for Fourth Straight Year',
     status:'ARTURO COELLO AND AGUSTÍN TAPIA ROUTED FIRST-TIME FINALISTS TELLO/ARCE 6-1, 6-1 IN THE KUWAIT MAJOR FINAL — THEIR 13TH TITLE OF THE SEASON, SEALING THE WORLD NO. 1 RANKING FOR A FOURTH CONSECUTIVE YEAR', deep:'light', sub:'Premier Padel tour'},
@@ -907,8 +907,10 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'RAC',record:'0'}, home:{abbr:'OSA',record:'2'}, note:'La Liga · Osasuna beat Racing Santander at El Sadar'},
     {status:'FINAL', away:{abbr:'SOC',record:'5'}, home:{abbr:'MAL',record:'2'}, note:'La Liga · Oyarzabal brace as Real Sociedad win 5-2 at Málaga'},
   ]},
-  tennis:{context:'ROLEX PARIS MASTERS AT LA DÉFENSE ARENA (NOV 2-8): LORENZO MUSETTI BEATS NEW WORLD NO. 1 ALEXANDER ZVEREV 7-6(5), 6-2 IN THE ROUND OF 16 — ZVEREV BECOMES THE FIRST PLAYER TO LOSE HIS OPENING MATCH AS WORLD NO. 1 SINCE 2022 · DEFENDING CHAMPION SINNER OUT WITH A KNEE INJURY, ALCARAZ SEEDED 2ND OFF A VIENNA TITLE · LYON, NINGBO, OSAKA & BRUSSELS FINALS COMPLETE: MUSETTI, RYBAKINA, SINIAKOVA & GRIEKSPOOR WIN TITLES', games:[
-    {status:'FINAL', away:{abbr:'MUSETTI'}, home:{abbr:'ZVEREV'}, note:'Rolex Paris Masters · Round of 16 · Lorenzo Musetti beats top seed and new world No. 1 Alexander Zverev 7-6(5), 6-2 — Zverev\'s first match since reaching No. 1 in the rankings, and he becomes the first player to lose his opening match as world No. 1 since 2022; Musetti leads their head-to-head 3-2'},
+  tennis:{context:'ROLEX PARIS MASTERS AT LA DÉFENSE ARENA (NOV 2-8), SECOND ROUND: QUALIFIER RINKY HIJIKATA UPSETS NOVAK DJOKOVIC 2-6, 6-3, 6-3 — HIS FIRST-EVER WIN OVER THE SERB, EFFECTIVELY ENDING DJOKOVIC\'S ATP FINALS BID · LORENZO MUSETTI BEATS NEW WORLD NO. 1 ALEXANDER ZVEREV 7-6(5), 6-2 — ZVEREV BECOMES THE FIRST PLAYER TO LOSE HIS OPENING MATCH AS WORLD NO. 1 SINCE 2022 · CARLOS ALCARAZ BEATS ALEX MICHELSEN 7-6(4), 6-3 · DEFENDING CHAMPION SINNER OUT WITH A KNEE INJURY · LYON, NINGBO, OSAKA & BRUSSELS FINALS COMPLETE: MUSETTI, RYBAKINA, SINIAKOVA & GRIEKSPOOR WIN TITLES', games:[
+    {status:'FINAL', away:{abbr:'DJOKOVIC'}, home:{abbr:'HIJIKATA'}, note:'Rolex Paris Masters · Second Round · Qualifier Rinky Hijikata upsets Novak Djokovic 2-6, 6-3, 6-3 after dropping the first set — his first-ever win over Djokovic in three career meetings and the biggest win of his career; Djokovic, fresh off a three-set opening win over Valentin Vacherot that had made him the tournament\'s oldest-ever match winner, said afterward: "I should have won this match, I know. I played well the first set and then completely lost the control of the match"; the loss effectively ends his bid to qualify for the ATP Finals in Turin'},
+    {status:'FINAL', away:{abbr:'MICHELSEN'}, home:{abbr:'ALCARAZ'}, note:'Rolex Paris Masters · Second Round · Carlos Alcaraz beats Alex Michelsen 7-6(4), 6-3'},
+    {status:'FINAL', away:{abbr:'MUSETTI'}, home:{abbr:'ZVEREV'}, note:'Rolex Paris Masters · Second Round · Lorenzo Musetti beats top seed and new world No. 1 Alexander Zverev 7-6(5), 6-2 — Zverev\'s first match since reaching No. 1 in the rankings, and he becomes the first player to lose his opening match as world No. 1 since 2022; Musetti leads their head-to-head 3-2'},
     {status:'FINAL', away:{abbr:'STRUFF'}, home:{abbr:'GRIEKSPOOR'}, note:'BNP Paribas Fortis European Open Final (Brussels) · Tallon Griekspoor beats Jan-Lennard Struff 4-6, 6-3, 6-4, rallying from a set down for the third straight match to win his fourth ATP Tour title and first since Mallorca last June'},
     {status:'FINAL', away:{abbr:'FRITZ'}, home:{abbr:'MUSETTI'}, note:'ATP Lyon Open Final · Lorenzo Musetti beats Taylor Fritz 6-3, 6-4 in 80 minutes for his first title since 2022 and third career ATP Tour trophy'},
     {status:'FINAL', away:{abbr:'FERNANDEZ'}, home:{abbr:'RYBAKINA'}, note:'WTA Ningbo Open Final · Elena Rybakina beats Leylah Fernandez 6-2, 6-2 to defend her title, her first since reaching world No. 1'},
@@ -4062,6 +4064,18 @@ const ARTICLES = [
     body:[
       'Alexander Zverev\'s first match as the new world No. 1 ended in defeat, with Lorenzo Musetti beating him 7-6(5), 6-2 in the Round of 16 at the Rolex Paris Masters.',
       'Zverev, who entered the week as top seed after taking over the top ranking, is now the first player to lose his opening match as world No. 1 since 2022. Musetti, who opened his tournament with a tiebreak win over Hubert Hurkacz, improves to 3-2 in his head-to-head series against Zverev.',
+    ],
+  },
+  {id:'hijikata-djokovic-paris-upset', sport:'tennis', cat:'recap',
+    headline:'Qualifier Rinky Hijikata Stuns Novak Djokovic at the Paris Masters',
+    dek:'Hijikata rallied from a set down to beat Djokovic 2-6, 6-3, 6-3 in the second round — his first-ever win over the Serb, and a result that effectively ends Djokovic\'s bid to qualify for the ATP Finals.',
+    byline:'Clutch Room Tennis Desk', mins:3, time:'Nov 4, 2026',
+    qa:[['What was the score?','Qualifier Rinky Hijikata beat Novak Djokovic 2-6, 6-3, 6-3 in the second round of the Rolex Paris Masters.'],
+        ['Why does this result matter?','It\'s Hijikata\'s first-ever win over Djokovic in three career meetings and the biggest win of his career, and it effectively ends Djokovic\'s hopes of qualifying for the ATP Finals in Turin.']],
+    body:[
+      'Novak Djokovic\'s run at the Rolex Paris Masters ended in the second round, with qualifier Rinky Hijikata rallying from a set down to win 2-6, 6-3, 6-3.',
+      'Djokovic had opened the tournament a day earlier with a three-set comeback win over Valentin Vacherot, a result that made him, at 39, the oldest match winner in the event\'s history and extended his Paris Masters match-win record to 51. He took the first set against Hijikata but could not maintain control from there. "I should have won this match, I know," Djokovic said afterward. "I played well the first set and then completely lost the control of the match."',
+      'For Hijikata, it\'s his first win over Djokovic in three career meetings and the biggest victory of his career to date. The loss also effectively ends Djokovic\'s bid to qualify for the season-ending ATP Finals in Turin, which begin November 15.',
     ],
   },
 ];

@@ -1983,11 +1983,13 @@ function renderFootballTeamPage(abbr){
   /* BAR uses the exact navy/blue gradient sampled from fcbarcelona.com's own panel
      chrome (rgb(21,66,132) -> rgb(24,23,51)); other teams fall back to their own
      TEAM_COLORS pair, or a generic dark navy when no secondary color is set. */
-  const TEAM_HERO_OVERRIDE = { BAR: ['#0018B4', '#0018B4'] };
+  const TEAM_HERO_OVERRIDE = { BAR: ['#154284', '#181733'] };
+  const isDark = !!TEAM_HERO_OVERRIDE[abbr];
   const [heroC1, heroC2] = TEAM_HERO_OVERRIDE[abbr] || [TEAM_COLORS[abbr] || '#0B1C3D', TEAM_COLORS_SECONDARY[abbr] || '#050B1A'];
   return `
   ${masthead({sport:'football'})}
-  <div class="team-hero" style="background:linear-gradient(160deg, ${heroC1}, ${heroC2});">
+  ${isDark ? `<div class="team-page-dark" style="background:linear-gradient(247deg, ${heroC1}, ${heroC2});">` : ''}
+  <div class="team-hero"${isDark ? '' : ` style="background:linear-gradient(160deg, ${heroC1}, ${heroC2});"`}>
     <div class="wrap">
       <div class="breadcrumb team-hero-crumb"><a href="#/">Clutch Room</a> / <a href="#/sport/football">Football</a> / ${name}</div>
       <div class="hub-head" style="border-bottom:none;">
@@ -2001,7 +2003,6 @@ function renderFootballTeamPage(abbr){
       </div>
     </div>
   </div>
-  ${TEAM_HERO_OVERRIDE[abbr] ? `<div class="team-page-dark" style="background:${heroC2};">` : ''}
   <main class="wrap" style="--accent:var(--court);">
 
     ${standings.length ? `<div class="div-section">

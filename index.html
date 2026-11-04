@@ -325,6 +325,13 @@ a.board-row{display:grid;}
 
 /* ---------- hub ---------- */
 .hub-head{padding:30px 0 20px;border-bottom:1px solid var(--line);}
+.team-hero{padding-top:10px;}
+.team-hero .hub-head{padding-bottom:28px;}
+.team-hero-crumb{color:rgba(255,255,255,0.65);}
+.team-hero-crumb a{color:rgba(255,255,255,0.85);}
+.team-hero-name{color:#fff;}
+.team-hero-sub{color:rgba(255,255,255,0.75);}
+.std-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:6px 14px;}
 .hub-head .hub-status{display:flex;align-items:center;gap:10px;margin-top:10px;}
 .hub-head h1{font-size:50px;color:var(--accent,var(--ink));}
 .league-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
@@ -1969,22 +1976,29 @@ function renderFootballTeamPage(abbr){
   const results = schedule.filter(g => g.status.indexOf('FINAL') === 0).reverse();
   const upcoming = schedule.filter(g => g.status.indexOf('FINAL') !== 0);
   const scheduleRow = g => fxRowMarkup(g, 'football');
+  const heroC1 = TEAM_COLORS[abbr] || '#0B1C3D';
+  const heroC2 = TEAM_COLORS_SECONDARY[abbr] || '#050B1A';
   return `
   ${masthead({sport:'football'})}
-  <main class="wrap" style="--accent:var(--court);">
-    <div class="breadcrumb"><a href="#/">Clutch Room</a> / <a href="#/sport/football">Football</a> / ${name}</div>
-    <div class="hub-head">
-      <div style="display:flex;align-items:center;gap:16px;">
-        ${logo ? `<img src="${logo}" alt="" loading="lazy" style="width:56px;height:56px;object-fit:contain;flex:none;">` : ''}
-        <div>
-          <h1 class="disp" style="font-size:38px;">${name}</h1>
-          <div class="sport-sub mono">${standings.map(s=>`${s.competition} · #${s.position} · ${s.row.w}-${s.row.d}-${s.row.l}`).join(' · ')}</div>
+  <div class="team-hero" style="background:linear-gradient(135deg, ${heroC1}, ${heroC2});">
+    <div class="wrap">
+      <div class="breadcrumb team-hero-crumb"><a href="#/">Clutch Room</a> / <a href="#/sport/football">Football</a> / ${name}</div>
+      <div class="hub-head" style="border-bottom:none;">
+        <div style="display:flex;align-items:center;gap:16px;">
+          ${logo ? `<img src="${logo}" alt="" loading="lazy" style="width:56px;height:56px;object-fit:contain;flex:none;">` : ''}
+          <div>
+            <h1 class="disp team-hero-name" style="font-size:38px;">${name}</h1>
+            <div class="sport-sub mono team-hero-sub">${standings.map(s=>`${s.competition} · #${s.position} · ${s.row.w}-${s.row.d}-${s.row.l}`).join(' · ')}</div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+  <main class="wrap" style="--accent:var(--court);">
 
     ${standings.length ? `<div class="div-section">
       <div class="div-section-head"><h3 class="disp">Standings</h3></div>
+      <div class="std-card">
       <div class="std-table">
         <div class="std-row std-head"><span class="std-pos"></span><span class="std-team">Competition</span><span class="tnum std-col-gp">GP</span><span class="tnum std-col-wdl">W</span><span class="tnum std-col-wdl">D</span><span class="tnum std-col-wdl">L</span><span class="tnum std-col-wdl">GD</span><span class="tnum std-pts">Pts</span></div>
         ${standings.map(s=>`<div class="std-row">
@@ -1993,6 +2007,7 @@ function renderFootballTeamPage(abbr){
           <span class="tnum std-col-gp">${s.row.gp}</span><span class="tnum std-col-wdl">${s.row.w}</span><span class="tnum std-col-wdl">${s.row.d}</span><span class="tnum std-col-wdl">${s.row.l}</span>
           <span class="tnum std-col-wdl">${(s.row.gf-s.row.ga)>0?'+':''}${s.row.gf-s.row.ga}</span><span class="tnum std-pts">${s.row.pts}</span>
         </div>`).join('')}
+      </div>
       </div>
     </div>` : ''}
 

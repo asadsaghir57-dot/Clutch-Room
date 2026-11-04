@@ -757,24 +757,24 @@ const SPORTS = [
   {id:'tennis', name:'Tennis', accent:'court', heat:50,
     headline:'Musetti Wins Lyon for First Title Since 2022',
     status:'LORENZO MUSETTI BEAT TAYLOR FRITZ 6-3, 6-4 IN 80 MINUTES AT THE ATP LYON OPEN FOR HIS FIRST TITLE SINCE 2022 AND THIRD CAREER TROPHY', deep:'full', sub:'ATP & WTA tour coverage, seeds, withdrawals and lines'},
-  {id:'padel', name:'Padel', accent:'away', heat:48,
-    headline:'Libaak/Alfonso Upset Lebrón/Augsburger at Kuwait Major',
-    status:'TINO LIBAAK AND GONZALO ALFONSO UPSET NO. 3 SEEDS LEBRÓN/AUGSBURGER 4-6, 7-5, 6-1 IN THE KUWAIT MAJOR ROUND OF 16 TO REACH THE QUARTERFINALS, AS TAPIA/COELLO AND SINTES/ZAMORA ALSO ADVANCE AHEAD OF THE OCT 31 FINAL', deep:'light', sub:'Premier Padel tour'},
+  {id:'padel', name:'Padel', accent:'away', heat:52,
+    headline:'Coello/Tapia Win Kuwait Major, 5th Straight Title',
+    status:'ARTURO COELLO AND AGUSTÍN TAPIA BEAT JUAN TELLO AND MAXI ARCE 6-1, 6-1 IN THE KUWAIT MAJOR FINAL FOR THEIR 5TH STRAIGHT TITLE AND 13TH OF THE SEASON — A 23-MATCH WIN STREAK AND THEIR 44TH TITLE TOGETHER AS A PAIR', deep:'light', sub:'Premier Padel tour'},
   {id:'basketball', name:'Basketball', accent:'away', heat:62,
     headline:'Blazers Stay Unbeaten, Outlast Dončić\'s 41 to Beat Lakers 136-129',
     status:'DAMIAN LILLARD\'S CLUTCH TRIPLE HOLDS OFF A 41-POINT NIGHT FROM LUKA DONČIĆ, KEEPING PORTLAND UNBEATEN AT 3-0', deep:'light', sub:'NBA', live:false},
-  {id:'f1', name:'F1', accent:'away', heat:58,
-    headline:'Antonelli Can Clinch the Title in Mexico City',
-    status:'ANTONELLI CAN CLINCH THE TITLE IN MEXICO CITY WITH A NINTH-PLACE FINISH OR BETTER — HE LEADS RUSSELL BY 123 POINTS HEADING INTO THE NOV 1 RACE', deep:'none', sub:'Formula 1'},
+  {id:'f1', name:'F1', accent:'away', heat:88,
+    headline:'Antonelli Becomes F1\'s Youngest-Ever World Champion',
+    status:'KIMI ANTONELLI, 20, CLINCHES THE 2026 DRIVERS\' CHAMPIONSHIP WITH A THIRD-PLACE FINISH IN MEXICO CITY AS MAX VERSTAPPEN WINS THE RACE — YOUNGEST CHAMPION IN F1 HISTORY, BREAKING VETTEL\'S RECORD, AND THE FIRST ITALIAN CHAMPION SINCE ALBERTO ASCARI IN 1953', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:52,
     headline:'Volkanovski KOs Evloev to Retain Featherweight Title',
     status:'VOLKANOVSKI KOs EVLOEV IN ROUND 2 TO RETAIN THE FEATHERWEIGHT TITLE, WHILE YAN EDGES DVALISHVILI BY UNANIMOUS DECISION FOR THE BANTAMWEIGHT BELT, FIGHT OF THE NIGHT', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:46,
     headline:'O\'Shaquie Foster Unifies Super Featherweight Titles',
     status:'O\'SHAQUIE FOSTER DROPPED NAVARRETE TWICE EN ROUTE TO A UNANIMOUS DECISION IN SAN ANTONIO, UNIFYING THE WBC, WBO AND IBF SUPER FEATHERWEIGHT TITLES', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:90,
-    headline:'Sri Lanka Beat Pakistan by 8 Wickets in 5th ODI',
-    status:'MADUSHANKA\'S CAREER-BEST 5/34 BOWLS OUT PAKISTAN FOR 110 AS SRI LANKA CHASE 111 IN 18.1 OVERS — BOTH SIDES THROUGH TO THE OCT 31 FINAL, ENGLAND ELIMINATED', deep:'light', sub:'International & league cricket', live:false},
+  {id:'cricket', name:'Cricket', accent:'away', heat:92,
+    headline:'Fakhar Zaman\'s 127 Leads Pakistan to Tri-Series Title',
+    status:'PAKISTAN BEAT SRI LANKA BY 3 WICKETS IN THE TRI-SERIES FINAL, CHASING 326 AT GADDAFI STADIUM — FAKHAR ZAMAN\'S 127 (99) LEADS THE CHASE, PAKISTAN\'S FIRST ODI TRI-SERIES TITLE SINCE 2008', deep:'light', sub:'International & league cricket', live:false},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -831,7 +831,10 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'DAVIDOVICH FOKINA'}, home:{abbr:'HURKACZ'}, note:'Shanghai SF · Davidovich Fokina reaches his first Masters 1000 final'},
     {status:'FINAL', away:{abbr:'JODAR'}, home:{abbr:'DAVIDOVICH FOKINA'}, note:'Shanghai Final · Davidovich Fokina wins 1-6, 7-6(5), 6-4 for his first ATP Masters 1000 title'},
   ]},
-  padel:{context:'KUWAIT MAJOR QUARTERFINALS SET: LIBAAK/ALFONSO UPSET LEBRÓN/AUGSBURGER 4-6, 7-5, 6-1 IN THE ROUND OF 16 · TAPIA/COELLO AND SINTES/ZAMORA ALSO THROUGH · MILANO P1 COMPLETE', games:[
+  padel:{context:'KUWAIT MAJOR FINAL: TOP SEEDS COELLO/TAPIA BEAT TELLO/ARCE 6-1, 6-1 FOR A 5TH STRAIGHT TITLE, 13TH OF THE SEASON AND A 23-MATCH WIN STREAK · LIBAAK/ALFONSO UPSET LEBRÓN/AUGSBURGER 4-6, 7-5, 6-1 IN THE ROUND OF 16 EN ROUTE TO THE SEMIS', games:[
+    {status:'FINAL', away:{abbr:'TELLO/ARCE'}, home:{abbr:'COELLO/TAPIA'}, note:'Kuwait Major Final · Top seeds Arturo Coello/Agustín Tapia beat Juan Tello/Maxi Arce 6-1, 6-1 for their 5th straight title and 13th of the 2026 season — their 44th title together as a pair, extending their win streak to 23 straight matches'},
+    {status:'FINAL', away:{abbr:'LIBAAK/ALFONSO'}, home:{abbr:'COELLO/TAPIA'}, note:'Kuwait Major Semifinal · Top seeds Coello/Tapia beat Tino Libaak/Gonzalo Alfonso to reach the final'},
+    {status:'FINAL', away:{abbr:'SINTES/ZAMORA'}, home:{abbr:'TELLO/ARCE'}, note:'Kuwait Major Semifinal · Juan Tello/Maxi Arce beat Sintes/Zamora 6-4, 6-2 to reach the final'},
     {status:'FINAL', away:{abbr:'LEBRÓN/AUGSBURGER'}, home:{abbr:'LIBAAK/ALFONSO'}, note:'Kuwait Major Round of 16 · Tino Libaak/Gonzalo Alfonso upset No. 3 seeds Lebrón/Augsburger 4-6, 7-5, 6-1 to reach the quarterfinals'},
     {status:'FINAL', away:{abbr:'GOENAGA/COLLADO'}, home:{abbr:'TAPIA/COELLO'}, note:'Kuwait Major Round of 16 · Top seeds Tapia/Coello beat Goenaga/Collado 6-2, 6-1 to reach the quarterfinals'},
     {status:'FINAL', away:{abbr:'GARCÍA/RUIZ'}, home:{abbr:'SINTES/ZAMORA'}, note:'Kuwait Major Round of 16 · Sintes/Zamora beat García/Ruiz 6-3, 7-5 to reach the quarterfinals, continuing their run after upsetting 8th seeds González/Campagnolo in the Round of 32'},
@@ -883,8 +886,10 @@ const GAMES = {
     {status:'FINAL', away:{abbr:'LV',record:'30'}, home:{abbr:'BUF',record:'33'}, note:'Week 7 · Bills hold off Raiders'},
     {status:'FINAL/OT', away:{abbr:'TB',record:'19'}, home:{abbr:'PIT',record:'26'}, note:'Week 7 · Steelers win in OT'},
   ]},
-  cricket:{context:'SRI LANKA BEAT PAKISTAN BY 8 WICKETS IN 5TH ODI AT LAHORE: MADUSHANKA\'S CAREER-BEST 5/34 BOWLS OUT PAKISTAN FOR 110, SL CHASE 111 IN 18.1 OVERS — BOTH THROUGH TO OCT 31 FINAL, ENGLAND ELIMINATED · PAKISTAN BEAT ENGLAND BY 1 WICKET IN 4TH ODI AT LAHORE: SHADAB KHAN UNBEATEN 113 (96) AFTER 154/9 · SRI LANKA WIN THRILLER, CHASE DOWN 430 TO BEAT ENGLAND BY 2 WKTS WITH 1 BALL LEFT · BROOK\'S RECORD 202 IN VAIN', games:[
-    {status:'FINAL', away:{abbr:'SL',record:'114/2 (18.1)'}, home:{abbr:'PAK',record:'110 (25.3)'}, note:'ODI Tri-Series 5th Match · Gaddafi Stadium, Lahore · Sri Lanka won the toss and chose to field; Dilshan Madushanka\'s career-best 5/34 — his second ODI five-for, after India at the 2023 World Cup — bowled Pakistan out for 110 (their second-lowest ODI total at home), Babar Azam top-scoring with 29; Sri Lanka ran down 111 in just 18.1 overs for an 8-wicket win, Kamindu Mendis unbeaten on 62; the result sends both Pakistan and Sri Lanka through to the October 31 final at Gaddafi Stadium and mathematically eliminates England, whose dead-rubber finale against Sri Lanka follows on Thursday'},
+  cricket:{context:'PAKISTAN WIN THE TRI-SERIES FINAL, BEATING SRI LANKA BY 3 WICKETS AT GADDAFI STADIUM — FAKHAR ZAMAN\'S 127 LEADS A CHASE OF 326, PAKISTAN\'S FIRST ODI TRI-SERIES TITLE SINCE 2008 · ENGLAND BEAT SRI LANKA BY 55 RUNS IN THE DEAD-RUBBER 6TH MATCH, BEN DUCKETT 167 · SRI LANKA BEAT PAKISTAN BY 8 WICKETS IN 5TH ODI', games:[
+    {status:'FINAL', away:{abbr:'SL',record:'325/8 (50)'}, home:{abbr:'PAK',record:'331/7 (48.3)'}, note:'Tri-Series Final (D/N) · Gaddafi Stadium, Lahore · Pakistan won the toss and chose to field; Kamindu Mendis\'s 131 and Pavan Rathnayake\'s 77 had Sri Lanka cruising before Shaheen Shah Afridi, Salman Ali Agha and Naseem Shah — sharing six of the eight wickets — pulled things back late to 325/8; Fakhar Zaman\'s Player-of-the-Match 127 off 99 balls (6 sixes) led the chase, Saad Baig\'s 74 and a rapid 61 off 31 from Arafat Minhas kept Pakistan ahead of the rate, and Hasan Nawaz saw it home unbeaten on 37; Pakistan won by 3 wickets with 9 balls to spare for their first ODI tri-series title since 2008'},
+    {status:'FINAL', away:{abbr:'ENG',record:'386/5 (50)'}, home:{abbr:'SL',record:'331 (45.1)'}, note:'ODI Tri-Series 6th Match (D/N), dead rubber · Gaddafi Stadium, Lahore · Ben Duckett\'s 167 led England to 386/5; Sri Lanka, already through to the final, replied with 331 all out in 45.1 overs (Pavan Rathnayake 118, Kusal Mendis 89) as England won by 55 runs with both sides\' tri-series fates already decided'},
+    {status:'FINAL', away:{abbr:'SL',record:'114/2 (18.1)'}, home:{abbr:'PAK',record:'110 (25.3)'}, note:'ODI Tri-Series 5th Match · Gaddafi Stadium, Lahore · Sri Lanka won the toss and chose to field; Dilshan Madushanka\'s career-best 5/34 — his second ODI five-for, after India at the 2023 World Cup — bowled Pakistan out for 110 (their second-lowest ODI total at home), Babar Azam top-scoring with 29; Sri Lanka ran down 111 in just 18.1 overs for an 8-wicket win, Kamindu Mendis unbeaten on 62; the result sent both Pakistan and Sri Lanka through to the October 31 final at Gaddafi Stadium and mathematically eliminated England'},
     {status:'FINAL', away:{abbr:'ENG',record:'241 (46.4)'}, home:{abbr:'PAK',record:'243/9 (47.1)'}, note:'ODI Tri-Series 4th Match · Pakistan win by 1 wicket with 17 balls remaining, Shadab Khan Player of the Match (113* off 96); chasing 242, Pakistan were 154/9 after 33.5 overs before Shadab and Haris Rauf (7*) added an unbroken 89 for the last wicket; Ben Duckett made 105 and Shaheen Shah Afridi took 4/46 for Pakistan'},
     {status:'FINAL', away:{abbr:'ENG',record:'429/4 (50)'}, home:{abbr:'SL',record:'430/8 (49.5)'}, note:'ODI Tri-Series 3rd Match · Sri Lanka win by 2 wickets with 1 ball remaining, chasing down 430 after Harry Brook\'s record 202 off 116 balls — the fastest double century in ODI history; Pavan Rathnayake (130) and Dasun Shanaka (97) led the chase before Janith Liyanage (61*) finished it off'},
     {status:'FINAL', away:{abbr:'ENG',record:'215'}, home:{abbr:'PAK',record:'302/9'}, note:'ODI Tri-Series 2nd Match · Pakistan win by 87 runs, Arafat Minhas Player of the Match (59 & 6/40)'},
@@ -979,14 +984,14 @@ const FIXTURES = {
 
 /* ---------------- cricket: live match card + full scorecards (real, verified data only) ---------------- */
 const CRICKET_LIVE_MATCH = {
-  series:'Pakistan ODI Tri-Series 2026', matchLabel:'6th Match (D/N)',
-  venue:'Gaddafi Stadium, Lahore', date:'Oct 29, 2026',
+  series:'Sri Lanka tour of Pakistan 2026', matchLabel:'1st Test',
+  venue:'Rawalpindi Cricket Stadium, Rawalpindi', date:'Nov 9-13, 2026',
   status:'upcoming',
   teams:{
-    away:{abbr:'ENG', name:'England'},
-    home:{abbr:'SL', name:'Sri Lanka'},
+    away:{abbr:'SL', name:'Sri Lanka'},
+    home:{abbr:'PAK', name:'Pakistan'},
   },
-  toss:null, resultLine:'1:30 PM PKT · Dead rubber — both Pakistan and Sri Lanka have already qualified for the October 31 final, eliminating England regardless of this result. Toss not yet in.',
+  toss:null, resultLine:'First of a two-match Test series — Pakistan\'s first assignment since winning the ODI tri-series final on October 31. Second Test follows in Lahore, November 17-21.',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -2705,6 +2710,19 @@ const ARTICLES = [
     ],
     pull:'Galán\'s injury took out a No. 2 seed before a ball was struck — and two qualifiers made the most of the opening it created.',
   },
+  {id:'kuwait-major-final-recap', sport:'padel', cat:'recap',
+    headline:'Coello/Tapia Win the Kuwait Major for a 5th Straight Title, 23 Matches Unbeaten',
+    dek:'Top seeds Arturo Coello and Agustín Tapia routed Juan Tello and Maxi Arce 6-1, 6-1 in the final, their 13th title of the season and 44th together as a pair, extending their win streak to 23 straight matches.',
+    byline:'Clutch Room Padel Desk', mins:4, time:'Oct 31, 2026',
+    qa:[['What was the final score?','Arturo Coello and Agustín Tapia beat Juan Tello and Maxi Arce 6-1, 6-1 in the Kuwait Major final.'],
+        ['How big a run are Coello and Tapia on?','This is their fifth straight title and 13th of the 2026 season, their 44th together as a pair across 83 tournaments, and it extends their win streak to 23 consecutive matches.']],
+    body:[
+      'Arturo Coello and Agustín Tapia are Kuwait Major champions, closing out the tournament with a one-sided 6-1, 6-1 win over Juan Tello and Maxi Arce in the final. It\'s the top seeds\' fifth straight title and 13th of the 2026 season, stretching their winning streak to 23 consecutive matches.',
+      'The top seeds reached the final by beating Tino Libaak and Gonzalo Alfonso — the No. 12 seeds who had upset No. 3 seeds Juan Lebrón and Leo Augsburger in the Round of 16 before their own run ended in the semifinals. Tello and Arce reached the final from the other half of the draw, beating Marc Sintes and Coquito Zamora 6-4, 6-2 in their semifinal.',
+      'For Coello and Tapia, the title is their 44th together as a pair across 83 tournaments — a run of dominance that now stretches to five straight titles coming into the Kuwait Major, with no signs of slowing as the Premier Padel tour heads toward its season-ending events.',
+    ],
+    pull:'Coello/Tapia 6-1, 6-1 in the final: their 5th straight title, 13th of the season, and a 23-match win streak that shows no sign of stopping.',
+  },
   {id:'nba-tipoff-primer', sport:'basketball', cat:'preview',
     headline:'Knicks Raise a Championship Banner, Then Face LeBron and the 76ers',
     dek:'Opening Night, October 20: the champion Knicks get their rings before hosting a Philadelphia team now built around LeBron James and Jaylen Brown.',
@@ -3393,6 +3411,35 @@ const ARTICLES = [
     ],
     related:'pak-sl-5th-odi-recap',
   },
+  {id:'pak-sl-tri-series-final-recap', sport:'cricket', cat:'recap',
+    headline:'Fakhar Zaman\'s 127 Leads Pakistan to Tri-Series Title, Beating Sri Lanka by 3 Wickets',
+    dek:'Chasing a final-record 326, Fakhar Zaman\'s 127 and late cameos from Saad Baig and Arafat Minhas got Pakistan home with three wickets and nine balls to spare — their first ODI tri-series title since 2008.',
+    byline:'Clutch Room Cricket Desk', mins:6, time:'Oct 31, 2026',
+    qa:[['What was the result?','Pakistan won by 3 wickets, chasing down Sri Lanka\'s 325/8 with 331/7 in 48.3 overs at Gaddafi Stadium, Lahore, to win the tri-series final.'],
+        ['Who was Player of the Match?','Fakhar Zaman, for his 127 off 99 balls with six sixes — the innings that anchored Pakistan\'s chase of 326.']],
+    body:[
+      'Pakistan are tri-series champions. Chasing 326 to win the final at Gaddafi Stadium — a repeat of Tuesday\'s group-stage fixture against the same opponent — Fakhar Zaman\'s Player-of-the-Match 127 off 99 balls, with six sixes, set the platform for a chase that got home with 3 wickets and 9 balls in hand, Pakistan\'s first ODI tri-series title since 2008.',
+      'Sri Lanka were put in to bat after Pakistan won the toss, and built their total around Kamindu Mendis\'s 131 and Pavan Rathnayake\'s 77, the pair doing most of the heavy lifting before Pakistan\'s bowlers — Shaheen Shah Afridi, Salman Ali Agha and Naseem Shah sharing six of the eight wickets — pulled things back late to restrict the total to 325/8.',
+      'The chase swung on Fakhar Zaman, whose 127 came off just 99 balls and included six sixes, giving Pakistan the platform to stay ahead of a required rate that never let up. Saad Baig\'s 74 kept the innings on track through the middle overs, and when the asking rate spiked late, Arafat Minhas\'s rapid 61 off just 31 balls did the heavy lifting before Hasan Nawaz, unbeaten on 37, and captain Shaheen Shah Afridi saw it home with an over and a half to spare.',
+      'It\'s a result that caps a tri-series campaign Pakistan dominated from the start — three wins from three in the group stage before Sri Lanka\'s win in a rematch of this exact fixture forced a final rather than a formality. For Sri Lanka, it\'s back-to-back defeats to the same opponent at the same venue inside a week; for Pakistan, it\'s a first ODI tri-series title in 18 years.',
+    ],
+    pull:'Fakhar Zaman\'s 127 off 99 — six sixes — led Pakistan\'s chase of 326 in the final. They got there with 3 wickets and 9 balls to spare: Pakistan\'s first tri-series title since 2008.',
+    related:'pak-sl-tri-series-final-analysis',
+  },
+  {id:'pak-sl-tri-series-final-analysis', sport:'cricket', cat:'analysis',
+    headline:'Pakistan\'s First Tri-Series Title Since 2008: Inside a Campaign Built on Fakhar Zaman and a Settled Bowling Attack',
+    dek:'A look back at how Pakistan swept through the group stage, survived a wobble against Sri Lanka, and closed it out in the final with one of the highest successful chases an ODI final has ever produced.',
+    byline:'Clutch Room Cricket Desk', mins:8, time:'Nov 1, 2026',
+    qa:[['How significant is this title for Pakistan?','It\'s their first ODI tri-series title since 2008, ending an 18-year gap, and comes via a 326-run successful chase in the final — among the highest an ODI final has ever produced.'],
+        ['What did the group stage look like before the final?','Pakistan won their first three matches — over Sri Lanka, then England twice, including a last-wicket stand from an unbeaten Shadab Khan century to steal the fourth match by a single wicket — before Sri Lanka beat them in the fifth match to force a winner-take-all rematch in the final.']],
+    body:[
+      'Pakistan\'s tri-series title arrives 18 years after their last one, and it was won the way much of this campaign went: with the bat doing the heavy lifting and the bowling attack doing just enough. Fakhar Zaman\'s 127 off 99 balls in the final was the latest reminder that Pakistan\'s chase-batting this October has rarely depended on their top order clicking as a unit so much as one player taking the game away in isolation.',
+      'That pattern held across the whole group stage. Pakistan opened with wins over Sri Lanka and England, then needed Shadab Khan\'s unbeaten 113 to pull off a last-wicket stand and steal the fourth match by a single wicket, before Sri Lanka\'s Dilshan Madushanka — with a career-best 5/34 — bowled them out for just 110 in a group-stage rematch, forcing a straight repeat of that exact fixture for the final rather than a coronation.',
+      'Pakistan answered in the one match that mattered most. Set 326, they leaned again on Fakhar Zaman, backed by Saad Baig\'s 74 through the middle overs and Arafat Minhas\'s 61 off 31 when the asking rate threatened to get away from them — the same aggressive finishing from Minhas that had already produced an all-round 59 and 6/40 in Pakistan\'s second-match win over England. On the bowling side, Shaheen Shah Afridi, Salman Ali Agha and Naseem Shah combined for six of Sri Lanka\'s eight wickets, restricting what looked for a stretch like a total well beyond 350 — Kamindu Mendis (131) and Pavan Rathnayake (77) had Sri Lanka cruising before the Pakistan attack pulled the brakes on late.',
+      'The 326-run target stands among the highest ever chased successfully in an ODI final — a fact that will headline this result for years regardless of how the rest of Pakistan\'s home season plays out. Attention now turns to a different format entirely: Sri Lanka\'s tour continues straight into a two-match Test series, the first starting November 9 in Rawalpindi.',
+    ],
+    related:'pak-sl-tri-series-final-recap',
+  },
 
   {id:'clasico-recap', sport:'football', league:'La Liga', cat:'recap',
     headline:'Mbappé\'s Late Double Sinks Barcelona as Real Madrid Win El Clásico 2-1',
@@ -3466,6 +3513,51 @@ const ARTICLES = [
     ],
     related:'f1-austin-race-recap',
     pull:'Antonelli doesn\'t need Russell to slip up anymore — but behind him, four drivers within nine points are still fighting for second.',
+  },
+  {id:'f1-mexico-city-qualifying-recap', sport:'f1', cat:'recap',
+    headline:'Hamilton Grabs Shock Pole in Mexico City at 41, His First Since Returning to the Front Row',
+    dek:'Lewis Hamilton beat George Russell to pole by just 0.009 seconds for his first Ferrari pole at the Autódromo Hermanos Rodríguez — his 105th career pole and, at 41, the oldest polesitter since Mario Andretti in 1982.',
+    byline:'Clutch Room F1 Desk', mins:4, time:'Oct 31, 2026',
+    qa:[['What was the qualifying result?','Lewis Hamilton took pole by 0.009 seconds over George Russell, with Charles Leclerc third (+0.119s). Lando Norris, who topped both Q1 and Q2, qualified sixth after a late lock-up cost him his final Q3 lap; Oscar Piastri was eliminated in Q2, 13th fastest.'],
+        ['Why does this pole matter?','It\'s Hamilton\'s first for Ferrari at Mexico City and the 105th of his career. At 41, he becomes the oldest Formula 1 polesitter since Mario Andretti at the 1982 Italian Grand Prix.']],
+    body:[
+      'Lewis Hamilton put his Ferrari on pole for the Mexico City Grand Prix by just 0.009 seconds over George Russell\'s Mercedes, snatching it on his final lap of Q3 after Charles Leclerc had briefly gone quickest. Leclerc wobbled through Turn 10 on his own last attempt and settled for third, 0.119 seconds back, while Max Verstappen locked up at Turn 13 and missed out on the front two rows entirely.',
+      'It\'s Hamilton\'s first pole for Ferrari at the Autódromo Hermanos Rodríguez and the 105th of a career now in its 20th season. At 41, he\'s the oldest driver to start a Grand Prix from pole since Mario Andretti did it at Monza for the 1982 Italian Grand Prix.',
+      'The session scrambled the usual order elsewhere on the grid. Lando Norris topped both Q1 and Q2 only to see his provisional Q3 time wiped out by a late lock-up, dropping him to sixth; teammate Oscar Piastri didn\'t make it out of Q2 at all, eliminated 13th fastest. None of it touched the only number that mattered heading into Sunday — Kimi Antonelli needed just a ninth-place finish to be champion, and grid position was almost beside the point.',
+    ],
+    related:'f1-mexico-city-race-recap',
+    pull:'Hamilton\'s 105th pole, his first for Ferrari in Mexico City — and, at 41, the oldest polesitter since Andretti in 1982.',
+  },
+  {id:'f1-mexico-city-race-recap', sport:'f1', cat:'recap',
+    headline:'Verstappen Wins Mexico City, But Antonelli Is Champion',
+    dek:'Max Verstappen denied Ferrari a home-stretch win in Mexico City, beating Lewis Hamilton to the flag — but the day belonged to Kimi Antonelli, whose third-place finish made him, at 20, the youngest World Champion in Formula 1 history.',
+    byline:'Clutch Room F1 Desk', mins:6, time:'Nov 1, 2026',
+    qa:[['Did Antonelli clinch the title?','Yes. He needed only a ninth-place finish or better; he finished third, which was enough on its own to secure the championship with four races still left on the calendar.'],
+        ['What record did he set?','At 20, he\'s the youngest World Champion in Formula 1 history, beating the mark of 23 that Sebastian Vettel set in 2010. He\'s also the first Italian champion since Alberto Ascari in 1953.'],
+        ['Who actually won the race?','Max Verstappen, denying Ferrari a win on pole-sitter Lewis Hamilton\'s run at the front — Hamilton crossed second, about eight tenths back. Charles Leclerc was fourth, Lando Norris fifth and George Russell sixth.']],
+    body:[
+      'Kimi Antonelli is Formula 1\'s champion, and he didn\'t even need to win the race to do it. Starting behind pole-sitter Lewis Hamilton\'s Ferrari, Antonelli brought his Mercedes home third at the Autódromo Hermanos Rodríguez — exactly the cushion he needed, with room to spare, to lock up the 2026 Drivers\' Championship with four rounds still to run.',
+      'The race itself went to Max Verstappen, who denied Ferrari what looked for stretches like a possible win for Hamilton, crossing the line roughly eight tenths of a second ahead of the sister red car. Charles Leclerc finished fourth, Lando Norris fifth and George Russell — Antonelli\'s own teammate and closest title rival all year — sixth. Oscar Piastri was classified seventh after a post-race penalty for a collision with Arvid Lindblad, part of a string of penalties, including yellow-flag infringements for both Alpines, that reshuffled the order further back. Ollie Bearman, Valtteri Bottas, Lance Stroll and Fernando Alonso were among the retirements.',
+      'The number that matters is simpler than any of that: 20 years old. Antonelli\'s title breaks Sebastian Vettel\'s record as the youngest champion in the sport\'s history — Vettel was 23 when he won his first in 2010 — and makes Antonelli the first Italian to win the Drivers\' Championship since Alberto Ascari in 1953. It\'s a result built over a season, not just a weekend: this is Antonelli\'s eighth win of 2026, with Mexico City adding a title to a win tally that already included Shanghai, Suzuka, Miami, Montreal, Monaco, Spa and Monza.',
+      'Whatever else happens before the year is out, Mercedes already has what it came for this season. Russell\'s own championship hopes end a weekend early with four rounds still to run, and the fight for second place between Russell, Hamilton, Leclerc and Norris now plays out with the title no longer in question, starting with São Paulo in less than a week.',
+    ],
+    related:'f1-mexico-city-title-analysis',
+    pull:'Twenty years old, champion of the world — and he didn\'t even need to win the race to do it.',
+  },
+  {id:'f1-mexico-city-title-analysis', sport:'f1', cat:'analysis',
+    headline:'Inside Kimi Antonelli\'s Title Run: Eight Wins, No Fear, and a Record That Stood for 16 Years',
+    dek:'From a rookie beaten by his own teammate in Melbourne to the youngest World Champion in Formula 1 history by November — how Kimi Antonelli\'s first full season became a coronation.',
+    byline:'Clutch Room F1 Desk', mins:8, time:'Nov 1, 2026',
+    qa:[['How many races did Antonelli win this season en route to the title?','Eight: Shanghai, Suzuka, Miami, Montreal, Monaco, Spa, Monza and Austin — with his Mexico City podium finish, not a ninth win, the one that actually sealed the championship.'],
+        ['How does his age compare to past champions?','At 20, he breaks Sebastian Vettel\'s record of 23, set in 2010, as the youngest Drivers\' Champion in Formula 1 history. He\'s also the first Italian to win the title since Alberto Ascari in 1953.']],
+    body:[
+      'Kimi Antonelli didn\'t win the Mexican Grand Prix that made him champion — George Russell beat him by 2.974 seconds in the season opener at Melbourne, and Antonelli needed to settle for third on the very day his own title was decided. That contrast is the whole story of his first full Mercedes season: not a single dominant afternoon, but a season-long accumulation of results good enough, often enough, that by the time Formula 1 reached Mexico City he needed only to avoid disaster.',
+      'The wins, when they came, came in bunches. Shanghai and Suzuka back-to-back in the spring. Miami, Montreal and Monaco in a stretch that turned a promising rookie into the championship favorite before the season had reached its halfway point. Spa in the summer. Monza — a comeback from 19th that was, by any measure, the single most impressive drive of his year. And Austin in October, pole to flag, the result that pushed his points lead past the point where Russell or Lewis Hamilton could realistically still catch him on the maths alone.',
+      'By the time the field reached the Autódromo Hermanos Rodríguez, the only question left was whether Antonelli would need outside help, the way he had at Austin, or whether his own result would be enough. It was the latter: third place, nothing more required, no scoreboard-watching needed. Max Verstappen took the race win and denied Ferrari a result at the front, but neither changed what the Mercedes garage already knew walking in — a top-nine finish made Antonelli champion, full stop.',
+      'At 20 years old, he is now the youngest World Champion the sport has ever crowned, surpassing a record — Sebastian Vettel\'s, set in 2010 at 23 — that had stood for sixteen years. He\'s also the first Italian driver to win the Drivers\' Championship since Alberto Ascari did it in 1953, closing a seven-decade gap for a country that has supplied Formula 1 with constructors and engines but, until now, not a champion of its own in well over half a century. Four races remain on the 2026 calendar, starting with São Paulo this weekend — all of them, for Mercedes and for Antonelli, now officially just racing.',
+    ],
+    related:'f1-mexico-city-race-recap',
+    pull:'Sixteen years, Vettel\'s record stood. Antonelli broke it at 20 — and became the first Italian champion since 1953.',
   },
 ];
 
@@ -3972,14 +4064,16 @@ const F1_SEASON_RESULTS = [
       {pos:21, driver:'F. Colapinto', team:'Alpine', gap:'DNF'},
       {pos:22, driver:'O. Bearman', team:'Haas', gap:'DNF'},
     ]},
+  {round:19, gp:'Mexico City, Mexico', winner:'M. Verstappen', team:'Red Bull', note:'Antonelli\'s P3 clinches the 2026 Drivers\' Championship — youngest champion in F1 history at 20, first Italian champion since 1953',
+    podium:[{driver:'M. Verstappen',team:'Red Bull'},{driver:'L. Hamilton',team:'Ferrari'},{driver:'K. Antonelli',team:'Mercedes'}]},
 ];
 const F1_STANDINGS = [
-  {pos:1, driver:'K. Antonelli', team:'Mercedes', pts:365},
-  {pos:2, driver:'G. Russell', team:'Mercedes', pts:242},
-  {pos:3, driver:'L. Hamilton', team:'Ferrari', pts:241},
-  {pos:4, driver:'M. Verstappen', team:'Red Bull', pts:236},
-  {pos:5, driver:'C. Leclerc', team:'Ferrari', pts:233},
-  {pos:6, driver:'L. Norris', team:'McLaren', pts:211},
+  {pos:1, driver:'K. Antonelli', team:'Mercedes', pts:380},
+  {pos:2, driver:'M. Verstappen', team:'Red Bull', pts:261},
+  {pos:3, driver:'L. Hamilton', team:'Ferrari', pts:259},
+  {pos:4, driver:'G. Russell', team:'Mercedes', pts:250},
+  {pos:5, driver:'C. Leclerc', team:'Ferrari', pts:245},
+  {pos:6, driver:'L. Norris', team:'McLaren', pts:221},
   {pos:7, driver:'O. Piastri', team:'McLaren', pts:144},
   {pos:8, driver:'I. Hadjar', team:'Red Bull', pts:105},
   {pos:9, driver:'L. Lawson', team:'Racing Bulls', pts:77},
@@ -4483,14 +4577,14 @@ function renderF1Hub(){
     <div class="f1-track-wrap">${f1TrackSvg()}</div>
     <div class="f1-next">
       <span class="eyebrow">Next Race</span>
-      <h1>Mexico City Grand Prix</h1>
+      <h1>São Paulo Grand Prix</h1>
       <div class="f1-countdown" id="f1-countdown">
         <div class="unit"><div class="num" id="f1-d">00</div><div class="lbl">Days</div></div>
         <div class="unit"><div class="num" id="f1-h">00</div><div class="lbl">Hours</div></div>
         <div class="unit"><div class="num" id="f1-m">00</div><div class="lbl">Minutes</div></div>
         <div class="unit"><div class="num" id="f1-sec">00</div><div class="lbl">Seconds</div></div>
       </div>
-      <p>F1 heads to the Autódromo Hermanos Rodríguez off the back of Kimi Antonelli's win at the United States Grand Prix — pole to flag, beating Charles Leclerc by 13 seconds — which extends his points lead but doesn't yet clinch the title. Practice and qualifying run Friday and Saturday, with the Grand Prix itself Sunday, November 1 at 2:00 PM local.</p>
+      <p>F1 arrives at Interlagos for the first race since Kimi Antonelli clinched the 2026 Drivers' Championship in Mexico City — a third-place finish that made him, at 20, the youngest champion in the sport's history. With the title decided, the final four rounds turn to the fight for second place between George Russell, Lewis Hamilton, Charles Leclerc and Lando Norris. Practice and qualifying run Friday and Saturday, with the São Paulo Grand Prix itself Sunday, November 8 at 2:00 PM local.</p>
       <a class="f1-pill-btn" href="#/">← Back to All Sports</a>
     </div>
 
@@ -4499,36 +4593,36 @@ function renderF1Hub(){
       <div class="f1-helmet-section">
         <div class="f1-helmet-grid">
           <div class="f1-helmet-stats">
-            <div><div class="n" style="font-size:24px;">Antonelli</div><div class="l">Pole to flag in Austin, his fourth win of the season, but still short of the title</div></div>
-            <div><div class="n" style="font-size:24px;">Verstappen</div><div class="l">Third in Austin, but already mathematically out of the championship fight</div></div>
+            <div><div class="n" style="font-size:24px;">Antonelli</div><div class="l">Third in Mexico City is all he needed — now the youngest World Champion in F1 history, at 20</div></div>
+            <div><div class="n" style="font-size:24px;">Verstappen</div><div class="l">Won the race in Mexico City, denying Ferrari, but the title was already beyond his reach</div></div>
           </div>
           <div id="f1-helmet-wrap">${F1_HELMET_SVG}</div>
           <div class="f1-helmet-stats right">
-            <div><div class="n" style="font-size:24px;">365</div><div class="l">Antonelli's points total after Austin — 123 clear of Russell with the season's final rounds to run</div></div>
-            <div><div class="n" style="font-size:24px;">Russell</div><div class="l">His own teammate is the closest thing left to a title rival, 8th in Austin and 123 points back</div></div>
+            <div><div class="n" style="font-size:24px;">380</div><div class="l">Antonelli's points total after Mexico City, with the championship now decided</div></div>
+            <div><div class="n" style="font-size:24px;">Vettel</div><div class="l">Held the record for F1's youngest champion for 16 years, at 23 in 2010 — until Antonelli broke it this weekend</div></div>
           </div>
         </div>
       </div>
-      <p class="f1-quote">Kimi Antonelli wins at Austin and still can't be crowned champion — <b>Mexico City gets the next shot.</b></p>
+      <p class="f1-quote">Kimi Antonelli needed a top-nine finish in Mexico City to become champion. He finished third — and, at 20, is now <b>the youngest champion in F1 history.</b></p>
       <div style="height:70px;"></div>
     </div>
 
     <div class="f1-schedule">
-      <div class="f1-schedule-head"><h2>Race Weekend Schedule</h2><div class="f1-tabs"><span class="on">My Time (ET)</span><span>Austin Time</span></div></div>
-      <div class="f1-row"><span class="s">Practice 1</span><span class="t">Fri · 2:30 PM ET (12:30 PM CST)</span></div>
-      <div class="f1-row"><span class="s">Practice 2</span><span class="t">Fri · 6:00 PM ET (4:00 PM CST)</span></div>
-      <div class="f1-row"><span class="s">Practice 3</span><span class="t">Sat · 1:30 PM ET (11:30 AM CST)</span></div>
-      <div class="f1-row"><span class="s">Qualifying</span><span class="t">Sat · 5:00 PM ET (3:00 PM CST)</span></div>
-      <div class="f1-row"><span class="s">Race</span><span class="t">Sun · 3:00 PM ET (2:00 PM CST)</span></div>
+      <div class="f1-schedule-head"><h2>Race Weekend Schedule</h2><div class="f1-tabs"><span class="on">My Time (ET)</span><span>Brasília Time</span></div></div>
+      <div class="f1-row"><span class="s">Practice 1</span><span class="t">Fri · 10:30 AM ET (12:30 PM local)</span></div>
+      <div class="f1-row"><span class="s">Practice 2</span><span class="t">Fri · 2:00 PM ET (4:00 PM local)</span></div>
+      <div class="f1-row"><span class="s">Practice 3</span><span class="t">Sat · 9:30 AM ET (11:30 AM local)</span></div>
+      <div class="f1-row"><span class="s">Qualifying</span><span class="t">Sat · 1:00 PM ET (3:00 PM local)</span></div>
+      <div class="f1-row"><span class="s">Race</span><span class="t">Sun · 12:00 PM ET (2:00 PM local)</span></div>
     </div>
 
     <div class="f1-schedule" style="padding-top:0;">
-      <div class="f1-schedule-head"><h2>Season So Far</h2><span class="eyebrow">18 of 23 rounds · R14 cancelled</span></div>
+      <div class="f1-schedule-head"><h2>Season So Far</h2><span class="eyebrow">19 of 23 rounds · R14 cancelled</span></div>
       ${renderF1Results()}
     </div>
 
     <div class="f1-schedule" style="padding-top:0;">
-      <div class="f1-schedule-head"><h2>Drivers' Championship</h2><span class="eyebrow">Entering Mexico City</span></div>
+      <div class="f1-schedule-head"><h2>Drivers' Championship</h2><span class="eyebrow">Entering São Paulo — title decided</span></div>
       ${renderF1Standings()}
     </div>
 
@@ -4827,7 +4921,7 @@ setInterval(function(){
 }, 1000);
 
 /* ---------------- F1 scroll-driven helmet + MLB scroll progress ---------------- */
-const F1_RACE_TARGET = new Date('2026-11-01T20:00:00Z').getTime();
+const F1_RACE_TARGET = new Date('2026-11-08T17:00:00Z').getTime();
 let scrollTicking = false;
 function onScrollEffects(){
   const helmet = document.getElementById('f1-helmet');

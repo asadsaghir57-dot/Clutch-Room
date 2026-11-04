@@ -541,23 +541,22 @@ a.fx-team-link:hover{color:var(--accent,var(--court));text-decoration:underline;
 .fx-status{color:var(--ink-muted);font-size:11.5px;text-align:right;white-space:nowrap;}
 
 /* ---------- standings / leaderboard tables ---------- */
-.inj-table{margin-top:4px;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+.inj-grid{margin-top:4px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.inj-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper);}
 .inj-accent{display:flex;height:4px;}
 .inj-accent span{flex:1;}
-.inj-row{display:grid;grid-template-columns:2fr 0.5fr 1.4fr 1fr 1.2fr 0.7fr;align-items:center;column-gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13px;}
-.inj-row:last-child{border-bottom:none;}
-.inj-row.inj-head{font-family:'JetBrains Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-muted);padding:10px 14px 8px;}
-.inj-player{display:flex;align-items:center;gap:10px;min-width:0;}
-.inj-player img{width:32px;height:32px;border-radius:50%;object-fit:cover;flex:none;background:var(--line);}
-.inj-player>span{display:flex;flex-direction:column;min-width:0;}
-.inj-name{font-weight:600;}
-.inj-pos{font-size:11.5px;color:var(--ink-muted);}
-.inj-date{font-family:'JetBrains Mono',monospace;color:var(--ink-muted);font-size:12px;}
-.inj-reason{font-weight:600;}
-.inj-missed{font-family:'JetBrains Mono',monospace;color:var(--accent,var(--court));font-weight:600;}
+.inj-card-body{display:flex;gap:12px;padding:14px 16px;align-items:flex-start;}
+.inj-photo{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none;background:var(--line);}
+.inj-info{flex:1;min-width:0;}
+.inj-top{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.inj-name{font-weight:600;font-size:15px;}
+.inj-pill{font-family:'JetBrains Mono',monospace;font-size:11px;padding:2px 9px;border-radius:999px;white-space:nowrap;}
+.inj-pill-out{background:color-mix(in srgb, var(--court) 16%, transparent);color:var(--court);}
+.inj-pill-doubtful{background:color-mix(in srgb, var(--gold) 20%, transparent);color:var(--gold);}
+.inj-reason{color:var(--ink-muted);font-size:13px;margin-top:3px;}
+.inj-return{font-family:'JetBrains Mono',monospace;color:var(--ink-muted);font-size:11.5px;margin-top:7px;}
 @media (max-width:640px){
-  .inj-row{grid-template-columns:1.8fr 1fr 0.6fr;}
-  .inj-row span:nth-child(2),.inj-row span:nth-child(4),.inj-row span:nth-child(5){display:none;}
+  .inj-grid{grid-template-columns:1fr;}
 }
 .std-table{margin-top:4px;font-family:'JetBrains Mono',monospace;font-size:12.5px;}
 .std-row{display:grid;grid-template-columns:22px 1fr repeat(6,32px);align-items:center;column-gap:10px;padding:8px 10px;border-bottom:1px solid var(--line);border-left:4px solid transparent;}
@@ -5299,19 +5298,20 @@ const TEAM_COLORS_SECONDARY = {
 const TEAM_INJURIES = {
   BAR: [
     {name:'Roony Bardghji', position:'Right winger', age:20, reason:'Cruciate ligament tear', since:'10/08/2026', expectedReturn:'10/05/2027', missed:43,
+      status:'Out', returnText:'Expected back spring 2027',
       photo:'https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Roony_Bardghji%2C_Vejle_Boldklub_-_FC_K%C3%B8benhavn%2C_29._July_2023_-_opvarmning_%28cropped%29.jpg/250px-Roony_Bardghji%2C_Vejle_Boldklub_-_FC_K%C3%B8benhavn%2C_29._July_2023_-_opvarmning_%28cropped%29.jpg'},
     {name:'Andreas Christensen', position:'Centre-back', age:30, reason:'Muscle injury', since:'19/09/2026', expectedReturn:'16/11/2026', missed:9,
-      photo:'https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Andreas_Christensen_2019.jpg/250px-Andreas_Christensen_2019.jpg'},
+      status:'Out', returnText:'Expected back Nov 16, 2026', photo:'assets/players/andreas-christensen.jpg'},
     {name:'Xavi Espart', position:'Right-back', age:19, reason:'Injury to the ankle', since:'26/10/2026', expectedReturn:'12/12/2026', missed:8,
-      photo:'assets/players/xavi-espart.jpg'},
+      status:'Out', returnText:'Expected back mid-Dec 2026', photo:'assets/players/xavi-espart.jpg'},
     {name:'Eric García', position:'Centre-back', age:25, reason:'Hamstring injury', since:'17/10/2026', expectedReturn:'16/11/2026', missed:6,
-      photo:'https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Eric_Garcia_Argentina_v_Spain_19_July_2026-313_%28cropped%29.jpg/250px-Eric_Garcia_Argentina_v_Spain_19_July_2026-313_%28cropped%29.jpg'},
+      status:'Out', returnText:'Expected back Nov 16, 2026', photo:'assets/players/eric-garcia.jpg'},
     {name:'Jules Koundé', position:'Right-back', age:27, reason:'Ankle sprain', since:'18/10/2026', expectedReturn:'16/11/2026', missed:5,
-      photo:'https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Jules_Kounde_France_v_Senegal_16_June_2026-449_%28cropped%29.jpg/250px-Jules_Kounde_France_v_Senegal_16_June_2026-449_%28cropped%29.jpg'},
+      status:'Doubtful', returnText:'Targeting late November 2026', photo:'assets/players/jules-kounde.jpg'},
     {name:'Rodri', position:'Defensive midfield', age:30, reason:'Hamstring injury', since:'03/11/2026', expectedReturn:'01/12/2026', missed:5,
-      photo:'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Rodri_Argentina_v_Spain_19_July_2026-187_%28cropped%29.jpg/250px-Rodri_Argentina_v_Spain_19_July_2026-187_%28cropped%29.jpg'},
+      status:'Out', returnText:'Expected back Dec 1, 2026', photo:'assets/players/rodri.jpg'},
     {name:'Dani Olmo', position:'Attacking midfield', age:28, reason:'Adductor tear', since:'21/10/2026', expectedReturn:'16/11/2026', missed:4,
-      photo:'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Dani_Olmo_France_v_Spain_7.24.26-176_%28cropped%29.jpg/250px-Dani_Olmo_France_v_Spain_7.24.26-176_%28cropped%29.jpg'},
+      status:'Doubtful', returnText:'Possible return Nov 22 vs Villarreal', photo:'assets/players/dani-olmo.jpg'},
   ],
 };
 function renderTeamInjuries(abbr){
@@ -5321,20 +5321,17 @@ function renderTeamInjuries(abbr){
   const c2 = TEAM_COLORS_SECONDARY[abbr] || c1;
   return `<div class="div-section">
     <div class="div-section-head"><h3 class="disp">Injuries</h3></div>
-    <div class="inj-table">
-      <div class="inj-accent"><span style="background:${c1}"></span><span style="background:${c2}"></span></div>
-      <div class="inj-row inj-head">
-        <span>Player</span><span>Age</span><span>Reason</span><span>Since</span><span>Expected return</span><span>Missed</span>
-      </div>
-      ${list.map(p => `<div class="inj-row">
-        <span class="inj-player"><img src="${p.photo}" alt="" loading="lazy">
-          <span><span class="inj-name">${p.name}</span><span class="inj-pos">${p.position}</span></span>
-        </span>
-        <span>${p.age}</span>
-        <span class="inj-reason">${p.reason}</span>
-        <span class="inj-date">${p.since}</span>
-        <span class="inj-date">${p.expectedReturn}</span>
-        <span class="inj-missed">${p.missed}</span>
+    <div class="inj-grid">
+      ${list.map(p => `<div class="inj-card">
+        <div class="inj-accent"><span style="background:${c1}"></span><span style="background:${c2}"></span></div>
+        <div class="inj-card-body">
+          <img class="inj-photo" src="${p.photo}" alt="" loading="lazy">
+          <div class="inj-info">
+            <div class="inj-top"><span class="inj-name">${p.name}</span><span class="inj-pill inj-pill-${p.status.toLowerCase()}">${p.status}</span></div>
+            <div class="inj-reason">${p.reason}</div>
+            <div class="inj-return">${p.returnText}</div>
+          </div>
+        </div>
       </div>`).join('')}
     </div>
   </div>`;

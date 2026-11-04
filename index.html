@@ -329,7 +329,7 @@ a.board-row{display:grid;}
 .team-hero .hub-head{padding-bottom:28px;}
 .team-hero-crumb{color:rgba(255,255,255,0.65);}
 .team-hero-crumb a{color:rgba(255,255,255,0.85);}
-.team-hero-name{color:#fff;}
+.hub-head h1.team-hero-name{color:#fff;}
 .team-hero-sub{color:rgba(255,255,255,0.75);}
 .std-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:6px 14px;}
 .hub-head .hub-status{display:flex;align-items:center;gap:10px;margin-top:10px;}
@@ -1976,11 +1976,14 @@ function renderFootballTeamPage(abbr){
   const results = schedule.filter(g => g.status.indexOf('FINAL') === 0).reverse();
   const upcoming = schedule.filter(g => g.status.indexOf('FINAL') !== 0);
   const scheduleRow = g => fxRowMarkup(g, 'football');
-  const heroC1 = TEAM_COLORS[abbr] || '#0B1C3D';
-  const heroC2 = TEAM_COLORS_SECONDARY[abbr] || '#050B1A';
+  /* BAR uses the exact navy/blue gradient sampled from fcbarcelona.com's own panel
+     chrome (rgb(21,66,132) -> rgb(24,23,51)); other teams fall back to their own
+     TEAM_COLORS pair, or a generic dark navy when no secondary color is set. */
+  const TEAM_HERO_OVERRIDE = { BAR: ['#154284', '#181733'] };
+  const [heroC1, heroC2] = TEAM_HERO_OVERRIDE[abbr] || [TEAM_COLORS[abbr] || '#0B1C3D', TEAM_COLORS_SECONDARY[abbr] || '#050B1A'];
   return `
   ${masthead({sport:'football'})}
-  <div class="team-hero" style="background:linear-gradient(135deg, ${heroC1}, ${heroC2});">
+  <div class="team-hero" style="background:linear-gradient(160deg, ${heroC1}, ${heroC2});">
     <div class="wrap">
       <div class="breadcrumb team-hero-crumb"><a href="#/">Clutch Room</a> / <a href="#/sport/football">Football</a> / ${name}</div>
       <div class="hub-head" style="border-bottom:none;">
@@ -2015,12 +2018,12 @@ function renderFootballTeamPage(abbr){
 
     ${results.length ? `<div class="div-section">
       <div class="div-section-head"><h3 class="disp">Results</h3><span class="sub">Most recent first</span></div>
-      <div class="fx-wrap">${results.map(scheduleRow).join('')}</div>
+      <div class="std-card"><div class="fx-wrap">${results.map(scheduleRow).join('')}</div></div>
     </div>` : ''}
 
     ${upcoming.length ? `<div class="div-section">
       <div class="div-section-head"><h3 class="disp">Upcoming</h3></div>
-      <div class="fx-wrap">${upcoming.map(scheduleRow).join('')}</div>
+      <div class="std-card"><div class="fx-wrap">${upcoming.map(scheduleRow).join('')}</div></div>
     </div>` : ''}
   </main>
   ${footer()}`;

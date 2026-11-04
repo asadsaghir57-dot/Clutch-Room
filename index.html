@@ -4662,9 +4662,6 @@ function subnavHtml(sport){
   const hasRail = c => ARTICLES.some(a=>a.sport===sport.id && a.cat===c);
   const tabs = [
     {label:'Recaps', cat:'recap'},
-    {label:'Preview & Odds', cat:'preview'},
-    {label:'Injury Watch', cat:'injury'},
-    {label:'Debate', cat:'debate'},
   ];
   return `<div class="subnav" style="--accent:var(--${sport.accent})"><div class="subnav-inner">
     <div class="subnav-id"><span class="mono-badge">${sport.name.slice(0,2).toUpperCase()}</span><span class="sp-name">${sport.name}</span></div>

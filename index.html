@@ -846,7 +846,7 @@ const SPORTS = [
     status:'O\'SHAQUIE FOSTER DROPPED NAVARRETE TWICE EN ROUTE TO A UNANIMOUS DECISION IN SAN ANTONIO, UNIFYING THE WBC, WBO AND IBF SUPER FEATHERWEIGHT TITLES', deep:'light', sub:'Professional boxing'},
   {id:'cricket', name:'Cricket', accent:'away', heat:88,
     headline:'India Beat New Zealand by 4 Runs (DLS) in Low-Scoring 2nd ODI at Wellington, Take 2-0 Series Lead',
-    status:'PAKISTAN VS SRI LANKA, 1ST TEST (RAWALPINDI, NOV 9-13), DAY 1 AT LUNCH: SRI LANKA WIN THE TOSS AND ELECT TO FIELD — OPENERS AZAN AWAIS AND TAYYAB ARIF PUT ON 86 FOR THE FIRST WICKET BEFORE BOTH FALL IN QUICK SUCCESSION, AWAIS EDGING MILAN RATHNAYAKE WITH THE SCORE ON 86 AND DEBUTANT TAYYAB ARIF — WHO REACHED A HALF-CENTURY — CAUGHT BEHIND OFF ASITHA FERNANDO FOR 57, PAKISTAN REACH LUNCH ON 137/2, BABAR AZAM 31* AND MOHAMMAD TAHA 15* — BABAR AZAM CAPTAINS A PAKISTAN XI WITH FOUR TEST DEBUTANTS (TAYYAB ARIF, MOHAMMAD TAHA, ARAFAT MINHAS, SAQIB KHAN) IN THE OPENER OF A TWO-TEST SERIES PART OF THE ICC WORLD TEST CHAMPIONSHIP 2025-27 (2ND TEST: GADDAFI STADIUM, LAHORE, NOV 17-21) · IND BEAT NZ BY 4 RUNS (DLS METHOD) IN A RAIN-HIT, LOW-SCORING 2ND ODI AT WELLINGTON: NEW ZEALAND BOWLED OUT FOR 134 IN 41 OVERS (DARYL MITCHELL 55, MITCHELL SANTNER 31; GURNOOR BRAR A CAREER-BEST 4/30, DEBUTANT AUQIB NABI 2, ANSHUL KAMBOJ 2, AXAR PATEL 2), INDIA\'S RAIN-CURTAILED CHASE FELL TO 113/7 IN 26 OVERS (SHREYAS IYER 30, KL RAHUL 26*) BUT GOT HOME BY 4 RUNS ON DLS — BRAR NAMED PLAYER OF THE MATCH, INDIA LEAD THE 5-MATCH SERIES 2-0 WITH THE 3RD ODI IN HAMILTON NOV 10 · IND BEAT NZ BY 5 WKTS (DLS) IN THE 1ST ODI AT EDEN PARK: NEW ZEALAND BOWLED OUT FOR 185 IN 40.2 OVERS (SEIFERT 38, PHILLIPS 30, MITCHELL 28 RUN OUT; ARSHDEEP SINGH 4-FOR), RAIN RESET INDIA\'S TARGET TO 143 FROM 32 OVERS, KOHLI\'S 74 (51) AND GILL\'S 37 GOT INDIA THERE AT 143/5 IN 22.4 OVERS — ANSHUL KAMBOJ (2/22) NAMED PLAYER OF THE MATCH · A 176-RUN WIN IN THE NEWLANDS DECIDER (HARMER PLAYER OF THE MATCH, JANSEN PLAYER OF THE SERIES) GAVE SOUTH AFRICA THE TEST SERIES 2-1 AND THE WORLD\'S NO. 1 TEST RANKING FOR THE FIRST TIME IN NEARLY A DECADE', deep:'light', sub:'International & league cricket', live:true},
+    status:'PAKISTAN VS SRI LANKA, 1ST TEST (RAWALPINDI, NOV 9-13), DAY 1: SRI LANKA WIN THE TOSS AND ELECT TO FIELD — OPENERS AZAN AWAIS AND TAYYAB ARIF PUT ON 86 FOR THE FIRST WICKET BEFORE BOTH FALL IN QUICK SUCCESSION, AWAIS EDGING MILAN RATHNAYAKE WITH THE SCORE ON 86 AND DEBUTANT TAYYAB ARIF — WHO REACHED A HALF-CENTURY — CAUGHT BEHIND OFF ASITHA FERNANDO FOR 57; BABAR AZAM ALSO FELL BEFORE MOHAMMAD TAHA AND SAUD SHAKEEL STEADIED THE INNINGS — PAKISTAN 168/3 AFTER 37.5 OVERS, TAHA 22* AND SHAKEEL 3* — BABAR AZAM CAPTAINS A PAKISTAN XI WITH FOUR TEST DEBUTANTS (TAYYAB ARIF, MOHAMMAD TAHA, ARAFAT MINHAS, SAQIB KHAN) IN THE OPENER OF A TWO-TEST SERIES PART OF THE ICC WORLD TEST CHAMPIONSHIP 2025-27 (2ND TEST: GADDAFI STADIUM, LAHORE, NOV 17-21) · IND BEAT NZ BY 4 RUNS (DLS METHOD) IN A RAIN-HIT, LOW-SCORING 2ND ODI AT WELLINGTON: NEW ZEALAND BOWLED OUT FOR 134 IN 41 OVERS (DARYL MITCHELL 55, MITCHELL SANTNER 31; GURNOOR BRAR A CAREER-BEST 4/30, DEBUTANT AUQIB NABI 2, ANSHUL KAMBOJ 2, AXAR PATEL 2), INDIA\'S RAIN-CURTAILED CHASE FELL TO 113/7 IN 26 OVERS (SHREYAS IYER 30, KL RAHUL 26*) BUT GOT HOME BY 4 RUNS ON DLS — BRAR NAMED PLAYER OF THE MATCH, INDIA LEAD THE 5-MATCH SERIES 2-0 WITH THE 3RD ODI IN HAMILTON NOV 10 · IND BEAT NZ BY 5 WKTS (DLS) IN THE 1ST ODI AT EDEN PARK: NEW ZEALAND BOWLED OUT FOR 185 IN 40.2 OVERS (SEIFERT 38, PHILLIPS 30, MITCHELL 28 RUN OUT; ARSHDEEP SINGH 4-FOR), RAIN RESET INDIA\'S TARGET TO 143 FROM 32 OVERS, KOHLI\'S 74 (51) AND GILL\'S 37 GOT INDIA THERE AT 143/5 IN 22.4 OVERS — ANSHUL KAMBOJ (2/22) NAMED PLAYER OF THE MATCH · A 176-RUN WIN IN THE NEWLANDS DECIDER (HARMER PLAYER OF THE MATCH, JANSEN PLAYER OF THE SERIES) GAVE SOUTH AFRICA THE TEST SERIES 2-1 AND THE WORLD\'S NO. 1 TEST RANKING FOR THE FIRST TIME IN NEARLY A DECADE', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -1188,10 +1188,10 @@ const CRICKET_LIVE_MATCH = {
   status:'live',
   teams:{
     away:{abbr:'SL', name:'Sri Lanka'},
-    home:{abbr:'PAK', name:'Pakistan', score:137, wkts:2, overs:'29.6'},
+    home:{abbr:'PAK', name:'Pakistan', score:168, wkts:3, overs:'37.5'},
   },
   toss:'Sri Lanka won the toss and elected to bowl first',
-  resultLine:'Day 1, at lunch: Sri Lanka captain Kusal Mendis won the toss and put Pakistan in to bat at Rawalpindi, the opener of a two-Test series that\'s part of the ICC World Test Championship 2025-27. Babar Azam captains Pakistan, who hand Test debuts to Tayyab Arif, Mohammad Taha, Arafat Minhas and Saqib Khan. Openers Azan Awais and Tayyab Arif put on 86 for the first wicket before both fell in quick succession — Awais edging Milan Rathnayake with the score on 86, then debutant Tayyab Arif, who reached a half-century, caught behind off Asitha Fernando for 57 — Pakistan reach lunch on 137/2, Babar Azam unbeaten on 31 and Mohammad Taha unbeaten on 15 as the pair rebuild (2nd Test: Gaddafi Stadium, Lahore, Nov 17-21).',
+  resultLine:'Day 1: Sri Lanka captain Kusal Mendis won the toss and put Pakistan in to bat at Rawalpindi, the opener of a two-Test series that\'s part of the ICC World Test Championship 2025-27. Babar Azam captains Pakistan, who hand Test debuts to Tayyab Arif, Mohammad Taha, Arafat Minhas and Saqib Khan. Openers Azan Awais and Tayyab Arif put on 86 for the first wicket before both fell in quick succession — Awais edging Milan Rathnayake with the score on 86, then debutant Tayyab Arif, who reached a half-century, caught behind off Asitha Fernando for 57. Babar Azam also departed before Mohammad Taha and Saud Shakeel steadied the innings — Pakistan reach 168/3 after 37.5 overs, Taha unbeaten on 22 and Shakeel on 3 (2nd Test: Gaddafi Stadium, Lahore, Nov 17-21).',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -3815,6 +3815,20 @@ const ARTICLES = [
       'For Pakistan, the win closes out a tournament in which they lost only once — to this same Sri Lanka side, at this same ground, in the group stage — and finally delivers a home tri-series title after near-misses in 1994, 2004 and last year\'s edition. For Sri Lanka, reaching the final after a mixed group stage, and taking the game to the final over of a tight chase, is a platform to build from even in defeat.',
     ],
     related:'pak-sl-final-recap',
+  },
+
+  {id:'pak-sl-1st-test-live', sport:'cricket', cat:'analysis',
+    headline:'Pakistan Lose Three Early as Taha and Shakeel Dig In on Day 1 in Rawalpindi',
+    dek:'Sri Lanka won the toss and chose to field in the series opener, and early breakthroughs against both openers and Babar Azam left Pakistan needing a rebuild before lunch.',
+    byline:'Clutch Room Cricket Desk', mins:4, time:'Nov 9, 2026',
+    qa:[['Who won the toss?','Sri Lanka won the toss and chose to field first in the 1st Test at Rawalpindi, the opener of a two-match series that\'s part of the ICC World Test Championship 2025-27.'],
+        ['How did Pakistan\'s innings start?','Both openers, Azan Awais and Tayyab Arif, were out inside the first 17 overs, and Babar Azam followed them back to the pavilion before Mohammad Taha and Saud Shakeel came together to steady the innings.']],
+    body:[
+      'Toss: Sri Lanka win it, and they bowl. The two sides open a two-match series at Rawalpindi Cricket Stadium, part of the ICC World Test Championship 2025-27 cycle.',
+      'Early inroads. Azan Awais goes first, gone inside the opening overs, and Tayyab Arif follows soon after — Pakistan two down before the 17th over is out.',
+      'Babar Azam comes and goes too, Pakistan\'s innings stumbling to its third breakthrough of the morning.',
+      'Mohammad Taha and Saud Shakeel are the ones left to rebuild it. Taha gets to 22 not out, Shakeel ticking over on 3 not out, as Pakistan reach 168/3 after 37.5 overs on the first day — a recovery still very much in progress.',
+    ],
   },
 
   {id:'clasico-recap', sport:'football', league:'La Liga', cat:'recap', matchId:'clasico-oct25-2026',

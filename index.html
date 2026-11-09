@@ -836,8 +836,8 @@ const SPORTS = [
     headline:'Blazers Rally to Beat Nuggets 118-110 in Denver, Improve to 4-0',
     status:'PORTLAND TAKES OVER IN THE FOURTH QUARTER BEHIND DENI AVDIJA\'S 28 POINTS TO STAY UNBEATEN AT 4-0 · THUNDER ALSO 4-0 AFTER ROUTING THE SUNS', deep:'light', sub:'NBA', live:false},
   {id:'f1', name:'F1', accent:'away', heat:93,
-    headline:'Antonelli Clinches the 2026 F1 Title, Becomes the Sport\'s Youngest-Ever Champion',
-    status:'MAX VERSTAPPEN WINS A RED-FLAGGED MEXICO CITY GRAND PRIX AHEAD OF LEWIS HAMILTON, BUT KIMI ANTONELLI\'S THIRD-PLACE FINISH CLINCHES THE 2026 DRIVERS\' TITLE WITH FOUR ROUNDS TO SPARE — AT 20, HE BECOMES F1\'S YOUNGEST-EVER WORLD CHAMPION AND THE FIRST ITALIAN CHAMPION SINCE ALBERTO ASCARI IN 1953', deep:'none', sub:'Formula 1'},
+    headline:'Lando Norris Wins the São Paulo Grand Prix as Mercedes Clinch the 2026 Constructors\' Title',
+    status:'LANDO NORRIS WINS THE SÃO PAULO GRAND PRIX FROM POLE AT INTERLAGOS, WITH MAX VERSTAPPEN RECOVERING FROM 21ST ON THE GRID TO FINISH 2ND AND ISACK HADJAR 3RD AFTER LEADING A GRAND PRIX FOR THE FIRST TIME IN HIS CAREER — MERCEDES CLINCH THE 2026 CONSTRUCTORS\' TITLE (THEIR 9TH) IN THE PROCESS, A WEEK AFTER KIMI ANTONELLI CLINCHED THE DRIVERS\' TITLE IN A RED-FLAGGED MEXICO CITY GRAND PRIX TO BECOME, AT 20, F1\'S YOUNGEST-EVER WORLD CHAMPION', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:52,
     headline:'Volkanovski KOs Evloev to Retain Featherweight Title',
     status:'VOLKANOVSKI KOs EVLOEV IN ROUND 2 TO RETAIN THE FEATHERWEIGHT TITLE, WHILE YAN EDGES DVALISHVILI BY UNANIMOUS DECISION FOR THE BANTAMWEIGHT BELT, FIGHT OF THE NIGHT', deep:'light', sub:'Mixed martial arts'},
@@ -3940,6 +3940,52 @@ const ARTICLES = [
     ],
     related:'f1-mexico-city-race-recap',
   },
+  {id:'f1-sao-paulo-qualifying-recap', sport:'f1', cat:'recap',
+    headline:'Lando Norris Takes Pole in a Rain-Hit São Paulo Qualifying, Verstappen Qualifies 21st',
+    dek:'Norris beat George Russell by 0.204 seconds for pole at Interlagos after two red flags and a lengthy rain delay, while Max Verstappen could only manage 21st on the grid and Lewis Hamilton gave up his final run with a grid penalty already locked in.',
+    byline:'Clutch Room F1 Desk', mins:4, time:'Nov 7, 2026',
+    qa:[['What was the qualifying result?','Lando Norris took pole at Interlagos with a 1:27.470, beating George Russell by 0.204 seconds. Kimi Antonelli, who briefly held provisional pole, qualified third.'],
+        ['Why did the session take so long?','Rain hit qualifying, triggering two red flags and a lengthy delay before the final order was set.'],
+        ['What happened to Max Verstappen?','He qualified a distant 21st, a rare off day for the championship runner-up heading into Sunday\'s race.']],
+    body:[
+      'Lando Norris took pole position for Sunday\'s São Paulo Grand Prix at Interlagos, setting a 1:27.470 to beat George Russell by 0.204 seconds in a qualifying session disrupted twice by rain and red flags.',
+      'Kimi Antonelli, already crowned the 2026 champion a round early in Mexico City, briefly held provisional pole in the wet conditions before Norris and Russell improved late; the Mercedes driver ended up starting third.',
+      'The session was far less kind to Max Verstappen, who could only manage 21st on the grid — one of the worst qualifying results of his career — while Lewis Hamilton gave up his final runs in Q3 after already locking in a grid penalty for an engine change, dropping him toward the back of the field as well.',
+      'With the drivers\' title already decided and Mercedes still chasing the constructors\' championship against Ferrari, Sunday\'s race at Interlagos carries its own stakes even with the headline fight over.',
+    ],
+    related:'f1-sao-paulo-race-recap',
+  },
+  {id:'f1-sao-paulo-race-recap', sport:'f1', cat:'recap',
+    headline:'Lando Norris Wins at Interlagos as Mercedes Clinch the Constructors\' Title',
+    dek:'Norris held on from pole as Max Verstappen charged from 21st to second and Isack Hadjar led a Grand Prix for the first time in his career — but the bigger story was Mercedes sealing a ninth constructors\' championship.',
+    byline:'Clutch Room F1 Desk', mins:5, time:'Nov 8, 2026',
+    qa:[['Who won the race?','Lando Norris, from pole, in 1:35:23.504 over 71 laps.'],
+        ['What happened with Max Verstappen?','He recovered from 21st on the grid to finish second, 14.602 seconds behind Norris, and was named Driver of the Day.'],
+        ['What clinched the constructors\' title for Mercedes?','Mercedes arrived in Brazil needing to outscore Ferrari by just 3 points to secure the championship — entering the race with 630 points to Ferrari\'s 504 — and finished the weekend with 652 points, their ninth constructors\' title, a week after Kimi Antonelli sealed the drivers\' crown in Mexico City.']],
+    body:[
+      'Lando Norris converted pole position into victory at Interlagos on Sunday, winning the São Paulo Grand Prix in 1:35:23.504 over 71 laps — but the headline result of the weekend belonged to Mercedes, who clinched the 2026 constructors\' championship, their ninth, with two rounds still unraced.',
+      'Max Verstappen produced one of the drives of the season to finish second, recovering from a lowly 21st on the grid to cross the line 14.602 seconds behind Norris and earn Driver of the Day. Isack Hadjar was third, 24.485 seconds back, after leading a Grand Prix for the first time in his career when Norris pitted as rain intensified mid-race.',
+      'George Russell finished fourth for Mercedes, with Kimi Antonelli fifth after a 5-second penalty for an unsafe release and a spin that briefly cost him the lead earlier in the race; Antonelli did take fastest lap, a 1:12.689 on lap 55. Oscar Piastri was sixth, Liam Lawson seventh, Charles Leclerc eighth after a penalty for causing a collision, Lewis Hamilton ninth and Nico Hülkenberg rounded out the top ten.',
+      'Mercedes had arrived at Interlagos needing to outscore Ferrari by just 3 points to wrap up the constructors\' title — entering the weekend with 630 points to Ferrari\'s 504 — and finished the race weekend with 652 points of their own, sealing the championship a week after Kimi Antonelli clinched the drivers\' title in Mexico City. It\'s the team\'s ninth constructors\' crown.',
+      'The series moves to the Las Vegas Grand Prix next, on Nov 21.',
+    ],
+    related:'f1-sao-paulo-constructors-analysis',
+    pull:'Mercedes needed to outscore Ferrari by just 3 points in Brazil to clinch the title — they did it with two rounds still to run, their ninth constructors\' championship.',
+  },
+  {id:'f1-sao-paulo-constructors-analysis', sport:'f1', cat:'analysis',
+    headline:'Mercedes\' Ninth Constructors\' Title Caps a Season Built on Depth, Not Just Antonelli',
+    dek:'Kimi Antonelli\'s record-breaking drivers\' title got the headlines, but the constructors\' championship Mercedes sealed in Brazil was won by two drivers scoring everywhere — not one superstar carrying the team.',
+    byline:'Clutch Room F1 Desk', mins:6, time:'Nov 8, 2026',
+    qa:[['How did Mercedes clinch the title in Brazil?','They arrived needing to outscore Ferrari by just 3 points — entering the weekend with 630 points to Ferrari\'s 504 — and scored enough across the race weekend to seal it with two rounds still to run.'],
+        ['Is this just about Antonelli?','No — Antonelli\'s drivers\' title in Mexico City was built on his individual results, but the constructors\' title needed points from both Mercedes cars all season, including George Russell\'s fourth-place finish in Brazil itself.'],
+        ['How many constructors\' titles is this for Mercedes?','Their ninth.']],
+    body:[
+      'Kimi Antonelli\'s run to the youngest-ever drivers\' championship dominated the headlines out of Mexico City. A week later, at Interlagos, Mercedes quietly finished the job that made that title possible in the first place: a ninth constructors\' championship, clinched with two rounds of the season still to run.',
+      'The margin going in was tight on paper — Mercedes needed to outscore Ferrari by just 3 points in Brazil, entering the weekend at 630 points to Ferrari\'s 504 — but the underlying gap had been built over months, not decided in a single afternoon. Both Mercedes cars scored again at Interlagos: Russell finished fourth, and Antonelli, despite a 5-second penalty for an unsafe release and a spin that briefly cost him the race lead, still recovered to fifth and picked up the fastest lap of the race for good measure.',
+      'That\'s the real story behind the number. A drivers\' championship can be won by one driver having the season of his life; a constructors\' title needs both cars doing it most weekends. Mercedes got exactly that in 2026 — Antonelli\'s record-breaking campaign at the front, and Russell quietly banking points nearly everywhere else — and the combination put the teams\' title out of reach before the season had even reached its final two rounds.',
+    ],
+    related:'f1-sao-paulo-race-recap',
+  },
   {id:'aus-sa-test-series-recap', sport:'cricket', cat:'recap',
     headline:'South Africa Beat Australia 2-1 in the Test Series, Become the World\'s No. 1 Ranked Team',
     dek:'Simon Harmer\'s spin and a Ryan Rickelton-Wiaan Mulder fightback set up a 176-run win in the Newlands decider, handing South Africa the series and the ICC\'s top Test ranking for the first time in nearly a decade.',
@@ -4641,17 +4687,31 @@ const F1_SEASON_RESULTS = [
       {pos:21, driver:'V. Bottas', team:'Cadillac', gap:'DNF'},
       {pos:22, driver:'O. Bearman', team:'Haas', gap:'DNF'},
     ]},
+  {round:20, gp:'São Paulo, Brazil', winner:'L. Norris', team:'McLaren', note:'Mercedes clinch the 2026 constructors\' title in the process — their 9th',
+    podium:[{driver:'L. Norris',team:'McLaren'},{driver:'M. Verstappen',team:'Red Bull'},{driver:'I. Hadjar',team:'Red Bull'}],
+    results:[
+      {pos:1, driver:'L. Norris', team:'McLaren', gap:'Winner'},
+      {pos:2, driver:'M. Verstappen', team:'Red Bull', gap:'+14.602s'},
+      {pos:3, driver:'I. Hadjar', team:'Red Bull', gap:'+24.485s'},
+      {pos:4, driver:'G. Russell', team:'Mercedes', gap:'—'},
+      {pos:5, driver:'K. Antonelli', team:'Mercedes', gap:'—'},
+      {pos:6, driver:'O. Piastri', team:'McLaren', gap:'—'},
+      {pos:7, driver:'L. Lawson', team:'Racing Bulls', gap:'—'},
+      {pos:8, driver:'C. Leclerc', team:'Ferrari', gap:'—'},
+      {pos:9, driver:'L. Hamilton', team:'Ferrari', gap:'—'},
+      {pos:10, driver:'N. Hulkenberg', team:'Audi', gap:'—'},
+    ]},
 ];
 const F1_STANDINGS = [
-  {pos:1, driver:'K. Antonelli', team:'Mercedes', pts:380},
-  {pos:2, driver:'M. Verstappen', team:'Red Bull', pts:261},
-  {pos:3, driver:'L. Hamilton', team:'Ferrari', pts:259},
-  {pos:4, driver:'G. Russell', team:'Mercedes', pts:250},
-  {pos:5, driver:'C. Leclerc', team:'Ferrari', pts:245},
-  {pos:6, driver:'L. Norris', team:'McLaren', pts:221},
-  {pos:7, driver:'O. Piastri', team:'McLaren', pts:150},
-  {pos:8, driver:'I. Hadjar', team:'Red Bull', pts:105},
-  {pos:9, driver:'L. Lawson', team:'Racing Bulls', pts:79},
+  {pos:1, driver:'K. Antonelli', team:'Mercedes', pts:390},
+  {pos:2, driver:'M. Verstappen', team:'Red Bull', pts:279},
+  {pos:3, driver:'G. Russell', team:'Mercedes', pts:262},
+  {pos:4, driver:'L. Hamilton', team:'Ferrari', pts:261},
+  {pos:5, driver:'C. Leclerc', team:'Ferrari', pts:249},
+  {pos:6, driver:'L. Norris', team:'McLaren', pts:246},
+  {pos:7, driver:'O. Piastri', team:'McLaren', pts:158},
+  {pos:8, driver:'I. Hadjar', team:'Red Bull', pts:120},
+  {pos:9, driver:'L. Lawson', team:'Racing Bulls', pts:85},
   {pos:10, driver:'P. Gasly', team:'Alpine', pts:43},
 ];
 function renderF1Results(){
@@ -5148,14 +5208,14 @@ function renderF1Hub(){
     <div class="f1-track-wrap">${f1TrackSvg()}</div>
     <div class="f1-next">
       <span class="eyebrow">Next Race</span>
-      <h1>São Paulo Grand Prix</h1>
+      <h1>Las Vegas Grand Prix</h1>
       <div class="f1-countdown" id="f1-countdown">
         <div class="unit"><div class="num" id="f1-d">00</div><div class="lbl">Days</div></div>
         <div class="unit"><div class="num" id="f1-h">00</div><div class="lbl">Hours</div></div>
         <div class="unit"><div class="num" id="f1-m">00</div><div class="lbl">Minutes</div></div>
         <div class="unit"><div class="num" id="f1-sec">00</div><div class="lbl">Seconds</div></div>
       </div>
-      <p>The title is already decided — Kimi Antonelli sealed the 2026 championship with a third-place finish at a red-flagged Mexico City Grand Prix, becoming F1's youngest-ever champion. The paddock moves on to Interlagos for the São Paulo Grand Prix, a standard race weekend with no sprint this year; practice and qualifying run Friday and Saturday, with the Grand Prix itself Sunday, November 8 at 2:00 PM local.</p>
+      <p>Lando Norris won the São Paulo Grand Prix from pole, and Mercedes clinched the 2026 constructors' title in the process — their 9th — a week after Kimi Antonelli sealed the drivers' championship in Mexico City. The paddock now heads to the Las Vegas Strip Circuit for a standard race weekend with no sprint; practice and qualifying run Thursday and Friday night, with the Grand Prix itself Saturday, November 21 at 8:00 PM local (11:00 PM ET).</p>
       <a class="f1-pill-btn" href="#/">← Back to All Sports</a>
     </div>
 
@@ -5164,36 +5224,36 @@ function renderF1Hub(){
       <div class="f1-helmet-section">
         <div class="f1-helmet-grid">
           <div class="f1-helmet-stats">
-            <div><div class="n" style="font-size:24px;">Antonelli</div><div class="l">Third in a chaotic, red-flagged Mexico City GP — enough to clinch the 2026 title with four rounds still to run</div></div>
-            <div><div class="n" style="font-size:24px;">Verstappen</div><div class="l">Won in Mexico City, his third victory of the season, and moves up to 2nd in the standings</div></div>
+            <div><div class="n" style="font-size:24px;">Norris</div><div class="l">Won the São Paulo Grand Prix from pole, 1:35:23.504 over 71 laps at Interlagos</div></div>
+            <div><div class="n" style="font-size:24px;">Verstappen</div><div class="l">Recovered from 21st on the grid to finish 2nd in Brazil, named Driver of the Day</div></div>
           </div>
           <div id="f1-helmet-wrap">${F1_HELMET_SVG}</div>
           <div class="f1-helmet-stats right">
-            <div><div class="n" style="font-size:24px;">380</div><div class="l">Antonelli's points total after Mexico City — 119 clear of Verstappen with four rounds left to run</div></div>
-            <div><div class="n" style="font-size:24px;">20</div><div class="l">Antonelli's age — F1's youngest-ever world champion, and the first Italian champion since Alberto Ascari in 1953</div></div>
+            <div><div class="n" style="font-size:24px;">9th</div><div class="l">Mercedes' constructors' championship, clinched in Brazil with two rounds still to run</div></div>
+            <div><div class="n" style="font-size:24px;">390</div><div class="l">Antonelli's points total after Brazil — still F1's youngest-ever world champion at 20</div></div>
           </div>
         </div>
       </div>
-      <p class="f1-quote">Kimi Antonelli is "speechless" after clinching the title in Mexico City — <b>São Paulo is up next, with the pressure off.</b></p>
+      <p class="f1-quote">Mercedes seal the constructors' title in Brazil, a week after Antonelli clinched the drivers' crown — <b>Las Vegas is up next.</b></p>
       <div style="height:70px;"></div>
     </div>
 
     <div class="f1-schedule">
-      <div class="f1-schedule-head"><h2>Race Weekend Schedule</h2><div class="f1-tabs"><span class="on">My Time (ET)</span><span>São Paulo Time</span></div></div>
-      <div class="f1-row"><span class="s">Practice 1</span><span class="t">Fri · 10:30 AM ET (12:30 PM BRT)</span></div>
-      <div class="f1-row"><span class="s">Practice 2</span><span class="t">Fri · 2:00 PM ET (4:00 PM BRT)</span></div>
-      <div class="f1-row"><span class="s">Practice 3</span><span class="t">Sat · 9:30 AM ET (11:30 AM BRT)</span></div>
-      <div class="f1-row"><span class="s">Qualifying</span><span class="t">Sat · 1:00 PM ET (3:00 PM BRT)</span></div>
-      <div class="f1-row"><span class="s">Race</span><span class="t">Sun · 12:00 PM ET (2:00 PM BRT)</span></div>
+      <div class="f1-schedule-head"><h2>Race Weekend Schedule</h2><div class="f1-tabs"><span class="on">My Time (ET)</span><span>Las Vegas Time</span></div></div>
+      <div class="f1-row"><span class="s">Practice 1</span><span class="t">Thu · 7:30 PM ET (4:30 PM PT)</span></div>
+      <div class="f1-row"><span class="s">Practice 2</span><span class="t">Thu · 11:00 PM ET (8:00 PM PT)</span></div>
+      <div class="f1-row"><span class="s">Practice 3</span><span class="t">Fri · 7:30 PM ET (4:30 PM PT)</span></div>
+      <div class="f1-row"><span class="s">Qualifying</span><span class="t">Fri · 11:00 PM ET (8:00 PM PT)</span></div>
+      <div class="f1-row"><span class="s">Race</span><span class="t">Sat · 11:00 PM ET (8:00 PM PT)</span></div>
     </div>
 
     <div class="f1-schedule" style="padding-top:0;">
-      <div class="f1-schedule-head"><h2>Season So Far</h2><span class="eyebrow">19 of 23 rounds · R14 cancelled</span></div>
+      <div class="f1-schedule-head"><h2>Season So Far</h2><span class="eyebrow">20 of 23 rounds · R14 cancelled</span></div>
       ${renderF1Results()}
     </div>
 
     <div class="f1-schedule" style="padding-top:0;">
-      <div class="f1-schedule-head"><h2>Drivers' Championship</h2><span class="eyebrow">Entering São Paulo · Antonelli crowned champion</span></div>
+      <div class="f1-schedule-head"><h2>Drivers' Championship</h2><span class="eyebrow">Entering Las Vegas · Antonelli crowned champion</span></div>
       ${renderF1Standings()}
     </div>
 
@@ -7828,7 +7888,7 @@ setInterval(function(){
 }, 1000);
 
 /* ---------------- F1 scroll-driven helmet + MLB scroll progress ---------------- */
-const F1_RACE_TARGET = new Date('2026-11-08T17:00:00Z').getTime();
+const F1_RACE_TARGET = new Date('2026-11-22T04:00:00Z').getTime();
 let scrollTicking = false;
 function onScrollEffects(){
   const helmet = document.getElementById('f1-helmet');

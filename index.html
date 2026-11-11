@@ -836,17 +836,17 @@ const SPORTS = [
     headline:'Blazers Rally to Beat Nuggets 118-110 in Denver, Improve to 4-0',
     status:'PORTLAND TAKES OVER IN THE FOURTH QUARTER BEHIND DENI AVDIJA\'S 28 POINTS TO STAY UNBEATEN AT 4-0 · THUNDER ALSO 4-0 AFTER ROUTING THE SUNS', deep:'light', sub:'NBA', live:false},
   {id:'f1', name:'F1', accent:'away', heat:93,
-    headline:'Antonelli Clinches the 2026 F1 Title, Becomes the Sport\'s Youngest-Ever Champion',
-    status:'MAX VERSTAPPEN WINS A RED-FLAGGED MEXICO CITY GRAND PRIX AHEAD OF LEWIS HAMILTON, BUT KIMI ANTONELLI\'S THIRD-PLACE FINISH CLINCHES THE 2026 DRIVERS\' TITLE WITH FOUR ROUNDS TO SPARE — AT 20, HE BECOMES F1\'S YOUNGEST-EVER WORLD CHAMPION AND THE FIRST ITALIAN CHAMPION SINCE ALBERTO ASCARI IN 1953', deep:'none', sub:'Formula 1'},
+    headline:'Lando Norris Wins a Wet São Paulo Grand Prix as Mercedes Clinch the 2026 Constructors\' Title',
+    status:'LANDO NORRIS TAKES POLE AND WINS A WET-DRY-WET SÃO PAULO GRAND PRIX AT INTERLAGOS, WITH MAX VERSTAPPEN CHARGING FROM 21ST ON THE GRID TO FINISH SECOND — GEORGE RUSSELL AND KIMI ANTONELLI\'S FOURTH- AND FIFTH-PLACE FINISHES CLINCH MERCEDES THE 2026 CONSTRUCTORS\' CHAMPIONSHIP · ANTONELLI HAD ALREADY SEALED THE DRIVERS\' TITLE IN MEXICO CITY, BECOMING F1\'S YOUNGEST-EVER WORLD CHAMPION AT 20 · NEXT UP: THE LAS VEGAS GRAND PRIX, NOV 19-21', deep:'none', sub:'Formula 1'},
   {id:'ufc', name:'UFC', accent:'away', heat:52,
     headline:'Volkanovski KOs Evloev to Retain Featherweight Title',
     status:'VOLKANOVSKI KOs EVLOEV IN ROUND 2 TO RETAIN THE FEATHERWEIGHT TITLE, WHILE YAN EDGES DVALISHVILI BY UNANIMOUS DECISION FOR THE BANTAMWEIGHT BELT, FIGHT OF THE NIGHT', deep:'light', sub:'Mixed martial arts'},
   {id:'boxing', name:'Boxing', accent:'away', heat:46,
     headline:'O\'Shaquie Foster Unifies Super Featherweight Titles',
     status:'O\'SHAQUIE FOSTER DROPPED NAVARRETE TWICE EN ROUTE TO A UNANIMOUS DECISION IN SAN ANTONIO, UNIFYING THE WBC, WBO AND IBF SUPER FEATHERWEIGHT TITLES', deep:'light', sub:'Professional boxing'},
-  {id:'cricket', name:'Cricket', accent:'away', heat:88,
-    headline:'India Beat New Zealand by 5 Wickets (DLS) in Rain-Hit 1st ODI at Eden Park, Take 1-0 Series Lead',
-    status:'IND BEAT NZ BY 5 WKTS (DLS METHOD) IN THE 1ST ODI AT EDEN PARK: NEW ZEALAND BOWLED OUT FOR 185 IN 40.2 OVERS (SEIFERT 38, PHILLIPS 30, MITCHELL 28 RUN OUT; ARSHDEEP SINGH 4-FOR), RAIN RESET INDIA\'S TARGET TO 143 FROM 32 OVERS, KOHLI\'S 74 (51) AND GILL\'S 37 GOT INDIA THERE AT 143/5 IN 22.4 OVERS — ANSHUL KAMBOJ (2/22) NAMED PLAYER OF THE MATCH, INDIA LEAD THE 5-MATCH SERIES 1-0 WITH THE 2ND ODI IN WELLINGTON NOV 7 · A 176-RUN WIN IN THE NEWLANDS DECIDER (HARMER PLAYER OF THE MATCH, JANSEN PLAYER OF THE SERIES) GAVE SOUTH AFRICA THE TEST SERIES 2-1 AND THE WORLD\'S NO. 1 TEST RANKING FOR THE FIRST TIME IN NEARLY A DECADE', deep:'light', sub:'International & league cricket', live:false},
+  {id:'cricket', name:'Cricket', accent:'away', heat:90,
+    headline:'Dhananjaya de Silva\'s 14th Test Century Leads Sri Lanka\'s Fightback Against Pakistan in the Rawalpindi Test',
+    status:'LIVE: SRI LANKA 257/4 (70 OV) IN REPLY TO PAKISTAN\'S 434/9 DECLARED ON DAY 3 OF THE 1ST TEST AT RAWALPINDI — DHANANJAYA DE SILVA UNBEATEN ON 104 (HIS 14TH TEST HUNDRED), CAPTAIN KUSAL MENDIS UNBEATEN ON 39, SRI LANKA STILL TRAILING BY 177 · PAKISTAN HAD DECLARED AT 434/9 AFTER 106.3 OVERS ON DAY 2 (SAUD SHAKEEL 93, TAYYAB ARIF 57, ARAFAT MINHAS 52, MOHAMMAD TAHA 51, BABAR AZAM 50) · IND BEAT NZ BY 5 WKTS (DLS) IN THE 1ST ODI AT EDEN PARK, LEAD THAT 5-MATCH SERIES 1-0 · SOUTH AFRICA WON THE TEST SERIES VS AUSTRALIA 2-1 TO CLIMB TO NO. 1 IN THE ICC TEST RANKINGS FOR THE FIRST TIME IN NEARLY A DECADE', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -1161,12 +1161,13 @@ const FIXTURES = {
 const CRICKET_LIVE_MATCH = {
   series:'Pakistan vs Sri Lanka 2026/27 (WTC 2025-27)', matchLabel:'1st Test',
   venue:'Rawalpindi Cricket Stadium, Rawalpindi', date:'Nov 9-13, 2026',
-  status:'upcoming',
+  status:'live',
   teams:{
-    away:{abbr:'SL', name:'Sri Lanka'},
-    home:{abbr:'PAK', name:'Pakistan'},
+    away:{abbr:'SL', name:'Sri Lanka', score:257, wkts:4, overs:'70.0'},
+    home:{abbr:'PAK', name:'Pakistan', score:434, wkts:9, overs:'106.3'},
   },
-  toss:null, resultLine:'The ODI tri-series is done — Pakistan beat Sri Lanka in the Oct 31 final. Up next: a two-Test series against Sri Lanka, part of the ICC World Test Championship 2025-27, opening Nov 9 in Rawalpindi (2nd Test: Gaddafi Stadium, Lahore, Nov 17-21). Toss not yet in.',
+  toss:'Sri Lanka won the toss and elected to field',
+  resultLine:'Day 3: Pakistan\'s first innings closed at 434/9 declared (Saud Shakeel 93, Tayyab Arif 57, Arafat Minhas 52, Mohammad Taha 51, Babar Azam 50 — Asitha Fernando and Dilshan Madushanka each took 3 wickets). Sri Lanka, set a big chase just to avoid the follow-on, slipped to 37/2 before Kamindu Mendis and Dhananjaya de Silva steadied the innings with a fourth-wicket stand; after Mendis fell for 58, de Silva kept going into Day 3 and reached his 14th Test century. Sri Lanka are 257/4 after 70 overs, de Silva unbeaten on 104 alongside captain Kusal Mendis (39*), still trailing by 177 runs (2nd Test: Rawalpindi, Nov 17-21, moved from Lahore because of smog).',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
@@ -3939,6 +3940,49 @@ const ARTICLES = [
     ],
     related:'f1-mexico-city-race-recap',
   },
+  {id:'f1-sao-paulo-qualifying-recap', sport:'f1', cat:'recap',
+    headline:'Norris Takes a Third Straight São Paulo Pole in Rain-Hit Qualifying, Verstappen Out in Q1',
+    dek:'Lando Norris beat George Russell by two-tenths for pole at Interlagos as heavy rain disrupted the session, while title winner Max Verstappen suffered a shock Q1 exit that left him starting from near the back of the grid.',
+    byline:'Clutch Room F1 Desk', mins:4, time:'Nov 7, 2026',
+    qa:[['What was the qualifying result?','Lando Norris took pole with a 1:27.470, edging George Russell by 0.204 seconds and Kimi Antonelli by 0.625 seconds. Charles Leclerc was fourth, with Liam Lawson, Nico Hülkenberg, Isack Hadjar, Oliver Bearman, Fernando Alonso and Alex Albon completing the top ten.'],
+        ['What happened to Max Verstappen?','Verstappen was knocked out in Q1 as heavy rain disrupted the session, a shock result that left the reigning runner-up starting from near the back of the field for Sunday\'s race.'],
+        ['Did any grid penalties apply?','Yes — George Russell and Charles Leclerc were both handed grid-penalty drops ahead of the race, reshuffling the front of the starting order from how qualifying finished.']],
+    body:[
+      'Lando Norris claimed a third straight pole position at Interlagos on Saturday, topping a qualifying session that was repeatedly interrupted by heavy rain. His 1:27.470 lap edged George Russell\'s Mercedes by 0.204 seconds, with Kimi Antonelli third for Mercedes a further four-tenths back.',
+      'Charles Leclerc was fourth for Ferrari, with Liam Lawson, Nico Hülkenberg, Isack Hadjar, Oliver Bearman, Fernando Alonso and Alex Albon rounding out the top ten. Q3 was cut short when the rain returned, and Russell complained on team radio about traffic and being told to back off on a lap that mattered.',
+      'The session\'s biggest story, though, was at the other end of the order: Max Verstappen, who had already lost the drivers\' title to Kimi Antonelli in Mexico City, was eliminated in Q1 — his first opening-round exit of the season — leaving him to start Sunday\'s race from near the back of the grid. Grid penalties for Russell and Leclerc were set to reshuffle the front rows further ahead of the race.',
+    ],
+    related:'f1-sao-paulo-race-recap',
+  },
+  {id:'f1-sao-paulo-race-recap', sport:'f1', cat:'recap',
+    headline:'Norris Wins a Wet-Dry-Wet São Paulo Grand Prix as Verstappen Storms From 21st to 2nd and Mercedes Clinch the Constructors\' Title',
+    dek:'Lando Norris converted pole into victory at Interlagos, but it was Max Verstappen\'s recovery drive from the back of the grid to second that stole the show — while George Russell and Kimi Antonelli\'s points sealed the Constructors\' Championship for Mercedes.',
+    byline:'Clutch Room F1 Desk', mins:6, time:'Nov 9, 2026',
+    qa:[['How did Lando Norris win?','Norris started from pole and controlled a race run in shifting conditions — starting on intermediates, moving to slicks in the dry midsection, and switching back to intermediates when the rain returned late — to win by 14.602 seconds over Max Verstappen, with no safety car needed all race.'],
+        ['What happened with Verstappen?','Verstappen qualified out of Q1 after being eliminated in the rain and started 21st, then carried out one of the drives of his career to finish second, 14.602 seconds behind Norris. He said afterward that suspected car damage from the opening stint had hurt his pace for parts of the race.'],
+        ['How did Mercedes clinch the Constructors\' title?','George Russell finished fourth and Kimi Antonelli fifth, and their combined points were enough to confirm Mercedes as 2026 Constructors\' Champions. Isack Hadjar took third for Red Bull, his and the team\'s first podium since Verstappen\'s title loss. Lewis Hamilton finished ninth in his 400th Formula 1 start.']],
+    body:[
+      'Lando Norris converted pole position into victory at Interlagos on Sunday, winning a São Paulo Grand Prix played out across constantly shifting weather to beat Max Verstappen by 14.602 seconds. The race started on intermediate tyres, moved to a dry middle stint on slicks, and ended back on intermediates as rain returned in the closing laps — all without a single safety car or red flag, a rarity for a Brazilian Grand Prix.',
+      'The story of the race, though, belonged to Verstappen. Eliminated in Q1 the day before and starting 21st on the grid, the Red Bull driver carved his way back through the field all afternoon to finish second — one of the standout recovery drives of his career, even as he said afterward that suspected damage picked up in the opening stint had cost him pace at times.',
+      'Isack Hadjar completed the podium in third for Red Bull, with George Russell fourth and Kimi Antonelli fifth for Mercedes. Those two results were enough on their own to confirm Mercedes as the 2026 Constructors\' Champions. Oscar Piastri was sixth, Liam Lawson seventh and Charles Leclerc eighth, while Lewis Hamilton finished ninth in the 400th Grand Prix start of his career and Nico Hülkenberg completed the points in tenth.',
+      'Antonelli had already wrapped up the Drivers\' Championship with his third-place finish in Mexico City, so São Paulo\'s title stakes belonged entirely to the Constructors\' standings — and to Norris, who said afterward that McLaren\'s strategy calls through the changing conditions made the difference, even as he cautioned that the car isn\'t yet consistently fast enough to have fought for the Drivers\' title this year.',
+    ],
+    related:'f1-sao-paulo-constructors-analysis',
+    pull:'Verstappen started 21st after a Q1 exit in the rain — and finished 14.6 seconds behind Norris, in second.',
+  },
+  {id:'f1-sao-paulo-constructors-analysis', sport:'f1', cat:'analysis',
+    headline:'Mercedes\' Constructors\' Title Was Built Long Before São Paulo Sealed It',
+    dek:'George Russell\'s fourth and Kimi Antonelli\'s fifth at Interlagos were enough to confirm the 2026 Constructors\' Championship for Mercedes — the product of a season in which the team rarely had the single fastest car but almost never had a bad weekend either.',
+    byline:'Clutch Room F1 Desk', mins:6, time:'Nov 9, 2026',
+    qa:[['How exactly did Mercedes clinch it in São Paulo?','Russell\'s fourth-place finish and Antonelli\'s fifth gave Mercedes enough of a cushion over their closest rivals in the Constructors\' standings that the title was mathematically confirmed as soon as the race finished, without needing a result from either Ferrari or Red Bull to go their way.'],
+        ['Is this the same story as Antonelli\'s Drivers\' title?','Related, but separate. Antonelli clinched the Drivers\' Championship with a third-place finish in Mexico City four rounds before the end of the season. São Paulo\'s Constructors\' result is the team-wide payoff of the same consistency — both Mercedes cars scoring most weekends — rather than a second instance of the same storyline.']],
+    body:[
+      'Mercedes\' 2026 Constructors\' Championship was mathematically confirmed in the rain at Interlagos, but the race that actually won it was the one where the team didn\'t have the fastest car on Sunday at all. George Russell\'s fourth-place finish and Kimi Antonelli\'s fifth were enough on their own to seal it — not because either result was spectacular, but because they were the latest in a season-long pattern of two Mercedes drivers consistently finishing in the points.',
+      'That pattern is the real story. Kimi Antonelli\'s run to the Drivers\' title, clinched with a third-place finish in a chaotic, red-flagged Mexico City Grand Prix, carried him to 390 points entering São Paulo on the back of wins at Shanghai, Suzuka, Miami, Montreal, Monaco, Spa, Monza and Austin — a tally built on avoiding disasters as much as chasing poles. George Russell\'s season alongside him, while less heralded, did the same job in the Constructors\' context: podiums and points finishes piling up on weekends when McLaren or Red Bull had the quicker car.',
+      'São Paulo itself was a reminder of how little the Constructors\' fight actually needed from Mercedes on the day. Lando Norris and Max Verstappen produced the two standout individual drives of the weekend — Norris winning from pole through changing conditions, Verstappen recovering from a Q1 exit and 21st on the grid all the way to second — while Mercedes simply collected the points their season-long consistency had already made decisive. It\'s a quieter way to win a title than a dominant final-round victory, but for a team that spent much of 2026 fighting McLaren and Red Bull on raw pace rather than beating them on it, it\'s the version of winning that actually fit the season they had.',
+    ],
+    related:'f1-sao-paulo-race-recap',
+  },
   {id:'aus-sa-test-series-recap', sport:'cricket', cat:'recap',
     headline:'South Africa Beat Australia 2-1 in the Test Series, Become the World\'s No. 1 Ranked Team',
     dek:'Simon Harmer\'s spin and a Ryan Rickelton-Wiaan Mulder fightback set up a 176-run win in the Newlands decider, handing South Africa the series and the ICC\'s top Test ranking for the first time in nearly a decade.',
@@ -3999,6 +4043,19 @@ const ARTICLES = [
       'India\'s reply started quickly, with Kohli and Gill racing to 54/1 before rain intervened and reset the target to 143 from 32 overs under DLS. Kohli kept the chase on course once play resumed, reaching 74 off 51 balls before Jacob Duffy struck twice in the same over — removing Kohli, caught behind, and golden-ducking Axar Patel — to briefly put New Zealand back in the contest.',
       'Gill\'s 37 and a steady finish from the rest of the order were enough to see India home at 143/5 in 22.4 overs, completing the chase with 56 balls to spare on the revised target. Anshul Kamboj, who had also taken 2 wickets with the ball, was named Player of the Match.',
       'The series continues with the 2nd ODI in Wellington on Nov 7, followed by matches in Hamilton (Nov 10) and back-to-back fixtures at Mount Maunganui on Nov 13 and 15, before the tour closes with two Tests later in the month.',
+    ],
+  },
+  {id:'pak-sl-1st-test-live', sport:'cricket', cat:'analysis',
+    headline:'De Silva\'s 14th Test Century Leads Sri Lanka\'s Reply to Pakistan\'s 434 in Rawalpindi',
+    dek:'Dhananjaya de Silva reaches a century and Sri Lanka push to 257/4 on Day 3, still 177 runs behind Pakistan\'s first-innings 434/9 declared in the opener of the two-Test series at Rawalpindi.',
+    byline:'Clutch Room Cricket Desk', mins:6, time:'Nov 11, 2026',
+    qa:[['Who won the toss and what did Pakistan make?','Sri Lanka won the toss and chose to field first in the opening Test of the two-match series, part of the ICC World Test Championship 2025-27. Pakistan batted first and declared at 434/9 after 106.3 overs on Day 2 — Saud Shakeel top-scored with 93, with half-centuries from debutants Tayyab Arif (57) and Arafat Minhas (52), plus Mohammad Taha (51) and captain Babar Azam (50). Asitha Fernando and Dilshan Madushanka took 3 wickets apiece for Sri Lanka.'],
+        ['How has Sri Lanka\'s reply gone?','Sri Lanka lost Pasindu Sooriyabandara and Dinesh Chandimal cheaply before Kamindu Mendis and Dhananjaya de Silva put together a fourth-wicket stand. Mendis fell for 58, but de Silva has kept going into Day 3, reaching his 14th Test century. Sri Lanka are 257/4 after 70 overs, de Silva unbeaten on 104 and captain Kusal Mendis unbeaten on 39, still 177 runs behind.'],
+        ['Why is this Test significant for the schedule?','It\'s the first Test cricket in Rawalpindi in years and opens a two-match series against Sri Lanka that carries World Test Championship 2025-27 points. The second Test, originally set for Lahore, has been moved to Rawalpindi because of smog, though its Nov 17-21 dates are unchanged.']],
+    body:[
+      'Sri Lanka won the toss and chose to bowl first as Test cricket returned to Rawalpindi for the opening match of a two-Test series against Pakistan, part of the ICC World Test Championship 2025-27 cycle. Pakistan took full advantage, batting deep into Day 2 before declaring their first innings at 434/9 in 106.3 overs — debutants Tayyab Arif (57) and Arafat Minhas (52) both reached half-centuries, Mohammad Taha made 51 and captain Babar Azam 50, while Saud Shakeel\'s 93 was the innings\' top score. Asitha Fernando and Dilshan Madushanka did the bulk of the bowling work for Sri Lanka, finishing with three wickets each.',
+      'Sri Lanka\'s reply began shakily — Pasindu Sooriyabandara and Dinesh Chandimal were both gone cheaply — before Kamindu Mendis and Dhananjaya de Silva steadied things with a fourth-wicket partnership that carried the innings through to the close of Day 2 and deep into Day 3. Mendis eventually fell for a battling 58, but de Silva has pushed on: he brought up his half-century on Day 3 and went on to his 14th Test hundred, continuing unbeaten.',
+      'At the latest update, Sri Lanka are 257/4 after 70 overs, de Silva unbeaten on 104 and captain Kusal Mendis keeping him company on 39 not out, with the tourists still 177 runs behind Pakistan\'s 434/9 declared. The match continues through Nov 13, with the second Test of the series — moved from Lahore to Rawalpindi because of smog, though its dates are unchanged — following from Nov 17-21.',
     ],
   },
   {id:'ucl-md4-tuesday-recap', sport:'football', league:'Champions League', cat:'recap', matchIds:[['roma-manutd-nov3-2026','Man Utd 3–2 Roma'],['barcelona-astonvilla-nov3-2026','Barcelona 3–0 Aston Villa'],['bayern-atletico-nov3-2026','Bayern Munich 2–0 Atlético Madrid']],
@@ -4626,17 +4683,43 @@ const F1_SEASON_RESULTS = [
       {pos:21, driver:'V. Bottas', team:'Cadillac', gap:'DNF'},
       {pos:22, driver:'O. Bearman', team:'Haas', gap:'DNF'},
     ]},
+  {round:20, gp:'São Paulo, Brazil', winner:'L. Norris', team:'McLaren', note:'Norris wins from pole in a wet-dry-wet thriller; Verstappen storms from 21st to 2nd; Mercedes clinch the Constructors\' title',
+    podium:[{driver:'L. Norris',team:'McLaren'},{driver:'M. Verstappen',team:'Red Bull'},{driver:'I. Hadjar',team:'Red Bull'}],
+    results:[
+      {pos:1, driver:'L. Norris', team:'McLaren', gap:'Winner'},
+      {pos:2, driver:'M. Verstappen', team:'Red Bull', gap:'+14.602s'},
+      {pos:3, driver:'I. Hadjar', team:'Red Bull', gap:'+24.485s'},
+      {pos:4, driver:'G. Russell', team:'Mercedes', gap:'+33.991s'},
+      {pos:5, driver:'K. Antonelli', team:'Mercedes', gap:'+41.017s'},
+      {pos:6, driver:'O. Piastri', team:'McLaren', gap:'+56.475s'},
+      {pos:7, driver:'L. Lawson', team:'Racing Bulls', gap:'+1:15.402'},
+      {pos:8, driver:'C. Leclerc', team:'Ferrari', gap:'+1:18.586'},
+      {pos:9, driver:'L. Hamilton', team:'Ferrari', gap:'+1 lap'},
+      {pos:10, driver:'N. Hulkenberg', team:'Audi', gap:'+1 lap'},
+      {pos:11, driver:'A. Lindblad', team:'Racing Bulls', gap:'+1 lap'},
+      {pos:12, driver:'F. Alonso', team:'Aston Martin', gap:'+1 lap'},
+      {pos:13, driver:'F. Colapinto', team:'Alpine', gap:'+1 lap'},
+      {pos:14, driver:'P. Gasly', team:'Alpine', gap:'+1 lap'},
+      {pos:15, driver:'A. Albon', team:'Williams', gap:'+1 lap'},
+      {pos:16, driver:'G. Bortoleto', team:'Audi', gap:'+1 lap'},
+      {pos:17, driver:'O. Bearman', team:'Haas', gap:'+1 lap'},
+      {pos:18, driver:'S. Perez', team:'Cadillac', gap:'+1 lap'},
+      {pos:19, driver:'C. Sainz', team:'Williams', gap:'+1 lap'},
+      {pos:20, driver:'R. Camara', team:'Haas', gap:'+1 lap'},
+      {pos:21, driver:'L. Stroll', team:'Aston Martin', gap:'DNF'},
+      {pos:22, driver:'V. Bottas', team:'Cadillac', gap:'DNS'},
+    ]},
 ];
 const F1_STANDINGS = [
-  {pos:1, driver:'K. Antonelli', team:'Mercedes', pts:380},
-  {pos:2, driver:'M. Verstappen', team:'Red Bull', pts:261},
-  {pos:3, driver:'L. Hamilton', team:'Ferrari', pts:259},
-  {pos:4, driver:'G. Russell', team:'Mercedes', pts:250},
-  {pos:5, driver:'C. Leclerc', team:'Ferrari', pts:245},
-  {pos:6, driver:'L. Norris', team:'McLaren', pts:221},
-  {pos:7, driver:'O. Piastri', team:'McLaren', pts:150},
-  {pos:8, driver:'I. Hadjar', team:'Red Bull', pts:105},
-  {pos:9, driver:'L. Lawson', team:'Racing Bulls', pts:79},
+  {pos:1, driver:'K. Antonelli', team:'Mercedes', pts:390},
+  {pos:2, driver:'M. Verstappen', team:'Red Bull', pts:279},
+  {pos:3, driver:'G. Russell', team:'Mercedes', pts:262},
+  {pos:4, driver:'L. Hamilton', team:'Ferrari', pts:261},
+  {pos:5, driver:'C. Leclerc', team:'Ferrari', pts:249},
+  {pos:6, driver:'L. Norris', team:'McLaren', pts:246},
+  {pos:7, driver:'O. Piastri', team:'McLaren', pts:158},
+  {pos:8, driver:'I. Hadjar', team:'Red Bull', pts:120},
+  {pos:9, driver:'L. Lawson', team:'Racing Bulls', pts:85},
   {pos:10, driver:'P. Gasly', team:'Alpine', pts:43},
 ];
 function renderF1Results(){
@@ -5133,14 +5216,14 @@ function renderF1Hub(){
     <div class="f1-track-wrap">${f1TrackSvg()}</div>
     <div class="f1-next">
       <span class="eyebrow">Next Race</span>
-      <h1>São Paulo Grand Prix</h1>
+      <h1>Las Vegas Grand Prix</h1>
       <div class="f1-countdown" id="f1-countdown">
         <div class="unit"><div class="num" id="f1-d">00</div><div class="lbl">Days</div></div>
         <div class="unit"><div class="num" id="f1-h">00</div><div class="lbl">Hours</div></div>
         <div class="unit"><div class="num" id="f1-m">00</div><div class="lbl">Minutes</div></div>
         <div class="unit"><div class="num" id="f1-sec">00</div><div class="lbl">Seconds</div></div>
       </div>
-      <p>The title is already decided — Kimi Antonelli sealed the 2026 championship with a third-place finish at a red-flagged Mexico City Grand Prix, becoming F1's youngest-ever champion. The paddock moves on to Interlagos for the São Paulo Grand Prix, a standard race weekend with no sprint this year; practice and qualifying run Friday and Saturday, with the Grand Prix itself Sunday, November 8 at 2:00 PM local.</p>
+      <p>Lando Norris won a wet-dry-wet São Paulo Grand Prix from pole, with Max Verstappen charging from 21st on the grid to finish second — and Mercedes clinched the 2026 Constructors' Championship courtesy of George Russell and Kimi Antonelli's fourth- and fifth-place finishes. Antonelli had already wrapped up the Drivers' title in Mexico City. The paddock now heads to the Las Vegas Strip Circuit for the Las Vegas Grand Prix, with practice Thursday and Friday, qualifying Friday night and the race itself Saturday, November 21 at 8:00 PM local (11:00 PM ET).</p>
       <a class="f1-pill-btn" href="#/">← Back to All Sports</a>
     </div>
 
@@ -5149,36 +5232,36 @@ function renderF1Hub(){
       <div class="f1-helmet-section">
         <div class="f1-helmet-grid">
           <div class="f1-helmet-stats">
-            <div><div class="n" style="font-size:24px;">Antonelli</div><div class="l">Third in a chaotic, red-flagged Mexico City GP — enough to clinch the 2026 title with four rounds still to run</div></div>
-            <div><div class="n" style="font-size:24px;">Verstappen</div><div class="l">Won in Mexico City, his third victory of the season, and moves up to 2nd in the standings</div></div>
+            <div><div class="n" style="font-size:24px;">Norris</div><div class="l">Won from pole in a wet-dry-wet São Paulo GP, 14.6 seconds clear of Verstappen</div></div>
+            <div><div class="n" style="font-size:24px;">Verstappen</div><div class="l">Recovered from 21st on the grid to finish 2nd — one of the drives of the season</div></div>
           </div>
           <div id="f1-helmet-wrap">${F1_HELMET_SVG}</div>
           <div class="f1-helmet-stats right">
-            <div><div class="n" style="font-size:24px;">380</div><div class="l">Antonelli's points total after Mexico City — 119 clear of Verstappen with four rounds left to run</div></div>
-            <div><div class="n" style="font-size:24px;">20</div><div class="l">Antonelli's age — F1's youngest-ever world champion, and the first Italian champion since Alberto Ascari in 1953</div></div>
+            <div><div class="n" style="font-size:24px;">Mercedes</div><div class="l">Clinched the 2026 Constructors' Championship in São Paulo behind Russell (4th) and Antonelli (5th)</div></div>
+            <div><div class="n" style="font-size:24px;">390</div><div class="l">Antonelli's points total after São Paulo — his Drivers' title was already sealed in Mexico City</div></div>
           </div>
         </div>
       </div>
-      <p class="f1-quote">Kimi Antonelli is "speechless" after clinching the title in Mexico City — <b>São Paulo is up next, with the pressure off.</b></p>
+      <p class="f1-quote">Mercedes clinch the Constructors' crown in São Paulo — <b>Las Vegas is up next under the Strip's lights.</b></p>
       <div style="height:70px;"></div>
     </div>
 
     <div class="f1-schedule">
-      <div class="f1-schedule-head"><h2>Race Weekend Schedule</h2><div class="f1-tabs"><span class="on">My Time (ET)</span><span>São Paulo Time</span></div></div>
-      <div class="f1-row"><span class="s">Practice 1</span><span class="t">Fri · 10:30 AM ET (12:30 PM BRT)</span></div>
-      <div class="f1-row"><span class="s">Practice 2</span><span class="t">Fri · 2:00 PM ET (4:00 PM BRT)</span></div>
-      <div class="f1-row"><span class="s">Practice 3</span><span class="t">Sat · 9:30 AM ET (11:30 AM BRT)</span></div>
-      <div class="f1-row"><span class="s">Qualifying</span><span class="t">Sat · 1:00 PM ET (3:00 PM BRT)</span></div>
-      <div class="f1-row"><span class="s">Race</span><span class="t">Sun · 12:00 PM ET (2:00 PM BRT)</span></div>
+      <div class="f1-schedule-head"><h2>Race Weekend Schedule</h2><div class="f1-tabs"><span class="on">My Time (ET)</span><span>Las Vegas Time</span></div></div>
+      <div class="f1-row"><span class="s">Practice 1</span><span class="t">Thu · 7:30 PM ET (4:30 PM PT)</span></div>
+      <div class="f1-row"><span class="s">Practice 2</span><span class="t">Thu · 11:00 PM ET (8:00 PM PT)</span></div>
+      <div class="f1-row"><span class="s">Practice 3</span><span class="t">Fri · 7:30 PM ET (4:30 PM PT)</span></div>
+      <div class="f1-row"><span class="s">Qualifying</span><span class="t">Fri · 11:00 PM ET (8:00 PM PT)</span></div>
+      <div class="f1-row"><span class="s">Race</span><span class="t">Sat · 11:00 PM ET (8:00 PM PT)</span></div>
     </div>
 
     <div class="f1-schedule" style="padding-top:0;">
-      <div class="f1-schedule-head"><h2>Season So Far</h2><span class="eyebrow">19 of 23 rounds · R14 cancelled</span></div>
+      <div class="f1-schedule-head"><h2>Season So Far</h2><span class="eyebrow">20 of 23 rounds · R14 cancelled</span></div>
       ${renderF1Results()}
     </div>
 
     <div class="f1-schedule" style="padding-top:0;">
-      <div class="f1-schedule-head"><h2>Drivers' Championship</h2><span class="eyebrow">Entering São Paulo · Antonelli crowned champion</span></div>
+      <div class="f1-schedule-head"><h2>Drivers' Championship</h2><span class="eyebrow">Entering Las Vegas · Antonelli crowned champion</span></div>
       ${renderF1Standings()}
     </div>
 
@@ -7813,7 +7896,7 @@ setInterval(function(){
 }, 1000);
 
 /* ---------------- F1 scroll-driven helmet + MLB scroll progress ---------------- */
-const F1_RACE_TARGET = new Date('2026-11-08T17:00:00Z').getTime();
+const F1_RACE_TARGET = new Date('2026-11-22T04:00:00Z').getTime();
 let scrollTicking = false;
 function onScrollEffects(){
   const helmet = document.getElementById('f1-helmet');

@@ -846,7 +846,7 @@ const SPORTS = [
     status:'O\'SHAQUIE FOSTER DROPPED NAVARRETE TWICE EN ROUTE TO A UNANIMOUS DECISION IN SAN ANTONIO, UNIFYING THE WBC, WBO AND IBF SUPER FEATHERWEIGHT TITLES', deep:'light', sub:'Professional boxing'},
   {id:'cricket', name:'Cricket', accent:'away', heat:90,
     headline:'Dhananjaya de Silva\'s 14th Test Century Leads Sri Lanka\'s Fightback Against Pakistan in the Rawalpindi Test',
-    status:'LIVE: SRI LANKA 257/4 (70 OV) IN REPLY TO PAKISTAN\'S 434/9 DECLARED ON DAY 3 OF THE 1ST TEST AT RAWALPINDI — DHANANJAYA DE SILVA UNBEATEN ON 104 (HIS 14TH TEST HUNDRED), CAPTAIN KUSAL MENDIS UNBEATEN ON 39, SRI LANKA STILL TRAILING BY 177 · PAKISTAN HAD DECLARED AT 434/9 AFTER 106.3 OVERS ON DAY 2 (SAUD SHAKEEL 93, TAYYAB ARIF 57, ARAFAT MINHAS 52, MOHAMMAD TAHA 51, BABAR AZAM 50) · 2ND TEST MOVED FROM LAHORE TO RAWALPINDI OVER SMOG, DATES UNCHANGED (NOV 17-21) · IND VS NZ 3RD ODI AT HAMILTON ABANDONED WITHOUT A BALL BOWLED DUE TO PERSISTENT RAIN — INDIA LEAD THE 5-MATCH SERIES 2-0 WITH THE 4TH ODI AT BAY OVAL, MOUNT MAUNGANUI, NOV 13 · IND BEAT NZ BY 4 RUNS (DLS) IN A RAIN-HIT, LOW-SCORING 2ND ODI AT WELLINGTON (NZ 134 ALL OUT IN 41 OVERS; GURNOOR BRAR A CAREER-BEST 4/30) · SOUTH AFRICA WON THE TEST SERIES VS AUSTRALIA 2-1 TO CLIMB TO NO. 1 IN THE ICC TEST RANKINGS FOR THE FIRST TIME IN NEARLY A DECADE', deep:'light', sub:'International & league cricket', live:true},
+    status:'LIVE: SRI LANKA 303/4 (76 OV) IN REPLY TO PAKISTAN\'S 434/9 DECLARED ON DAY 3 OF THE 1ST TEST AT RAWALPINDI — DHANANJAYA DE SILVA UNBEATEN ON 117 (HIS 14TH TEST HUNDRED), CAPTAIN KUSAL MENDIS UNBEATEN ON 70, SRI LANKA STILL TRAILING BY 131 · PAKISTAN HAD DECLARED AT 434/9 AFTER 106.3 OVERS ON DAY 2 (SAUD SHAKEEL 93, TAYYAB ARIF 57, ARAFAT MINHAS 52, MOHAMMAD TAHA 51, BABAR AZAM 50) · 2ND TEST MOVED FROM LAHORE TO RAWALPINDI OVER SMOG, DATES UNCHANGED (NOV 17-21) · IND VS NZ 3RD ODI AT HAMILTON ABANDONED WITHOUT A BALL BOWLED DUE TO PERSISTENT RAIN — INDIA LEAD THE 5-MATCH SERIES 2-0 WITH THE 4TH ODI AT BAY OVAL, MOUNT MAUNGANUI, NOV 13 · IND BEAT NZ BY 4 RUNS (DLS) IN A RAIN-HIT, LOW-SCORING 2ND ODI AT WELLINGTON (NZ 134 ALL OUT IN 41 OVERS; GURNOOR BRAR A CAREER-BEST 4/30) · SOUTH AFRICA WON THE TEST SERIES VS AUSTRALIA 2-1 TO CLIMB TO NO. 1 IN THE ICC TEST RANKINGS FOR THE FIRST TIME IN NEARLY A DECADE', deep:'light', sub:'International & league cricket', live:true},
 ];
 const sportById = id => SPORTS.find(s=>s.id===id);
 const tierOf = h => h>=85?1:h>=65?2:h>=45?3:4;
@@ -1205,11 +1205,11 @@ const CRICKET_LIVE_MATCH = {
   venue:'Rawalpindi Cricket Stadium, Rawalpindi', date:'Nov 9-13, 2026',
   status:'live',
   teams:{
-    away:{abbr:'SL', name:'Sri Lanka', score:257, wkts:4, overs:'70.0'},
+    away:{abbr:'SL', name:'Sri Lanka', score:303, wkts:4, overs:'76.0'},
     home:{abbr:'PAK', name:'Pakistan', score:434, wkts:9, overs:'106.3'},
   },
   toss:'Sri Lanka won the toss and elected to field',
-  resultLine:'Day 3: Pakistan\'s first innings closed at 434/9 declared (Saud Shakeel 93, Tayyab Arif 57, Arafat Minhas 52, Mohammad Taha 51, Babar Azam 50 — Asitha Fernando and Dilshan Madushanka each took 3 wickets). Sri Lanka, set a big chase just to avoid the follow-on, slipped to 37/2 before Kamindu Mendis and Dhananjaya de Silva steadied the innings with a fourth-wicket stand; after Mendis fell for 58, de Silva kept going into Day 3 and reached his 14th Test century. Sri Lanka are 257/4 after 70 overs, de Silva unbeaten on 104 alongside captain Kusal Mendis (39*), still trailing by 177 runs (2nd Test: Rawalpindi, Nov 17-21, moved from Lahore because of smog).',
+  resultLine:'Day 3: Pakistan\'s first innings closed at 434/9 declared (Saud Shakeel 93, Tayyab Arif 57, Arafat Minhas 52, Mohammad Taha 51, Babar Azam 50 — Asitha Fernando and Dilshan Madushanka each took 3 wickets). Sri Lanka, set a big chase just to avoid the follow-on, slipped to 37/2 before Kamindu Mendis and Dhananjaya de Silva steadied the innings with a fourth-wicket stand; after Mendis fell for 58, de Silva kept going into Day 3 and reached his 14th Test century. Sri Lanka are 303/4 after 76 overs, de Silva unbeaten on 117 alongside captain Kusal Mendis (70*), still trailing by 131 runs (2nd Test: Rawalpindi, Nov 17-21, moved from Lahore because of smog).',
 };
 const CRICKET_SCORECARDS = {
   'pak-sl-1st-odi':{
